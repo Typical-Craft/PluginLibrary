@@ -37,10 +37,7 @@ public enum Library {
 	 */
 	public static Library getEnum(String value) {
 		for (Library e : Library.values()) {
-			System.out.println(".name(): " + e.name());
-			System.out.println(".getPluginName(): " + e.getPluginName());
-
-			if (e.name().equalsIgnoreCase(value))
+			if (e.getPluginName().equalsIgnoreCase(value))
 				return e;
 		}
 
