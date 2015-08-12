@@ -3,4 +3,4 @@ author: Staartvin
 main: me.staartvin.plugins.pluginlibrary.PluginLibrary
 version: 1.0
 description: A library plugin that allows developers to easily get a lot of data from other plugins.
-softdepend: [Autorank]
+softdepend: [Autorank, Stats]
