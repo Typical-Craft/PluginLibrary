@@ -1,7 +1,9 @@
 package me.staartvin.plugins.pluginlibrary;
 
 import me.staartvin.plugins.pluginlibrary.hooks.AutorankHook;
+import me.staartvin.plugins.pluginlibrary.hooks.FactionsHook;
 import me.staartvin.plugins.pluginlibrary.hooks.LibraryHook;
+import me.staartvin.plugins.pluginlibrary.hooks.McMMOHook;
 import me.staartvin.plugins.pluginlibrary.hooks.StatsHook;
 
 /**
@@ -15,7 +17,9 @@ import me.staartvin.plugins.pluginlibrary.hooks.StatsHook;
 public enum Library {
 
 	AUTORANK("Autorank", new AutorankHook()),
-	STATS("Stats", new StatsHook());
+	STATS("Stats", new StatsHook()),
+	MCMMO("mcMMO", new McMMOHook()),
+	FACTIONS("Factions", new FactionsHook());
 
 	private String pluginName;
 	private LibraryHook hook;
