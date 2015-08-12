@@ -6,6 +6,7 @@ import java.util.Set;
 import java.util.UUID;
 
 import org.bukkit.Location;
+import org.bukkit.entity.Player;
 
 import com.massivecraft.factions.Rel;
 import com.massivecraft.massivecore.ps.PS;
@@ -94,6 +95,10 @@ public class Faction {
 		faction.setMotd(motd);
 	}
 	
+	/**
+	 * Sets the time the faction was created at.
+	 * @param time Time (in milliseconds) in UNIX timestamp.
+	 */
 	public void setCreatedAt(long time) {
 		faction.setCreatedAtMillis(time);
 	}
@@ -165,6 +170,24 @@ public class Faction {
 	public boolean isInvited(UUID uuid) {
 		return this.getInvitedPlayerIds().contains(uuid);
 	}
+	
+	/**
+	 * Gets the current power of the faction.
+	 * @return power of the faction.
+	 */
+	public double getPower() {
+		return faction.getPower();
+	}
+	
+	/**
+	 * Gets the leader of the faction.
+	 * @return {@link Player} that is the leader of this faction or null if not found.
+	 */
+	public Player getLeader() {
+		return faction.getLeader().getPlayer();
+	}
+	
+	
 	
 	// TODO relation ships
 	public Map<String, Rel> getRelationWishes()
