@@ -1,4 +1,6 @@
-package me.staartvin.plugins.pluginlibrary;
+package me.staartvin.plugins.pluginlibrary.hooks;
+
+import me.staartvin.plugins.pluginlibrary.PluginLibrary;
 
 import org.bukkit.Bukkit;
 
@@ -12,7 +14,7 @@ import org.bukkit.Bukkit;
  */
 public abstract class LibraryHook {
 
-	public PluginLibrary getPlugin() {
+	protected PluginLibrary getPlugin() {
 		return (PluginLibrary) Bukkit.getServer().getPluginManager().getPlugin("PluginLibrary");
 	}
 	
