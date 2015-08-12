@@ -17,5 +17,8 @@
 			<attribute name="javadoc_location" value="http://ci.lolmewn.nl/job/Stats/javadoc/"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="libs/mcMMO.jar"/>
+	<classpathentry kind="lib" path="libs/MassiveCore.jar"/>
+	<classpathentry kind="lib" path="libs/Factions.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
