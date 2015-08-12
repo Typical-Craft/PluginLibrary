@@ -7,12 +7,11 @@ import me.armar.plugins.autorank.Autorank;
 import me.armar.plugins.autorank.playerchecker.requirement.Requirement;
 import me.armar.plugins.autorank.playerchecker.result.Result;
 import me.staartvin.plugins.pluginlibrary.Library;
-import me.staartvin.plugins.pluginlibrary.LibraryHook;
 
 import org.bukkit.entity.Player;
 
 /**
- * Autorank library
+ * Autorank library, <a href="https://www.spigotmc.org/resources/autorank.3239/">link</a>.
  * <p>
  * Date created:  14:21:44
  * 12 aug. 2015
