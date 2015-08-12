@@ -1,6 +1,8 @@
 package me.staartvin.plugins.pluginlibrary;
 
 import me.staartvin.plugins.pluginlibrary.hooks.AutorankHook;
+import me.staartvin.plugins.pluginlibrary.hooks.LibraryHook;
+import me.staartvin.plugins.pluginlibrary.hooks.StatsHook;
 
 /**
  * This class holds all libraries PluginLibrary has.
@@ -12,7 +14,8 @@ import me.staartvin.plugins.pluginlibrary.hooks.AutorankHook;
  */
 public enum Library {
 
-	AUTORANK("Autorank", new AutorankHook());
+	AUTORANK("Autorank", new AutorankHook()),
+	STATS("Stats", new StatsHook());
 
 	private String pluginName;
 	private LibraryHook hook;
@@ -41,7 +44,6 @@ public enum Library {
 				return e;
 		}
 
-		return null;
-
+		throw new IllegalArgumentException("There is no library called '" + value + "'!");
 	}
 }
