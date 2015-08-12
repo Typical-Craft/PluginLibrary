@@ -18,7 +18,7 @@ import org.bukkit.plugin.java.JavaPlugin;
  */
 public class PluginLibrary extends JavaPlugin {
 
-	private List<Library> loadedLibraries = new ArrayList<Library>();
+	private final List<Library> loadedLibraries = new ArrayList<Library>();
 	
 	@Override
 	public void onEnable() {
@@ -77,4 +77,7 @@ public class PluginLibrary extends JavaPlugin {
 		return Collections.unmodifiableList(loadedLibraries);
 	}
 	
+	public static Library getLibrary(String pluginName) {
+		return Library.getEnum(pluginName);
+	}
 }
