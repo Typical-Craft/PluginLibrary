@@ -1,55 +1,65 @@
 package me.staartvin.plugins.pluginlibrary.hooks.factions;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
+import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
 import com.massivecraft.factions.Rel;
+import com.massivecraft.factions.entity.BoardColl;
+import com.massivecraft.factions.entity.FactionColl;
 import com.massivecraft.massivecore.ps.PS;
 
 public class Faction {
 	private final com.massivecraft.factions.entity.Faction faction;
-	
+
 	public Faction(com.massivecraft.factions.entity.Faction fac) {
 		faction = fac;
 	}
-	
+
 	/**
 	 * Gets the name of the faction.
+	 * 
 	 * @return Name of the faction.
 	 */
 	public String getName() {
 		return faction.getName();
 	}
-	
+
 	/**
 	 * Gets the description of the faction.
+	 * 
 	 * @return description including colour codes or null if non-existent.
 	 */
 	public String getDescription() {
 		return faction.getDescription();
 	}
-	
+
 	/**
 	 * Gets the MOTD of the faction.
-	 * @return String containting the MOTD, null if faction doesn't exist or has no MOTD.
+	 * 
+	 * @return String containting the MOTD, null if faction doesn't exist or has
+	 *         no MOTD.
 	 */
 	public String getMotd() {
 		return faction.getMotd();
 	}
-	
+
 	/**
 	 * Gets the time (from UNIX timestamp) when the faction was created.
+	 * 
 	 * @return time in milliseconds of creation (UNIX)
 	 */
 	public long getCreatedAt() {
 		return faction.getCreatedAtMillis();
 	}
-	
+
 	/**
 	 * Gets the location of the home of a faction.
 	 * 
@@ -57,19 +67,21 @@ public class Faction {
 	 *         is not set.
 	 */
 	public Location getHomeLocation() {
-		if (faction.getHome() == null) return null;
-		
+		if (faction.getHome() == null)
+			return null;
+
 		return faction.getHome().asBukkitLocation();
 	}
-	
+
 	/**
 	 * Gets the powerboost of the faction.
+	 * 
 	 * @return the powerboost of the faction or null if 0.
 	 */
 	public Double getPowerBoost() {
 		return faction.getPowerBoost();
 	}
-	
+
 	/**
 	 * Sets the name of the faction.
 	 * 
@@ -78,31 +90,34 @@ public class Faction {
 	public void setName(String name) {
 		faction.setName(name);
 	}
-	
+
 	/**
 	 * Sets the description of the faction.
+	 * 
 	 * @param description Description to set.
 	 */
 	public void setDescription(String description) {
 		faction.setDescription(getDescription());
 	}
-	
+
 	/**
 	 * Sets the MOTD of a faction.
+	 * 
 	 * @param motd MOTD to set to.
 	 */
 	public void setMotd(String motd) {
 		faction.setMotd(motd);
 	}
-	
+
 	/**
 	 * Sets the time the faction was created at.
+	 * 
 	 * @param time Time (in milliseconds) in UNIX timestamp.
 	 */
 	public void setCreatedAt(long time) {
 		faction.setCreatedAtMillis(time);
 	}
-	
+
 	/**
 	 * Sets the location of the home of a faction.
 	 * 
@@ -111,15 +126,16 @@ public class Faction {
 	public void setHomeLocation(Location location) {
 		faction.setHome(PS.valueOf(location));
 	}
-	
+
 	/**
 	 * Sets the powerboost of the faction.
+	 * 
 	 * @param powerBoost Powerboost to set it to.
 	 */
 	public void setPowerBoost(Double powerBoost) {
 		faction.setPowerBoost(powerBoost);
 	}
-	
+
 	/**
 	 * Gets the boolean value of the flag specified for this faction.
 	 * 
@@ -135,7 +151,7 @@ public class Faction {
 		// throw new NullPointerException("flagId");
 		return faction.getFlag(flagId);
 	}
-	
+
 	/**
 	 * Sets the value of the given flag for a faction.
 	 * 
@@ -147,51 +163,164 @@ public class Faction {
 		// throw new NullPointerException("flagId");
 		faction.setFlag(flagId, value);
 	}
-	
+
 	/**
 	 * Gets a list of UUIDs that are invited to this faction.
+	 * 
 	 * @return a list of UUIDs corresponding to players.
 	 */
 	public Set<UUID> getInvitedPlayerIds() {
 		HashSet<UUID> uuids = new HashSet<UUID>();
-		
-		for (String uuid: faction.getInvitedPlayerIds()) {
+
+		for (String uuid : faction.getInvitedPlayerIds()) {
 			uuids.add(UUID.fromString(uuid));
 		}
-		
+
 		return uuids;
 	}
-	
+
 	/**
 	 * Checks whether a player is invited or not.
+	 * 
 	 * @param uuid UUID to check.
 	 * @return true if invited; false otherwise.
 	 */
 	public boolean isInvited(UUID uuid) {
 		return this.getInvitedPlayerIds().contains(uuid);
 	}
-	
+
 	/**
 	 * Gets the current power of the faction.
+	 * 
 	 * @return power of the faction.
 	 */
 	public double getPower() {
 		return faction.getPower();
 	}
-	
+
 	/**
 	 * Gets the leader of the faction.
-	 * @return {@link Player} that is the leader of this faction or null if not found.
+	 * 
+	 * @return {@link Player} that is the leader of this faction or null if not
+	 *         found.
 	 */
 	public Player getLeader() {
 		return faction.getLeader().getPlayer();
 	}
-	
-	
-	
+
+	/**
+	 * Gets the chunks the faction has claimed.
+	 * 
+	 * @return a list of claimed chunks.
+	 */
+	public List<Chunk> getChunks() {
+		Set<PS> chunks = BoardColl.get().getChunks(faction);
+		List<Chunk> realChunks = new ArrayList<Chunk>();
+
+		for (PS chunk : chunks) {
+			if (chunk == null)
+				continue;
+
+			realChunks.add(chunk.asBukkitChunk());
+		}
+
+		return realChunks;
+	}
+
+	/**
+	 * Gets the relation wish of this faction to another faction. <br>
+	 * Will return a relationship type. This can be ALLY, TRUCE, NEUTRAL and
+	 * ENEMY.
+	 * 
+	 * @param otherFaction Other faction.
+	 * @return A relationship type or null if the other faction was not found.
+	 */
+	public String getRelationWish(Faction otherFaction) {
+		com.massivecraft.factions.entity.Faction otherFac = FactionColl.get()
+				.getByName(otherFaction.getName());
+
+		if (otherFac == null)
+			return null;
+
+		Rel rel = faction.getRelationWish(otherFac);
+
+		if (rel == null)
+			return null;
+
+		return rel.toString();
+	}
+
+	/**
+	 * Sets the relation wish of this faction to another faction. <br>
+	 * For a list of relation types, see {@link #getRelationWish(Faction)}
+	 * <br><b>NOTE:</b> You can only try to set the relation as a wish, as the other faction has to accept it.
+	 * <br>There is no setRelation().
+	 * 
+	 * @param otherFaction The other faction to set the relation to.
+	 * @param relation Relation type.
+	 */
+	public void setRelationWish(Faction otherFaction, String relation) {
+		com.massivecraft.factions.entity.Faction otherFac = FactionColl.get()
+				.getByName(otherFaction.getName());
+
+		if (otherFac == null)
+			return;
+
+		Rel rel = Rel.valueOf(relation.toUpperCase());
+
+		if (rel == null)
+			return;
+
+		faction.setRelationWish(otherFac, rel);
+	}
+
+	/**
+	 * Gets the relation of this faction to another faction. <br>
+	 * Will return a relationship type. This can be ALLY, TRUCE, NEUTRAL and
+	 * ENEMY.
+	 * 
+	 * @param otherFaction Other faction.
+	 * @return A relationship type or null if the other faction was not found.
+	 */
+	public String getRelationTo(Faction otherFaction) {
+		com.massivecraft.factions.entity.Faction otherFac = FactionColl.get()
+				.getByName(otherFaction.getName());
+
+		if (otherFac == null)
+			return null;
+
+		Rel rel = faction.getRelationTo(otherFac);
+
+		if (rel == null)
+			return null;
+
+		return rel.toString();
+	}
+
+	/**
+	 * Gets a list of online players that are member of this faction.
+	 * 
+	 * @return a list containing all online-member players.
+	 */
+	public List<Player> getOnlinePlayers() {
+		return faction.getOnlinePlayers();
+	}
+
+	/**
+	 * Gets the amount of chunks owned by this faction.
+	 * 
+	 * @return amount of chunks owned.
+	 */
+	public int getLandCount() {
+		return this.getChunks().size();
+	}
+
+	public void sendMessage(String message) {
+		faction.sendMessage(message);
+	}
+
 	// TODO relation ships
-	public Map<String, Rel> getRelationWishes()
-	{
+	public Map<String, Rel> getRelationWishes() {
 		return faction.getRelationWishes();
 	}
 }

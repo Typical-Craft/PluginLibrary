@@ -1,13 +1,19 @@
 package me.staartvin.plugins.pluginlibrary.hooks;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import me.staartvin.plugins.pluginlibrary.Library;
 import me.staartvin.plugins.pluginlibrary.hooks.factions.Faction;
 
+import org.bukkit.Location;
+
 import com.massivecraft.factions.Factions;
+import com.massivecraft.factions.entity.BoardColl;
 import com.massivecraft.factions.entity.FactionColl;
 import com.massivecraft.factions.entity.MPlayer;
+import com.massivecraft.massivecore.ps.PS;
 
 /**
  * Factions, <a
@@ -113,5 +119,58 @@ public class FactionsHook extends LibraryHook {
 		}
 		
 		return null;
+	}
+	
+	/**
+	 * Gets a list of all factions that currently exist.
+	 * @return a list of all factions.
+	 */
+	public List<Faction> getAllFactions() {
+		List<Faction> factions = new ArrayList<Faction>();
+		
+		for (com.massivecraft.factions.entity.Faction fac: FactionColl.get().getAll()) {
+			factions.add(new Faction(fac));
+		}
+		
+		return factions;
+	}
+	
+	/**
+	 * Gets the Wilderness 'faction'.
+	 * @return the Wilderness faction.
+	 */
+	public Faction getWilderness() {
+		return new Faction(FactionColl.get().getNone());
+	}
+	
+	/**
+	 * Gets the Safezone 'faction'.
+	 * @return the Safezone faction.
+	 */
+	public Faction getSafezone() {
+		return new Faction(FactionColl.get().getSafezone());
+	}
+	
+	/**
+	 * Gets the Warzone 'faction'.
+	 * @return the Warzone faction.
+	 */
+	public Faction getWarzone() {
+		return new Faction(FactionColl.get().getWarzone());
+	}
+	
+	/**
+	 * Gets the faction at a specific {@link Location}.
+	 * @param location Location for the faction to be at.
+	 * @return A {@link Faction} or null if the location does not contain a faction.
+	 */
+	public Faction getFactionAt(Location location) {
+		if (location == null) return null;
+		
+		com.massivecraft.factions.entity.Faction fac = BoardColl.get().getFactionAt(PS.valueOf(location));
+		
+		if (fac == null) return null;
+		
+		return new Faction(fac);
 	}
 }
