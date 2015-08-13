@@ -367,9 +367,20 @@ public class Faction {
 	
 	/**
 	 * Gets the id of this faction.
+	 * <br>Internally used to reference unique factions.
 	 * @return id of the faction.
 	 */
 	public String getId() {
 		return faction.getId();
+	}
+	
+	/**
+	 * Gets the 'comparison name' of the faction.
+	 * <br>When retrieving the name of the faction via {@link #getName()}, it will also include colour codes.
+	 * <br>This method will remove those colour codes and is internally used by Factions to reference each seperate Faction.
+	 * @return Unique name of Faction without colour codes.
+	 */
+	public String getComparisonName() {
+		return faction.getComparisonName();
 	}
 }

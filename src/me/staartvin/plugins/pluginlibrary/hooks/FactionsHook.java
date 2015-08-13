@@ -64,8 +64,8 @@ public class FactionsHook extends LibraryHook {
 	/* Faction vars */
 
 	/**
-	 * Gets the faction by its name.
-	 * @param factionName Name of the faction.
+	 * Gets the faction by its name. Use the comparison name, see {@link me.staartvin.plugins.pluginlibrary.hooks.factions.Faction#getComparisonName()}.
+	 * @param factionName Name of the faction. <b>Without colour codes!</b>
 	 * @return {@link Faction} or null if no faction found.
 	 */
 	public Faction getFactionByName(String factionName) {
