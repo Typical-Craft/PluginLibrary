@@ -8,6 +8,7 @@ import com.massivecraft.factions.entity.FactionColl;
 /**
  * Represents the {@link com.massivecraft.factions.entity.MPlayer} class.
  * <br>This class mirroring is used so developers don't have to import the API of Factions.
+ * <br>This can either be a console or a real player. You can check with {@link #isConsole()} and {@link #isPlayer()}.
  * <p>
  * Date created:  23:56:36
  * 13 aug. 2015
@@ -19,6 +20,10 @@ public class MPlayer {
 	private final com.massivecraft.factions.entity.MPlayer mPlayer;
 	
 	public MPlayer(com.massivecraft.factions.entity.MPlayer mPlayer) {
+		if (mPlayer == null) {
+			throw new NullPointerException("MPlayer is null!");
+		}
+		
 		this.mPlayer = mPlayer;
 	}
 	
@@ -37,7 +42,7 @@ public class MPlayer {
 	 * <br><b>This will never be null.</b> See {@link #getFactionId()} for more info.
 	 * @return The faction a player is part of.
 	 */
-	public Faction getFaction() {
+	public Faction getFaction() {		
 		return new Faction(mPlayer.getFaction());
 	}
 	
@@ -246,4 +251,29 @@ public class MPlayer {
 	public void resetFactionData() {
 		mPlayer.resetFactionData();
 	}
+	
+	/**
+	 * Gets the name of this player.
+	 * @return Name of the player.
+	 */
+	public String getName() {
+		return mPlayer.getName();
+	}
+	
+	/**
+	 * Whether this player is the console.
+	 * @return true if this player is the console; false otherwise.
+	 */
+	public boolean isConsole() {
+		return mPlayer.isConsole();
+	}
+	
+	/**
+	 * Whether this player is the a real player.
+	 * @return true if this player is a real player; false otherwise.
+	 */
+	public boolean isPlayer() {
+		return mPlayer.isPlayer();
+	}
+	
 }

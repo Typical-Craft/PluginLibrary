@@ -29,6 +29,9 @@ public class Faction {
 	private final com.massivecraft.factions.entity.Faction faction;
 
 	public Faction(com.massivecraft.factions.entity.Faction fac) {
+		if (fac == null) {
+			throw new NullPointerException("Faction is null!");
+		}
 		faction = fac;
 	}
 
@@ -212,11 +215,14 @@ public class Faction {
 	/**
 	 * Gets the leader of the faction.
 	 * 
-	 * @return {@link Player} that is the leader of this faction or null if not
+	 * @return {@link MPlayer} that is the leader of this faction or null if not
 	 *         found.
 	 */
-	public Player getLeader() {
-		return faction.getLeader().getPlayer();
+	public MPlayer getLeader() {
+		
+		if (faction.getLeader() == null) return null;
+		
+		return new MPlayer(faction.getLeader());
 	}
 
 	/**
