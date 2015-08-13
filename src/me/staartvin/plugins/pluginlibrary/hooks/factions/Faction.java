@@ -34,6 +34,8 @@ public class Faction {
 
 	/**
 	 * Gets the name of the faction.
+	 * <br>When using other API calls, always use {@link #getId()} (where applicable) or {@link #getComparisonName()}.
+	 * <br><b>Only use this method when you want to show the name of the faction to a player!</b>
 	 * 
 	 * @return Name of the faction.
 	 */
