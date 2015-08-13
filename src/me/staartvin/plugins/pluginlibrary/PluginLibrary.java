@@ -3,18 +3,12 @@ package me.staartvin.plugins.pluginlibrary;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map.Entry;
-import java.util.UUID;
 
-import me.staartvin.plugins.pluginlibrary.hooks.FactionsHook;
 import me.staartvin.plugins.pluginlibrary.hooks.LibraryHook;
 import me.staartvin.plugins.pluginlibrary.hooks.customstats.CustomStatsManager;
-import me.staartvin.plugins.pluginlibrary.hooks.factions.Faction;
 import net.md_5.bungee.api.ChatColor;
 
 import org.bukkit.plugin.java.JavaPlugin;
-
-import com.massivecraft.factions.Rel;
 
 /**
  * Main class of PluginLibrary
@@ -44,26 +38,12 @@ public class PluginLibrary extends JavaPlugin {
 			this.getCustomStatsManager().registerCustomStats();
 		}
 
+		logMessage(ChatColor.GOLD + "Loaded libraries: "
+				+ getLoadedLibrariesAsString());
+
 		logMessage(ChatColor.GREEN
 				+ "*** Ready for plugins to send/retrieve data. ***");
-
-		for (Library l : loadedLibraries) {
-			System.out.println("Library loaded: " + l.getPluginName());
-		}
 		
-		FactionsHook hook = (FactionsHook) getLibrary(Library.FACTIONS);
-		Faction fac = hook.getFactionByName("testFaction");
-		Faction fac2 = hook.getFactionByUUID(UUID.fromString("c5f39a1d-3786-46a7-8953-d4efabf8880d"));
-		
-		System.out.println("Fac: " + fac.getDescription());
-		
-		for (Entry<String, Rel> i: fac2.getRelationWishes().entrySet()) {
-			System.out.println("Fac 2: " + i.getKey() + " " + i.getValue());
-		}
-		
-		
-		
-
 		logMessage(this.getDescription().getFullName() + " is now enabled!");
 	}
 
@@ -156,5 +136,28 @@ public class PluginLibrary extends JavaPlugin {
 
 	public void setCustomStatsManager(CustomStatsManager customStatsManager) {
 		this.customStatsManager = customStatsManager;
+	}
+
+	private String getLoadedLibrariesAsString() {
+		StringBuilder builder = new StringBuilder("");
+
+		for (int i = 0, l = loadedLibraries.size(); i < l; i++) {
+			if (i == 0) {
+				builder.append(ChatColor.DARK_AQUA
+						+ loadedLibraries.get(i).getPluginName() + ChatColor.RESET);
+			} else if (i == (l - 1)) {
+				builder.append(ChatColor.GRAY
+						+ " and "
+						+ (ChatColor.DARK_AQUA
+								+ loadedLibraries.get(i).getPluginName() + ChatColor.RESET));
+			} else {
+				builder.append(ChatColor.GRAY
+						+ ", "
+						+ (ChatColor.DARK_AQUA
+								+ loadedLibraries.get(i).getPluginName() + ChatColor.RESET));
+			}
+		}
+
+		return builder.toString();
 	}
 }
