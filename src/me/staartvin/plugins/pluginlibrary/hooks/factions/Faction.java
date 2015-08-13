@@ -3,7 +3,6 @@ package me.staartvin.plugins.pluginlibrary.hooks.factions;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
@@ -14,8 +13,18 @@ import org.bukkit.entity.Player;
 import com.massivecraft.factions.Rel;
 import com.massivecraft.factions.entity.BoardColl;
 import com.massivecraft.factions.entity.FactionColl;
+import com.massivecraft.factions.entity.MFlag;
 import com.massivecraft.massivecore.ps.PS;
 
+/**
+ * Represents the {@link com.massivecraft.factions.entity.Faction} class.
+ * <br>This class mirroring is used so developers don't have to import the API of Factions.
+ * <p>
+ * Date created:  23:56:42
+ * 13 aug. 2015
+ * @author Staartvin
+ *
+ */
 public class Faction {
 	private final com.massivecraft.factions.entity.Faction faction;
 
@@ -237,7 +246,7 @@ public class Faction {
 	 */
 	public String getRelationWish(Faction otherFaction) {
 		com.massivecraft.factions.entity.Faction otherFac = FactionColl.get()
-				.getByName(otherFaction.getName());
+				.get(otherFaction.getId());
 
 		if (otherFac == null)
 			return null;
@@ -261,7 +270,7 @@ public class Faction {
 	 */
 	public void setRelationWish(Faction otherFaction, String relation) {
 		com.massivecraft.factions.entity.Faction otherFac = FactionColl.get()
-				.getByName(otherFaction.getName());
+				.get(otherFaction.getId());
 
 		if (otherFac == null)
 			return;
@@ -284,7 +293,7 @@ public class Faction {
 	 */
 	public String getRelationTo(Faction otherFaction) {
 		com.massivecraft.factions.entity.Faction otherFac = FactionColl.get()
-				.getByName(otherFaction.getName());
+				.get(otherFaction.getId());
 
 		if (otherFac == null)
 			return null;
@@ -315,12 +324,52 @@ public class Faction {
 		return this.getChunks().size();
 	}
 
+	/**
+	 * Sends a message to all online players of this faction.
+	 * @param message Message to send.
+	 */
 	public void sendMessage(String message) {
 		faction.sendMessage(message);
 	}
-
-	// TODO relation ships
-	public Map<String, Rel> getRelationWishes() {
-		return faction.getRelationWishes();
+	
+	/**
+	 * Gets the maximum amount of power this faction may have.
+	 * @return maximum power amount or null if it doesn't exist. Can also return 999999 if max power is infinite (due to flag).
+	 */
+	public Double getPowerMax() {
+		return faction.getPowerMax();
+	}
+	
+	/**
+	 * Whether or not this faction is the Wilderness.
+	 * @return true if the Wilderness; false otherwise.
+	 */
+	public boolean isWilderness() {
+		return faction.isNone();
+	}
+	
+	/**
+	 * Whether or not this faction is the Safezone.
+	 * @return true if the Safezone; false otherwise.
+	 */
+	public boolean isSafezone() {
+		return !faction.getFlag(MFlag.ID_PVP);
+	}
+	
+	/**
+	 * Whether or not this faction is the Warzone.
+	 * @return true if the Warzone; false otherwise.
+	 */
+	public boolean isWarzone() {
+		// Faction allows pvp and is not normal
+		return faction.getFlag(MFlag.ID_PVP) && !faction.isNormal();
+	}
+	
+	/**
+	 * Gets the id of this faction.
+	 * @return id of the faction.
+	 */
+	public String getId() {
+		return faction.getId();
 	}
 }

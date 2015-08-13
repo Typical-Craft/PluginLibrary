@@ -173,4 +173,17 @@ public class FactionsHook extends LibraryHook {
 		
 		return new Faction(fac);
 	}
+	
+	/**
+	 * Gets the {@link me.staartvin.plugins.pluginlibrary.hooks.factions.MPlayer} for a player, which represents the player object Factions internally uses.
+	 * @param uuid UUID of the player.
+	 * @return {@link me.staartvin.plugins.pluginlibrary.hooks.factions.MPlayer} or null if player does not exist/is not stored by Factions.
+	 */
+	public me.staartvin.plugins.pluginlibrary.hooks.factions.MPlayer getFactionsPlayer(UUID uuid) {
+		MPlayer mPlayer = MPlayer.get(uuid);
+		
+		if (mPlayer == null) return null;
+		
+		return new me.staartvin.plugins.pluginlibrary.hooks.factions.MPlayer(mPlayer);
+	}
 }
