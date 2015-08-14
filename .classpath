@@ -38,5 +38,6 @@
 			<attribute name="javadoc_location" value="https://hub.spigotmc.org/javadocs/spigot/"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="libs/EZRanksPro.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

@@ -2,6 +2,7 @@ package me.staartvin.plugins.pluginlibrary;
 
 import me.staartvin.plugins.pluginlibrary.hooks.AFKTerminatorHook;
 import me.staartvin.plugins.pluginlibrary.hooks.AutorankHook;
+import me.staartvin.plugins.pluginlibrary.hooks.EZRanksProHook;
 import me.staartvin.plugins.pluginlibrary.hooks.FactionsHook;
 import me.staartvin.plugins.pluginlibrary.hooks.LibraryHook;
 import me.staartvin.plugins.pluginlibrary.hooks.McMMOHook;
@@ -27,7 +28,8 @@ public enum Library {
 	ONTIME("OnTime", new OnTimeHook()),
 	AFKTERMINATOR("afkTerminator", new AFKTerminatorHook()),
 	ROYALCOMMANDS("RoyalCommands", new RoyalCommandsHook()),
-	ULTIMATECORE("UltimateCore", new UltimateCoreHook());
+	ULTIMATECORE("UltimateCore", new UltimateCoreHook()),
+	EZRANKSPRO("EZRanksPro", new EZRanksProHook());
 
 	private String pluginName;
 	private LibraryHook hook;
