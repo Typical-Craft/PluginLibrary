@@ -8,6 +8,7 @@ import me.staartvin.plugins.pluginlibrary.hooks.McMMOHook;
 import me.staartvin.plugins.pluginlibrary.hooks.OnTimeHook;
 import me.staartvin.plugins.pluginlibrary.hooks.RoyalCommandsHook;
 import me.staartvin.plugins.pluginlibrary.hooks.StatsHook;
+import me.staartvin.plugins.pluginlibrary.hooks.UltimateCoreHook;
 
 /**
  * This class holds all libraries PluginLibrary has.
@@ -25,7 +26,8 @@ public enum Library {
 	FACTIONS("Factions", new FactionsHook()),
 	ONTIME("OnTime", new OnTimeHook()),
 	AFKTERMINATOR("afkTerminator", new AFKTerminatorHook()),
-	ROYALCOMMANDS("RoyalCommands", new RoyalCommandsHook());
+	ROYALCOMMANDS("RoyalCommands", new RoyalCommandsHook()),
+	ULTIMATECORE("UltimateCore", new UltimateCoreHook());
 
 	private String pluginName;
 	private LibraryHook hook;
