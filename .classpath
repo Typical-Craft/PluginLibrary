@@ -11,12 +11,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/Users/Vincent/Java Projects/workspace/PluginLibrary/libs/spigot-1.8.8-R0.1-SNAPSHOT.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="https://hub.spigotmc.org/javadocs/spigot/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="libs/Autorank-3.6.jar">
+	<classpathentry kind="lib" path="D:/Users/Vincent/Java Projects/workspace/PluginLibrary/libs/Autorank.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="http://62.131.38.74:8080/job/Autorank/javadoc/"/>
 		</attributes>
@@ -31,11 +26,16 @@
 	<classpathentry kind="lib" path="libs/Factions.jar"/>
 	<classpathentry kind="lib" path="libs/OnTime.jar"/>
 	<classpathentry kind="lib" path="libs/afkTerminator.jar"/>
-	<classpathentry kind="lib" path="libs/RoyalCommands-4.1.2-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="D:/Users/Vincent/Java Projects/workspace/PluginLibrary/libs/RoyalCommands.jar"/>
 	<classpathentry kind="lib" path="libs/UltimateCore.jar"/>
 	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="D:/Users/Vincent/Java Projects/workspace/PluginLibrary/libs/spigot.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="https://hub.spigotmc.org/javadocs/spigot/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
