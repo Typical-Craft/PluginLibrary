@@ -1,5 +1,6 @@
 package me.staartvin.plugins.pluginlibrary;
 
+import me.staartvin.plugins.pluginlibrary.hooks.AFKTerminatorHook;
 import me.staartvin.plugins.pluginlibrary.hooks.AutorankHook;
 import me.staartvin.plugins.pluginlibrary.hooks.FactionsHook;
 import me.staartvin.plugins.pluginlibrary.hooks.LibraryHook;
@@ -21,7 +22,8 @@ public enum Library {
 	STATS("Stats", new StatsHook()),
 	MCMMO("mcMMO", new McMMOHook()),
 	FACTIONS("Factions", new FactionsHook()),
-	ONTIME("OnTime", new OnTimeHook());
+	ONTIME("OnTime", new OnTimeHook()),
+	AFKTERMINATOR("afkTerminator", new AFKTerminatorHook());
 
 	private String pluginName;
 	private LibraryHook hook;
