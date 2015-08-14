@@ -20,5 +20,6 @@
 	<classpathentry kind="lib" path="libs/mcMMO.jar"/>
 	<classpathentry kind="lib" path="libs/MassiveCore.jar"/>
 	<classpathentry kind="lib" path="libs/Factions.jar"/>
+	<classpathentry kind="lib" path="libs/OnTime.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
