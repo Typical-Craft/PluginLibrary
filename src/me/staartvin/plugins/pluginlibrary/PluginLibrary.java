@@ -28,8 +28,7 @@ public class PluginLibrary extends JavaPlugin {
 
 		loadedLibraries.clear();
 
-		//this is a test
-		// I'm just one below yours
+		//testing push to clips branch
 		logMessage(ChatColor.GOLD + "***== Loading libraries ==***");
 		logMessage(ChatColor.GOLD + "***== Loaded " + ChatColor.WHITE
 				+ loadLibraries() + ChatColor.GOLD + " libraries! ==***");
@@ -43,8 +42,7 @@ public class PluginLibrary extends JavaPlugin {
 		logMessage(ChatColor.GOLD + "Loaded libraries: "
 				+ getLoadedLibrariesAsString());
 
-		logMessage(ChatColor.GREEN
-				+ "*** Ready for plugins to send/retrieve data. ***");
+		logMessage(ChatColor.GREEN + "*** Ready for plugins to send/retrieve data. ***");
 		
 		logMessage(this.getDescription().getFullName() + " is now enabled!");
 	}
