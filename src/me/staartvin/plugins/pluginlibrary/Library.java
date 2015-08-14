@@ -6,6 +6,7 @@ import me.staartvin.plugins.pluginlibrary.hooks.FactionsHook;
 import me.staartvin.plugins.pluginlibrary.hooks.LibraryHook;
 import me.staartvin.plugins.pluginlibrary.hooks.McMMOHook;
 import me.staartvin.plugins.pluginlibrary.hooks.OnTimeHook;
+import me.staartvin.plugins.pluginlibrary.hooks.RoyalCommandsHook;
 import me.staartvin.plugins.pluginlibrary.hooks.StatsHook;
 
 /**
@@ -23,7 +24,8 @@ public enum Library {
 	MCMMO("mcMMO", new McMMOHook()),
 	FACTIONS("Factions", new FactionsHook()),
 	ONTIME("OnTime", new OnTimeHook()),
-	AFKTERMINATOR("afkTerminator", new AFKTerminatorHook());
+	AFKTERMINATOR("afkTerminator", new AFKTerminatorHook()),
+	ROYALCOMMANDS("RoyalCommands", new RoyalCommandsHook());
 
 	private String pluginName;
 	private LibraryHook hook;
