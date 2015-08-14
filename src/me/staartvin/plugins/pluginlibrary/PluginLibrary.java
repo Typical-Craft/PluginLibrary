@@ -29,6 +29,7 @@ public class PluginLibrary extends JavaPlugin {
 		loadedLibraries.clear();
 
 		//this is a test
+		// I'm just one below yours
 		logMessage(ChatColor.GOLD + "***== Loading libraries ==***");
 		logMessage(ChatColor.GOLD + "***== Loaded " + ChatColor.WHITE
 				+ loadLibraries() + ChatColor.GOLD + " libraries! ==***");
