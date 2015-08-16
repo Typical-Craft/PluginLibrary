@@ -36,11 +36,14 @@
 	</build>
 
 	<repositories>
+		<repository>
+			<id>Staartvin-Bitbucket-repo</id>
+			<url>https://bitbucket.org/Staartvin/maven-repo/raw/master/</url>
+		</repository>
 
 		<repository>
-			<id>git-Staartvin</id>
-			<name>Staartvin's Git based repo</name>
-			<url>https://github.com/Staartvin/maven-repo/raw/master/</url>
+			<id>stats-repo-snapshots</id>
+			<url>http://nexus.lolmewn.nl/content/repositories/snapshots/</url>
 		</repository>
 
 	</repositories>
