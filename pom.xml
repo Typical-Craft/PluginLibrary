@@ -46,5 +46,11 @@
 			<url>http://nexus.lolmewn.nl/content/repositories/snapshots/</url>
 		</repository>
 
+		<dependency>
+			<groupId>ar.com.synergian</groupId>
+			<artifactId>wagon-git</artifactId>
+			<version>0.2.5</version>
+		</dependency>
+
 	</repositories>
 </project>
