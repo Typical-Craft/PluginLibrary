@@ -107,14 +107,15 @@ public class PluginLibrary extends JavaPlugin {
 	 *            Name of the plugin. Case-insensitive!
 	 * @return {@link me.staartvin.plugins.pluginlibrary.LibraryHook} class or
 	 *         an error.
+	 * @throws IllegalArgumentException When no plugin with the given name was found.
 	 */
-	public static LibraryHook getLibrary(String pluginName) {
+	public static LibraryHook getLibrary(String pluginName) throws IllegalArgumentException {
 		return Library.getEnum(pluginName).getHook();
 	}
 
 	/**
-	 * @see #getLibrary(String) <br>
-	 *      Returns the same as {@link #getLibrary(String)}.
+	 * <br>Returns the same as {@link #getLibrary(String)}.
+	 * @see {@linkplain#getLibrary(String)} 
 	 * @param lib
 	 *            Library enum to get the library hook for.
 	 * @return {@link me.staartvin.plugins.pluginlibrary.LibraryHook} class or

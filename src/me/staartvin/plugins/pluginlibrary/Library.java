@@ -51,9 +51,10 @@ public enum Library {
 	 * 
 	 * @param value
 	 *            name of the library
-	 * @return the Library object or null if not found.
+	 * @return the Library objec.
+	 * @throws IllegalArgumentException When no library with the given name was found.
 	 */
-	public static Library getEnum(String value) {
+	public static Library getEnum(String value) throws IllegalArgumentException {
 		for (Library e : Library.values()) {
 			if (e.getPluginName().equalsIgnoreCase(value))
 				return e;
