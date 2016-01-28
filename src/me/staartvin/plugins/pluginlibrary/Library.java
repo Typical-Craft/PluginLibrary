@@ -20,11 +20,14 @@ import me.staartvin.plugins.pluginlibrary.hooks.UltimateCoreHook;
  */
 public enum Library {
 
-	AUTORANK("Autorank", new AutorankHook()), STATS("Stats", new StatsHook()), MCMMO("mcMMO",
-			new McMMOHook()), FACTIONS("Factions", new FactionsHook()), ONTIME("OnTime",
-					new OnTimeHook()), AFKTERMINATOR("afkTerminator", new AFKTerminatorHook()), ROYALCOMMANDS(
-							"RoyalCommands",
-							new RoyalCommandsHook()), ULTIMATECORE("UltimateCore", new UltimateCoreHook());
+	AUTORANK("Autorank", new AutorankHook()),
+	STATS("Stats", new StatsHook()),
+	MCMMO("mcMMO", new McMMOHook()),
+	FACTIONS("Factions", new FactionsHook()),
+	ONTIME("OnTime", new OnTimeHook()),
+	AFKTERMINATOR("afkTerminator", new AFKTerminatorHook()),
+	ROYALCOMMANDS("RoyalCommands", new RoyalCommandsHook()),
+	ULTIMATECORE("UltimateCore", new UltimateCoreHook());
 
 	private String pluginName;
 	private LibraryHook hook;

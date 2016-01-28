@@ -28,9 +28,11 @@ public class PluginLibrary extends JavaPlugin {
 
 		loadedLibraries.clear();
 
-		// this is a test
 		logMessage(ChatColor.GOLD + "***== Loading libraries ==***");
-		logMessage(ChatColor.GOLD + "***== Loaded " + ChatColor.WHITE + loadLibraries() + ChatColor.GOLD
+		
+		int loadedLibraries = loadLibraries();
+		
+		logMessage(ChatColor.GOLD + "***== Loaded " + ChatColor.WHITE + loadedLibraries + ChatColor.GOLD
 				+ " libraries! ==***");
 
 		if (this.isLibraryLoaded(Library.STATS)) {
@@ -40,7 +42,9 @@ public class PluginLibrary extends JavaPlugin {
 			this.getCustomStatsManager().registerCustomStats();
 		}
 
-		logMessage(ChatColor.GOLD + "Loaded libraries: " + getLoadedLibrariesAsString());
+		if (loadedLibraries > 0) {
+			logMessage(ChatColor.GOLD + "Loaded libraries: " + getLoadedLibrariesAsString());
+		}
 
 		logMessage(ChatColor.GREEN + "*** Ready for plugins to send/retrieve data. ***");
 
