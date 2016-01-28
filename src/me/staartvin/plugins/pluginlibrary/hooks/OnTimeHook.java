@@ -10,8 +10,8 @@ import me.edge209.OnTime.PlayingTime;
 import me.staartvin.plugins.pluginlibrary.Library;
 
 /**
- * OnTime library, <a
- * href="http://dev.bukkit.org/bukkit-plugins/ontime//">link</a>.
+ * OnTime library,
+ * <a href="http://dev.bukkit.org/bukkit-plugins/ontime//">link</a>.
  * <p>
  * Date created: 15:35:44 14 aug. 2015
  * 
@@ -20,23 +20,27 @@ import me.staartvin.plugins.pluginlibrary.Library;
  */
 public class OnTimeHook extends LibraryHook {
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see me.staartvin.plugins.pluginlibrary.hooks.LibraryHook#isAvailable()
 	 */
 	@Override
 	public boolean isAvailable() {
 		// TODO Auto-generated method stub
 
-		return this.getPlugin().getServer().getPluginManager()
-				.isPluginEnabled(Library.ONTIME.getPluginName());
+		return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.ONTIME.getPluginName());
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see me.staartvin.plugins.pluginlibrary.hooks.LibraryHook#hook()
 	 */
 	@Override
 	public boolean hook() {
-		// All api calls are done static, so there is no need to get the plugin class.
+		// All api calls are done static, so there is no need to get the plugin
+		// class.
 		// We only check if the plugin is available.
 		return isAvailable();
 	}
@@ -44,7 +48,8 @@ public class OnTimeHook extends LibraryHook {
 	/**
 	 * Whether or not the given player is stored by OnTime.
 	 * 
-	 * @param playerName Name of the player to check.
+	 * @param playerName
+	 *            Name of the player to check.
 	 * @return true if the player is stored; false otherwise.
 	 */
 	public boolean isPlayerStored(String playerName) {
@@ -100,8 +105,10 @@ public class OnTimeHook extends LibraryHook {
 	 * <b>MONTHREFER</b>: Number of referrals made by the player in the current
 	 * month.
 	 * 
-	 * @param playerName Name of the player to get data for.
-	 * @param dataType Type of data, see above.
+	 * @param playerName
+	 *            Name of the player to get data for.
+	 * @param dataType
+	 *            Type of data, see above.
 	 * @return long value corresponding to the data type, -1 if no data was
 	 *         found or the player was invalid.
 	 */
@@ -119,27 +126,32 @@ public class OnTimeHook extends LibraryHook {
 	}
 
 	/**
-	 * Gets a leaderboard-like map containing all top scores of players for the given data type.
-	 * <br>All data types that are specified at {@link #getPlayerData(String, String)} can be used, except LASTLOGIN and LASTVOTE.
+	 * Gets a leaderboard-like map containing all top scores of players for the
+	 * given data type. <br>
+	 * All data types that are specified at
+	 * {@link #getPlayerData(String, String)} can be used, except LASTLOGIN and
+	 * LASTVOTE.
 	 * 
-	 * @param dataType Data type to get the leaderboard for.
-	 * @return a map containing the names of the players and their values; null when data type was invalid.
+	 * @param dataType
+	 *            Data type to get the leaderboard for.
+	 * @return a map containing the names of the players and their values; null
+	 *         when data type was invalid.
 	 */
 	public Map<String, Long> getTopData(String dataType) {
 		HashMap<String, Long> leaderboard = new HashMap<String, Long>();
-		
+
 		OnTimeAPI.data data = OnTimeAPI.data.valueOf(dataType.toUpperCase());
-		
+
 		if (data == null) {
 			return null;
 		}
-		
+
 		topData[] topData = DataIO.getTopData(data);
-		
-		for (topData td: topData) {
+
+		for (topData td : topData) {
 			leaderboard.put(td.getPlayerName(), td.getValue());
 		}
-		
+
 		return leaderboard;
 	}
 }

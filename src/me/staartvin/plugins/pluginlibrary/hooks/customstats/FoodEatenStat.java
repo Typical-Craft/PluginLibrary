@@ -27,8 +27,11 @@ public class FoodEatenStat implements Stat {
 		data.put("world", DataType.STRING);
 	}
 
-	/* (non-Javadoc)
-	 * @see nl.lolmewn.stats.api.stat.Stat#format(nl.lolmewn.stats.api.stat.StatEntry)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see nl.lolmewn.stats.api.stat.Stat#format(nl.lolmewn.stats.api.stat.
+	 * StatEntry)
 	 */
 	@Override
 	public String format(StatEntry arg0) {
@@ -36,7 +39,9 @@ public class FoodEatenStat implements Stat {
 		return null;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see nl.lolmewn.stats.api.stat.Stat#getDataTypes()
 	 */
 	@Override
@@ -45,7 +50,9 @@ public class FoodEatenStat implements Stat {
 		return data;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see nl.lolmewn.stats.api.stat.Stat#getDescription()
 	 */
 	@Override
@@ -54,7 +61,9 @@ public class FoodEatenStat implements Stat {
 		return null;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see nl.lolmewn.stats.api.stat.Stat#getName()
 	 */
 	@Override
@@ -63,7 +72,9 @@ public class FoodEatenStat implements Stat {
 		return statName;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see nl.lolmewn.stats.api.stat.Stat#isEnabled()
 	 */
 	@Override
@@ -72,7 +83,9 @@ public class FoodEatenStat implements Stat {
 		return true;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see nl.lolmewn.stats.api.stat.Stat#setEnabled(boolean)
 	 */
 	@Override

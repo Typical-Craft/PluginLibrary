@@ -28,23 +28,22 @@ public class PluginLibrary extends JavaPlugin {
 
 		loadedLibraries.clear();
 
-		//this is a test
+		// this is a test
 		logMessage(ChatColor.GOLD + "***== Loading libraries ==***");
-		logMessage(ChatColor.GOLD + "***== Loaded " + ChatColor.WHITE
-				+ loadLibraries() + ChatColor.GOLD + " libraries! ==***");
+		logMessage(ChatColor.GOLD + "***== Loaded " + ChatColor.WHITE + loadLibraries() + ChatColor.GOLD
+				+ " libraries! ==***");
 
 		if (this.isLibraryLoaded(Library.STATS)) {
-			// Register custom stats so that Stats has special mobs and food eaten requirement.
+			// Register custom stats so that Stats has special mobs and food
+			// eaten requirement.
 			setCustomStatsManager(new CustomStatsManager(this));
 			this.getCustomStatsManager().registerCustomStats();
 		}
 
-		logMessage(ChatColor.GOLD + "Loaded libraries: "
-				+ getLoadedLibrariesAsString());
+		logMessage(ChatColor.GOLD + "Loaded libraries: " + getLoadedLibrariesAsString());
 
-		logMessage(ChatColor.GREEN
-				+ "*** Ready for plugins to send/retrieve data. ***");
-		
+		logMessage(ChatColor.GREEN + "*** Ready for plugins to send/retrieve data. ***");
+
 		logMessage(this.getDescription().getFullName() + " is now enabled!");
 	}
 
@@ -81,8 +80,7 @@ public class PluginLibrary extends JavaPlugin {
 
 	public void logMessage(String message) {
 		// This makes sure it can support colours.
-		this.getServer().getConsoleSender()
-				.sendMessage(ChatColor.GRAY + "[PluginLibrary] " + message);
+		this.getServer().getConsoleSender().sendMessage(ChatColor.GRAY + "[PluginLibrary] " + message);
 	}
 
 	/**
@@ -101,7 +99,8 @@ public class PluginLibrary extends JavaPlugin {
 	 * Will throw a {@link IllegalArgumentException} when there is no library
 	 * with the given name.
 	 * 
-	 * @param pluginName Name of the plugin. Case-insensitive!
+	 * @param pluginName
+	 *            Name of the plugin. Case-insensitive!
 	 * @return {@link me.staartvin.plugins.pluginlibrary.LibraryHook} class or
 	 *         an error.
 	 */
@@ -110,10 +109,10 @@ public class PluginLibrary extends JavaPlugin {
 	}
 
 	/**
-	 * @see #getLibrary(String)
-	 * <br>
+	 * @see #getLibrary(String) <br>
 	 *      Returns the same as {@link #getLibrary(String)}.
-	 * @param lib Library enum to get the library hook for.
+	 * @param lib
+	 *            Library enum to get the library hook for.
 	 * @return {@link me.staartvin.plugins.pluginlibrary.LibraryHook} class or
 	 *         an error.
 	 */
@@ -124,7 +123,8 @@ public class PluginLibrary extends JavaPlugin {
 	/**
 	 * Checks to see whether the library is loaded and thus ready for use.
 	 * 
-	 * @param lib Library to check.
+	 * @param lib
+	 *            Library to check.
 	 * @return true if the library is loaded; false otherwise.
 	 */
 	public boolean isLibraryLoaded(Library lib) {
@@ -144,18 +144,13 @@ public class PluginLibrary extends JavaPlugin {
 
 		for (int i = 0, l = loadedLibraries.size(); i < l; i++) {
 			if (i == 0) {
-				builder.append(ChatColor.DARK_AQUA
-						+ loadedLibraries.get(i).getPluginName() + ChatColor.RESET);
+				builder.append(ChatColor.DARK_AQUA + loadedLibraries.get(i).getPluginName() + ChatColor.RESET);
 			} else if (i == (l - 1)) {
-				builder.append(ChatColor.GRAY
-						+ " and "
-						+ (ChatColor.DARK_AQUA
-								+ loadedLibraries.get(i).getPluginName() + ChatColor.RESET));
+				builder.append(ChatColor.GRAY + " and "
+						+ (ChatColor.DARK_AQUA + loadedLibraries.get(i).getPluginName() + ChatColor.RESET));
 			} else {
-				builder.append(ChatColor.GRAY
-						+ ", "
-						+ (ChatColor.DARK_AQUA
-								+ loadedLibraries.get(i).getPluginName() + ChatColor.RESET));
+				builder.append(ChatColor.GRAY + ", "
+						+ (ChatColor.DARK_AQUA + loadedLibraries.get(i).getPluginName() + ChatColor.RESET));
 			}
 		}
 

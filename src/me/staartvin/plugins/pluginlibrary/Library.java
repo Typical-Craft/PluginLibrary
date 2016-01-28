@@ -20,14 +20,11 @@ import me.staartvin.plugins.pluginlibrary.hooks.UltimateCoreHook;
  */
 public enum Library {
 
-	AUTORANK("Autorank", new AutorankHook()),
-	STATS("Stats", new StatsHook()),
-	MCMMO("mcMMO", new McMMOHook()),
-	FACTIONS("Factions", new FactionsHook()),
-	ONTIME("OnTime", new OnTimeHook()),
-	AFKTERMINATOR("afkTerminator", new AFKTerminatorHook()),
-	ROYALCOMMANDS("RoyalCommands", new RoyalCommandsHook()),
-	ULTIMATECORE("UltimateCore", new UltimateCoreHook());
+	AUTORANK("Autorank", new AutorankHook()), STATS("Stats", new StatsHook()), MCMMO("mcMMO",
+			new McMMOHook()), FACTIONS("Factions", new FactionsHook()), ONTIME("OnTime",
+					new OnTimeHook()), AFKTERMINATOR("afkTerminator", new AFKTerminatorHook()), ROYALCOMMANDS(
+							"RoyalCommands",
+							new RoyalCommandsHook()), ULTIMATECORE("UltimateCore", new UltimateCoreHook());
 
 	private String pluginName;
 	private LibraryHook hook;
@@ -46,8 +43,11 @@ public enum Library {
 	}
 
 	/**
-	 * Get a library programmaticaly. This method is the same as valueOf(), but is case-insensitive.
-	 * @param value name of the library
+	 * Get a library programmaticaly. This method is the same as valueOf(), but
+	 * is case-insensitive.
+	 * 
+	 * @param value
+	 *            name of the library
 	 * @return the Library object or null if not found.
 	 */
 	public static Library getEnum(String value) {

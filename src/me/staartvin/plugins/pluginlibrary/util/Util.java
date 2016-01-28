@@ -6,8 +6,8 @@ import org.bukkit.inventory.ItemStack;
 /**
  * Util class
  * <p>
- * Date created:  17:38:32
- * 12 aug. 2015
+ * Date created: 17:38:32 12 aug. 2015
+ * 
  * @author Staartvin
  *
  */
@@ -16,12 +16,14 @@ public class Util {
 	/**
 	 * Get the name of this food item.
 	 * 
-	 * @param item ItemStack to get the name of.
+	 * @param item
+	 *            ItemStack to get the name of.
 	 * @return Name of food, or null if not a valid food item.
 	 */
 	public static String getFoodName(ItemStack item) {
 		// Returns null if not a valid food item
-		// Got Materials from https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html
+		// Got Materials from
+		// https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html
 
 		if (item == null)
 			return null;

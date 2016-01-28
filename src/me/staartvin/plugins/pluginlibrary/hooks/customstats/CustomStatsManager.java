@@ -23,25 +23,27 @@ public class CustomStatsManager {
 	}
 
 	public void registerCustomStats() {
-		
+
 		// Stats is not available
 		if (!plugin.isLibraryLoaded(Library.STATS))
 			return;
-		
+
 		StatsHook hook = (StatsHook) PluginLibrary.getLibrary(Library.STATS);
 
 		hook.addStat(new MobKilledStat());
-		/*plugin.debugMessage("Registered '" + MobKilledStat.statName
-				+ "' to Stats.");*/
+		/*
+		 * plugin.debugMessage("Registered '" + MobKilledStat.statName +
+		 * "' to Stats.");
+		 */
 
 		hook.addStat(new FoodEatenStat());
-		/*plugin.debugMessage("Registered '" + FoodEatenStat.statName
-				+ "' to Stats.");*/
+		/*
+		 * plugin.debugMessage("Registered '" + FoodEatenStat.statName +
+		 * "' to Stats.");
+		 */
 
 		// Register listeners
-		plugin.getServer().getPluginManager()
-				.registerEvents(new PlayerEatsFoodListener(plugin), plugin);
-		plugin.getServer().getPluginManager()
-				.registerEvents(new PlayerKillsMobListener(plugin), plugin);
+		plugin.getServer().getPluginManager().registerEvents(new PlayerEatsFoodListener(plugin), plugin);
+		plugin.getServer().getPluginManager().registerEvents(new PlayerKillsMobListener(plugin), plugin);
 	}
 }

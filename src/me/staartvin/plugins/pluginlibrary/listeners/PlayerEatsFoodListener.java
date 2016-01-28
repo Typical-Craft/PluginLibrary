@@ -52,9 +52,8 @@ public class PlayerEatsFoodListener implements Listener {
 
 		StatsHolder holder = hook.getStatsHolder(p.getUniqueId());
 
-		holder.addEntry(stat, new DefaultStatEntry(1, new MetadataPair(
-				"foodType", foodName), new MetadataPair("world", p.getWorld()
-				.getName())));
+		holder.addEntry(stat, new DefaultStatEntry(1, new MetadataPair("foodType", foodName),
+				new MetadataPair("world", p.getWorld().getName())));
 
 	}
 

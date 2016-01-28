@@ -49,8 +49,7 @@ public class PlayerKillsMobListener implements Listener {
 
 		final Entity e = event.getEntity();
 		if (e.getLastDamageCause() instanceof EntityDamageByEntityEvent) {
-			final EntityDamageByEntityEvent nEvent = (EntityDamageByEntityEvent) e
-					.getLastDamageCause();
+			final EntityDamageByEntityEvent nEvent = (EntityDamageByEntityEvent) e.getLastDamageCause();
 			if (nEvent.getDamager() instanceof Player) {
 
 				String extraType = null;
@@ -99,14 +98,12 @@ public class PlayerKillsMobListener implements Listener {
 
 				Stat mobkilled = hook.getStat(MobKilledStat.statName);
 
-				StatsHolder holder = hook.getStatsHolder(nEvent.getDamager()
-						.getUniqueId());
+				StatsHolder holder = hook.getStatsHolder(nEvent.getDamager().getUniqueId());
 
-				holder.addEntry(mobkilled, new DefaultStatEntry(1,
-						new MetadataPair("entityType", e.getType().toString()),
-						new MetadataPair("extraType", extraType),
-						new MetadataPair("world", e.getLocation().getWorld()
-								.getName().toString())));
+				holder.addEntry(mobkilled,
+						new DefaultStatEntry(1, new MetadataPair("entityType", e.getType().toString()),
+								new MetadataPair("extraType", extraType),
+								new MetadataPair("world", e.getLocation().getWorld().getName().toString())));
 			}
 		}
 	}
