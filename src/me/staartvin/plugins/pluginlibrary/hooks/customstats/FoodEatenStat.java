@@ -3,6 +3,10 @@ package me.staartvin.plugins.pluginlibrary.hooks.customstats;
 import java.util.HashMap;
 import java.util.Map;
 
+import nl.lolmewn.stats.api.stat.Stat;
+import nl.lolmewn.stats.api.stat.StatEntry;
+import nl.lolmewn.stats.api.storage.DataType;
+
 /**
  * Stat that tracks what kind of food is eaten by a player
  * <p>

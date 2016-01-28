@@ -4,12 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import org.bukkit.Location;
+
+import com.massivecraft.factions.Factions;
+import com.massivecraft.factions.entity.BoardColl;
+import com.massivecraft.factions.entity.Faction;
+import com.massivecraft.factions.entity.FactionColl;
+import com.massivecraft.factions.entity.MPlayer;
+import com.massivecraft.massivecore.ps.PS;
+
 import me.staartvin.plugins.pluginlibrary.Library;
-import me.staartvin.plugins.pluginlibrary.hooks.factions.Faction;
+import me.staartvin.plugins.pluginlibrary.hooks.factions.PLFaction;
+import me.staartvin.plugins.pluginlibrary.hooks.factions.PLMPlayer;
 
 /**
- * Factions, <a
- * href="https://www.spigotmc.org/resources/factions.1900/">link</a>.
+ * Factions,
+ * <a href="https://www.spigotmc.org/resources/factions.1900/">link</a>.
  * <p>
  * Date created: 20:22:17 12 aug. 2015
  * 
@@ -20,18 +30,21 @@ public class FactionsHook extends LibraryHook {
 
 	private Factions factions;
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see me.staartvin.plugins.pluginlibrary.LibraryHook#isAvailable()
 	 */
 	@Override
 	public boolean isAvailable() {
 		// TODO Auto-generated method stub
 
-		return this.getPlugin().getServer().getPluginManager()
-				.isPluginEnabled(Library.FACTIONS.getPluginName());
+		return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.FACTIONS.getPluginName());
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see me.staartvin.plugins.pluginlibrary.LibraryHook#hook()
 	 */
 	@Override
@@ -57,33 +70,34 @@ public class FactionsHook extends LibraryHook {
 
 	/**
 	 * Gets the faction by its name. Use the comparison name, see
-	 * {@link me.staartvin.plugins.pluginlibrary.hooks.factions.Faction#getComparisonName()}
+	 * {@link me.staartvin.plugins.pluginlibrary.hooks.factions.PLFaction#getComparisonName()}
 	 * .
 	 * 
-	 * @param factionName Name of the faction. <b>Without colour codes!</b>
-	 * @return {@link Faction} or null if no faction found.
+	 * @param factionName
+	 *            Name of the faction. <b>Without colour codes!</b>
+	 * @return {@link PLFaction} or null if no faction found.
 	 */
-	public Faction getFactionByName(String factionName) {
+	public PLFaction getFactionByName(String factionName) {
 		if (factionName == null)
 			return null;
 
-		com.massivecraft.factions.entity.Faction fac = FactionColl.get()
-				.getByName(factionName);
+		com.massivecraft.factions.entity.Faction fac = FactionColl.get().getByName(factionName);
 
 		if (fac == null)
 			return null;
 
-		return new Faction(fac);
+		return new PLFaction(fac);
 	}
 
 	/**
 	 * Gets the faction a player is in.
 	 * 
-	 * @param uuid UUID of the player.
-	 * @return {@link Faction}, null if the player doesn't exist or is not in a
-	 *         faction.
+	 * @param uuid
+	 *            UUID of the player.
+	 * @return {@link PLFaction}, null if the player doesn't exist or is not in
+	 *         a faction.
 	 */
-	public Faction getFactionByUUID(UUID uuid) {
+	public PLFaction getFactionByUUID(UUID uuid) {
 		if (uuid == null)
 			return null;
 
@@ -92,32 +106,32 @@ public class FactionsHook extends LibraryHook {
 		if (mPlayer == null)
 			return null;
 
-		com.massivecraft.factions.entity.Faction fac = mPlayer.getFaction();
+		Faction fac = mPlayer.getFaction();
 
 		if (fac == null)
 			return null;
 
-		return new Faction(fac);
+		return new PLFaction(fac);
 	}
 
 	/**
 	 * Gets a faction by its internal Factions id.
 	 * 
-	 * @param factionId Id of the faction
-	 * @return {@link Faction} or null if id is invalid.
+	 * @param factionId
+	 *            Id of the faction
+	 * @return {@link PLFaction} or null if id is invalid.
 	 */
-	public Faction getFactionById(String factionId) {
+	public PLFaction getFactionById(String factionId) {
 		if (factionId == null)
 			return null;
 
 		if (FactionColl.get().containsId(factionId)) {
-			com.massivecraft.factions.entity.Faction fac = FactionColl.get()
-					.get(factionId);
+			com.massivecraft.factions.entity.Faction fac = FactionColl.get().get(factionId);
 
 			if (fac == null)
 				return null;
 
-			return new Faction(fac);
+			return new PLFaction(fac);
 		}
 
 		return null;
@@ -128,12 +142,11 @@ public class FactionsHook extends LibraryHook {
 	 * 
 	 * @return a list of all factions.
 	 */
-	public List<Faction> getAllFactions() {
-		List<Faction> factions = new ArrayList<Faction>();
+	public List<PLFaction> getAllFactions() {
+		List<PLFaction> factions = new ArrayList<PLFaction>();
 
-		for (com.massivecraft.factions.entity.Faction fac : FactionColl.get()
-				.getAll()) {
-			factions.add(new Faction(fac));
+		for (com.massivecraft.factions.entity.Faction fac : FactionColl.get().getAll()) {
+			factions.add(new PLFaction(fac));
 		}
 
 		return factions;
@@ -144,14 +157,13 @@ public class FactionsHook extends LibraryHook {
 	 * 
 	 * @return the Wilderness faction.
 	 */
-	public Faction getWilderness() {
-		com.massivecraft.factions.entity.Faction fac = FactionColl.get()
-				.getNone();
+	public PLFaction getWilderness() {
+		com.massivecraft.factions.entity.Faction fac = FactionColl.get().getNone();
 
 		if (fac == null)
 			return null;
 
-		return new Faction(fac);
+		return new PLFaction(fac);
 	}
 
 	/**
@@ -159,15 +171,14 @@ public class FactionsHook extends LibraryHook {
 	 * 
 	 * @return the Safezone faction.
 	 */
-	public Faction getSafezone() {
+	public PLFaction getSafezone() {
 
-		com.massivecraft.factions.entity.Faction fac = FactionColl.get()
-				.getSafezone();
+		com.massivecraft.factions.entity.Faction fac = FactionColl.get().getSafezone();
 
 		if (fac == null)
 			return null;
 
-		return new Faction(fac);
+		return new PLFaction(fac);
 	}
 
 	/**
@@ -175,53 +186,51 @@ public class FactionsHook extends LibraryHook {
 	 * 
 	 * @return the Warzone faction.
 	 */
-	public Faction getWarzone() {
-		com.massivecraft.factions.entity.Faction fac = FactionColl.get()
-				.getWarzone();
+	public PLFaction getWarzone() {
+		com.massivecraft.factions.entity.Faction fac = FactionColl.get().getWarzone();
 
 		if (fac == null)
 			return null;
 
-		return new Faction(fac);
+		return new PLFaction(fac);
 	}
 
 	/**
 	 * Gets the faction at a specific {@link Location}.
 	 * 
-	 * @param location Location for the faction to be at.
-	 * @return A {@link Faction} or null if the location does not contain a
+	 * @param location
+	 *            Location for the faction to be at.
+	 * @return A {@link PLFaction} or null if the location does not contain a
 	 *         faction.
 	 */
-	public Faction getFactionAt(Location location) {
+	public PLFaction getFactionAt(Location location) {
 		if (location == null)
 			return null;
 
-		com.massivecraft.factions.entity.Faction fac = BoardColl.get()
-				.getFactionAt(PS.valueOf(location));
+		com.massivecraft.factions.entity.Faction fac = BoardColl.get().getFactionAt(PS.valueOf(location));
 
 		if (fac == null)
 			return null;
 
-		return new Faction(fac);
+		return new PLFaction(fac);
 	}
 
 	/**
 	 * Gets the
-	 * {@link me.staartvin.plugins.pluginlibrary.hooks.factions.MPlayer} for a
+	 * {@link me.staartvin.plugins.pluginlibrary.hooks.factions.PLMPlayer} for a
 	 * player, which represents the player object Factions internally uses.
 	 * 
-	 * @param uuid UUID of the player.
-	 * @return {@link me.staartvin.plugins.pluginlibrary.hooks.factions.MPlayer}
+	 * @param uuid
+	 *            UUID of the player.
+	 * @return {@link me.staartvin.plugins.pluginlibrary.hooks.factions.PLMPlayer}
 	 *         or null if player does not exist/is not stored by Factions.
 	 */
-	public me.staartvin.plugins.pluginlibrary.hooks.factions.MPlayer getFactionsPlayer(
-			UUID uuid) {
+	public me.staartvin.plugins.pluginlibrary.hooks.factions.PLMPlayer getFactionsPlayer(UUID uuid) {
 		MPlayer mPlayer = MPlayer.get(uuid);
 
 		if (mPlayer == null)
 			return null;
 
-		return new me.staartvin.plugins.pluginlibrary.hooks.factions.MPlayer(
-				mPlayer);
+		return new me.staartvin.plugins.pluginlibrary.hooks.factions.PLMPlayer(mPlayer);
 	}
 }

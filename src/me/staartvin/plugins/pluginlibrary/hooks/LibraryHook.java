@@ -1,5 +1,7 @@
 package me.staartvin.plugins.pluginlibrary.hooks;
 
+import org.bukkit.Bukkit;
+
 import me.staartvin.plugins.pluginlibrary.PluginLibrary;
 
 /**

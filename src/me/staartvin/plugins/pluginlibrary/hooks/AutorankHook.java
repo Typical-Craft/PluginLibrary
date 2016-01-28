@@ -3,6 +3,12 @@ package me.staartvin.plugins.pluginlibrary.hooks;
 import java.util.List;
 import java.util.UUID;
 
+import javax.xml.transform.Result;
+
+import org.bukkit.entity.Player;
+
+import me.armar.plugins.autorank.Autorank;
+import me.armar.plugins.autorank.playerchecker.requirement.Requirement;
 import me.staartvin.plugins.pluginlibrary.Library;
 
 /**
@@ -132,7 +138,7 @@ public class AutorankHook extends LibraryHook {
 	 * @param resultName The name of the result.
 	 * @param res The custom result class for Autorank to use.
 	 */
-	public void registerResult(String resultName, Class<? extends Result> res) {
+	public void registerResult(String resultName, Class<? extends me.armar.plugins.autorank.playerchecker.result.Result> res) {
 		autorank.getAPI().registerResult(resultName, res);
 	}
 

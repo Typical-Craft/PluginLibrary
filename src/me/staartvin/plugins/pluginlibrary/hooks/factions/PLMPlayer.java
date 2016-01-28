@@ -2,6 +2,9 @@ package me.staartvin.plugins.pluginlibrary.hooks.factions;
 
 import java.util.UUID;
 
+import com.massivecraft.factions.Rel;
+import com.massivecraft.factions.entity.FactionColl;
+
 /**
  * Represents the {@link com.massivecraft.factions.entity.MPlayer} class.
  * <br>This class mirroring is used so developers don't have to import the API of Factions.
@@ -12,11 +15,11 @@ import java.util.UUID;
  * @author Staartvin
  *
  */
-public class MPlayer {
+public class PLMPlayer {
 
 	private final com.massivecraft.factions.entity.MPlayer mPlayer;
 	
-	public MPlayer(com.massivecraft.factions.entity.MPlayer mPlayer) {
+	public PLMPlayer(com.massivecraft.factions.entity.MPlayer mPlayer) {
 		if (mPlayer == null) {
 			throw new NullPointerException("MPlayer is null!");
 		}
@@ -39,8 +42,8 @@ public class MPlayer {
 	 * <br><b>This will never be null.</b> See {@link #getFactionId()} for more info.
 	 * @return The faction a player is part of.
 	 */
-	public Faction getFaction() {		
-		return new Faction(mPlayer.getFaction());
+	public PLFaction getFaction() {		
+		return new PLFaction(mPlayer.getFaction());
 	}
 	
 	/**
@@ -196,7 +199,7 @@ public class MPlayer {
 	 * @param otherPlayer Other player.
 	 * @return A relation type or null if the other player was not found.
 	 */
-	public String getRelationTo(MPlayer otherPlayer) {
+	public String getRelationTo(PLMPlayer otherPlayer) {
 		com.massivecraft.factions.entity.MPlayer player = com.massivecraft.factions.entity.MPlayer.get(otherPlayer.getUUID());
 		
 		if (player == null) return null;
@@ -214,7 +217,7 @@ public class MPlayer {
 	 * @param faction A faction.
 	 * @return A relation type or null if the faction was not found.
 	 */
-	public String getRelationTo(Faction faction) {
+	public String getRelationTo(PLFaction faction) {
 		if (faction == null) return null;
 		
 		Rel rel = mPlayer.getRelationTo(FactionColl.get().get(faction.getId()));

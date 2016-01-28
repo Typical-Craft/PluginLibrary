@@ -1,9 +1,28 @@
 package me.staartvin.plugins.pluginlibrary.listeners;
 
+import org.bukkit.entity.Chicken;
+import org.bukkit.entity.Creeper;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.Guardian;
+import org.bukkit.entity.Player;
+import org.bukkit.entity.Rabbit;
+import org.bukkit.entity.Rabbit.Type;
+import org.bukkit.entity.Skeleton;
+import org.bukkit.entity.Skeleton.SkeletonType;
+import org.bukkit.entity.Spider;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDeathEvent;
+
 import me.staartvin.plugins.pluginlibrary.Library;
 import me.staartvin.plugins.pluginlibrary.PluginLibrary;
 import me.staartvin.plugins.pluginlibrary.hooks.StatsHook;
 import me.staartvin.plugins.pluginlibrary.hooks.customstats.MobKilledStat;
+import nl.lolmewn.stats.api.stat.Stat;
+import nl.lolmewn.stats.api.user.StatsHolder;
+import nl.lolmewn.stats.stat.DefaultStatEntry;
+import nl.lolmewn.stats.stat.MetadataPair;
 
 /**
  * This listener will listen to players killing mobs (for custom stat)

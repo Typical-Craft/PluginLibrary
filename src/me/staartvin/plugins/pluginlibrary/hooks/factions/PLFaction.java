@@ -6,6 +6,16 @@ import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
+import org.bukkit.Chunk;
+import org.bukkit.Location;
+import org.bukkit.entity.Player;
+
+import com.massivecraft.factions.Rel;
+import com.massivecraft.factions.entity.BoardColl;
+import com.massivecraft.factions.entity.FactionColl;
+import com.massivecraft.factions.entity.MFlag;
+import com.massivecraft.massivecore.ps.PS;
+
 /**
  * Represents the {@link com.massivecraft.factions.entity.Faction} class.
  * <br>This class mirroring is used so developers don't have to import the API of Factions.
@@ -15,10 +25,10 @@ import java.util.UUID;
  * @author Staartvin
  *
  */
-public class Faction {
+public class PLFaction {
 	private final com.massivecraft.factions.entity.Faction faction;
 
-	public Faction(com.massivecraft.factions.entity.Faction fac) {
+	public PLFaction(com.massivecraft.factions.entity.Faction fac) {
 		if (fac == null) {
 			throw new NullPointerException("Faction is null!");
 		}
@@ -70,7 +80,7 @@ public class Faction {
 	 * @return A {@link Location} or null if faction is non-existent or the home
 	 *         is not set.
 	 */
-	public Location getHomeLocation() {
+	public org.bukkit.Location getHomeLocation() {
 		if (faction.getHome() == null)
 			return null;
 
@@ -205,14 +215,14 @@ public class Faction {
 	/**
 	 * Gets the leader of the faction.
 	 * 
-	 * @return {@link MPlayer} that is the leader of this faction or null if not
+	 * @return {@link PLMPlayer} that is the leader of this faction or null if not
 	 *         found.
 	 */
-	public MPlayer getLeader() {
+	public PLMPlayer getLeader() {
 		
 		if (faction.getLeader() == null) return null;
 		
-		return new MPlayer(faction.getLeader());
+		return new PLMPlayer(faction.getLeader());
 	}
 
 	/**
@@ -242,7 +252,7 @@ public class Faction {
 	 * @param otherFaction Other faction.
 	 * @return A relationship type or null if the other faction was not found.
 	 */
-	public String getRelationWish(Faction otherFaction) {
+	public String getRelationWish(PLFaction otherFaction) {
 		com.massivecraft.factions.entity.Faction otherFac = FactionColl.get()
 				.get(otherFaction.getId());
 
@@ -259,14 +269,14 @@ public class Faction {
 
 	/**
 	 * Sets the relation wish of this faction to another faction. <br>
-	 * For a list of relation types, see {@link #getRelationWish(Faction)}
+	 * For a list of relation types, see {@link #getRelationWish(PLFaction)}
 	 * <br><b>NOTE:</b> You can only try to set the relation as a wish, as the other faction has to accept it.
 	 * <br>There is no setRelation().
 	 * 
 	 * @param otherFaction The other faction to set the relation to.
 	 * @param relation Relation type.
 	 */
-	public void setRelationWish(Faction otherFaction, String relation) {
+	public void setRelationWish(PLFaction otherFaction, String relation) {
 		com.massivecraft.factions.entity.Faction otherFac = FactionColl.get()
 				.get(otherFaction.getId());
 
@@ -289,7 +299,7 @@ public class Faction {
 	 * @param otherFaction Other faction.
 	 * @return A relationship type or null if the other faction was not found.
 	 */
-	public String getRelationTo(Faction otherFaction) {
+	public String getRelationTo(PLFaction otherFaction) {
 		com.massivecraft.factions.entity.Faction otherFac = FactionColl.get()
 				.get(otherFaction.getId());
 

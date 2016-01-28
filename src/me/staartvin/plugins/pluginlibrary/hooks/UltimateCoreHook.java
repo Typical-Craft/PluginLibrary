@@ -1,5 +1,6 @@
 package me.staartvin.plugins.pluginlibrary.hooks;
 
+import bammerbom.ultimatecore.bukkit.UltimateCore;
 import me.staartvin.plugins.pluginlibrary.Library;
 
 /**

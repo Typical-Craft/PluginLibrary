@@ -1,10 +1,19 @@
 package me.staartvin.plugins.pluginlibrary.listeners;
 
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerItemConsumeEvent;
+
 import me.staartvin.plugins.pluginlibrary.Library;
 import me.staartvin.plugins.pluginlibrary.PluginLibrary;
 import me.staartvin.plugins.pluginlibrary.hooks.StatsHook;
 import me.staartvin.plugins.pluginlibrary.hooks.customstats.FoodEatenStat;
 import me.staartvin.plugins.pluginlibrary.util.Util;
+import nl.lolmewn.stats.api.stat.Stat;
+import nl.lolmewn.stats.api.user.StatsHolder;
+import nl.lolmewn.stats.stat.DefaultStatEntry;
+import nl.lolmewn.stats.stat.MetadataPair;
 
 /**
  * This listener will listen to players eating food (for custom stat)

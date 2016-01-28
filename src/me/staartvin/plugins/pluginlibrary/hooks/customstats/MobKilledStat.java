@@ -3,6 +3,10 @@ package me.staartvin.plugins.pluginlibrary.hooks.customstats;
 import java.util.HashMap;
 import java.util.Map;
 
+import nl.lolmewn.stats.api.stat.Stat;
+import nl.lolmewn.stats.api.stat.StatEntry;
+import nl.lolmewn.stats.api.storage.DataType;
+
 /**
  * Stat that tracks special mobs killed, such as 'charged creeper' or 'elder
  * guardian'

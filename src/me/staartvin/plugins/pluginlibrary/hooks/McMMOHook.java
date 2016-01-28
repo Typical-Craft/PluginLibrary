@@ -5,6 +5,23 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.UUID;
 
+import org.bukkit.OfflinePlayer;
+import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
+
+import com.gmail.nossr50.mcMMO;
+import com.gmail.nossr50.api.AbilityAPI;
+import com.gmail.nossr50.api.ChatAPI;
+import com.gmail.nossr50.api.ExperienceAPI;
+import com.gmail.nossr50.api.PartyAPI;
+import com.gmail.nossr50.api.SkillAPI;
+import com.gmail.nossr50.api.exceptions.InvalidFormulaTypeException;
+import com.gmail.nossr50.api.exceptions.InvalidPlayerException;
+import com.gmail.nossr50.api.exceptions.InvalidSkillException;
+import com.gmail.nossr50.api.exceptions.InvalidXPGainReasonException;
+import com.gmail.nossr50.datatypes.party.Party;
+
 import me.staartvin.plugins.pluginlibrary.Library;
 
 /**
