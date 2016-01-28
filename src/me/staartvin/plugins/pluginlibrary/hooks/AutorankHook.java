@@ -3,8 +3,6 @@ package me.staartvin.plugins.pluginlibrary.hooks;
 import java.util.List;
 import java.util.UUID;
 
-import javax.xml.transform.Result;
-
 import org.bukkit.entity.Player;
 
 import me.armar.plugins.autorank.Autorank;
