@@ -2,8 +2,6 @@ package me.staartvin.plugins.pluginlibrary.hooks;
 
 import me.staartvin.plugins.pluginlibrary.PluginLibrary;
 
-import org.bukkit.Bukkit;
-
 /**
  * Represents a hook to another plugin
  * <p>

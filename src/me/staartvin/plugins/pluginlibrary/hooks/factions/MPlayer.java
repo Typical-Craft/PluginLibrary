@@ -2,9 +2,6 @@ package me.staartvin.plugins.pluginlibrary.hooks.factions;
 
 import java.util.UUID;
 
-import com.massivecraft.factions.Rel;
-import com.massivecraft.factions.entity.FactionColl;
-
 /**
  * Represents the {@link com.massivecraft.factions.entity.MPlayer} class.
  * <br>This class mirroring is used so developers don't have to import the API of Factions.

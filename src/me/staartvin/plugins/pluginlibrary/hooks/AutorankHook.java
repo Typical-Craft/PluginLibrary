@@ -3,12 +3,7 @@ package me.staartvin.plugins.pluginlibrary.hooks;
 import java.util.List;
 import java.util.UUID;
 
-import me.armar.plugins.autorank.Autorank;
-import me.armar.plugins.autorank.playerchecker.requirement.Requirement;
-import me.armar.plugins.autorank.playerchecker.result.Result;
 import me.staartvin.plugins.pluginlibrary.Library;
-
-import org.bukkit.entity.Player;
 
 /**
  * Autorank library, <a href="https://www.spigotmc.org/resources/autorank.3239/">link</a>.

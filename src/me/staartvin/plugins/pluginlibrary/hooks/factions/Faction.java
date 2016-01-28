@@ -6,16 +6,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
-import org.bukkit.Chunk;
-import org.bukkit.Location;
-import org.bukkit.entity.Player;
-
-import com.massivecraft.factions.Rel;
-import com.massivecraft.factions.entity.BoardColl;
-import com.massivecraft.factions.entity.FactionColl;
-import com.massivecraft.factions.entity.MFlag;
-import com.massivecraft.massivecore.ps.PS;
-
 /**
  * Represents the {@link com.massivecraft.factions.entity.Faction} class.
  * <br>This class mirroring is used so developers don't have to import the API of Factions.

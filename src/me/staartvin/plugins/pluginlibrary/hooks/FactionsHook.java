@@ -7,14 +7,6 @@ import java.util.UUID;
 import me.staartvin.plugins.pluginlibrary.Library;
 import me.staartvin.plugins.pluginlibrary.hooks.factions.Faction;
 
-import org.bukkit.Location;
-
-import com.massivecraft.factions.Factions;
-import com.massivecraft.factions.entity.BoardColl;
-import com.massivecraft.factions.entity.FactionColl;
-import com.massivecraft.factions.entity.MPlayer;
-import com.massivecraft.massivecore.ps.PS;
-
 /**
  * Factions, <a
  * href="https://www.spigotmc.org/resources/factions.1900/">link</a>.

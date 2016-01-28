@@ -6,9 +6,6 @@ import java.util.List;
 
 import me.staartvin.plugins.pluginlibrary.hooks.LibraryHook;
 import me.staartvin.plugins.pluginlibrary.hooks.customstats.CustomStatsManager;
-import net.md_5.bungee.api.ChatColor;
-
-import org.bukkit.plugin.java.JavaPlugin;
 
 /**
  * Main class of PluginLibrary

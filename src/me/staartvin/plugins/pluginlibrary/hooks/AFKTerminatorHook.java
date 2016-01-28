@@ -2,8 +2,6 @@ package me.staartvin.plugins.pluginlibrary.hooks;
 
 import java.util.UUID;
 
-import me.edge209.afkTerminator.AfkDetect;
-import me.edge209.afkTerminator.AfkDetect.AFKMACHINES;
 import me.staartvin.plugins.pluginlibrary.Library;
 
 /**

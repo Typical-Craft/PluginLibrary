@@ -2,12 +2,6 @@ package me.staartvin.plugins.pluginlibrary.hooks;
 
 import me.staartvin.plugins.pluginlibrary.Library;
 
-import org.bukkit.OfflinePlayer;
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.Inventory;
-import org.royaldev.royalcommands.RoyalCommands;
-import org.royaldev.royalcommands.WorldManager;
-
 /**
  * RoyalCommands library, <a
  * href="http://dev.bukkit.org/bukkit-plugins/royalcommands/">link</a>.
