@@ -20,7 +20,7 @@ import me.staartvin.plugins.pluginlibrary.hooks.customstats.CustomStatsManager;
  */
 public class PluginLibrary extends JavaPlugin {
 
-	private final List<Library> loadedLibraries = new ArrayList<Library>();
+	private final static List<Library> loadedLibraries = new ArrayList<Library>();
 	private CustomStatsManager customStatsManager;
 
 	@Override
@@ -35,7 +35,7 @@ public class PluginLibrary extends JavaPlugin {
 		logMessage(ChatColor.GOLD + "***== Loaded " + ChatColor.WHITE + loadedLibraries + ChatColor.GOLD
 				+ " libraries! ==***");
 
-		if (this.isLibraryLoaded(Library.STATS)) {
+		if (PluginLibrary.isLibraryLoaded(Library.STATS)) {
 			// Register custom stats so that Stats has special mobs and food
 			// eaten requirement.
 			setCustomStatsManager(new CustomStatsManager(this));
@@ -132,7 +132,7 @@ public class PluginLibrary extends JavaPlugin {
 	 *            Library to check.
 	 * @return true if the library is loaded; false otherwise.
 	 */
-	public boolean isLibraryLoaded(Library lib) {
+	public static boolean isLibraryLoaded(Library lib) {
 		return loadedLibraries.contains(lib);
 	}
 
