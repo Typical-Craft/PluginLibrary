@@ -20,14 +20,25 @@ public enum Library {
 	AFKTERMINATOR("afkTerminator", new AFKTerminatorHook()),
 	ROYALCOMMANDS("RoyalCommands", new RoyalCommandsHook()),
 	ULTIMATECORE("UltimateCore", new UltimateCoreHook()),
-	STATZ("Statz", new StatzHook());
+	STATZ("Statz", new StatzHook()),
+    ACIDISLAND("AcidIsland", new AcidIslandHook()),
+    ADVANCEDACHIEVEMENTS("AdvancedAchievements", new AdvancedAchievementsHook()),
+    ASKYBLOCK("ASkyBlock", new ASkyBlockHook()),
+    BATTLELEVELS("BattleLevels", new BattleLevelsHook()),
+    GRIEFPREVENTION("GriefPrevention", new GriefPreventionHook()),
+    JOBS("Jobs", new JobsHook()),
+    RPGME("RPGme", new RPGmeHook()),
+    USKYBLOCK("uSkyBlock", new uSkyBlockHook()),
+    VAULT("Vault", new VaultHook()),
+    WORLDGUARD("WorldGuard", new WorldGuardHook()),
+    ESSENTIALSX("Essentials", new EssentialsXHook());
 
 	private String pluginName;
 	private LibraryHook hook;
 
 	Library(String pluginName, LibraryHook hook) {
 		this.pluginName = pluginName;
-		this.hook = hook;
+        this.hook = hook;
 	}
 
 	public String getPluginName() {

@@ -1,14 +1,13 @@
 package me.staartvin.plugins.pluginlibrary;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
+import me.staartvin.plugins.pluginlibrary.hooks.LibraryHook;
+import me.staartvin.plugins.pluginlibrary.hooks.customstats.CustomStatsManager;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import me.staartvin.plugins.pluginlibrary.hooks.LibraryHook;
-import me.staartvin.plugins.pluginlibrary.hooks.customstats.CustomStatsManager;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Main class of PluginLibrary
@@ -68,10 +67,11 @@ public class PluginLibrary extends JavaPlugin {
 		int count = 0;
 
 		for (Library l : Library.values()) {
-			if (l.getHook().isAvailable()) {
+		    LibraryHook hook = l.getHook();
 
+			if (hook.isAvailable()) {
 				// One more library loaded.
-				if (l.getHook().hook()) {
+				if (hook.hook()) {
 					loadedLibraries.add(l);
 					count++;
 				}
@@ -105,7 +105,7 @@ public class PluginLibrary extends JavaPlugin {
 	 * 
 	 * @param pluginName
 	 *            Name of the plugin. Case-insensitive!
-	 * @return {@link me.staartvin.plugins.pluginlibrary.LibraryHook} class or
+	 * @return {@link me.staartvin.plugins.pluginlibrary.Library} class or
 	 *         an error.
 	 * @throws IllegalArgumentException When no plugin with the given name was found.
 	 */
@@ -118,7 +118,7 @@ public class PluginLibrary extends JavaPlugin {
 	 * @see {@linkplain#getLibrary(String)} 
 	 * @param lib
 	 *            Library enum to get the library hook for.
-	 * @return {@link me.staartvin.plugins.pluginlibrary.LibraryHook} class or
+	 * @return {@link me.staartvin.plugins.pluginlibrary.Library} class or
 	 *         an error.
 	 */
 	public static LibraryHook getLibrary(Library lib) {
