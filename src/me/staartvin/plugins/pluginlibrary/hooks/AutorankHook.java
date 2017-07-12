@@ -1,12 +1,15 @@
 package me.staartvin.plugins.pluginlibrary.hooks;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
+import me.armar.plugins.autorank.pathbuilder.holders.RequirementsHolder;
+import me.armar.plugins.autorank.pathbuilder.requirement.Requirement;
+import me.armar.plugins.autorank.pathbuilder.result.Result;
 import org.bukkit.entity.Player;
 
 import me.armar.plugins.autorank.Autorank;
-import me.armar.plugins.autorank.playerchecker.requirement.Requirement;
 import me.staartvin.plugins.pluginlibrary.Library;
 
 /**
@@ -96,7 +99,7 @@ public class AutorankHook extends LibraryHook {
 	 *            Player to get the requirements for.
 	 * @return A list of all requirements
 	 */
-	public List<Requirement> getAllRequirements(Player player) {
+	public List<RequirementsHolder> getAllRequirements(Player player) {
 		return autorank.getAPI().getAllRequirements(player);
 	}
 
@@ -109,7 +112,7 @@ public class AutorankHook extends LibraryHook {
 	 *            Player to get the requirements for.
 	 * @return A list of all requirements that should still be completed.
 	 */
-	public List<Requirement> getFailedRequirements(Player player) {
+	public List<RequirementsHolder> getFailedRequirements(Player player) {
 		return autorank.getAPI().getFailedRequirements(player);
 	}
 
@@ -127,29 +130,13 @@ public class AutorankHook extends LibraryHook {
 	 * Gets a list of all permission groups a player is currently in. <br>
 	 * Most permission plugins only allow a player to be in one group at the
 	 * time, but some allow multiple.
-	 * 
+	 *
 	 * @param player
 	 *            Player to get the groups of.
 	 * @return a list of groups a player is part of.
 	 */
-	public List<String> getPermissionGroups(Player player) {
-		return autorank.getAPI().getPermissionGroups(player);
-	}
-
-	/**
-	 * Gets the primary permission group a player is in. <br>
-	 * Some permission plugins allow players to be in multiple permission groups
-	 * at the same time. <br>
-	 * Autorank uses some clever ways to determine which of those groups is the
-	 * 'primary group'.
-	 * 
-	 * @param player
-	 *            Player to get the primary group of.
-	 * @return the name of the primary permission group or null if nothing was
-	 *         found.
-	 */
-	public String getPrimaryGroup(Player player) {
-		return autorank.getAPI().getPrimaryGroup(player);
+	public Collection<String> getPermissionGroups(Player player) {
+		return autorank.getPermPlugHandler().getPermissionPlugin().getPlayerGroups(player);
 	}
 
 	/**
@@ -180,7 +167,7 @@ public class AutorankHook extends LibraryHook {
 	 *            The custom result class for Autorank to use.
 	 */
 	public void registerResult(String resultName,
-			Class<? extends me.armar.plugins.autorank.playerchecker.result.Result> res) {
+			Class<? extends Result> res) {
 		autorank.getAPI().registerResult(resultName, res);
 	}
 

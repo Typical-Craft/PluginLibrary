@@ -1,14 +1,6 @@
 package me.staartvin.plugins.pluginlibrary;
 
-import me.staartvin.plugins.pluginlibrary.hooks.AFKTerminatorHook;
-import me.staartvin.plugins.pluginlibrary.hooks.AutorankHook;
-import me.staartvin.plugins.pluginlibrary.hooks.FactionsHook;
-import me.staartvin.plugins.pluginlibrary.hooks.LibraryHook;
-import me.staartvin.plugins.pluginlibrary.hooks.McMMOHook;
-import me.staartvin.plugins.pluginlibrary.hooks.OnTimeHook;
-import me.staartvin.plugins.pluginlibrary.hooks.RoyalCommandsHook;
-import me.staartvin.plugins.pluginlibrary.hooks.StatsHook;
-import me.staartvin.plugins.pluginlibrary.hooks.UltimateCoreHook;
+import me.staartvin.plugins.pluginlibrary.hooks.*;
 
 /**
  * This class holds all libraries PluginLibrary has.
@@ -27,7 +19,8 @@ public enum Library {
 	ONTIME("OnTime", new OnTimeHook()),
 	AFKTERMINATOR("afkTerminator", new AFKTerminatorHook()),
 	ROYALCOMMANDS("RoyalCommands", new RoyalCommandsHook()),
-	ULTIMATECORE("UltimateCore", new UltimateCoreHook());
+	ULTIMATECORE("UltimateCore", new UltimateCoreHook()),
+	STATZ("Statz", new StatzHook());
 
 	private String pluginName;
 	private LibraryHook hook;

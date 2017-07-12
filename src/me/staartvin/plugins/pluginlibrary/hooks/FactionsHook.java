@@ -14,7 +14,6 @@ import com.massivecraft.factions.entity.MPlayer;
 import com.massivecraft.massivecore.ps.PS;
 
 import me.staartvin.plugins.pluginlibrary.Library;
-import me.staartvin.plugins.pluginlibrary.hooks.factions.PLFaction;
 
 /**
  * Factions,
@@ -68,15 +67,15 @@ public class FactionsHook extends LibraryHook {
 	/* Faction vars */
 
 	/**
-	 * Gets the faction by its name. Use the comparison name, see
-	 * {@link me.staartvin.plugins.pluginlibrary.hooks.factions.PLFaction#getComparisonName()}
+	 * Gets the faction by its comparison name. Use the comparison name, see
+	 * {@link Faction#getComparisonName()}
 	 * .
 	 * 
 	 * @param factionName
 	 *            Name of the faction. <b>Without colour codes!</b>
-	 * @return {@link PLFaction} or null if no faction found.
+	 * @return {@link Faction} or null if no faction found.
 	 */
-	public PLFaction getFactionByName(String factionName) {
+	public Faction getFactionByName(String factionName) {
 		if (factionName == null)
 			return null;
 
@@ -85,7 +84,7 @@ public class FactionsHook extends LibraryHook {
 		if (fac == null)
 			return null;
 
-		return new PLFaction(fac);
+		return fac;
 	}
 
 	/**
@@ -93,10 +92,10 @@ public class FactionsHook extends LibraryHook {
 	 * 
 	 * @param uuid
 	 *            UUID of the player.
-	 * @return {@link PLFaction}, null if the player doesn't exist or is not in
+	 * @return {@link Faction}, null if the player doesn't exist or is not in
 	 *         a faction.
 	 */
-	public PLFaction getFactionByUUID(UUID uuid) {
+	public Faction getFactionByUUID(UUID uuid) {
 		if (uuid == null)
 			return null;
 
@@ -110,7 +109,7 @@ public class FactionsHook extends LibraryHook {
 		if (fac == null)
 			return null;
 
-		return new PLFaction(fac);
+		return fac;
 	}
 
 	/**
@@ -118,9 +117,9 @@ public class FactionsHook extends LibraryHook {
 	 * 
 	 * @param factionId
 	 *            Id of the faction
-	 * @return {@link PLFaction} or null if id is invalid.
+	 * @return {@link Faction} or null if id is invalid.
 	 */
-	public PLFaction getFactionById(String factionId) {
+	public Faction getFactionById(String factionId) {
 		if (factionId == null)
 			return null;
 
@@ -130,7 +129,7 @@ public class FactionsHook extends LibraryHook {
 			if (fac == null)
 				return null;
 
-			return new PLFaction(fac);
+			return fac;
 		}
 
 		return null;
@@ -141,11 +140,11 @@ public class FactionsHook extends LibraryHook {
 	 * 
 	 * @return a list of all factions.
 	 */
-	public List<PLFaction> getAllFactions() {
-		List<PLFaction> factions = new ArrayList<PLFaction>();
+	public List<Faction> getAllFactions() {
+		List<Faction> factions = new ArrayList<Faction>();
 
 		for (com.massivecraft.factions.entity.Faction fac : FactionColl.get().getAll()) {
-			factions.add(new PLFaction(fac));
+			factions.add(fac);
 		}
 
 		return factions;
@@ -156,13 +155,13 @@ public class FactionsHook extends LibraryHook {
 	 * 
 	 * @return the Wilderness faction.
 	 */
-	public PLFaction getWilderness() {
+	public Faction getWilderness() {
 		com.massivecraft.factions.entity.Faction fac = FactionColl.get().getNone();
 
 		if (fac == null)
 			return null;
 
-		return new PLFaction(fac);
+		return fac;
 	}
 
 	/**
@@ -170,14 +169,14 @@ public class FactionsHook extends LibraryHook {
 	 * 
 	 * @return the Safezone faction.
 	 */
-	public PLFaction getSafezone() {
+	public Faction getSafezone() {
 
 		com.massivecraft.factions.entity.Faction fac = FactionColl.get().getSafezone();
 
 		if (fac == null)
 			return null;
 
-		return new PLFaction(fac);
+		return fac;
 	}
 
 	/**
@@ -185,13 +184,13 @@ public class FactionsHook extends LibraryHook {
 	 * 
 	 * @return the Warzone faction.
 	 */
-	public PLFaction getWarzone() {
+	public Faction getWarzone() {
 		com.massivecraft.factions.entity.Faction fac = FactionColl.get().getWarzone();
 
 		if (fac == null)
 			return null;
 
-		return new PLFaction(fac);
+		return fac;
 	}
 
 	/**
@@ -199,10 +198,10 @@ public class FactionsHook extends LibraryHook {
 	 * 
 	 * @param location
 	 *            Location for the faction to be at.
-	 * @return A {@link PLFaction} or null if the location does not contain a
+	 * @return A {@link Faction} or null if the location does not contain a
 	 *         faction.
 	 */
-	public PLFaction getFactionAt(Location location) {
+	public Faction getFactionAt(Location location) {
 		if (location == null)
 			return null;
 
@@ -211,25 +210,25 @@ public class FactionsHook extends LibraryHook {
 		if (fac == null)
 			return null;
 
-		return new PLFaction(fac);
+		return fac;
 	}
 
 	/**
 	 * Gets the
-	 * {@link me.staartvin.plugins.pluginlibrary.hooks.factions.PLMPlayer} for a
+	 * {@link MPlayer} for a
 	 * player, which represents the player object Factions internally uses.
 	 * 
 	 * @param uuid
 	 *            UUID of the player.
-	 * @return {@link me.staartvin.plugins.pluginlibrary.hooks.factions.PLMPlayer}
+	 * @return {@link MPlayer}
 	 *         or null if player does not exist/is not stored by Factions.
 	 */
-	public me.staartvin.plugins.pluginlibrary.hooks.factions.PLMPlayer getFactionsPlayer(UUID uuid) {
+	public MPlayer getFactionsPlayer(UUID uuid) {
 		MPlayer mPlayer = MPlayer.get(uuid);
 
 		if (mPlayer == null)
 			return null;
 
-		return new me.staartvin.plugins.pluginlibrary.hooks.factions.PLMPlayer(mPlayer);
+		return mPlayer;
 	}
 }
