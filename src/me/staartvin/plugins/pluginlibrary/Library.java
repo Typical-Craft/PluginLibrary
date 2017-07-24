@@ -31,7 +31,8 @@ public enum Library {
     USKYBLOCK("uSkyBlock", new uSkyBlockHook()),
     VAULT("Vault", new VaultHook()),
     WORLDGUARD("WorldGuard", new WorldGuardHook()),
-    ESSENTIALSX("Essentials", new EssentialsXHook());
+    ESSENTIALSX("Essentials", new EssentialsXHook()),
+    QUESTS("Quests", new QuestsHook());
 
 	private String pluginName;
 	private LibraryHook hook;
