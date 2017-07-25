@@ -1,13 +1,5 @@
 package me.staartvin.plugins.pluginlibrary.hooks;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Map;
-import java.util.UUID;
-
-import org.bukkit.Material;
-import org.bukkit.entity.EntityType;
-
 import me.staartvin.plugins.pluginlibrary.Library;
 import me.staartvin.plugins.pluginlibrary.hooks.customstats.FoodEatenStat;
 import me.staartvin.plugins.pluginlibrary.hooks.customstats.MobKilledStat;
@@ -15,6 +7,11 @@ import nl.lolmewn.stats.api.stat.Stat;
 import nl.lolmewn.stats.api.stat.StatEntry;
 import nl.lolmewn.stats.api.user.StatsHolder;
 import nl.lolmewn.stats.bukkit.BukkitMain;
+import org.bukkit.Material;
+import org.bukkit.OfflinePlayer;
+import org.bukkit.entity.EntityType;
+
+import java.util.*;
 
 /**
  * Stats library,
@@ -529,6 +526,30 @@ public class StatsHook extends LibraryHook {
 
 		return value;
 	}
+
+
+    /**
+     * Get a list of uuids that Stats has logged.
+     *
+     * @return a list of uuids that represent players that Stats has logged in
+     *         its database.
+     */
+    public List<UUID> getLoggedPlayers() {
+        List<UUID> playerNames = new ArrayList<>();
+
+        for (OfflinePlayer player : this.getPlugin().getServer().getOfflinePlayers()) {
+            StatsHolder user = this.getStatsHolder(player.getUniqueId());
+
+            if (user == null) {
+                this.getPlugin().getLogger().warning("Could not load data from user " + player.getName() + ". Skipping him/her!");
+                continue;
+            }
+
+            playerNames.add(player.getUniqueId());
+        }
+
+        return playerNames;
+    }
 
 	public void addStat(Stat stat) {
 		stats.getStatManager().addStat(stat);
