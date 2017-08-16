@@ -3,7 +3,8 @@ package me.staartvin.plugins.pluginlibrary.hooks;
 import com.earth2me.essentials.Essentials;
 import com.earth2me.essentials.User;
 import me.staartvin.plugins.pluginlibrary.Library;
-import org.bukkit.entity.Player;
+
+import java.util.UUID;
 
 /**
  * EssentialsX library,
@@ -49,14 +50,14 @@ public class EssentialsXHook extends LibraryHook {
 
     /**
      * Check whether a player is jailed by EssentialsX.
-     * @param player Player to check
+     * @param uuid UUID of player to check
      * @return true if the given player is jailed, false otherwise.
      */
-    public boolean isJailed(final Player player) {
+    public boolean isJailed(final UUID uuid) {
         if (!isAvailable())
             return false;
 
-        final User user = essentials.getUser(player);
+        final User user = essentials.getUser(uuid);
 
         if (user == null) {
             return false;
@@ -67,20 +68,35 @@ public class EssentialsXHook extends LibraryHook {
 
     /**
      * Get the Geo location of the IP of a given player.
-     * @param player Player to get the location of.
+     * @param uuid UUID of player to get the location of.
      * @return the estimated country of the IP of the given player.
      */
-    public String getGeoIPLocation(final Player player) {
+    public String getGeoIPLocation(final UUID uuid) {
         if (!isAvailable())
             return null;
 
-        final User user = essentials.getUser(player);
+        final User user = essentials.getUser(uuid);
 
         if (user == null) {
             return null;
         }
 
         return user.getGeoLocation();
+    }
+
+    /**
+     * Check whether a player is AFK (away from keyboard).
+     * @param uuid UUID of player to check
+     * @return true if player if AFK, false otherwise.
+     */
+    public boolean isAFK(UUID uuid) {
+        if (!isAvailable()) return false;
+
+        final User user = essentials.getUser(uuid);
+
+        if (user == null) return false;
+
+        return user.isAfk();
     }
 
 }

@@ -1,7 +1,11 @@
 package me.staartvin.plugins.pluginlibrary.hooks;
 
 import bammerbom.ultimatecore.bukkit.UltimateCore;
+import bammerbom.ultimatecore.bukkit.api.UC;
+import bammerbom.ultimatecore.bukkit.api.UPlayer;
 import me.staartvin.plugins.pluginlibrary.Library;
+
+import java.util.UUID;
 
 /**
  * UltimateCore library,
@@ -41,4 +45,24 @@ public class UltimateCoreHook extends LibraryHook {
 
 		return api != null;
 	}
+
+    /**
+     * Check whether a player is AFK.
+     * @param uuid UUID of the player to check.
+     * @return true if the player is AFK, false otherwise.
+     */
+	public boolean isAFK(UUID uuid) {
+
+	    if (!isAvailable()) {
+	        return false;
+        }
+
+        UPlayer player = UC.getPlayer(uuid);
+
+        if (player == null) {
+            return false;
+        }
+
+        return player.isAfk();
+    }
 }
