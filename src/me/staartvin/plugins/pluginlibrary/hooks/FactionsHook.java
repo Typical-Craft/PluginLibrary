@@ -1,19 +1,17 @@
 package me.staartvin.plugins.pluginlibrary.hooks;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-
-import org.bukkit.Location;
-
 import com.massivecraft.factions.Factions;
 import com.massivecraft.factions.entity.BoardColl;
 import com.massivecraft.factions.entity.Faction;
 import com.massivecraft.factions.entity.FactionColl;
 import com.massivecraft.factions.entity.MPlayer;
 import com.massivecraft.massivecore.ps.PS;
-
 import me.staartvin.plugins.pluginlibrary.Library;
+import org.bukkit.Location;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 /**
  * Factions,
@@ -231,4 +229,22 @@ public class FactionsHook extends LibraryHook {
 
 		return mPlayer;
 	}
+
+    /**
+     * Get the power of the faction of a player. Will return -1 if player has no faction.
+     * @param uuid UUID of the player to check
+     * @return power of the faction, or -1 if not found.
+     */
+	public double getFactionPower(UUID uuid) {
+
+	    if (uuid == null) return -1;
+
+	    MPlayer mPlayer = getFactionsPlayer(uuid);
+
+	    if (mPlayer == null) return -1;
+
+	    if (!mPlayer.hasFaction()) return -1;
+
+	    return mPlayer.getFaction().getPower();
+    }
 }
