@@ -477,7 +477,8 @@ public class StatsHook extends LibraryHook {
 	 * @return The amount of players a player has killed.
 	 */
 	public int getPlayersKilled(UUID uuid, String worldName) {
-		return this.getMobsKilled(uuid, "player", worldName);
+        if (!this.isAvailable()) return -1;
+	    return this.getMobsKilled(uuid, "player", worldName);
 	}
 
 	/**
@@ -535,6 +536,8 @@ public class StatsHook extends LibraryHook {
      *         its database.
      */
     public List<UUID> getLoggedPlayers() {
+        if (!this.isAvailable()) return new ArrayList<>();
+
         List<UUID> playerNames = new ArrayList<>();
 
         for (OfflinePlayer player : this.getPlugin().getServer().getOfflinePlayers()) {
@@ -552,15 +555,19 @@ public class StatsHook extends LibraryHook {
     }
 
 	public void addStat(Stat stat) {
-		stats.getStatManager().addStat(stat);
+        if (!this.isAvailable()) return;
+        stats.getStatManager().addStat(stat);
 	}
 
 	public Stat getStat(String statName) {
+        if (!this.isAvailable()) return null;
+
 		return stats.getStatManager().getStat(statName);
 	}
 
 	public StatsHolder getStatsHolder(UUID uuid) {
-		return stats.getUserManager().getUser(uuid);
+        if (!this.isAvailable()) return null;
+        return stats.getUserManager().getUser(uuid);
 	}
 
 }

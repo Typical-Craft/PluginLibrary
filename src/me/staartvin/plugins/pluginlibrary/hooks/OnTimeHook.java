@@ -1,13 +1,13 @@
 package me.staartvin.plugins.pluginlibrary.hooks;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import me.edge209.OnTime.DataIO;
 import me.edge209.OnTime.OnTimeAPI;
 import me.edge209.OnTime.OnTimeAPI.topData;
 import me.edge209.OnTime.PlayingTime;
 import me.staartvin.plugins.pluginlibrary.Library;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * OnTime library,
@@ -53,7 +53,9 @@ public class OnTimeHook extends LibraryHook {
 	 * @return true if the player is stored; false otherwise.
 	 */
 	public boolean isPlayerStored(String playerName) {
-		return PlayingTime.playerHasOnTimeRecord(playerName);
+        if (!this.isAvailable()) return false;
+
+	    return PlayingTime.playerHasOnTimeRecord(playerName);
 	}
 
 	/**
@@ -113,6 +115,8 @@ public class OnTimeHook extends LibraryHook {
 	 *         found or the player was invalid.
 	 */
 	public long getPlayerData(String playerName, String dataType) {
+        if (!this.isAvailable()) return -1;
+
 		if (playerName == null || dataType == null)
 			return -1;
 
@@ -138,6 +142,8 @@ public class OnTimeHook extends LibraryHook {
 	 *         when data type was invalid.
 	 */
 	public Map<String, Long> getTopData(String dataType) {
+        if (!this.isAvailable()) return new HashMap<String, Long>();
+
 		HashMap<String, Long> leaderboard = new HashMap<String, Long>();
 
 		OnTimeAPI.data data = OnTimeAPI.data.valueOf(dataType.toUpperCase());

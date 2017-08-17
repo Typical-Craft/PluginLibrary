@@ -1,16 +1,16 @@
 package me.staartvin.plugins.pluginlibrary.hooks;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.UUID;
-
+import me.armar.plugins.autorank.Autorank;
 import me.armar.plugins.autorank.pathbuilder.holders.RequirementsHolder;
 import me.armar.plugins.autorank.pathbuilder.requirement.Requirement;
 import me.armar.plugins.autorank.pathbuilder.result.Result;
+import me.staartvin.plugins.pluginlibrary.Library;
 import org.bukkit.entity.Player;
 
-import me.armar.plugins.autorank.Autorank;
-import me.staartvin.plugins.pluginlibrary.Library;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.UUID;
 
 /**
  * Autorank library,
@@ -63,7 +63,8 @@ public class AutorankHook extends LibraryHook {
 	 * @return amount of minutes a player has played.
 	 */
 	public int getLocalPlayTime(UUID uuid) {
-		return autorank.getAPI().getLocalPlayTime(uuid);
+        if (!this.isAvailable()) return -1;
+	    return autorank.getAPI().getLocalPlayTime(uuid);
 	}
 
 	/**
@@ -79,7 +80,8 @@ public class AutorankHook extends LibraryHook {
 	 *         network.
 	 */
 	public int getGlobalPlayTime(UUID uuid) {
-		return autorank.getAPI().getGlobalPlayTime(uuid);
+        if (!this.isAvailable()) return -1;
+	    return autorank.getAPI().getGlobalPlayTime(uuid);
 	}
 
 	/**
@@ -100,6 +102,7 @@ public class AutorankHook extends LibraryHook {
 	 * @return A list of all requirements
 	 */
 	public List<RequirementsHolder> getAllRequirements(Player player) {
+        if (!this.isAvailable()) return new ArrayList<>();
 		return autorank.getAPI().getAllRequirements(player);
 	}
 
@@ -113,6 +116,7 @@ public class AutorankHook extends LibraryHook {
 	 * @return A list of all requirements that should still be completed.
 	 */
 	public List<RequirementsHolder> getFailedRequirements(Player player) {
+        if (!this.isAvailable()) return new ArrayList<>();
 		return autorank.getAPI().getFailedRequirements(player);
 	}
 
@@ -123,7 +127,8 @@ public class AutorankHook extends LibraryHook {
 	 * @return name of database or null if MySQL is not used by Autorank.
 	 */
 	public String getMySQLDatabase() {
-		return autorank.getAPI().getMySQLDatabase();
+        if (!this.isAvailable()) return null;
+	    return autorank.getAPI().getMySQLDatabase();
 	}
 
 	/**
@@ -136,6 +141,7 @@ public class AutorankHook extends LibraryHook {
 	 * @return a list of groups a player is part of.
 	 */
 	public Collection<String> getPermissionGroups(Player player) {
+        if (!this.isAvailable()) return new ArrayList<>();
 		return autorank.getPermPlugHandler().getPermissionPlugin().getPlayerGroups(player);
 	}
 
@@ -156,6 +162,7 @@ public class AutorankHook extends LibraryHook {
 	 *            The custom requirement class for Autorank to use.
 	 */
 	public void registerRequirement(String requirementName, Class<? extends Requirement> req) {
+        if (!this.isAvailable()) return;
 		autorank.getAPI().registerRequirement(requirementName, req);
 	}
 
@@ -168,6 +175,7 @@ public class AutorankHook extends LibraryHook {
 	 */
 	public void registerResult(String resultName,
 			Class<? extends Result> res) {
+        if (!this.isAvailable()) return;
 		autorank.getAPI().registerResult(resultName, res);
 	}
 

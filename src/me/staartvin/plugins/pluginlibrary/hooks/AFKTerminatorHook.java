@@ -51,7 +51,8 @@ public class AFKTerminatorHook extends LibraryHook {
 	 *         machine; false otherwise.
 	 */
 	public boolean isAFKMachineSuspected(UUID uuid) {
-		return AfkDetect.isAFKMachineSuspected(uuid);
+        if (!this.isAvailable()) return false;
+	    return AfkDetect.isAFKMachineSuspected(uuid);
 	}
 
 	/**
@@ -67,7 +68,8 @@ public class AFKTerminatorHook extends LibraryHook {
 	 *         machine; false otherwise.
 	 */
 	public boolean isAFKMachineDetected(UUID uuid) {
-		return AfkDetect.isAFKMachineDetected(uuid);
+        if (!this.isAvailable()) return false;
+	    return AfkDetect.isAFKMachineDetected(uuid);
 	}
 
 	/**
@@ -82,8 +84,8 @@ public class AFKTerminatorHook extends LibraryHook {
 	 *         UNIX time; otherwise 0.
 	 */
 	public long getAFKMachineStartTime(UUID uuid) {
+        if (!this.isAvailable()) return -1;
 		return AfkDetect.getAFKMachineStartTime(uuid);
-
 	}
 
 	/**
@@ -98,6 +100,8 @@ public class AFKTerminatorHook extends LibraryHook {
 	 * @return Type of the AFK machine or null if the player is not using any.
 	 */
 	public String getAFKMachineType(UUID uuid) {
+        if (!this.isAvailable()) return null;
+
 		AFKMACHINES type = AfkDetect.getAFKMachineType(uuid);
 
 		if (type == null)

@@ -59,6 +59,8 @@ public class StatzHook extends LibraryHook {
      * @return dependency handler of Statz.
      */
     public DependencyHandler getDependencyHandler(Dependency dependency) {
+        if (!this.isAvailable()) return null;
+
         return statz.getStatzAPI().getDependencyHandler(dependency);
     }
 
@@ -70,6 +72,8 @@ public class StatzHook extends LibraryHook {
      * @return an integer representing the statistic of a given player.
      */
     public int getMinecraftStatistic(UUID uuid, Statistic statistic) {
+        if (!this.isAvailable()) return -1;
+
         return statz.getStatzAPI().getMinecraftStatistic(uuid, statistic);
     }
 
@@ -84,6 +88,8 @@ public class StatzHook extends LibraryHook {
      * @return A list of all requirements
      */
     public Double getTotalStatistics(PlayerStat statType, UUID uuid, String worldName) {
+        if (!this.isAvailable()) return -1.0;
+
         return (double) statz.getStatzAPI().getTotalOf(statType, uuid, worldName);
     }
 
@@ -103,6 +109,8 @@ public class StatzHook extends LibraryHook {
      * @return
      */
     public Double getSpecificStatistics(PlayerStat statType, UUID uuid, RowRequirement... requirements) {
+        if (!this.isAvailable()) return -1.0;
+
         return (double) statz.getStatzAPI().getSpecificData(statType, uuid, requirements);
     }
 }

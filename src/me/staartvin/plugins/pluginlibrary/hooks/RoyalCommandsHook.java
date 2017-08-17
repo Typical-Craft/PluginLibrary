@@ -59,7 +59,9 @@ public class RoyalCommandsHook extends LibraryHook {
 	 * @return true if the player is afk; false otherwise.
 	 */
 	public boolean isAFK(Player player) {
-		return api.getAPI().getPlayerAPI().isAfk(player);
+        if (!this.isAvailable()) return false;
+
+	    return api.getAPI().getPlayerAPI().isAfk(player);
 	}
 
 	/**
@@ -71,6 +73,7 @@ public class RoyalCommandsHook extends LibraryHook {
 	 *         the default name of the player.
 	 */
 	public String getDisplayName(Player player) {
+        if (!this.isAvailable()) return null;
 		return api.getAPI().getPlayerAPI().getDisplayName(player);
 	}
 
@@ -85,6 +88,7 @@ public class RoyalCommandsHook extends LibraryHook {
 	 *         player on that world; null if any errors occured.
 	 */
 	public Inventory getOfflineInventory(OfflinePlayer player, String worldName) {
+        if (!this.isAvailable()) return null;
 		return WorldManager.il.getOfflinePlayerInventory(player, worldName);
 	}
 
@@ -99,6 +103,7 @@ public class RoyalCommandsHook extends LibraryHook {
 	 *         offline player on that world; null if any errors occured.
 	 */
 	public Inventory getOfflineEnderInventory(OfflinePlayer player, String worldName) {
+        if (!this.isAvailable()) return null;
 		return WorldManager.il.getOfflinePlayerEnderInventory(player, worldName);
 	}
 

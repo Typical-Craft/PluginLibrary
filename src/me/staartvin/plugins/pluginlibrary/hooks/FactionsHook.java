@@ -59,7 +59,9 @@ public class FactionsHook extends LibraryHook {
 	/* Util methods */
 
 	private MPlayer getMPlayer(UUID uuid) {
-		return MPlayer.get(uuid);
+        if (!this.isAvailable()) return null;
+
+	    return MPlayer.get(uuid);
 	}
 
 	/* Faction vars */
@@ -74,6 +76,9 @@ public class FactionsHook extends LibraryHook {
 	 * @return {@link Faction} or null if no faction found.
 	 */
 	public Faction getFactionByName(String factionName) {
+
+        if (!this.isAvailable()) return null;
+
 		if (factionName == null)
 			return null;
 
@@ -94,6 +99,9 @@ public class FactionsHook extends LibraryHook {
 	 *         a faction.
 	 */
 	public Faction getFactionByUUID(UUID uuid) {
+
+        if (!this.isAvailable()) return null;
+
 		if (uuid == null)
 			return null;
 
@@ -118,6 +126,9 @@ public class FactionsHook extends LibraryHook {
 	 * @return {@link Faction} or null if id is invalid.
 	 */
 	public Faction getFactionById(String factionId) {
+
+        if (!this.isAvailable()) return null;
+
 		if (factionId == null)
 			return null;
 
@@ -139,7 +150,10 @@ public class FactionsHook extends LibraryHook {
 	 * @return a list of all factions.
 	 */
 	public List<Faction> getAllFactions() {
+
 		List<Faction> factions = new ArrayList<Faction>();
+
+        if (!this.isAvailable()) return factions;
 
 		for (com.massivecraft.factions.entity.Faction fac : FactionColl.get().getAll()) {
 			factions.add(fac);
@@ -154,6 +168,9 @@ public class FactionsHook extends LibraryHook {
 	 * @return the Wilderness faction.
 	 */
 	public Faction getWilderness() {
+
+        if (!this.isAvailable()) return null;
+
 		com.massivecraft.factions.entity.Faction fac = FactionColl.get().getNone();
 
 		if (fac == null)
@@ -169,6 +186,8 @@ public class FactionsHook extends LibraryHook {
 	 */
 	public Faction getSafezone() {
 
+        if (!this.isAvailable()) return null;
+
 		com.massivecraft.factions.entity.Faction fac = FactionColl.get().getSafezone();
 
 		if (fac == null)
@@ -183,6 +202,9 @@ public class FactionsHook extends LibraryHook {
 	 * @return the Warzone faction.
 	 */
 	public Faction getWarzone() {
+
+        if (!this.isAvailable()) return null;
+
 		com.massivecraft.factions.entity.Faction fac = FactionColl.get().getWarzone();
 
 		if (fac == null)
@@ -200,6 +222,9 @@ public class FactionsHook extends LibraryHook {
 	 *         faction.
 	 */
 	public Faction getFactionAt(Location location) {
+
+        if (!this.isAvailable()) return null;
+
 		if (location == null)
 			return null;
 
@@ -222,6 +247,9 @@ public class FactionsHook extends LibraryHook {
 	 *         or null if player does not exist/is not stored by Factions.
 	 */
 	public MPlayer getFactionsPlayer(UUID uuid) {
+
+	    if (!this.isAvailable()) return null;
+
 		MPlayer mPlayer = MPlayer.get(uuid);
 
 		if (mPlayer == null)
@@ -236,6 +264,8 @@ public class FactionsHook extends LibraryHook {
      * @return power of the faction, or -1 if not found.
      */
 	public double getFactionPower(UUID uuid) {
+
+        if (!this.isAvailable()) return -1;
 
 	    if (uuid == null) return -1;
 

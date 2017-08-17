@@ -120,6 +120,8 @@ public class GriefPreventionHook extends LibraryHook {
      */
     public boolean isInRegion(Location loc, UUID uuid) {
 
+        if (!this.isAvailable()) return false;
+
         PlayerData data = this.getPlayerData(uuid);
 
         Claim claim = griefPrevention.dataStore.getClaimAt(loc, false, data.lastClaim);
