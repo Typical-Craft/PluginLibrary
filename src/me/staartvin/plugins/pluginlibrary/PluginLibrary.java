@@ -49,18 +49,6 @@ public class PluginLibrary extends JavaPlugin {
 
 		logMessage(ChatColor.GREEN + "*** Ready for plugins to send/retrieve data. ***");
 
-        if (this.isLibraryLoaded(Library.QUESTS)) {
-            QuestsHook hook = (QuestsHook) PluginLibrary.getLibrary(Library.QUESTS);
-
-            UUID uuid = UUID.fromString("c5f39a1d-3786-46a7-8953-d4efabf8880d");
-
-            System.out.println("QuestsPoints: " + hook.getQuestsPoints(uuid));
-            System.out.println("CompletedQuests: " + hook.getNumberOfCompletedQuests(uuid));
-            System.out.println("ActiveQuests: " + hook.getNumberOfActiveQuests(uuid));
-            System.out.println("Is quest 'Mob Hunter' completed? " + hook.isQuestCompleted(uuid, "Mob Hunter"));
-            System.out.println("Is quest 'Stone Miner' completed? " + hook.isQuestCompleted(uuid, "Stone Miner"));
-        }
-
 		logMessage(this.getDescription().getFullName() + " is now enabled!");
 	}
 
