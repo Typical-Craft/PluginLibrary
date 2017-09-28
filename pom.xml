@@ -130,7 +130,7 @@
         <dependency>
             <groupId>me.staartvin.Statz</groupId>
             <artifactId>Statz</artifactId>
-            <version>LATEST</version>
+            <version>1.4.3-Dev-18</version>
         </dependency>
 
         <dependency>
