@@ -1,7 +1,6 @@
 package me.staartvin.plugins.pluginlibrary;
 
 import me.staartvin.plugins.pluginlibrary.hooks.LibraryHook;
-import me.staartvin.plugins.pluginlibrary.hooks.QuestsHook;
 import me.staartvin.plugins.pluginlibrary.hooks.customstats.CustomStatsManager;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -9,7 +8,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.UUID;
 
 /**
  * Main class of PluginLibrary
@@ -48,18 +46,6 @@ public class PluginLibrary extends JavaPlugin {
 		}
 
 		logMessage(ChatColor.GREEN + "*** Ready for plugins to send/retrieve data. ***");
-
-        if (this.isLibraryLoaded(Library.QUESTS)) {
-            QuestsHook hook = (QuestsHook) PluginLibrary.getLibrary(Library.QUESTS);
-
-            UUID uuid = UUID.fromString("c5f39a1d-3786-46a7-8953-d4efabf8880d");
-
-            System.out.println("QuestsPoints: " + hook.getQuestsPoints(uuid));
-            System.out.println("CompletedQuests: " + hook.getNumberOfCompletedQuests(uuid));
-            System.out.println("ActiveQuests: " + hook.getNumberOfActiveQuests(uuid));
-            System.out.println("Is quest 'Mob Hunter' completed? " + hook.isQuestCompleted(uuid, "Mob Hunter"));
-            System.out.println("Is quest 'Stone Miner' completed? " + hook.isQuestCompleted(uuid, "Stone Miner"));
-        }
 
 		logMessage(this.getDescription().getFullName() + " is now enabled!");
 	}
