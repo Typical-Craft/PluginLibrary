@@ -4,8 +4,6 @@ import me.staartvin.plugins.pluginlibrary.Library;
 import me.staartvin.statz.Statz;
 import me.staartvin.statz.database.datatype.RowRequirement;
 import me.staartvin.statz.datamanager.PlayerStat;
-import me.staartvin.statz.hooks.StatzDependency;
-import me.staartvin.statz.hooks.DependencyHandler;
 import org.bukkit.Statistic;
 
 import java.util.UUID;
@@ -49,19 +47,6 @@ public class StatzHook extends LibraryHook {
                 .getPlugin(Library.STATZ.getPluginName());
 
         return statz != null;
-    }
-
-    /**
-     * Gets the dependency handler of Statz that is responsible for the connection between a
-     * dependency and Statz.
-     *
-     * @param dependency Dependency of Statz
-     * @return dependency handler of Statz.
-     */
-    public DependencyHandler getDependencyHandler(StatzDependency dependency) {
-        if (!this.isAvailable()) return null;
-
-        return statz.getStatzAPI().getDependencyHandler(dependency);
     }
 
     /**
