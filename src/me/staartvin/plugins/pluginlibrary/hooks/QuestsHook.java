@@ -10,9 +10,9 @@ import java.util.UUID;
  * Quests,
  * <a href="https://www.spigotmc.org/resources/quests.3711/">link</a>.
  * <p>
- * 
+ *
  * @author Staartvin
- * 
+ *
  */
 public class QuestsHook extends LibraryHook {
 
@@ -45,8 +45,8 @@ public class QuestsHook extends LibraryHook {
 		quests = (Quests) this.getPlugin().getServer().getPluginManager()
 				.getPlugin(Library.QUESTS.getPluginName());
 
-		return quests != null;
-	}
+        return quests != null && quests instanceof Quests;
+    }
 
 	private Quester getQuester(UUID uuid) {
 	    return quests.getQuester(uuid);
