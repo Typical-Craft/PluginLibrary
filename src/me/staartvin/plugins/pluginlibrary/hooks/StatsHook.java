@@ -5,6 +5,7 @@ import me.staartvin.plugins.pluginlibrary.hooks.customstats.FoodEatenStat;
 import me.staartvin.plugins.pluginlibrary.hooks.customstats.MobKilledStat;
 import nl.lolmewn.stats.api.stat.Stat;
 import nl.lolmewn.stats.api.stat.StatEntry;
+import nl.lolmewn.stats.api.storage.StorageException;
 import nl.lolmewn.stats.api.user.StatsHolder;
 import nl.lolmewn.stats.bukkit.BukkitMain;
 import org.bukkit.Material;
@@ -540,15 +541,34 @@ public class StatsHook extends LibraryHook {
 
         List<UUID> playerNames = new ArrayList<>();
 
+        int count = 0;
+
         for (OfflinePlayer player : this.getPlugin().getServer().getOfflinePlayers()) {
             StatsHolder user = this.getStatsHolder(player.getUniqueId());
+            count++;
 
-            if (user == null) {
-                this.getPlugin().getLogger().warning("Could not load data from user " + player.getName() + ". Skipping him/her!");
-                continue;
+            if (count % 1000 == 0) {
+                System.out.println("Loaded " + count);
             }
 
-            playerNames.add(player.getUniqueId());
+            if (count > 10000) {
+                break;
+            }
+
+            if (user == null) {
+                try {
+                    user = stats.getUserManager().loadUser(player.getUniqueId(), stats.getStatManager());
+                } catch (StorageException e) {
+                    e.printStackTrace();
+                }
+
+                playerNames.add(user.getUuid());
+            } else {
+                playerNames.add(player.getUniqueId());
+            }
+
+            getPlugin().requestTimes.put(user.getUuid(), System.currentTimeMillis());
+
         }
 
         return playerNames;

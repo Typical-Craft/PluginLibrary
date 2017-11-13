@@ -2,12 +2,11 @@ package me.staartvin.plugins.pluginlibrary;
 
 import me.staartvin.plugins.pluginlibrary.hooks.LibraryHook;
 import me.staartvin.plugins.pluginlibrary.hooks.customstats.CustomStatsManager;
+import me.staartvin.plugins.pluginlibrary.listeners.StatsLoadUserListener;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * Main class of PluginLibrary
@@ -22,8 +21,11 @@ public class PluginLibrary extends JavaPlugin {
 	private final static List<Library> loadedLibraries = new ArrayList<Library>();
 	private CustomStatsManager customStatsManager;
 
-	@Override
-	public void onEnable() {
+    public HashMap<UUID, Long> requestTimes = new HashMap<>();
+
+
+    @Override
+    public void onEnable() {
 
 		loadedLibraries.clear();
 
@@ -40,6 +42,9 @@ public class PluginLibrary extends JavaPlugin {
 			setCustomStatsManager(new CustomStatsManager(this));
 			this.getCustomStatsManager().registerCustomStats();
 		}
+
+        // Register Stats Load User listener
+        this.getServer().getPluginManager().registerEvents(new StatsLoadUserListener(this), this);
 
 		if (loadedLibraries > 0) {
 			logMessage(ChatColor.GOLD + "Loaded libraries: " + getLoadedLibrariesAsString());

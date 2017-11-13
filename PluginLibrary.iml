@@ -118,7 +118,9 @@
         <CLASSES>
           <root url="jar://$MODULE_DIR$/libs/Stats3.jar!/" />
         </CLASSES>
-        <JAVADOC />
+        <JAVADOC>
+          <root url="http://ci.lolmewn.nl/job/Stats/javadoc/" />
+        </JAVADOC>
         <SOURCES />
       </library>
     </orderEntry>
@@ -258,10 +260,10 @@
     <orderEntry type="library" name="Maven: org.yaml:snakeyaml:1.18" level="project" />
     <orderEntry type="library" name="Maven: net.md-5:bungeecord-chat:1.12-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: org.bukkit:bukkit:1.12.1-R0.1-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: me.staartvin.Statz:Statz:1.4.3-Dev-22" level="project" />
+    <orderEntry type="library" name="Maven: me.staartvin.Statz:Statz:1.4.4-Dev-25" level="project" />
     <orderEntry type="library" name="Maven: com.vexsoftware:votifier:1.9" level="project" />
     <orderEntry type="library" name="Maven: com.vexsoftware:nuvotifier-universal:2.3.2.2" level="project" />
-    <orderEntry type="library" name="Maven: me.staartvin:PluginLibrary:1.0.1" level="project" />
+    <orderEntry type="library" name="Maven: me.staartvin:PluginLibrary:1.1" level="project" />
     <orderEntry type="library" name="Maven: com.massivecraft:Factions:2.8.2" level="project" />
     <orderEntry type="library" name="Maven: com.massivecraft:MassiveCore:2.8.2" level="project" />
     <orderEntry type="library" name="Maven: net.milkbowl.vault:Vault:1.5.6" level="project" />
@@ -277,7 +279,7 @@
     <orderEntry type="library" name="Maven: RPGme:RPGme:1.0.2" level="project" />
     <orderEntry type="library" name="Maven: RoyalCommands:RoyalCommands:4.1.1" level="project" />
     <orderEntry type="library" name="Maven: OnTime:OnTime:4.1.4" level="project" />
-    <orderEntry type="library" name="Maven: Autorank:Autorank:4.0.7-Dev-18" level="project" />
+    <orderEntry type="library" name="Maven: Autorank:Autorank:4.1-Dev-21" level="project" />
     <orderEntry type="library" name="Maven: EssentialsGroupManager:EssentialsGroupManager:2.1.11" level="project" />
     <orderEntry type="library" name="Maven: com.platymuus:bukkit-permissions:2.5" level="project" />
     <orderEntry type="library" name="Maven: PowerfulPerms:PowerfulPerms:3.0.3" level="project" />
