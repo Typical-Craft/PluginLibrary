@@ -7,8 +7,7 @@ import net.milkbowl.vault.permission.Permission;
 import org.bukkit.plugin.RegisteredServiceProvider;
 
 /**
- * Vault library,
- * <a href="https://www.spigotmc.org/resources/vault.41918/">link</a>.
+ * Vault library, <a href="https://www.spigotmc.org/resources/vault.41918/">link</a>.
  * <p>
  *
  * @author Staartvin
@@ -18,6 +17,33 @@ public class VaultHook extends LibraryHook {
     private static Economy econ = null;
     private static Permission perms = null;
     private static Chat chat = null;
+
+    /**
+     * Get the economy variable of Vault. (can be null, so check {@link #isAvailable()}!)
+     *
+     * @return economy variable
+     */
+    public static Economy getEconomy() {
+        return econ;
+    }
+
+    /**
+     * Get the permission variable of Vault. (can be null, so check {@link #isAvailable()}!)
+     *
+     * @return permission variable
+     */
+    public static Permission getPermissions() {
+        return perms;
+    }
+
+    /**
+     * Get the chat variable of Vault. (can be null, so check {@link #isAvailable()}!)
+     *
+     * @return chat variable
+     */
+    public static Chat getChat() {
+        return chat;
+    }
 
     /*
      * (non-Javadoc)
@@ -54,51 +80,39 @@ public class VaultHook extends LibraryHook {
         if (this.getPlugin().getServer().getPluginManager().getPlugin("Vault") == null) {
             return false;
         }
-        RegisteredServiceProvider<Economy> rsp = this.getPlugin().getServer().getServicesManager().getRegistration(Economy.class);
+        RegisteredServiceProvider<Economy> rsp = this.getPlugin().getServer().getServicesManager().getRegistration
+                (Economy.class);
+
         if (rsp == null) {
             return false;
         }
+
         econ = rsp.getProvider();
         return econ != null;
     }
 
     private boolean setupChat() {
-        RegisteredServiceProvider<Chat> rsp = this.getPlugin().getServer().getServicesManager().getRegistration(Chat.class);
+        RegisteredServiceProvider<Chat> rsp = this.getPlugin().getServer().getServicesManager().getRegistration(Chat
+                .class);
+
+        if (rsp == null) {
+            return false;
+        }
+
         chat = rsp.getProvider();
         return chat != null;
     }
 
     private boolean setupPermissions() {
-        RegisteredServiceProvider<Permission> rsp = this.getPlugin().getServer().getServicesManager().getRegistration(Permission.class);
+        RegisteredServiceProvider<Permission> rsp = this.getPlugin().getServer().getServicesManager().getRegistration
+                (Permission.class);
+
+        if (rsp == null) {
+            return false;
+        }
+
         perms = rsp.getProvider();
         return perms != null;
-    }
-
-    /**
-     * Get the economy variable of Vault. (can be null, so check {@link #isAvailable()}!)
-     *
-     * @return economy variable
-     */
-    public static Economy getEconomy() {
-        return econ;
-    }
-
-    /**
-     * Get the permission variable of Vault. (can be null, so check {@link #isAvailable()}!)
-     *
-     * @return permission variable
-     */
-    public static Permission getPermissions() {
-        return perms;
-    }
-
-    /**
-     * Get the chat variable of Vault. (can be null, so check {@link #isAvailable()}!)
-     *
-     * @return chat variable
-     */
-    public static Chat getChat() {
-        return chat;
     }
 
 
