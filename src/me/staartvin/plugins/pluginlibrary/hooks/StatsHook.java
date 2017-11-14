@@ -551,9 +551,9 @@ public class StatsHook extends LibraryHook {
                 System.out.println("Loaded " + count);
             }
 
-            if (count > 10000) {
-                break;
-            }
+//            if (count > 10000) {
+//                break;
+//            }
 
             if (user == null) {
                 try {
