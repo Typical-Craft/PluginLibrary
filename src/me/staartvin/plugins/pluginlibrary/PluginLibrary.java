@@ -25,9 +25,7 @@ public class PluginLibrary extends JavaPlugin {
      * library with the given name.
      *
      * @param pluginName Name of the plugin. Case-insensitive!
-     *
      * @return {@link me.staartvin.plugins.pluginlibrary.Library} class or an error.
-     *
      * @throws IllegalArgumentException When no plugin with the given name was found.
      */
     public static LibraryHook getLibrary(String pluginName) throws IllegalArgumentException {
@@ -38,9 +36,7 @@ public class PluginLibrary extends JavaPlugin {
      * <br>Returns the same as {@link #getLibrary(String)}.
      *
      * @param lib Library enum to get the library hook for.
-     *
      * @return {@link me.staartvin.plugins.pluginlibrary.Library} class or an error.
-     *
      * @see {@linkplain#getLibrary(String)}
      */
     public static LibraryHook getLibrary(Library lib) {
@@ -51,7 +47,6 @@ public class PluginLibrary extends JavaPlugin {
      * Checks to see whether the library is loaded and thus ready for use.
      *
      * @param lib Library to check.
-     *
      * @return true if the library is loaded; false otherwise.
      */
     public static boolean isLibraryLoaded(Library lib) {
@@ -102,7 +97,9 @@ public class PluginLibrary extends JavaPlugin {
     public int loadLibraries() {
         int count = 0;
 
+
         for (Library l : Library.values()) {
+
             LibraryHook hook = l.getHook();
 
             if (hook.isAvailable()) {
@@ -114,6 +111,7 @@ public class PluginLibrary extends JavaPlugin {
 
             }
         }
+
 
         return count;
     }
