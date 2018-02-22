@@ -253,7 +253,6 @@
     <orderEntry type="library" name="Maven: Autorank:Autorank:4.0.7-Dev-10" level="project" />
     <orderEntry type="library" name="Maven: me.staartvin.Statz:Statz:1.4.4-Dev-25" level="project" />
     <orderEntry type="library" name="Maven: me.staartvin:PluginLibrary:1.1" level="project" />
-    <orderEntry type="library" name="Maven: Autorank:Autorank:4.1-Dev-21" level="project" />
     <orderEntry type="library" name="Maven: org.spigotmc:spigot-api:1.12.1-R0.1-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.6" level="project" />
     <orderEntry type="library" name="Maven: com.googlecode.json-simple:json-simple:1.1.1" level="project" />
@@ -265,7 +264,7 @@
     <orderEntry type="library" name="Maven: me.staartvin.Statz:Statz:1.4.5-Dev-29" level="project" />
     <orderEntry type="library" name="Maven: com.vexsoftware:votifier:1.9" level="project" />
     <orderEntry type="library" name="Maven: com.vexsoftware:nuvotifier-universal:2.3.2.2" level="project" />
-    <orderEntry type="library" name="Maven: me.staartvin:PluginLibrary:1.1-Dev-10" level="project" />
+    <orderEntry type="library" name="Maven: me.staartvin:PluginLibrary:1.1-Dev-11" level="project" />
     <orderEntry type="library" name="Maven: com.massivecraft:Factions:2.8.2" level="project" />
     <orderEntry type="library" name="Maven: com.massivecraft:MassiveCore:2.8.2" level="project" />
     <orderEntry type="library" name="Maven: net.milkbowl.vault:Vault:1.5.6" level="project" />
