@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: me.staartvin.Statz:Statz:1.4.5-Dev-29">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/me/staartvin/Statz/Statz/1.4.5-Dev-29/Statz-1.4.5-Dev-29.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/me/staartvin/Statz/Statz/1.4.5-Dev-29/Statz-1.4.5-Dev-29-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/me/staartvin/Statz/Statz/1.4.5-Dev-29/Statz-1.4.5-Dev-29-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
