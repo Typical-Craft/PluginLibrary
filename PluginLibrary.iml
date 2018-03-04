@@ -264,9 +264,10 @@
     <orderEntry type="library" name="Maven: me.staartvin.Statz:Statz:1.4.5-Dev-29" level="project" />
     <orderEntry type="library" name="Maven: com.vexsoftware:votifier:1.9" level="project" />
     <orderEntry type="library" name="Maven: com.vexsoftware:nuvotifier-universal:2.3.2.2" level="project" />
-    <orderEntry type="library" name="Maven: me.staartvin:PluginLibrary:1.1-Dev-11" level="project" />
-    <orderEntry type="library" name="Maven: com.massivecraft:Factions:2.8.2" level="project" />
+    <orderEntry type="library" name="Maven: me.staartvin:PluginLibrary:1.1-Dev-13" level="project" />
     <orderEntry type="library" name="Maven: com.massivecraft:MassiveCore:2.8.2" level="project" />
+    <orderEntry type="library" name="Maven: com.massivecraft.factions:Factions:2.13.6" level="project" />
+    <orderEntry type="library" name="Maven: com.massivecraft.massivecore:MassiveCore:2.13.6" level="project" />
     <orderEntry type="library" name="Maven: net.milkbowl.vault:Vault:1.5.6" level="project" />
     <orderEntry type="library" name="Maven: com.gamingmesh:jobs:3.5.7" level="project" />
     <orderEntry type="library" name="Maven: afkTerminator:afkTerminator:3.0.8" level="project" />
@@ -280,7 +281,7 @@
     <orderEntry type="library" name="Maven: RPGme:RPGme:1.0.2" level="project" />
     <orderEntry type="library" name="Maven: RoyalCommands:RoyalCommands:4.1.1" level="project" />
     <orderEntry type="library" name="Maven: OnTime:OnTime:4.1.4" level="project" />
-    <orderEntry type="library" name="Maven: Autorank:Autorank:4.1-Dev-21" level="project" />
+    <orderEntry type="library" name="Maven: Autorank:Autorank:4.1-Dev-29" level="project" />
     <orderEntry type="library" name="Maven: EssentialsGroupManager:EssentialsGroupManager:2.1.11" level="project" />
     <orderEntry type="library" name="Maven: com.platymuus:bukkit-permissions:2.5" level="project" />
     <orderEntry type="library" name="Maven: PowerfulPerms:PowerfulPerms:3.0.3" level="project" />
@@ -308,5 +309,6 @@
     <orderEntry type="library" scope="TEST" name="Maven: net.bytebuddy:byte-buddy:1.6.5" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: net.bytebuddy:byte-buddy-agent:1.6.5" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.objenesis:objenesis:2.5" level="project" />
+    <orderEntry type="library" name="Maven: com.massivecraft:Factions:2.13.6" level="project" />
   </component>
 </module>
