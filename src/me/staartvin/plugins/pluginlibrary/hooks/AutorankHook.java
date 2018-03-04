@@ -2,8 +2,8 @@ package me.staartvin.plugins.pluginlibrary.hooks;
 
 import me.armar.plugins.autorank.Autorank;
 import me.armar.plugins.autorank.pathbuilder.holders.RequirementsHolder;
-import me.armar.plugins.autorank.pathbuilder.requirement.Requirement;
-import me.armar.plugins.autorank.pathbuilder.result.Result;
+import me.armar.plugins.autorank.pathbuilder.requirement.AbstractRequirement;
+import me.armar.plugins.autorank.pathbuilder.result.AbstractResult;
 import me.staartvin.plugins.pluginlibrary.Library;
 import org.bukkit.entity.Player;
 
@@ -161,7 +161,7 @@ public class AutorankHook extends LibraryHook {
 	 * @param req
 	 *            The custom requirement class for Autorank to use.
 	 */
-	public void registerRequirement(String requirementName, Class<? extends Requirement> req) {
+	public void registerRequirement(String requirementName, Class<? extends AbstractRequirement> req) {
         if (!this.isAvailable()) return;
 		autorank.getAPI().registerRequirement(requirementName, req);
 	}
@@ -174,7 +174,7 @@ public class AutorankHook extends LibraryHook {
 	 *            The custom result class for Autorank to use.
 	 */
 	public void registerResult(String resultName,
-			Class<? extends Result> res) {
+							   Class<? extends AbstractResult> res) {
         if (!this.isAvailable()) return;
 		autorank.getAPI().registerResult(resultName, res);
 	}
