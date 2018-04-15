@@ -1,12 +1,11 @@
 package me.staartvin.plugins.pluginlibrary.hooks;
 
+import me.staartvin.plugins.pluginlibrary.Library;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.royaldev.royalcommands.RoyalCommands;
 import org.royaldev.royalcommands.WorldManager;
-
-import me.staartvin.plugins.pluginlibrary.Library;
 
 /**
  * RoyalCommands library,
@@ -28,7 +27,7 @@ public class RoyalCommandsHook extends LibraryHook {
 	 */
 	@Override
 	public boolean isAvailable() {
-		return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.ROYALCOMMANDS.getPluginName());
+        return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.ROYALCOMMANDS.getInternalPluginName());
 	}
 
 	/*
@@ -42,7 +41,7 @@ public class RoyalCommandsHook extends LibraryHook {
 			return false;
 
 		api = (RoyalCommands) this.getPlugin().getServer().getPluginManager()
-				.getPlugin(Library.ROYALCOMMANDS.getPluginName());
+                .getPlugin(Library.ROYALCOMMANDS.getInternalPluginName());
 
 		return api != null;
 	}

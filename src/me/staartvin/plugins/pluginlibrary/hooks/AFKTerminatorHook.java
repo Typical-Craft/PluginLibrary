@@ -24,7 +24,7 @@ public class AFKTerminatorHook extends LibraryHook {
 	 */
 	@Override
 	public boolean isAvailable() {
-		return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.AFKTERMINATOR.getPluginName());
+        return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.AFKTERMINATOR.getInternalPluginName());
 	}
 
 	/*

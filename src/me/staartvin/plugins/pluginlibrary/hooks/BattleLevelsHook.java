@@ -22,7 +22,7 @@ public class BattleLevelsHook extends LibraryHook {
 	 */
 	@Override
 	public boolean isAvailable() {
-		return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.BATTLELEVELS.getPluginName());
+        return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.BATTLELEVELS.getInternalPluginName());
 	}
 
 	/*

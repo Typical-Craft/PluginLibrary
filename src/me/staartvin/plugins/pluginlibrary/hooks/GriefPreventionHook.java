@@ -27,7 +27,8 @@ public class GriefPreventionHook extends LibraryHook {
 	 */
 	@Override
 	public boolean isAvailable() {
-		return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.GRIEFPREVENTION.getPluginName());
+        return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.GRIEFPREVENTION
+                .getInternalPluginName());
 	}
 
 	/*
@@ -42,7 +43,7 @@ public class GriefPreventionHook extends LibraryHook {
             return false;
 
         griefPrevention = (GriefPrevention) this.getPlugin().getServer().getPluginManager()
-                .getPlugin(Library.GRIEFPREVENTION.getPluginName());
+                .getPlugin(Library.GRIEFPREVENTION.getInternalPluginName());
 
         return griefPrevention != null;
     }
@@ -126,11 +127,8 @@ public class GriefPreventionHook extends LibraryHook {
 
         Claim claim = griefPrevention.dataStore.getClaimAt(loc, false, data.lastClaim);
 
-        if (claim != null) {
-            return true;
-        }
+        return claim != null;
 
-        return false;
     }
 
 }

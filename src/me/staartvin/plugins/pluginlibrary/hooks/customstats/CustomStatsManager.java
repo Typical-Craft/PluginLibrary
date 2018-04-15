@@ -25,7 +25,7 @@ public class CustomStatsManager {
 	public void registerCustomStats() {
 
 		// Stats is not available
-		if (!plugin.isLibraryLoaded(Library.STATS))
+        if (!PluginLibrary.isLibraryLoaded(Library.STATS))
 			return;
 
 		StatsHook hook = (StatsHook) PluginLibrary.getLibrary(Library.STATS);

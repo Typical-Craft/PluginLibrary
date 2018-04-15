@@ -36,7 +36,7 @@ public class McMMOHook extends LibraryHook {
     public boolean isAvailable() {
         // TODO Auto-generated method stub
 
-        return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.MCMMO.getPluginName());
+        return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.MCMMO.getInternalPluginName());
     }
 
     /*
@@ -51,7 +51,7 @@ public class McMMOHook extends LibraryHook {
         if (!isAvailable())
             return false;
 
-        api = (mcMMO) this.getPlugin().getServer().getPluginManager().getPlugin(Library.MCMMO.getPluginName());
+        api = (mcMMO) this.getPlugin().getServer().getPluginManager().getPlugin(Library.MCMMO.getInternalPluginName());
 
         return api != null;
     }

@@ -3,7 +3,7 @@ package me.staartvin.plugins.pluginlibrary.hooks;
 import me.staartvin.plugins.pluginlibrary.Library;
 import me.staartvin.statz.Statz;
 import me.staartvin.statz.database.datatype.RowRequirement;
-import me.staartvin.statz.datamanager.PlayerStat;
+import me.staartvin.statz.datamanager.player.PlayerStat;
 import org.bukkit.Statistic;
 
 import java.util.UUID;
@@ -28,7 +28,7 @@ public class StatzHook extends LibraryHook {
     public boolean isAvailable() {
         // TODO Auto-generated method stub
 
-        return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.STATZ.getPluginName());
+        return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.STATZ.getInternalPluginName());
     }
 
     /*
@@ -44,7 +44,7 @@ public class StatzHook extends LibraryHook {
             return false;
 
         statz = (Statz) this.getPlugin().getServer().getPluginManager()
-                .getPlugin(Library.STATZ.getPluginName());
+                .getPlugin(Library.STATZ.getInternalPluginName());
 
         return statz != null;
     }
@@ -75,7 +75,7 @@ public class StatzHook extends LibraryHook {
     public Double getTotalStatistics(PlayerStat statType, UUID uuid, String worldName) {
         if (!this.isAvailable()) return -1.0;
 
-        return (double) statz.getStatzAPI().getTotalOf(statType, uuid, worldName);
+        return statz.getStatzAPI().getTotalOf(statType, uuid, worldName);
     }
 
     /**
@@ -96,6 +96,6 @@ public class StatzHook extends LibraryHook {
     public Double getSpecificStatistics(PlayerStat statType, UUID uuid, RowRequirement... requirements) {
         if (!this.isAvailable()) return -1.0;
 
-        return (double) statz.getStatzAPI().getSpecificData(statType, uuid, requirements);
+        return statz.getStatzAPI().getSpecificData(statType, uuid, requirements);
     }
 }

@@ -25,7 +25,8 @@ public class AcidIslandHook extends LibraryHook {
 	 */
 	@Override
 	public boolean isAvailable() {
-        return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.ACIDISLAND.getPluginName());
+        return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.ACIDISLAND
+                .getInternalPluginName());
 	}
 
 	/*
@@ -40,7 +41,7 @@ public class AcidIslandHook extends LibraryHook {
             return false;
 
         acidIsland = (ASkyBlock) this.getPlugin().getServer().getPluginManager()
-                .getPlugin(Library.ACIDISLAND.getPluginName());
+                .getPlugin(Library.ACIDISLAND.getInternalPluginName());
 
         return acidIsland != null;
 	}

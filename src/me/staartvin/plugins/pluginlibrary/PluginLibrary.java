@@ -103,15 +103,19 @@ public class PluginLibrary extends JavaPlugin {
         int count = 0;
 
         for (Library l : Library.values()) {
-            LibraryHook hook = l.getHook();
+            LibraryHook libraryHook = l.getHook();
 
-            if (hook.isAvailable()) {
-                // One more library loaded.
-                if (hook.hook()) {
-                    loadedLibraries.add(l);
-                    count++;
+            if (libraryHook.isAvailable()) {
+                try {
+                    if (libraryHook.hook()) {
+                        loadedLibraries.add(l);
+                        count++;
+                    }
+                } catch (NoClassDefFoundError error) {
+                    this.getServer().getConsoleSender().sendMessage(ChatColor.RED + "Obtained error when loading " +
+                            l.getHumanPluginName());
+                    error.printStackTrace();
                 }
-
             }
         }
 
@@ -145,14 +149,18 @@ public class PluginLibrary extends JavaPlugin {
         StringBuilder builder = new StringBuilder("");
 
         for (int i = 0, l = loadedLibraries.size(); i < l; i++) {
+            Library library = loadedLibraries.get(i);
+
+            String addedString = ChatColor.DARK_AQUA + library.getHumanPluginName() + ChatColor.DARK_GREEN + " (by " +
+                    library
+                            .getAuthor() + ")" + ChatColor.RESET;
+
             if (i == 0) {
-                builder.append(ChatColor.DARK_AQUA + loadedLibraries.get(i).getPluginName() + ChatColor.RESET);
+                builder.append(addedString);
             } else if (i == (l - 1)) {
-                builder.append(ChatColor.GRAY + " and "
-                        + (ChatColor.DARK_AQUA + loadedLibraries.get(i).getPluginName() + ChatColor.RESET));
+                builder.append(ChatColor.GRAY + " and " + addedString);
             } else {
-                builder.append(ChatColor.GRAY + ", "
-                        + (ChatColor.DARK_AQUA + loadedLibraries.get(i).getPluginName() + ChatColor.RESET));
+                builder.append(ChatColor.GRAY + ", " + addedString);
             }
         }
 

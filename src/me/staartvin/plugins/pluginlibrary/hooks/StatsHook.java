@@ -5,7 +5,6 @@ import me.staartvin.plugins.pluginlibrary.hooks.customstats.FoodEatenStat;
 import me.staartvin.plugins.pluginlibrary.hooks.customstats.MobKilledStat;
 import nl.lolmewn.stats.api.stat.Stat;
 import nl.lolmewn.stats.api.stat.StatEntry;
-import nl.lolmewn.stats.api.storage.StorageException;
 import nl.lolmewn.stats.api.user.StatsHolder;
 import nl.lolmewn.stats.bukkit.BukkitMain;
 import org.bukkit.Material;
@@ -35,7 +34,7 @@ public class StatsHook extends LibraryHook {
 	@Override
 	public boolean isAvailable() {
 		// TODO Auto-generated method stub
-		return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.STATS.getPluginName());
+        return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.STATS.getInternalPluginName());
 	}
 
 	/*
@@ -48,7 +47,7 @@ public class StatsHook extends LibraryHook {
 		if (!isAvailable())
 			return false;
 
-		stats = (BukkitMain) this.getPlugin().getServer().getPluginManager().getPlugin(Library.STATS.getPluginName());
+        stats = (BukkitMain) this.getPlugin().getServer().getPluginManager().getPlugin(Library.STATS.getInternalPluginName());
 
 		return stats != null;
 	}
@@ -558,7 +557,7 @@ public class StatsHook extends LibraryHook {
             if (user == null) {
                 try {
                     user = stats.getUserManager().loadUser(player.getUniqueId(), stats.getStatManager());
-                } catch (StorageException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 

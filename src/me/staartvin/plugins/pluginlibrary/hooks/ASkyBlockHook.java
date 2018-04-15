@@ -25,7 +25,7 @@ public class ASkyBlockHook extends LibraryHook {
 	 */
 	@Override
 	public boolean isAvailable() {
-		return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.ASKYBLOCK.getPluginName());
+        return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.ASKYBLOCK.getInternalPluginName());
 	}
 
 	/*
@@ -40,7 +40,7 @@ public class ASkyBlockHook extends LibraryHook {
             return false;
 
         aSkyBlock = (ASkyBlock) this.getPlugin().getServer().getPluginManager()
-                .getPlugin(Library.ASKYBLOCK.getPluginName());
+                .getPlugin(Library.ASKYBLOCK.getInternalPluginName());
 
         return aSkyBlock != null;
 	}

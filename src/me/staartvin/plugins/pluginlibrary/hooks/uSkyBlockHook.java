@@ -23,7 +23,7 @@ public class uSkyBlockHook extends LibraryHook {
 	 */
 	@Override
 	public boolean isAvailable() {
-		return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.USKYBLOCK.getPluginName());
+        return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.USKYBLOCK.getInternalPluginName());
 	}
 
 	/*
@@ -38,7 +38,7 @@ public class uSkyBlockHook extends LibraryHook {
             return false;
 
         uSkyBlock = (uSkyBlockAPI) this.getPlugin().getServer().getPluginManager()
-                .getPlugin(Library.USKYBLOCK.getPluginName());
+                .getPlugin(Library.USKYBLOCK.getInternalPluginName());
 
         return uSkyBlock != null;
 	}

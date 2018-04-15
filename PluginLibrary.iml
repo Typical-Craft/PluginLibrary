@@ -24,234 +24,7 @@
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/libs/afkTerminator.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/libs/Autorank-4.0.7.jar!/" />
-        </CLASSES>
-        <JAVADOC>
-          <root url="http://62.131.38.74:8080/job/Autorank/javadoc/" />
-        </JAVADOC>
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/libs/Factions.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$MODULE_DIR$/libs/Factions.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/libs/MassiveCore.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$MODULE_DIR$/libs/MassiveCore.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/libs/mcMMO.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/libs/OnTime.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/libs/RoyalCommands.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/libs/spigot.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$MODULE_DIR$/libs/spigot.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/libs/UltimateCore.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/libs/Stats3.jar!/" />
-        </CLASSES>
-        <JAVADOC>
-          <root url="http://ci.lolmewn.nl/job/Stats/javadoc/" />
-        </JAVADOC>
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/libs/Statz-1.4.3.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/libs/acidisland.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/libs/askyblock.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/libs/uSkyBlock.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/libs/BattleLevels.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/libs/AdvancedAchievements.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/libs/GriefPrevention.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/libs/Jobs3.9.8.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/libs/RPGme.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/libs/Vault.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/libs/worldguard-6.2.1.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/libs/worldedit-bukkit-6.1.7.2.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/libs/EssentialsX-2.0.1.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/libs/Quests-2.9.5.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="library" name="Maven: Autorank:Autorank:4.0.7-Dev-10" level="project" />
-    <orderEntry type="library" name="Maven: Autorank:Autorank:4.0.7-Dev-12" level="project" />
+    <orderEntry type="library" name="Stats3" level="project" />
     <orderEntry type="library" name="Maven: org.spigotmc:spigot-api:1.12.1-R0.1-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.6" level="project" />
     <orderEntry type="library" name="Maven: com.googlecode.json-simple:json-simple:1.1.1" level="project" />
@@ -260,10 +33,12 @@
     <orderEntry type="library" name="Maven: org.yaml:snakeyaml:1.18" level="project" />
     <orderEntry type="library" name="Maven: net.md-5:bungeecord-chat:1.12-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: org.bukkit:bukkit:1.12.1-R0.1-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: me.staartvin.Statz:Statz:1.4.4-Dev-25" level="project" />
+    <orderEntry type="library" name="Maven: me.staartvin.Statz:Statz:1.4.5-Dev-40" level="project" />
     <orderEntry type="library" name="Maven: com.vexsoftware:votifier:1.9" level="project" />
     <orderEntry type="library" name="Maven: com.vexsoftware:nuvotifier-universal:2.3.2.2" level="project" />
-    <orderEntry type="library" name="Maven: me.staartvin:PluginLibrary:1.1" level="project" />
+    <orderEntry type="library" name="Maven: me.staartvin:PluginLibrary:1.1-Dev-19" level="project" />
+    <orderEntry type="library" name="Maven: com.massivecraft.factions:Factions:2.13.6" level="project" />
+    <orderEntry type="library" name="Maven: com.massivecraft.massivecore:MassiveCore:2.13.6" level="project" />
     <orderEntry type="library" name="Maven: com.massivecraft:Factions:2.8.2" level="project" />
     <orderEntry type="library" name="Maven: com.massivecraft:MassiveCore:2.8.2" level="project" />
     <orderEntry type="library" name="Maven: net.milkbowl.vault:Vault:1.5.6" level="project" />
@@ -274,16 +49,16 @@
     <orderEntry type="library" name="Maven: com.wasteofplastic:askyblock:2.9.8.1" level="project" />
     <orderEntry type="library" name="Maven: me.robin.battlelevels.api:BattleLevels:1" level="project" />
     <orderEntry type="library" name="Maven: net.ess3:EssentialsX:2.0.1" level="project" />
-    <orderEntry type="library" name="Maven: nl.lolmewn.stats:Stats:3.0.2" level="project" />
+    <orderEntry type="library" name="Maven: nl.lolmewn.stats:Stats:3.1.2-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: bammerbom:UltimateCoreNew:2.1.16" level="project" />
     <orderEntry type="library" name="Maven: RPGme:RPGme:1.0.2" level="project" />
     <orderEntry type="library" name="Maven: RoyalCommands:RoyalCommands:4.1.1" level="project" />
-    <orderEntry type="library" name="Maven: OnTime:OnTime:4.1.4" level="project" />
-    <orderEntry type="library" name="Maven: Autorank:Autorank:4.1-Dev-21" level="project" />
+    <orderEntry type="library" name="Maven: Autorank:Autorank:4.1-Dev-35" level="project" />
     <orderEntry type="library" name="Maven: EssentialsGroupManager:EssentialsGroupManager:2.1.11" level="project" />
     <orderEntry type="library" name="Maven: com.platymuus:bukkit-permissions:2.5" level="project" />
     <orderEntry type="library" name="Maven: PowerfulPerms:PowerfulPerms:3.0.3" level="project" />
     <orderEntry type="library" name="Maven: GriefPrevention:GriefPrevention:14.9.1" level="project" />
+    <orderEntry type="library" name="Maven: OnTime:OnTime:4.1.3" level="project" />
     <orderEntry type="library" name="Maven: com.hm.achievement:AdvancedAchievements:5.2.6" level="project" />
     <orderEntry type="library" name="Maven: com.hm.mcshared:MCShared:1.0.4" level="project" />
     <orderEntry type="library" name="Maven: codecrafter47.bungeetablistplus:bungeetablistplus-api-bukkit:2.7.3" level="project" />
@@ -300,6 +75,8 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: net.sf.opencsv:opencsv:2.0" level="project" />
     <orderEntry type="library" name="Maven: com.github.rlf:uSkyBlock-API:2.6.4" level="project" />
     <orderEntry type="library" name="Maven: me.blackvein.quests:quests:3.0.0-Naomi" level="project" />
+    <orderEntry type="library" name="Maven: fatpigsarefat:Quests:1.12" level="project" />
+    <orderEntry type="library" name="Maven: com.savagefactions:Factions:1.6.9.5" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.12" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:java-hamcrest:2.0.0.0" level="project" />

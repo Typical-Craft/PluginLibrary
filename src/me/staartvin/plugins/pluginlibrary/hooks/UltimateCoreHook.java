@@ -27,7 +27,7 @@ public class UltimateCoreHook extends LibraryHook {
 	 */
 	@Override
 	public boolean isAvailable() {
-		return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.ULTIMATECORE.getPluginName());
+        return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.ULTIMATECORE.getInternalPluginName());
 	}
 
 	/*
@@ -41,7 +41,7 @@ public class UltimateCoreHook extends LibraryHook {
 			return false;
 
 		api = (UltimateCore) this.getPlugin().getServer().getPluginManager()
-				.getPlugin(Library.ULTIMATECORE.getPluginName());
+                .getPlugin(Library.ULTIMATECORE.getInternalPluginName());
 
 		return api != null;
 	}

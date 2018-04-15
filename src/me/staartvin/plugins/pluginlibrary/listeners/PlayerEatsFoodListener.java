@@ -37,7 +37,7 @@ public class PlayerEatsFoodListener implements Listener {
 			return;
 
 		// Stats is not available
-		if (!plugin.isLibraryLoaded(Library.STATS))
+        if (!PluginLibrary.isLibraryLoaded(Library.STATS))
 			return;
 
 		Player p = event.getPlayer();

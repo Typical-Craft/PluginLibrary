@@ -24,7 +24,8 @@ public class AdvancedAchievementsHook extends LibraryHook {
 	 */
 	@Override
 	public boolean isAvailable() {
-		return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.ADVANCEDACHIEVEMENTS.getPluginName());
+        return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.ADVANCEDACHIEVEMENTS
+                .getInternalPluginName());
 	}
 
 	/*
@@ -39,7 +40,7 @@ public class AdvancedAchievementsHook extends LibraryHook {
             return false;
 
         advancedAchievements = (AdvancedAchievements) this.getPlugin().getServer().getPluginManager()
-                .getPlugin(Library.ADVANCEDACHIEVEMENTS.getPluginName());
+                .getPlugin(Library.ADVANCEDACHIEVEMENTS.getInternalPluginName());
 
         return advancedAchievements != null;
 	}

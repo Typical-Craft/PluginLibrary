@@ -3,6 +3,7 @@ package me.staartvin.plugins.pluginlibrary.hooks;
 import me.blackvein.quests.Quester;
 import me.blackvein.quests.Quests;
 import me.staartvin.plugins.pluginlibrary.Library;
+import org.bukkit.plugin.Plugin;
 
 import java.util.UUID;
 
@@ -27,7 +28,7 @@ public class QuestsHook extends LibraryHook {
 	public boolean isAvailable() {
 		// TODO Auto-generated method stub
 
-		return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.QUESTS.getPluginName());
+        return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.QUESTS.getInternalPluginName());
 	}
 
 	/*
@@ -42,10 +43,15 @@ public class QuestsHook extends LibraryHook {
 		if (!isAvailable())
 			return false;
 
-		quests = (Quests) this.getPlugin().getServer().getPluginManager()
-				.getPlugin(Library.QUESTS.getPluginName());
+        Plugin plugin = this.getPlugin().getServer().getPluginManager()
+                .getPlugin(Library.QUESTS.getInternalPluginName());
 
-        return quests != null && quests instanceof Quests;
+        if (!(plugin instanceof Quests))
+            return false;
+
+        quests = (Quests) plugin;
+
+        return quests != null;
     }
 
 	private Quester getQuester(UUID uuid) {

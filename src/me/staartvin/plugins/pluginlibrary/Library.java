@@ -6,65 +6,86 @@ import me.staartvin.plugins.pluginlibrary.hooks.*;
  * This class holds all libraries PluginLibrary has.
  * <p>
  * Date created: 14:12:35 12 aug. 2015
- * 
+ *
  * @author Staartvin
- * 
  */
 public enum Library {
 
-	AUTORANK("Autorank", new AutorankHook()),
-	STATS("Stats", new StatsHook()),
-	MCMMO("mcMMO", new McMMOHook()),
-	FACTIONS("Factions", new FactionsHook()),
-	ONTIME("OnTime", new OnTimeHook()),
-	AFKTERMINATOR("afkTerminator", new AFKTerminatorHook()),
-	ROYALCOMMANDS("RoyalCommands", new RoyalCommandsHook()),
-	ULTIMATECORE("UltimateCore", new UltimateCoreHook()),
-	STATZ("Statz", new StatzHook()),
-    ACIDISLAND("AcidIsland", new AcidIslandHook()),
-    ADVANCEDACHIEVEMENTS("AdvancedAchievements", new AdvancedAchievementsHook()),
-    ASKYBLOCK("ASkyBlock", new ASkyBlockHook()),
-    BATTLELEVELS("BattleLevels", new BattleLevelsHook()),
-    GRIEFPREVENTION("GriefPrevention", new GriefPreventionHook()),
-    JOBS("Jobs", new JobsHook()),
-    RPGME("RPGme", new RPGmeHook()),
-    USKYBLOCK("uSkyBlock", new uSkyBlockHook()),
-    VAULT("Vault", new VaultHook()),
-    WORLDGUARD("WorldGuard", new WorldGuardHook()),
-    ESSENTIALSX("Essentials", new EssentialsXHook()),
-    QUESTS("Quests", new QuestsHook());
+    AUTORANK("Autorank", new AutorankHook(), "Staartvin"),
+    MCMMO("mcMMO", new McMMOHook(), "t00thpick1"),
+    FACTIONS("Factions", new FactionsHook(), "Cayorion"),
+    ONTIME("OnTime", new OnTimeHook(), "Edge209"),
+    AFKTERMINATOR("afkTerminator", new AFKTerminatorHook(), "Edge209"),
+    ROYALCOMMANDS("RoyalCommands", new RoyalCommandsHook(), "WizardCM"),
+    ULTIMATECORE("UltimateCore", new UltimateCoreHook(), "Bammerbom"),
+    STATZ("Statz", new StatzHook(), "Staartvin"),
+    ACIDISLAND("AcidIsland", new AcidIslandHook(), "tastybento"),
+    ADVANCEDACHIEVEMENTS("AdvancedAchievements", new AdvancedAchievementsHook(), "DarkPyves"),
+    ASKYBLOCK("ASkyBlock", new ASkyBlockHook(), "tastybento"),
+    BATTLELEVELS("BattleLevels", new BattleLevelsHook(), "RobiRami"),
+    GRIEFPREVENTION("GriefPrevention", new GriefPreventionHook(), "RoboMWM"),
+    JOBS("Jobs", new JobsHook(), "Zrips"),
+    RPGME("RPGme", new RPGmeHook(), "Flamedek"),
+    USKYBLOCK("uSkyBlock", new uSkyBlockHook(), "R4zorax"),
+    VAULT("Vault", new VaultHook(), "Kainzo"),
+    WORLDGUARD("WorldGuard", new WorldGuardHook(), "sk89q"),
+    ESSENTIALSX("Essentials", "EssentialsX", new EssentialsXHook(), "drtshock"),
+    QUESTS("Quests", new QuestsHook(), "HappyPikachu"),
+    STATS("Stats", new StatsHook(), "Lolmewn"),
+    QUESTS_FATPIGSAREFAT("Quests", new QuestsFatPigsAreFatHook(), "Fatpigsarefat"),
+    SAVAGE_FACTIONS("Factions", "SavageFactions", new SavageFactionsHook(), "ProSavage");
 
-	private String pluginName;
-	private LibraryHook hook;
+    private String internalPluginName, humanPluginName, authorName;
+    private LibraryHook hook;
 
-	Library(String pluginName, LibraryHook hook) {
-		this.pluginName = pluginName;
+    Library(String pluginName, String humanPluginName, LibraryHook hook, String authorName) {
+        this.internalPluginName = pluginName;
+        this.humanPluginName = humanPluginName;
         this.hook = hook;
-	}
+        this.authorName = authorName;
+    }
 
-	public String getPluginName() {
-		return pluginName;
-	}
+    Library(String pluginName, LibraryHook hook, String authorName) {
+        this.internalPluginName = pluginName;
+        this.hook = hook;
+        this.authorName = authorName;
+    }
 
-	public LibraryHook getHook() {
-		return hook;
-	}
+    /**
+     * Get a library programmaticaly. This method is the same as valueOf(), but is case-insensitive.
+     *
+     * @param value name of the library
+     *
+     * @return the Library objec.
+     *
+     * @throws IllegalArgumentException When no library with the given name was found.
+     */
+    public static Library getEnum(String value) throws IllegalArgumentException {
+        for (Library e : Library.values()) {
+            if (e.getInternalPluginName().equalsIgnoreCase(value))
+                return e;
+        }
 
-	/**
-	 * Get a library programmaticaly. This method is the same as valueOf(), but
-	 * is case-insensitive.
-	 * 
-	 * @param value
-	 *            name of the library
-	 * @return the Library objec.
-	 * @throws IllegalArgumentException When no library with the given name was found.
-	 */
-	public static Library getEnum(String value) throws IllegalArgumentException {
-		for (Library e : Library.values()) {
-			if (e.getPluginName().equalsIgnoreCase(value))
-				return e;
-		}
+        throw new IllegalArgumentException("There is no library called '" + value + "'!");
+    }
 
-		throw new IllegalArgumentException("There is no library called '" + value + "'!");
-	}
+    public String getInternalPluginName() {
+        return internalPluginName;
+    }
+
+    public LibraryHook getHook() {
+        return hook;
+    }
+
+    public String getAuthor() {
+        return authorName;
+    }
+
+    public String getHumanPluginName() {
+        if (humanPluginName == null) {
+            return internalPluginName;
+        }
+
+        return humanPluginName;
+    }
 }

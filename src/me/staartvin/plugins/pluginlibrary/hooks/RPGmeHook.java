@@ -26,7 +26,7 @@ public class RPGmeHook extends LibraryHook {
      */
     @Override
     public boolean isAvailable() {
-        return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.RPGME.getPluginName());
+        return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.RPGME.getInternalPluginName());
     }
 
     /*

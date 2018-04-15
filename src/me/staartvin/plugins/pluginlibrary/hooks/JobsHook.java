@@ -28,7 +28,7 @@ public class JobsHook extends LibraryHook {
      */
     @Override
     public boolean isAvailable() {
-        return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.JOBS.getPluginName());
+        return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.JOBS.getInternalPluginName());
     }
 
     /*

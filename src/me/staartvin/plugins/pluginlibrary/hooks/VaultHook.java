@@ -52,7 +52,7 @@ public class VaultHook extends LibraryHook {
      */
     @Override
     public boolean isAvailable() {
-        return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.VAULT.getPluginName());
+        return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.VAULT.getInternalPluginName());
     }
 
     /*
@@ -69,11 +69,7 @@ public class VaultHook extends LibraryHook {
 
         boolean setupEco = setupEconomy(), setupChat = setupChat(), setupPerm = setupPermissions();
 
-        if (setupEco == false || setupChat == false || setupPerm == false) {
-            return false;
-        }
-
-        return true;
+        return setupEco != false && setupChat != false && setupPerm != false;
     }
 
     private boolean setupEconomy() {

@@ -8,6 +8,7 @@ import com.massivecraft.factions.entity.MPlayer;
 import com.massivecraft.massivecore.ps.PS;
 import me.staartvin.plugins.pluginlibrary.Library;
 import org.bukkit.Location;
+import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +36,7 @@ public class FactionsHook extends LibraryHook {
 	public boolean isAvailable() {
 		// TODO Auto-generated method stub
 
-		return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.FACTIONS.getPluginName());
+        return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.FACTIONS.getInternalPluginName());
 	}
 
 	/*
@@ -50,8 +51,13 @@ public class FactionsHook extends LibraryHook {
 		if (!isAvailable())
 			return false;
 
-		factions = (Factions) this.getPlugin().getServer().getPluginManager()
-				.getPlugin(Library.FACTIONS.getPluginName());
+        Plugin plugin = this.getPlugin().getServer().getPluginManager()
+                .getPlugin(Library.FACTIONS.getInternalPluginName());
+
+        if (!(plugin instanceof Factions))
+            return false;
+
+        factions = (Factions) plugin;
 
 		return factions != null;
 	}

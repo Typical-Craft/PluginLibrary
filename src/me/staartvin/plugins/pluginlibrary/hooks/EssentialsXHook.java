@@ -27,7 +27,7 @@ public class EssentialsXHook extends LibraryHook {
 	public boolean isAvailable() {
 		// TODO Auto-generated method stub
 
-		return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.ESSENTIALSX.getPluginName());
+        return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.ESSENTIALSX.getInternalPluginName());
 	}
 
 	/*
@@ -43,7 +43,7 @@ public class EssentialsXHook extends LibraryHook {
 			return false;
 
 		essentials = (Essentials) this.getPlugin().getServer().getPluginManager()
-				.getPlugin(Library.ESSENTIALSX.getPluginName());
+                .getPlugin(Library.ESSENTIALSX.getInternalPluginName());
 
 		return essentials != null;
 	}

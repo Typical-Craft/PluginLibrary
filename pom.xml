@@ -198,7 +198,7 @@
         <dependency>
             <groupId>nl.lolmewn.stats</groupId>
             <artifactId>Stats</artifactId>
-            <version>3.0.2</version>
+            <version>3.1.2-20171108.195442-1</version>
         </dependency>
 
         <dependency>
@@ -220,12 +220,6 @@
         </dependency>
 
         <dependency>
-            <groupId>OnTime</groupId>
-            <artifactId>OnTime</artifactId>
-            <version>4.1.4</version>
-        </dependency>
-
-        <dependency>
             <groupId>Autorank</groupId>
             <artifactId>Autorank</artifactId>
             <version>LATEST</version>
@@ -235,6 +229,12 @@
             <groupId>GriefPrevention</groupId>
             <artifactId>GriefPrevention</artifactId>
             <version>14.9.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>OnTime</groupId>
+            <artifactId>OnTime</artifactId>
+            <version>4.1.3</version>
         </dependency>
 
         <dependency>
@@ -271,6 +271,18 @@
             <version>3.0.0-Naomi</version>
         </dependency>
 
+        <dependency>
+            <groupId>fatpigsarefat</groupId>
+            <artifactId>Quests</artifactId>
+            <version>1.12</version>
+        </dependency>
+
+        <!-- SavageFactions -->
+        <dependency>
+            <groupId>com.savagefactions</groupId>
+            <artifactId>Factions</artifactId>
+            <version>1.6.9.5</version>
+        </dependency>
 
         <!-- Test dependencies -->
 

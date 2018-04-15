@@ -28,7 +28,8 @@ public class WorldGuardHook extends LibraryHook {
     public boolean isAvailable() {
         // TODO Auto-generated method stub
 
-        return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.WORLDGUARD.getPluginName());
+        return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.WORLDGUARD
+                .getInternalPluginName());
     }
 
     /*
@@ -44,7 +45,7 @@ public class WorldGuardHook extends LibraryHook {
             return false;
 
         worldGuard = (WorldGuardPlugin) this.getPlugin().getServer().getPluginManager()
-                .getPlugin(Library.WORLDGUARD.getPluginName());
+                .getPlugin(Library.WORLDGUARD.getInternalPluginName());
 
         return worldGuard != null;
     }

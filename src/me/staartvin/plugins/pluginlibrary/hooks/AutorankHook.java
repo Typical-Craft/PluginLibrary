@@ -2,8 +2,8 @@ package me.staartvin.plugins.pluginlibrary.hooks;
 
 import me.armar.plugins.autorank.Autorank;
 import me.armar.plugins.autorank.pathbuilder.holders.RequirementsHolder;
-import me.armar.plugins.autorank.pathbuilder.requirement.Requirement;
-import me.armar.plugins.autorank.pathbuilder.result.Result;
+import me.armar.plugins.autorank.pathbuilder.requirement.AbstractRequirement;
+import me.armar.plugins.autorank.pathbuilder.result.AbstractResult;
 import me.staartvin.plugins.pluginlibrary.Library;
 import org.bukkit.entity.Player;
 
@@ -34,7 +34,7 @@ public class AutorankHook extends LibraryHook {
 	public boolean isAvailable() {
 		// TODO Auto-generated method stub
 
-		return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.AUTORANK.getPluginName());
+        return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.AUTORANK.getInternalPluginName());
 	}
 
 	/*
@@ -50,7 +50,7 @@ public class AutorankHook extends LibraryHook {
 			return false;
 
 		autorank = (Autorank) this.getPlugin().getServer().getPluginManager()
-				.getPlugin(Library.AUTORANK.getPluginName());
+                .getPlugin(Library.AUTORANK.getInternalPluginName());
 
 		return autorank != null;
 	}
@@ -121,17 +121,6 @@ public class AutorankHook extends LibraryHook {
 	}
 
 	/**
-	 * Gets the name of the database that Autorank uses to store its global
-	 * times.
-	 * 
-	 * @return name of database or null if MySQL is not used by Autorank.
-	 */
-	public String getMySQLDatabase() {
-        if (!this.isAvailable()) return null;
-	    return autorank.getAPI().getMySQLDatabase();
-	}
-
-	/**
 	 * Gets a list of all permission groups a player is currently in. <br>
 	 * Most permission plugins only allow a player to be in one group at the
 	 * time, but some allow multiple.
@@ -161,7 +150,7 @@ public class AutorankHook extends LibraryHook {
 	 * @param req
 	 *            The custom requirement class for Autorank to use.
 	 */
-	public void registerRequirement(String requirementName, Class<? extends Requirement> req) {
+    public void registerRequirement(String requirementName, Class<? extends AbstractRequirement> req) {
         if (!this.isAvailable()) return;
 		autorank.getAPI().registerRequirement(requirementName, req);
 	}
@@ -174,7 +163,7 @@ public class AutorankHook extends LibraryHook {
 	 *            The custom result class for Autorank to use.
 	 */
 	public void registerResult(String resultName,
-			Class<? extends Result> res) {
+                               Class<? extends AbstractResult> res) {
         if (!this.isAvailable()) return;
 		autorank.getAPI().registerResult(resultName, res);
 	}
