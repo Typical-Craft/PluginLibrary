@@ -56,7 +56,7 @@ public class McMMOHook extends LibraryHook {
         return api != null;
     }
 
-	/* ExperienceAPI below */
+    /* ExperienceAPI below */
 
     /**
      * Checks whether given string is a valid type of skill suitable for the
@@ -69,7 +69,12 @@ public class McMMOHook extends LibraryHook {
 
         if (!this.isAvailable()) return false;
 
-        return ExperienceAPI.isValidSkillType(skillType);
+        try {
+            return ExperienceAPI.isValidSkillType(skillType);
+        } catch (Exception e) {
+            return false;
+        }
+
     }
 
     /**
@@ -82,7 +87,12 @@ public class McMMOHook extends LibraryHook {
      */
     public boolean isNonChildSkill(String skillType) {
         if (!this.isAvailable()) return false;
-        return ExperienceAPI.isNonChildSkill(skillType);
+
+        try {
+            return ExperienceAPI.isNonChildSkill(skillType);
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     /**
@@ -99,7 +109,12 @@ public class McMMOHook extends LibraryHook {
      */
     public void addRawXP(Player player, String skillType, float XP, String xpGainReason, boolean isUnshared) {
         if (!this.isAvailable()) return;
-        ExperienceAPI.addRawXP(player, skillType, XP, xpGainReason, isUnshared);
+
+        try {
+            ExperienceAPI.addRawXP(player, skillType, XP, xpGainReason, isUnshared);
+        } catch (Exception e) {
+            return;
+        }
     }
 
     /**
@@ -114,7 +129,12 @@ public class McMMOHook extends LibraryHook {
 
     public void addRawXPOffline(UUID uuid, String skillType, float XP) {
         if (!this.isAvailable()) return;
-        ExperienceAPI.addRawXPOffline(uuid, skillType, XP);
+
+        try {
+            ExperienceAPI.addRawXPOffline(uuid, skillType, XP);
+        } catch (Exception e) {
+            return;
+        }
     }
 
     /**
@@ -131,7 +151,12 @@ public class McMMOHook extends LibraryHook {
      */
     public void addModifiedXP(Player player, String skillType, int XP, String xpGainReason, boolean isUnshared) {
         if (!this.isAvailable()) return;
-        ExperienceAPI.addModifiedXP(player, skillType, XP, xpGainReason, isUnshared);
+
+        try {
+            ExperienceAPI.addModifiedXP(player, skillType, XP, xpGainReason, isUnshared);
+        } catch (Exception e) {
+            return;
+        }
     }
 
     /**
@@ -147,7 +172,12 @@ public class McMMOHook extends LibraryHook {
      */
     public void addMultipliedXP(Player player, String skillType, int XP, String xpGainReason) {
         if (!this.isAvailable()) return;
-        ExperienceAPI.addMultipliedXP(player, skillType, XP, xpGainReason);
+
+        try {
+            ExperienceAPI.addMultipliedXP(player, skillType, XP, xpGainReason);
+        } catch (Exception e) {
+            return;
+        }
     }
 
     /**
@@ -163,7 +193,12 @@ public class McMMOHook extends LibraryHook {
     @Deprecated
     public void addMultipliedXPOffline(String playerName, String skillType, int XP) {
         if (!this.isAvailable()) return;
-        ExperienceAPI.addMultipliedXPOffline(playerName, skillType, XP);
+
+        try {
+            ExperienceAPI.addMultipliedXPOffline(playerName, skillType, XP);
+        } catch (Exception e) {
+            return;
+        }
     }
 
     /**
@@ -180,7 +215,12 @@ public class McMMOHook extends LibraryHook {
     @Deprecated
     public void addModifiedXPOffline(String playerName, String skillType, int XP) {
         if (!this.isAvailable()) return;
-        ExperienceAPI.addModifiedXPOffline(playerName, skillType, XP);
+
+        try {
+            ExperienceAPI.addModifiedXPOffline(playerName, skillType, XP);
+        } catch (Exception e) {
+            return;
+        }
     }
 
     /**
@@ -198,7 +238,12 @@ public class McMMOHook extends LibraryHook {
      */
     public void addXP(Player player, String skillType, int XP, String xpGainReason, boolean isUnshared) {
         if (!this.isAvailable()) return;
-        ExperienceAPI.addXP(player, skillType, XP, xpGainReason, isUnshared);
+
+        try {
+            ExperienceAPI.addXP(player, skillType, XP, xpGainReason, isUnshared);
+        } catch (Exception e) {
+            return;
+        }
     }
 
     /**
@@ -212,7 +257,12 @@ public class McMMOHook extends LibraryHook {
      */
     public int getXP(Player player, String skillType) {
         if (!this.isAvailable()) return -1;
-        return ExperienceAPI.getXP(player, skillType);
+
+        try {
+            return ExperienceAPI.getXP(player, skillType);
+        } catch (Exception e) {
+            return -1;
+        }
     }
 
     /**
@@ -227,7 +277,12 @@ public class McMMOHook extends LibraryHook {
      */
     public int getOfflineXP(UUID uuid, String skillType) {
         if (!this.isAvailable()) return -1;
-        return ExperienceAPI.getOfflineXP(uuid, skillType);
+
+        try {
+            return ExperienceAPI.getOfflineXP(uuid, skillType);
+        } catch (Exception e) {
+            return -1;
+        }
     }
 
     /**
@@ -241,7 +296,12 @@ public class McMMOHook extends LibraryHook {
      */
     public float getXPRaw(Player player, String skillType) {
         if (!this.isAvailable()) return -1;
-        return ExperienceAPI.getXPRaw(player, skillType);
+
+        try {
+            return ExperienceAPI.getXPRaw(player, skillType);
+        } catch (Exception e) {
+            return -1;
+        }
     }
 
     /**
@@ -256,7 +316,12 @@ public class McMMOHook extends LibraryHook {
      */
     public float getOfflineXPRaw(UUID uuid, String skillType) {
         if (!this.isAvailable()) return -1;
-        return ExperienceAPI.getOfflineXPRaw(uuid, skillType);
+
+        try {
+            return ExperienceAPI.getOfflineXPRaw(uuid, skillType);
+        } catch (Exception e) {
+            return -1;
+        }
     }
 
     /**
@@ -270,7 +335,12 @@ public class McMMOHook extends LibraryHook {
      */
     public int getXPToNextLevel(Player player, String skillType) {
         if (!this.isAvailable()) return -1;
-        return ExperienceAPI.getXPToNextLevel(player, skillType);
+
+        try {
+            return ExperienceAPI.getXPToNextLevel(player, skillType);
+        } catch (Exception e) {
+            return -1;
+        }
     }
 
     /**
@@ -286,7 +356,12 @@ public class McMMOHook extends LibraryHook {
      */
     public int getOfflineXPToNextLevel(UUID uuid, String skillType) {
         if (!this.isAvailable()) return -1;
-        return ExperienceAPI.getOfflineXPToNextLevel(uuid, skillType);
+
+        try {
+            return ExperienceAPI.getOfflineXPToNextLevel(uuid, skillType);
+        } catch (Exception e) {
+            return -1;
+        }
     }
 
     /**
@@ -300,7 +375,12 @@ public class McMMOHook extends LibraryHook {
      */
     public int getXPRemaining(Player player, String skillType) {
         if (!this.isAvailable()) return -1;
-        return ExperienceAPI.getXPRemaining(player, skillType);
+
+        try {
+            return ExperienceAPI.getXPRemaining(player, skillType);
+        } catch (Exception e) {
+            return -1;
+        }
     }
 
     /**
@@ -315,7 +395,12 @@ public class McMMOHook extends LibraryHook {
      */
     public float getOfflineXPRemaining(UUID uuid, String skillType) {
         if (!this.isAvailable()) return -1;
-        return ExperienceAPI.getOfflineXPRemaining(uuid, skillType);
+
+        try {
+            return ExperienceAPI.getOfflineXPRemaining(uuid, skillType);
+        } catch (Exception e) {
+            return -1;
+        }
     }
 
     /**
@@ -328,7 +413,12 @@ public class McMMOHook extends LibraryHook {
      */
     public void addLevel(Player player, String skillType, int levels) {
         if (!this.isAvailable()) return;
-        ExperienceAPI.addLevel(player, skillType, levels);
+
+        try {
+            ExperienceAPI.addLevel(player, skillType, levels);
+        } catch (Exception e) {
+            return;
+        }
     }
 
     /**
@@ -343,7 +433,12 @@ public class McMMOHook extends LibraryHook {
      */
     public void addLevelOffline(UUID uuid, String skillType, int levels) {
         if (!this.isAvailable()) return;
-        ExperienceAPI.addLevelOffline(uuid, skillType, levels);
+
+        try {
+            ExperienceAPI.addLevelOffline(uuid, skillType, levels);
+        } catch (Exception e) {
+            return;
+        }
     }
 
     /**
@@ -356,7 +451,12 @@ public class McMMOHook extends LibraryHook {
      */
     public int getLevel(Player player, String skillType) {
         if (!this.isAvailable()) return -1;
-        return ExperienceAPI.getLevel(player, skillType);
+
+        try {
+            return ExperienceAPI.getLevel(player, skillType);
+        } catch (Exception e) {
+            return -1;
+        }
     }
 
     /**
@@ -370,7 +470,12 @@ public class McMMOHook extends LibraryHook {
      */
     public int getLevelOffline(UUID uuid, String skillType) {
         if (!this.isAvailable()) return -1;
-        return ExperienceAPI.getLevelOffline(uuid, skillType);
+
+        try {
+            return ExperienceAPI.getLevelOffline(uuid, skillType);
+        } catch (Exception e) {
+            return -1;
+        }
     }
 
     /**
@@ -381,7 +486,12 @@ public class McMMOHook extends LibraryHook {
      */
     public int getPowerLevel(Player player) {
         if (!this.isAvailable()) return -1;
-        return ExperienceAPI.getPowerLevel(player);
+
+        try {
+            return ExperienceAPI.getPowerLevel(player);
+        } catch (Exception e) {
+            return -1;
+        }
     }
 
     /**
@@ -393,7 +503,12 @@ public class McMMOHook extends LibraryHook {
      */
     public int getPowerLevelOffline(UUID uuid) {
         if (!this.isAvailable()) return -1;
-        return ExperienceAPI.getPowerLevelOffline(uuid);
+
+        try {
+            return ExperienceAPI.getPowerLevelOffline(uuid);
+        } catch (Exception e) {
+            return -1;
+        }
     }
 
     /**
@@ -405,7 +520,12 @@ public class McMMOHook extends LibraryHook {
      */
     public int getLevelCap(String skillType) {
         if (!this.isAvailable()) return -1;
-        return ExperienceAPI.getLevelCap(skillType);
+
+        try {
+            return ExperienceAPI.getLevelCap(skillType);
+        } catch (Exception e) {
+            return -1;
+        }
     }
 
     /**
@@ -415,7 +535,12 @@ public class McMMOHook extends LibraryHook {
      */
     public int getPowerLevelCap() {
         if (!this.isAvailable()) return -1;
-        return ExperienceAPI.getPowerLevelCap();
+
+        try {
+            return ExperienceAPI.getPowerLevelCap();
+        } catch (Exception e) {
+            return -1;
+        }
     }
 
     /**
@@ -430,7 +555,12 @@ public class McMMOHook extends LibraryHook {
      */
     public int getPlayerRankSkill(UUID uuid, String skillType) {
         if (!this.isAvailable()) return -1;
-        return ExperienceAPI.getPlayerRankSkill(uuid, skillType);
+
+        try {
+            return ExperienceAPI.getPlayerRankSkill(uuid, skillType);
+        } catch (Exception e) {
+            return -1;
+        }
     }
 
     /**
@@ -442,7 +572,12 @@ public class McMMOHook extends LibraryHook {
      */
     public int getPlayerRankOverall(UUID uuid) {
         if (!this.isAvailable()) return -1;
-        return ExperienceAPI.getPlayerRankOverall(uuid);
+
+        try {
+            return ExperienceAPI.getPlayerRankOverall(uuid);
+        } catch (Exception e) {
+            return -1;
+        }
     }
 
     /**
@@ -455,7 +590,12 @@ public class McMMOHook extends LibraryHook {
      */
     public void setLevel(Player player, String skillType, int skillLevel) {
         if (!this.isAvailable()) return;
-        ExperienceAPI.setLevel(player, skillType, skillLevel);
+
+        try {
+            ExperienceAPI.setLevel(player, skillType, skillLevel);
+        } catch (Exception e) {
+            return;
+        }
     }
 
     /**
@@ -469,7 +609,12 @@ public class McMMOHook extends LibraryHook {
      */
     public void setLevelOffline(UUID uuid, String skillType, int skillLevel) {
         if (!this.isAvailable()) return;
-        ExperienceAPI.setLevelOffline(uuid, skillType, skillLevel);
+
+        try {
+            ExperienceAPI.setLevelOffline(uuid, skillType, skillLevel);
+        } catch (Exception e) {
+            return;
+        }
     }
 
     /**
@@ -483,7 +628,12 @@ public class McMMOHook extends LibraryHook {
      */
     public void setXP(Player player, String skillType, int newValue) {
         if (!this.isAvailable()) return;
-        ExperienceAPI.setXP(player, skillType, newValue);
+
+        try {
+            ExperienceAPI.setXP(player, skillType, newValue);
+        } catch (Exception e) {
+            return;
+        }
     }
 
     /**
@@ -498,7 +648,12 @@ public class McMMOHook extends LibraryHook {
      */
     public void setXPOffline(UUID uuid, String skillType, int newValue) {
         if (!this.isAvailable()) return;
-        ExperienceAPI.setXPOffline(uuid, skillType, newValue);
+
+        try {
+            ExperienceAPI.setXPOffline(uuid, skillType, newValue);
+        } catch (Exception e) {
+            return;
+        }
     }
 
     /**
@@ -512,7 +667,12 @@ public class McMMOHook extends LibraryHook {
      */
     public void removeXP(Player player, String skillType, int xp) {
         if (!this.isAvailable()) return;
-        ExperienceAPI.removeXP(player, skillType, xp);
+
+        try {
+            ExperienceAPI.removeXP(player, skillType, xp);
+        } catch (Exception e) {
+            return;
+        }
     }
 
     /**
@@ -527,7 +687,13 @@ public class McMMOHook extends LibraryHook {
      */
     public void removeXPOffline(UUID uuid, String skillType, int xp) {
         if (!this.isAvailable()) return;
-        ExperienceAPI.removeXPOffline(uuid, skillType, xp);
+
+        try {
+            ExperienceAPI.removeXPOffline(uuid, skillType, xp);
+        } catch (Exception e) {
+            return;
+        }
+
     }
 
     /**
@@ -539,7 +705,12 @@ public class McMMOHook extends LibraryHook {
      */
     public int getXpNeededToLevel(int level) {
         if (!this.isAvailable()) return -1;
-        return ExperienceAPI.getXpNeededToLevel(level);
+
+        try {
+            return ExperienceAPI.getXpNeededToLevel(level);
+        } catch (Exception e) {
+            return -1;
+        }
     }
 
     /**
@@ -552,10 +723,15 @@ public class McMMOHook extends LibraryHook {
      */
     public int getXpNeededToLevel(int level, String formulaType) {
         if (!this.isAvailable()) return -1;
-        return ExperienceAPI.getXpNeededToLevel(level, formulaType);
+
+        try {
+            return ExperienceAPI.getXpNeededToLevel(level, formulaType);
+        } catch (Exception e) {
+            return -1;
+        }
     }
 
-	/* AbilityAPI below */
+    /* AbilityAPI below */
 
     /**
      * Checks whether Berserk is enabled for a specific player.
@@ -565,7 +741,12 @@ public class McMMOHook extends LibraryHook {
      */
     public boolean berserkEnabled(Player player) {
         if (!this.isAvailable()) return false;
-        return AbilityAPI.berserkEnabled(player);
+
+        try {
+            return AbilityAPI.berserkEnabled(player);
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     /**
@@ -576,7 +757,12 @@ public class McMMOHook extends LibraryHook {
      */
     public boolean gigaDrillBreakerEnabled(Player player) {
         if (!this.isAvailable()) return false;
-        return AbilityAPI.gigaDrillBreakerEnabled(player);
+
+        try {
+            return AbilityAPI.gigaDrillBreakerEnabled(player);
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     /**
@@ -587,7 +773,12 @@ public class McMMOHook extends LibraryHook {
      */
     public boolean greenTerraEnabled(Player player) {
         if (!this.isAvailable()) return false;
-        return AbilityAPI.greenTerraEnabled(player);
+
+        try {
+            return AbilityAPI.greenTerraEnabled(player);
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     /**
@@ -598,7 +789,12 @@ public class McMMOHook extends LibraryHook {
      */
     public boolean serratedStrikesEnabled(Player player) {
         if (!this.isAvailable()) return false;
-        return AbilityAPI.serratedStrikesEnabled(player);
+
+        try {
+            return AbilityAPI.serratedStrikesEnabled(player);
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     /**
@@ -609,7 +805,12 @@ public class McMMOHook extends LibraryHook {
      */
     public boolean skullSplitterEnabled(Player player) {
         if (!this.isAvailable()) return false;
-        return AbilityAPI.skullSplitterEnabled(player);
+
+        try {
+            return AbilityAPI.skullSplitterEnabled(player);
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     /**
@@ -620,7 +821,12 @@ public class McMMOHook extends LibraryHook {
      */
     public boolean superBreakerEnabled(Player player) {
         if (!this.isAvailable()) return false;
-        return AbilityAPI.superBreakerEnabled(player);
+
+        try {
+            return AbilityAPI.superBreakerEnabled(player);
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     /**
@@ -631,7 +837,12 @@ public class McMMOHook extends LibraryHook {
      */
     public boolean treeFellerEnabled(Player player) {
         if (!this.isAvailable()) return false;
-        return AbilityAPI.treeFellerEnabled(player);
+
+        try {
+            return AbilityAPI.treeFellerEnabled(player);
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     /**
@@ -642,7 +853,12 @@ public class McMMOHook extends LibraryHook {
      */
     public boolean isAnyAbilityEnabled(Player player) {
         if (!this.isAvailable()) return false;
-        return AbilityAPI.isAnyAbilityEnabled(player);
+
+        try {
+            return AbilityAPI.isAnyAbilityEnabled(player);
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     /**
@@ -653,7 +869,12 @@ public class McMMOHook extends LibraryHook {
      */
     public void resetCooldowns(Player player) {
         if (!this.isAvailable()) return;
-        AbilityAPI.resetCooldowns(player);
+
+        try {
+            AbilityAPI.resetCooldowns(player);
+        } catch (Exception e) {
+            return;
+        }
     }
 
     /**
@@ -664,7 +885,12 @@ public class McMMOHook extends LibraryHook {
      */
     public void setBerserkCooldown(Player player, long cooldown) {
         if (!this.isAvailable()) return;
-        AbilityAPI.setBerserkCooldown(player, cooldown);
+
+        try {
+            AbilityAPI.setBerserkCooldown(player, cooldown);
+        } catch (Exception e) {
+            return;
+        }
     }
 
     /**
@@ -675,7 +901,12 @@ public class McMMOHook extends LibraryHook {
      */
     public void setGigaDrillBreakerCooldown(Player player, long cooldown) {
         if (!this.isAvailable()) return;
-        AbilityAPI.setGigaDrillBreakerCooldown(player, cooldown);
+
+        try {
+            AbilityAPI.setGigaDrillBreakerCooldown(player, cooldown);
+        } catch (Exception e) {
+            return;
+        }
     }
 
     /**
@@ -686,7 +917,12 @@ public class McMMOHook extends LibraryHook {
      */
     public void setGreenTerraCooldown(Player player, long cooldown) {
         if (!this.isAvailable()) return;
-        AbilityAPI.setGreenTerraCooldown(player, cooldown);
+
+        try {
+            AbilityAPI.setGreenTerraCooldown(player, cooldown);
+        } catch (Exception e) {
+            return;
+        }
     }
 
     /**
@@ -697,7 +933,12 @@ public class McMMOHook extends LibraryHook {
      */
     public void setSerratedStrikesCooldown(Player player, long cooldown) {
         if (!this.isAvailable()) return;
-        AbilityAPI.setSerratedStrikesCooldown(player, cooldown);
+
+        try {
+            AbilityAPI.setSerratedStrikesCooldown(player, cooldown);
+        } catch (Exception e) {
+            return;
+        }
     }
 
     /**
@@ -708,7 +949,12 @@ public class McMMOHook extends LibraryHook {
      */
     public void setSkullSplitterCooldown(Player player, long cooldown) {
         if (!this.isAvailable()) return;
-        AbilityAPI.setSkullSplitterCooldown(player, cooldown);
+
+        try {
+            AbilityAPI.setSkullSplitterCooldown(player, cooldown);
+        } catch (Exception e) {
+            return;
+        }
     }
 
     /**
@@ -719,7 +965,12 @@ public class McMMOHook extends LibraryHook {
      */
     public void setSuperBreakerCooldown(Player player, long cooldown) {
         if (!this.isAvailable()) return;
-        AbilityAPI.setSuperBreakerCooldown(player, cooldown);
+
+        try {
+            AbilityAPI.setSuperBreakerCooldown(player, cooldown);
+        } catch (Exception e) {
+            return;
+        }
     }
 
     /**
@@ -730,7 +981,12 @@ public class McMMOHook extends LibraryHook {
      */
     public void setTreeFellerCooldown(Player player, long cooldown) {
         if (!this.isAvailable()) return;
-        AbilityAPI.setTreeFellerCooldown(player, cooldown);
+
+        try {
+            AbilityAPI.setTreeFellerCooldown(player, cooldown);
+        } catch (Exception e) {
+            return;
+        }
     }
 
     /**
@@ -741,10 +997,15 @@ public class McMMOHook extends LibraryHook {
      */
     public boolean isBleeding(LivingEntity entity) {
         if (!this.isAvailable()) return false;
-        return AbilityAPI.isBleeding(entity);
+
+        try {
+            return AbilityAPI.isBleeding(entity);
+        } catch (Exception e) {
+            return false;
+        }
     }
 
-	/* ChatAPI below */
+    /* ChatAPI below */
 
     /**
      * Send a message to all members of a party </br>
@@ -757,7 +1018,12 @@ public class McMMOHook extends LibraryHook {
      */
     public void sendPartyChat(Plugin plugin, String sender, String displayName, String party, String message) {
         if (!this.isAvailable()) return;
-        ChatAPI.sendPartyChat(plugin, sender, displayName, party, message);
+
+        try {
+            ChatAPI.sendPartyChat(plugin, sender, displayName, party, message);
+        } catch (Exception e) {
+            return;
+        }
     }
 
     /**
@@ -770,7 +1036,12 @@ public class McMMOHook extends LibraryHook {
      */
     public void sendPartyChat(Plugin plugin, String sender, String party, String message) {
         if (!this.isAvailable()) return;
-        ChatAPI.sendPartyChat(plugin, sender, party, message);
+
+        try {
+            ChatAPI.sendPartyChat(plugin, sender, party, message);
+        } catch (Exception e) {
+            return;
+        }
     }
 
     /**
@@ -783,7 +1054,12 @@ public class McMMOHook extends LibraryHook {
      */
     public void sendAdminChat(Plugin plugin, String sender, String displayName, String message) {
         if (!this.isAvailable()) return;
-        ChatAPI.sendAdminChat(plugin, sender, displayName, message);
+
+        try {
+            ChatAPI.sendAdminChat(plugin, sender, displayName, message);
+        } catch (Exception e) {
+            return;
+        }
     }
 
     /**
@@ -795,7 +1071,12 @@ public class McMMOHook extends LibraryHook {
      */
     public void sendAdminChat(Plugin plugin, String sender, String message) {
         if (!this.isAvailable()) return;
-        ChatAPI.sendAdminChat(plugin, sender, message);
+
+        try {
+            ChatAPI.sendAdminChat(plugin, sender, message);
+        } catch (Exception e) {
+            return;
+        }
     }
 
     /**
@@ -806,7 +1087,12 @@ public class McMMOHook extends LibraryHook {
      */
     public boolean isUsingPartyChat(Player player) {
         if (!this.isAvailable()) return false;
-        return ChatAPI.isUsingPartyChat(player);
+
+        try {
+            return ChatAPI.isUsingPartyChat(player);
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     /**
@@ -817,7 +1103,12 @@ public class McMMOHook extends LibraryHook {
      */
     public boolean isUsingPartyChat(String playerName) {
         if (!this.isAvailable()) return false;
-        return ChatAPI.isUsingPartyChat(playerName);
+
+        try {
+            return ChatAPI.isUsingPartyChat(playerName);
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     /**
@@ -828,7 +1119,12 @@ public class McMMOHook extends LibraryHook {
      */
     public boolean isUsingAdminChat(Player player) {
         if (!this.isAvailable()) return false;
-        return ChatAPI.isUsingAdminChat(player);
+
+        try {
+            return ChatAPI.isUsingAdminChat(player);
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     /**
@@ -839,7 +1135,12 @@ public class McMMOHook extends LibraryHook {
      */
     public boolean isUsingAdminChat(String playerName) {
         if (!this.isAvailable()) return false;
-        return ChatAPI.isUsingAdminChat(playerName);
+
+        try {
+            return ChatAPI.isUsingAdminChat(playerName);
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     /**
@@ -849,7 +1150,12 @@ public class McMMOHook extends LibraryHook {
      */
     public void togglePartyChat(Player player) {
         if (!this.isAvailable()) return;
-        ChatAPI.togglePartyChat(player);
+
+        try {
+            ChatAPI.togglePartyChat(player);
+        } catch (Exception e) {
+            return;
+        }
     }
 
     /**
@@ -859,7 +1165,12 @@ public class McMMOHook extends LibraryHook {
      */
     public void togglePartyChat(String playerName) {
         if (!this.isAvailable()) return;
-        ChatAPI.togglePartyChat(playerName);
+
+        try {
+            ChatAPI.togglePartyChat(playerName);
+        } catch (Exception e) {
+            return;
+        }
     }
 
     /**
@@ -869,7 +1180,12 @@ public class McMMOHook extends LibraryHook {
      */
     public void toggleAdminChat(Player player) {
         if (!this.isAvailable()) return;
-        ChatAPI.toggleAdminChat(player);
+
+        try {
+            ChatAPI.toggleAdminChat(player);
+        } catch (Exception e) {
+            return;
+        }
     }
 
     /**
@@ -879,10 +1195,15 @@ public class McMMOHook extends LibraryHook {
      */
     public void toggleAdminChat(String playerName) {
         if (!this.isAvailable()) return;
-        ChatAPI.toggleAdminChat(playerName);
+
+        try {
+            ChatAPI.toggleAdminChat(playerName);
+        } catch (Exception e) {
+            return;
+        }
     }
 
-	/* PartyAPI below */
+    /* PartyAPI below */
 
     /**
      * Get the name of the party a player is in. </br>
@@ -892,7 +1213,12 @@ public class McMMOHook extends LibraryHook {
      */
     public String getPartyName(Player player) {
         if (!this.isAvailable()) return null;
-        return PartyAPI.getPartyName(player);
+
+        try {
+            return PartyAPI.getPartyName(player);
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     /**
@@ -903,7 +1229,12 @@ public class McMMOHook extends LibraryHook {
      */
     public boolean inParty(Player player) {
         if (!this.isAvailable()) return false;
-        return PartyAPI.inParty(player);
+
+        try {
+            return PartyAPI.inParty(player);
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     /**
@@ -915,7 +1246,12 @@ public class McMMOHook extends LibraryHook {
      */
     public boolean inSameParty(Player playera, Player playerb) {
         if (!this.isAvailable()) return false;
-        return PartyAPI.inSameParty(playera, playerb);
+
+        try {
+            return PartyAPI.inSameParty(playera, playerb);
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     /**
@@ -925,7 +1261,12 @@ public class McMMOHook extends LibraryHook {
      */
     public List<Party> getParties() {
         if (!this.isAvailable()) return new ArrayList<>();
-        return PartyAPI.getParties();
+
+        try {
+            return PartyAPI.getParties();
+        } catch (Exception e) {
+            return new ArrayList<>();
+        }
     }
 
     /**
@@ -936,7 +1277,12 @@ public class McMMOHook extends LibraryHook {
      */
     public void addToParty(Player player, String partyName) {
         if (!this.isAvailable()) return;
-        PartyAPI.addToParty(player, partyName);
+
+        try {
+            PartyAPI.addToParty(player, partyName);
+        } catch (Exception e) {
+            return;
+        }
     }
 
     /**
@@ -946,7 +1292,12 @@ public class McMMOHook extends LibraryHook {
      */
     public void removeFromParty(Player player) {
         if (!this.isAvailable()) return;
-        PartyAPI.removeFromParty(player);
+
+        try {
+            PartyAPI.removeFromParty(player);
+        } catch (Exception e) {
+            return;
+        }
     }
 
     /**
@@ -957,7 +1308,12 @@ public class McMMOHook extends LibraryHook {
      */
     public String getPartyLeader(String partyName) {
         if (!this.isAvailable()) return null;
-        return PartyAPI.getPartyLeader(partyName);
+
+        try {
+            return PartyAPI.getPartyLeader(partyName);
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     /**
@@ -970,7 +1326,12 @@ public class McMMOHook extends LibraryHook {
     @Deprecated
     public void setPartyLeader(String partyName, String playerName) {
         if (!this.isAvailable()) return;
-        PartyAPI.setPartyLeader(partyName, playerName);
+
+        try {
+            PartyAPI.setPartyLeader(partyName, playerName);
+        } catch (Exception e) {
+            return;
+        }
     }
 
     /**
@@ -983,7 +1344,12 @@ public class McMMOHook extends LibraryHook {
     @Deprecated
     public List<OfflinePlayer> getOnlineAndOfflineMembers(Player player) {
         if (!this.isAvailable()) return new ArrayList<>();
-        return PartyAPI.getOnlineAndOfflineMembers(player);
+
+        try {
+            return PartyAPI.getOnlineAndOfflineMembers(player);
+        } catch (Exception e) {
+            return new ArrayList<>();
+        }
     }
 
     /**
@@ -996,7 +1362,12 @@ public class McMMOHook extends LibraryHook {
     @Deprecated
     public LinkedHashSet<String> getMembers(Player player) {
         if (!this.isAvailable()) return null;
-        return PartyAPI.getMembers(player);
+
+        try {
+            return PartyAPI.getMembers(player);
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     /**
@@ -1007,7 +1378,12 @@ public class McMMOHook extends LibraryHook {
      */
     public LinkedHashMap<UUID, String> getMembersMap(Player player) {
         if (!this.isAvailable()) return null;
-        return PartyAPI.getMembersMap(player);
+
+        try {
+            return PartyAPI.getMembersMap(player);
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     /**
@@ -1018,7 +1394,12 @@ public class McMMOHook extends LibraryHook {
      */
     public List<Player> getOnlineMembers(String partyName) {
         if (!this.isAvailable()) return new ArrayList<>();
-        return PartyAPI.getOnlineMembers(partyName);
+
+        try {
+            return PartyAPI.getOnlineMembers(partyName);
+        } catch (Exception e) {
+            return new ArrayList<>();
+        }
     }
 
     /**
@@ -1029,7 +1410,12 @@ public class McMMOHook extends LibraryHook {
      */
     public List<Player> getOnlineMembers(Player player) {
         if (!this.isAvailable()) return new ArrayList<>();
-        return PartyAPI.getOnlineMembers(player);
+
+        try {
+            return PartyAPI.getOnlineMembers(player);
+        } catch (Exception e) {
+            return new ArrayList<>();
+        }
     }
 
     /**
@@ -1040,7 +1426,12 @@ public class McMMOHook extends LibraryHook {
      */
     public boolean hasAlly(String partyName) {
         if (!this.isAvailable()) return false;
-        return PartyAPI.hasAlly(partyName);
+
+        try {
+            return PartyAPI.hasAlly(partyName);
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     /**
@@ -1051,10 +1442,15 @@ public class McMMOHook extends LibraryHook {
      */
     public String getAllyName(String partyName) {
         if (!this.isAvailable()) return null;
-        return PartyAPI.getAllyName(partyName);
+
+        try {
+            return PartyAPI.getAllyName(partyName);
+        } catch (Exception e) {
+            return null;
+        }
     }
 
-	/* SkillAPI below */
+    /* SkillAPI below */
 
     /**
      * Returns a list of strings with mcMMO's skills This includes parent and
@@ -1064,7 +1460,12 @@ public class McMMOHook extends LibraryHook {
      */
     public List<String> getSkills() {
         if (!this.isAvailable()) return new ArrayList<>();
-        return SkillAPI.getSkills();
+
+        try {
+            return SkillAPI.getSkills();
+        } catch (Exception e) {
+            return new ArrayList<>();
+        }
     }
 
     /**
@@ -1075,7 +1476,12 @@ public class McMMOHook extends LibraryHook {
      */
     public List<String> getNonChildSkills() {
         if (!this.isAvailable()) return new ArrayList<>();
-        return SkillAPI.getNonChildSkills();
+
+        try {
+            return SkillAPI.getNonChildSkills();
+        } catch (Exception e) {
+            return new ArrayList<>();
+        }
     }
 
     /**
@@ -1086,7 +1492,12 @@ public class McMMOHook extends LibraryHook {
      */
     public List<String> getChildSkills() {
         if (!this.isAvailable()) return new ArrayList<>();
-        return SkillAPI.getChildSkills();
+
+        try {
+            return SkillAPI.getChildSkills();
+        } catch (Exception e) {
+            return new ArrayList<>();
+        }
     }
 
     /**
@@ -1097,7 +1508,12 @@ public class McMMOHook extends LibraryHook {
      */
     public List<String> getCombatSkills() {
         if (!this.isAvailable()) return new ArrayList<>();
-        return SkillAPI.getCombatSkills();
+
+        try {
+            return SkillAPI.getCombatSkills();
+        } catch (Exception e) {
+            return new ArrayList<>();
+        }
     }
 
     /**
@@ -1108,7 +1524,12 @@ public class McMMOHook extends LibraryHook {
      */
     public List<String> getGatheringSkills() {
         if (!this.isAvailable()) return new ArrayList<>();
-        return SkillAPI.getGatheringSkills();
+
+        try {
+            return SkillAPI.getGatheringSkills();
+        } catch (Exception e) {
+            return new ArrayList<>();
+        }
     }
 
     /**
@@ -1119,7 +1540,12 @@ public class McMMOHook extends LibraryHook {
      */
     public List<String> getMiscSkills() {
         if (!this.isAvailable()) return new ArrayList<>();
-        return SkillAPI.getMiscSkills();
+
+        try {
+            return SkillAPI.getMiscSkills();
+        } catch (Exception e) {
+            return new ArrayList<>();
+        }
     }
 
 }
