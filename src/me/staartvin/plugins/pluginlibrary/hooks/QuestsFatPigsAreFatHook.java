@@ -1,6 +1,7 @@
 package me.staartvin.plugins.pluginlibrary.hooks;
 
 
+import me.blackvein.quests.Quests;
 import me.fatpigsarefat.quests.Quests;
 import me.fatpigsarefat.quests.utils.QuestData;
 import me.staartvin.plugins.pluginlibrary.Library;

@@ -557,7 +557,7 @@ public class StatsHook extends LibraryHook {
             if (user == null) {
                 try {
                     user = stats.getUserManager().loadUser(player.getUniqueId(), stats.getStatManager());
-                } catch (StorageException e) {
+				} catch (Exception e) {
                     e.printStackTrace();
                 }
 
