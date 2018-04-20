@@ -99,21 +99,6 @@
     </repositories>
 
     <dependencies>
-
-        <!-- OLD STATS <dependency> <groupId>nl.lolmewn.stats</groupId> <artifactId>Stats</artifactId>
-            <version>2.0.1</version> <scope>provided</scope> <type>jar</type> </dependency> -->
-
-        <!-- <dependency> <groupId>nl.lolmewn.stats</groupId> <artifactId>Stats</artifactId>
-            <version>3.0.2-SNAPSHOT</version> <scope>provided</scope> <type>jar</type>
-            </dependency> -->
-
-        <!-- <dependency>
-            <groupId>org.mcstats.bukkit</groupId>
-            <artifactId>metrics</artifactId>
-            <version>R7</version>
-            <type>jar</type>
-        </dependency> -->
-
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
@@ -124,7 +109,7 @@
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
-            <version>1.12.1-R0.1-SNAPSHOT</version>
+            <version>1.12.2-R0.1-SNAPSHOT</version>
         </dependency>
 
         <dependency>
@@ -136,12 +121,6 @@
         <dependency>
             <groupId>com.massivecraft.factions</groupId>
             <artifactId>Factions</artifactId>
-            <version>2.13.6</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.massivecraft.massivecore</groupId>
-            <artifactId>MassiveCore</artifactId>
             <version>2.13.6</version>
         </dependency>
 
@@ -234,7 +213,7 @@
         <dependency>
             <groupId>OnTime</groupId>
             <artifactId>OnTime</artifactId>
-            <version>4.1.3</version>
+            <version>4.1.4</version>
         </dependency>
 
         <dependency>
