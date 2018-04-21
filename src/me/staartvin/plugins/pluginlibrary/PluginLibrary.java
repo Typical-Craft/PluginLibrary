@@ -102,6 +102,8 @@ public class PluginLibrary extends JavaPlugin {
     public int loadLibraries() {
         int count = 0;
 
+        // test
+
         for (Library l : Library.values()) {
             LibraryHook libraryHook = l.getHook();
 
