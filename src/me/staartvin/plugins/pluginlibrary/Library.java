@@ -33,7 +33,8 @@ public enum Library {
     QUESTS("Quests", new QuestsHook(), "HappyPikachu"),
     STATS("Stats", new StatsHook(), "Lolmewn"),
     QUESTS_FATPIGSAREFAT("Quests", new QuestsFatPigsAreFatHook(), "Fatpigsarefat"),
-    SAVAGE_FACTIONS("Factions", "SavageFactions", new SavageFactionsHook(), "ProSavage");
+    SAVAGE_FACTIONS("Factions", "SavageFactions", new SavageFactionsHook(), "ProSavage"),
+    PLAYERPOINTS("PlayerPoints", new PlayerPointsHook(), "Blackixx");
 
     private String internalPluginName, humanPluginName, authorName;
     private LibraryHook hook;

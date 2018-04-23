@@ -1,14 +1,11 @@
 package me.staartvin.plugins.pluginlibrary.hooks;
 
 
-import com.massivecraft.factions.P;
-import com.massivecraft.factions.entity.BoardColl;
-import com.massivecraft.factions.entity.Faction;
-import com.massivecraft.factions.entity.FactionColl;
-import com.massivecraft.factions.entity.MPlayer;
+import com.massivecraft.factions.*;
 import com.massivecraft.massivecore.ps.PS;
 import me.staartvin.plugins.pluginlibrary.Library;
 import org.bukkit.Location;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
@@ -65,23 +62,13 @@ public class SavageFactionsHook extends LibraryHook {
         return savageFactions != null && savageFactions.getDescription().getAuthors().contains("ProSavage");
     }
 
-    /* Util methods */
-
-    private MPlayer getMPlayer(UUID uuid) {
-        if (!this.isAvailable()) return null;
-
-        return MPlayer.get(uuid);
-    }
-
     /* Faction vars */
 
     /**
-     * Gets the faction by its comparison name. Use the comparison name, see
-     * {@link Faction#getComparisonName()}
+     * Gets the faction by its tag, see {@link Faction#getTag()}
      * .
      *
      * @param factionName Name of the faction. <b>Without colour codes!</b>
-     *
      * @return {@link Faction} or null if no faction found.
      */
     public Faction getFactionByName(String factionName) {
@@ -91,7 +78,7 @@ public class SavageFactionsHook extends LibraryHook {
         if (factionName == null)
             return null;
 
-        Faction fac = FactionColl.get().getByName(factionName);
+        Faction fac = Factions.getInstance().getByTag(factionName);
 
         if (fac == null)
             return null;
@@ -103,7 +90,6 @@ public class SavageFactionsHook extends LibraryHook {
      * Gets the faction a player is in.
      *
      * @param uuid UUID of the player.
-     *
      * @return {@link Faction}, null if the player doesn't exist or is not in
      * a faction.
      */
@@ -114,12 +100,12 @@ public class SavageFactionsHook extends LibraryHook {
         if (uuid == null)
             return null;
 
-        MPlayer mPlayer = getMPlayer(uuid);
+        FPlayer fPlayer = getFactionsPlayer(uuid);
 
-        if (mPlayer == null)
+        if (fPlayer == null)
             return null;
 
-        Faction fac = mPlayer.getFaction();
+        com.massivecraft.factions.Faction fac = fPlayer.getFaction();
 
         if (fac == null)
             return null;
@@ -131,7 +117,6 @@ public class SavageFactionsHook extends LibraryHook {
      * Gets a faction by its internal Factions id.
      *
      * @param factionId Id of the faction
-     *
      * @return {@link Faction} or null if id is invalid.
      */
     public Faction getFactionById(String factionId) {
@@ -141,16 +126,12 @@ public class SavageFactionsHook extends LibraryHook {
         if (factionId == null)
             return null;
 
-        if (FactionColl.get().containsId(factionId)) {
-            Faction fac = FactionColl.get().get(factionId);
+        Faction faction = Factions.getInstance().getFactionById(factionId);
 
-            if (fac == null)
-                return null;
+        if (faction == null)
+            return null;
 
-            return fac;
-        }
-
-        return null;
+        return faction;
     }
 
     /**
@@ -164,9 +145,7 @@ public class SavageFactionsHook extends LibraryHook {
 
         if (!this.isAvailable()) return factions;
 
-        for (Faction fac : FactionColl.get().getAll()) {
-            factions.add(fac);
-        }
+        factions.addAll(Factions.getInstance().getAllFactions());
 
         return factions;
     }
@@ -180,7 +159,7 @@ public class SavageFactionsHook extends LibraryHook {
 
         if (!this.isAvailable()) return null;
 
-        Faction fac = FactionColl.get().getNone();
+        Faction fac = Factions.getInstance().getWilderness();
 
         if (fac == null)
             return null;
@@ -197,7 +176,7 @@ public class SavageFactionsHook extends LibraryHook {
 
         if (!this.isAvailable()) return null;
 
-        Faction fac = FactionColl.get().getSafezone();
+        Faction fac = Factions.getInstance().getSafeZone();
 
         if (fac == null)
             return null;
@@ -214,7 +193,7 @@ public class SavageFactionsHook extends LibraryHook {
 
         if (!this.isAvailable()) return null;
 
-        Faction fac = FactionColl.get().getWarzone();
+        Faction fac = Factions.getInstance().getWarZone();
 
         if (fac == null)
             return null;
@@ -226,7 +205,6 @@ public class SavageFactionsHook extends LibraryHook {
      * Gets the faction at a specific {@link Location}.
      *
      * @param location Location for the faction to be at.
-     *
      * @return A {@link Faction} or null if the location does not contain a
      * faction.
      */
@@ -237,7 +215,9 @@ public class SavageFactionsHook extends LibraryHook {
         if (location == null)
             return null;
 
-        Faction fac = BoardColl.get().getFactionAt(PS.valueOf(location));
+        FLocation fLocation = new FLocation(location);
+
+        Faction fac = Board.getInstance().getFactionAt(fLocation);
 
         if (fac == null)
             return null;
@@ -247,31 +227,31 @@ public class SavageFactionsHook extends LibraryHook {
 
     /**
      * Gets the
-     * {@link MPlayer} for a
+     * {@link FPlayer} for a
      * player, which represents the player object Factions internally uses.
      *
      * @param uuid UUID of the player.
-     *
-     * @return {@link MPlayer}
+     * @return {@link FPlayer}
      * or null if player does not exist/is not stored by Factions.
      */
-    public MPlayer getFactionsPlayer(UUID uuid) {
+    public FPlayer getFactionsPlayer(UUID uuid) {
 
         if (!this.isAvailable()) return null;
 
-        MPlayer mPlayer = MPlayer.get(uuid);
+        OfflinePlayer offlinePlayer = getPlugin().getServer().getOfflinePlayer(uuid);
 
-        if (mPlayer == null)
+        FPlayer fPlayer = FPlayers.getInstance().getByOfflinePlayer(offlinePlayer);
+
+        if (fPlayer == null)
             return null;
 
-        return mPlayer;
+        return fPlayer;
     }
 
     /**
      * Get the power of the faction of a player. Will return -1 if player has no faction.
      *
      * @param uuid UUID of the player to check
-     *
      * @return power of the faction, or -1 if not found.
      */
     public double getFactionPower(UUID uuid) {
@@ -280,12 +260,12 @@ public class SavageFactionsHook extends LibraryHook {
 
         if (uuid == null) return -1;
 
-        MPlayer mPlayer = getFactionsPlayer(uuid);
+        FPlayer fPlayer = this.getFactionsPlayer(uuid);
 
-        if (mPlayer == null) return -1;
+        if (fPlayer == null) return -1;
 
-        if (!mPlayer.hasFaction()) return -1;
+        if (!fPlayer.hasFaction()) return -1;
 
-        return mPlayer.getFaction().getPower();
+        return fPlayer.getFaction().getPower();
     }
 }
