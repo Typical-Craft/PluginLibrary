@@ -1,8 +1,13 @@
 package me.staartvin.plugins.pluginlibrary.hooks;
 
+import com.massivecraft.factions.Factions;
+import com.massivecraft.factions.FPlayer;
+import com.massivecraft.factions.FLocation;
+import com.massivecraft.factions.FPlayers;
+import com.massivecraft.factions.Faction;
+import com.massivecraft.factions.P;
+import com.massivecraft.factions.Board;
 
-import com.massivecraft.factions.*;
-import com.massivecraft.massivecore.ps.PS;
 import me.staartvin.plugins.pluginlibrary.Library;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
@@ -59,26 +64,27 @@ public class SavageFactionsHook extends LibraryHook {
 
         // Unfortunately, the SavageFactions plugin is nearly identical to the 'regular' Factions.
         // However, we know that ProSavage has put its name in the authors array.
-        return savageFactions != null && savageFactions.getDescription().getAuthors().contains("ProSavage");
+        return savageFactions.getDescription().getAuthors().contains("ProSavage");
     }
 
     /* Faction vars */
 
     /**
-     * Gets the faction by its tag, see {@link Faction#getTag()}
+     * Gets the faction by its tag, see {@link com.massivecraft.factions.Faction#getTag()}
      * .
      *
      * @param factionName Name of the faction. <b>Without colour codes!</b>
      * @return {@link Faction} or null if no faction found.
      */
-    public Faction getFactionByName(String factionName) {
+    public com.massivecraft.factions.Faction getFactionByName(String factionName) {
 
         if (!this.isAvailable()) return null;
 
         if (factionName == null)
             return null;
 
-        Faction fac = Factions.getInstance().getByTag(factionName);
+        com.massivecraft.factions.Faction fac = Factions.getInstance().getByTag
+                (factionName);
 
         if (fac == null)
             return null;
@@ -93,7 +99,7 @@ public class SavageFactionsHook extends LibraryHook {
      * @return {@link Faction}, null if the player doesn't exist or is not in
      * a faction.
      */
-    public Faction getFactionByUUID(UUID uuid) {
+    public com.massivecraft.factions.Faction getFactionByUUID(UUID uuid) {
 
         if (!this.isAvailable()) return null;
 
@@ -119,14 +125,16 @@ public class SavageFactionsHook extends LibraryHook {
      * @param factionId Id of the faction
      * @return {@link Faction} or null if id is invalid.
      */
-    public Faction getFactionById(String factionId) {
+    public com.massivecraft.factions.Faction getFactionById(String factionId) {
 
         if (!this.isAvailable()) return null;
 
         if (factionId == null)
             return null;
 
-        Faction faction = Factions.getInstance().getFactionById(factionId);
+        com.massivecraft.factions.Faction faction = Factions.getInstance()
+                .getFactionById
+                (factionId);
 
         if (faction == null)
             return null;
@@ -139,13 +147,13 @@ public class SavageFactionsHook extends LibraryHook {
      *
      * @return a list of all savageFactions.
      */
-    public List<Faction> getAllFactions() {
+    public List<com.massivecraft.factions.Faction> getAllFactions() {
 
-        List<Faction> factions = new ArrayList<Faction>();
+        List<com.massivecraft.factions.Faction> factions = new ArrayList<>();
 
         if (!this.isAvailable()) return factions;
 
-        factions.addAll(Factions.getInstance().getAllFactions());
+        factions.addAll(com.massivecraft.factions.Factions.getInstance().getAllFactions());
 
         return factions;
     }

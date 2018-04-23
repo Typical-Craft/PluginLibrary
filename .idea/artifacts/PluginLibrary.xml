@@ -3,6 +3,7 @@
     <output-path>$USER_HOME$/Google Drive/Minecraft Bukkit Test Server/plugins</output-path>
     <root id="archive" name="PluginLibrary.jar">
       <element id="module-output" name="PluginLibrary" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/plugin.yml" />
     </root>
   </artifact>
 </component>
