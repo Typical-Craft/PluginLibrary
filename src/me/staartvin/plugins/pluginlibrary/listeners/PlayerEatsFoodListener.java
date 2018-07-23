@@ -42,7 +42,7 @@ public class PlayerEatsFoodListener implements Listener {
 
 		Player p = event.getPlayer();
 
-		String foodName = Util.getFoodName(event.getItem());
+		String foodName = event.getItem().getType().name();
 
 		if (foodName == null)
 			return;

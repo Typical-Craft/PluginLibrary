@@ -1,7 +1,7 @@
 package me.staartvin.plugins.pluginlibrary.hooks;
 
 import me.armar.plugins.autorank.Autorank;
-import me.armar.plugins.autorank.pathbuilder.holders.RequirementsHolder;
+import me.armar.plugins.autorank.pathbuilder.holders.CompositeRequirement;
 import me.armar.plugins.autorank.pathbuilder.requirement.AbstractRequirement;
 import me.armar.plugins.autorank.pathbuilder.result.AbstractResult;
 import me.staartvin.plugins.pluginlibrary.Library;
@@ -101,7 +101,7 @@ public class AutorankHook extends LibraryHook {
 	 *            Player to get the requirements for.
 	 * @return A list of all requirements
 	 */
-	public List<RequirementsHolder> getAllRequirements(Player player) {
+	public List<CompositeRequirement> getAllRequirements(Player player) {
         if (!this.isAvailable()) return new ArrayList<>();
 		return autorank.getAPI().getAllRequirements(player);
 	}
@@ -115,7 +115,7 @@ public class AutorankHook extends LibraryHook {
 	 *            Player to get the requirements for.
 	 * @return A list of all requirements that should still be completed.
 	 */
-	public List<RequirementsHolder> getFailedRequirements(Player player) {
+	public List<CompositeRequirement> getFailedRequirements(Player player) {
         if (!this.isAvailable()) return new ArrayList<>();
 		return autorank.getAPI().getFailedRequirements(player);
 	}

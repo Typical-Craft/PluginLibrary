@@ -101,14 +101,14 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.12.2-R0.1-SNAPSHOT</version>
+            <version>1.13-R0.1-SNAPSHOT</version>
             <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
-            <version>1.12.2-R0.1-SNAPSHOT</version>
+            <version>1.13-R0.1-SNAPSHOT</version>
         </dependency>
 
         <dependency>
@@ -122,6 +122,7 @@
             <artifactId>SavageFactions</artifactId>
             <version>1.6.9.5-U0.2.1-RC</version>
         </dependency>
+
 
         <dependency>
             <groupId>com.massivecraft.massivecore</groupId>
