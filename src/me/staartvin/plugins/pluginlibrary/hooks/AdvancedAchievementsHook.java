@@ -57,7 +57,8 @@ public class AdvancedAchievementsHook extends LibraryHook {
             return false;
         }
 
-        return advancedAchievements.getDatabaseManager().hasPlayerAchievement(uuid, achievementName);
+        return advancedAchievements.getAdvancedAchievementsAPI().hasPlayerReceivedAchievement(uuid,
+                achievementName);
     }
 
     /**
@@ -70,7 +71,7 @@ public class AdvancedAchievementsHook extends LibraryHook {
             return -1;
         }
 
-        return advancedAchievements.getDatabaseManager().getPlayerAchievementsAmount(uuid);
+        return advancedAchievements.getAdvancedAchievementsAPI().getPlayerTotalAchievements(uuid);
     }
 
 }

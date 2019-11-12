@@ -5,7 +5,7 @@ import com.massivecraft.factions.FPlayer;
 import com.massivecraft.factions.FLocation;
 import com.massivecraft.factions.FPlayers;
 import com.massivecraft.factions.Faction;
-import com.massivecraft.factions.P;
+import com.massivecraft.factions.SavageFactions;
 import com.massivecraft.factions.Board;
 
 import me.staartvin.plugins.pluginlibrary.Library;
@@ -27,7 +27,7 @@ import java.util.UUID;
  */
 public class SavageFactionsHook extends LibraryHook {
 
-    private P savageFactions;
+    private SavageFactions savageFactions;
 
     /*
      * (non-Javadoc)
@@ -57,10 +57,10 @@ public class SavageFactionsHook extends LibraryHook {
         Plugin plugin = this.getPlugin().getServer().getPluginManager()
                 .getPlugin(Library.SAVAGE_FACTIONS.getInternalPluginName());
 
-        if (!(plugin instanceof P))
+        if (!(plugin instanceof SavageFactions))
             return false;
 
-        savageFactions = (P) plugin;
+        savageFactions = (SavageFactions) plugin;
 
         // Unfortunately, the SavageFactions plugin is nearly identical to the 'regular' Factions.
         // However, we know that ProSavage has put its name in the authors array.

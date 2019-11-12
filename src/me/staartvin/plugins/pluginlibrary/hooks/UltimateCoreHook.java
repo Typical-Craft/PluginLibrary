@@ -1,8 +1,5 @@
 package me.staartvin.plugins.pluginlibrary.hooks;
 
-import bammerbom.ultimatecore.bukkit.UltimateCore;
-import bammerbom.ultimatecore.bukkit.api.UC;
-import bammerbom.ultimatecore.bukkit.api.UPlayer;
 import me.staartvin.plugins.pluginlibrary.Library;
 
 import java.util.UUID;
@@ -18,7 +15,7 @@ import java.util.UUID;
  */
 public class UltimateCoreHook extends LibraryHook {
 
-	private UltimateCore api;
+//	private UltimateCore api;
 
 	/*
 	 * (non-Javadoc)
@@ -40,10 +37,10 @@ public class UltimateCoreHook extends LibraryHook {
 		if (!isAvailable())
 			return false;
 
-		api = (UltimateCore) this.getPlugin().getServer().getPluginManager()
-                .getPlugin(Library.ULTIMATECORE.getInternalPluginName());
+//		api = (UltimateCore) this.getPlugin().getServer().getPluginManager()
+//                .getPlugin(Library.ULTIMATECORE.getInternalPluginName());
 
-		return api != null;
+		return false;
 	}
 
     /**
@@ -53,16 +50,17 @@ public class UltimateCoreHook extends LibraryHook {
      */
 	public boolean isAFK(UUID uuid) {
 
-	    if (!isAvailable()) {
-	        return false;
-        }
-
-        UPlayer player = UC.getPlayer(uuid);
-
-        if (player == null) {
-            return false;
-        }
-
-        return player.isAfk();
+		return false;
+//	    if (!isAvailable()) {
+//	        return false;
+//        }
+//
+//        UPlayer player = UC.getPlayer(uuid);
+//
+//        if (player == null) {
+//            return false;
+//        }
+//
+//        return player.isAfk();
     }
 }

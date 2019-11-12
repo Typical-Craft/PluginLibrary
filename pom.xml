@@ -6,7 +6,7 @@
 
     <groupId>me.staartvin</groupId>
     <artifactId>PluginLibrary</artifactId>
-    <version>1.2.1-Dev-${BUILD_NUMBER}</version>
+    <version>1.2.1-SNAPSHOT-${BUILD_NUMBER}</version>
 
     <build>
 
@@ -40,8 +40,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.5.1</version>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>8</source>
+                    <target>8</target>
                     <excludes>
                         <exclude>${basedir}/Javadocs</exclude>
                         <exclude>${basedir}/lib</exclude>
@@ -82,8 +82,9 @@
     <repositories>
         <repository>
             <id>staartvin-repo</id>
-            <url>http://62.131.38.74:8081/artifactory/ext-release-local/</url>
+            <url>http://78.47.218.125:8081/artifactory/libs-release-local/</url>
         </repository>
+
 
         <repository>
             <id>Spigot-repo</id>
@@ -92,7 +93,7 @@
 
         <repository>
             <id>sk89q-repo</id>
-            <url>http://maven.sk89q.com/artifactory/repo/</url>
+            <url>https://maven.enginehub.org/repo/</url>
         </repository>
 
     </repositories>
@@ -101,52 +102,50 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.13-R0.1-SNAPSHOT</version>
+            <version>1.14.4-R0.1-SNAPSHOT</version>
             <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
-            <version>1.13-R0.1-SNAPSHOT</version>
+            <version>1.14.4-R0.1-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>me.staartvin.Statz</groupId>
             <artifactId>Statz</artifactId>
-            <version>LATEST</version>
+            <version>1.5.3</version>
         </dependency>
 
         <dependency>
             <groupId>com.savagefactions</groupId>
             <artifactId>SavageFactions</artifactId>
-            <version>1.6.9.5-U0.2.1-RC</version>
+            <version>2.5</version>
         </dependency>
-
 
         <dependency>
             <groupId>com.massivecraft.massivecore</groupId>
             <artifactId>MassiveCore</artifactId>
-            <version>2.13.6</version>
+            <version>2.14.0</version>
         </dependency>
 
         <dependency>
             <groupId>com.massivecraft.factions</groupId>
             <artifactId>Factions</artifactId>
-            <version>2.13.6</version>
+            <version>2.14.0</version>
         </dependency>
 
         <dependency>
             <groupId>net.milkbowl.vault</groupId>
-            <artifactId>Vault</artifactId>
-            <version>1.5.6</version>
-            <type>jar</type>
+            <artifactId>VaultAPI</artifactId>
+            <version>1.7</version>
         </dependency>
 
         <dependency>
-            <groupId>com.gamingmesh</groupId>
+            <groupId>Jobs</groupId>
             <artifactId>jobs</artifactId>
-            <version>3.5.7</version>
+            <version>4.14.3</version>
         </dependency>
 
         <dependency>
@@ -158,43 +157,37 @@
         <dependency>
             <groupId>com.gmail.nossr50.mcMMO</groupId>
             <artifactId>mcMMO</artifactId>
-            <version>1.5.04-20160115.213815-1</version>
+            <version>2.1.111</version>
         </dependency>
 
         <dependency>
             <groupId>com.wasteofplastic</groupId>
             <artifactId>acidisland</artifactId>
-            <version>2.9.8.1</version>
+            <version>3.0.9.4</version>
         </dependency>
 
         <dependency>
             <groupId>com.wasteofplastic</groupId>
             <artifactId>askyblock</artifactId>
-            <version>2.9.8.1</version>
+            <version>3.0.9.4</version>
         </dependency>
 
         <dependency>
-            <groupId>me.robin.battlelevels.api</groupId>
+            <groupId>BattleLevels</groupId>
             <artifactId>BattleLevels</artifactId>
-            <version>1</version>
+            <version>8.2.2</version>
         </dependency>
 
         <dependency>
             <groupId>net.ess3</groupId>
             <artifactId>EssentialsX</artifactId>
-            <version>2.0.1</version>
+            <version>2.17.1</version>
         </dependency>
 
         <dependency>
             <groupId>nl.lolmewn.stats</groupId>
             <artifactId>Stats</artifactId>
-            <version>3.1.2-20171108.195442-1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>bammerbom</groupId>
-            <artifactId>UltimateCoreNew</artifactId>
-            <version>2.1.16</version>
+            <version>5.3.3</version>
         </dependency>
 
         <dependency>
@@ -210,15 +203,15 @@
         </dependency>
 
         <dependency>
-            <groupId>Autorank</groupId>
+            <groupId>me.staartvin.autorank</groupId>
             <artifactId>Autorank</artifactId>
-            <version>LATEST</version>
+            <version>4.2.6</version>
         </dependency>
 
         <dependency>
-            <groupId>GriefPrevention</groupId>
+            <groupId>me.ryanhamshire</groupId>
             <artifactId>GriefPrevention</artifactId>
-            <version>14.9.1</version>
+            <version>16.12.0</version>
         </dependency>
 
         <dependency>
@@ -229,48 +222,46 @@
 
         <dependency>
             <groupId>com.hm.achievement</groupId>
-            <artifactId>AdvancedAchievements</artifactId>
-            <version>5.2.6</version>
+            <artifactId>advanced-achievements-plugin</artifactId>
+            <version>5.13.1</version>
         </dependency>
 
         <dependency>
-            <groupId>com.sk89q</groupId>
-            <artifactId>worldedit</artifactId>
-            <version>6.0.0-SNAPSHOT</version>
+            <groupId>com.sk89q.worldguard</groupId>
+            <artifactId>worldguard-bukkit</artifactId>
+            <version>7.0.1-SNAPSHOT</version>
             <scope>provided</scope>
-            <type>jar</type>
         </dependency>
 
         <dependency>
-            <groupId>com.sk89q</groupId>
-            <artifactId>worldguard</artifactId>
-            <version>6.1.1-SNAPSHOT</version>
+            <groupId>com.sk89q.worldedit</groupId>
+            <artifactId>worldedit-bukkit</artifactId>
+            <version>7.0.1</version>
             <scope>provided</scope>
-            <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>com.github.rlf</groupId>
             <artifactId>uSkyBlock-API</artifactId>
-            <version>2.7.0</version>
+            <version>2.8.5</version>
         </dependency>
 
         <dependency>
             <groupId>me.blackvein.quests</groupId>
-            <artifactId>quests</artifactId>
-            <version>3.0.0-Naomi</version>
+            <artifactId>quests-main</artifactId>
+            <version>3.8.1</version>
         </dependency>
 
         <dependency>
-            <groupId>fatpigsarefat</groupId>
-            <artifactId>Quests</artifactId>
-            <version>1.12</version>
+            <groupId>com.leonardobishop</groupId>
+            <artifactId>quests</artifactId>
+            <version>2.6</version>
         </dependency>
 
         <dependency>
             <groupId>org.black_ixx</groupId>
             <artifactId>PlayerPoints</artifactId>
-            <version>2.1.4</version>
+            <version>2.1.5</version>
         </dependency>
 
 

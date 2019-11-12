@@ -26,10 +26,15 @@ public class QuestsHook extends LibraryHook {
 	 */
 	@Override
 	public boolean isAvailable() {
-		// TODO Auto-generated method stub
+        Plugin plugin = this.getPlugin().getServer().getPluginManager().getPlugin(Library.QUESTS
+                .getInternalPluginName());
 
-        return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.QUESTS.getInternalPluginName());
-	}
+        if (plugin == null || !plugin.isEnabled()) return false;
+
+        // Since there are two plugins with the same name (Quests), hence I need another way to distinguish the two.
+        // That's why I check the path to the main file.
+        return plugin.getDescription().getMain().equalsIgnoreCase("me.blackvein.quests.Quests");
+    }
 
 	/*
 	 * (non-Javadoc)
@@ -72,11 +77,7 @@ public class QuestsHook extends LibraryHook {
             return -1;
         }
 
-        if (quester.completedQuests == null) {
-            return -1;
-        }
-
-        return quester.completedQuests.size();
+        return quester.getCompletedQuests().size();
     }
 
     /**
@@ -93,11 +94,7 @@ public class QuestsHook extends LibraryHook {
             return -1;
         }
 
-        if (quester.currentQuests == null) {
-            return -1;
-        }
-
-        return quester.currentQuests.size();
+        return quester.getCurrentQuests().size();
     }
 
     /**
@@ -114,11 +111,7 @@ public class QuestsHook extends LibraryHook {
             return -1;
         }
 
-        if (!quester.hasData()) {
-            return -1;
-        }
-
-        return quester.getBaseData().getInt("quest-points");
+        return quester.getQuestPoints();
     }
 
     /**
@@ -136,11 +129,7 @@ public class QuestsHook extends LibraryHook {
             return false;
         }
 
-        if (quester.completedQuests == null) {
-            return false;
-        }
-
-        return quester.completedQuests.contains(questName);
+        return quester.getCompletedQuests().contains(questName);
     }
 
 

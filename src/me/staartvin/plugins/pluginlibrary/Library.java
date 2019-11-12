@@ -30,9 +30,9 @@ public enum Library {
     VAULT("Vault", new VaultHook(), "Kainzo"),
     WORLDGUARD("WorldGuard", new WorldGuardHook(), "sk89q"),
     ESSENTIALSX("Essentials", "EssentialsX", new EssentialsXHook(), "drtshock"),
-    QUESTS("Quests", new QuestsHook(), "HappyPikachu"),
+    QUESTS("Quests", new QuestsHook(), "PikaMug"),
     STATS("Stats", new StatsHook(), "Lolmewn"),
-    QUESTS_FATPIGSAREFAT("Quests", new QuestsFatPigsAreFatHook(), "Fatpigsarefat"),
+    QUESTS_ALTERNATIVE("Quests", new QuestsAlternative(), "LMBishop"),
     SAVAGE_FACTIONS("Factions", "SavageFactions", new SavageFactionsHook(), "ProSavage"),
     PLAYERPOINTS("PlayerPoints", new PlayerPointsHook(), "Blackixx");
 

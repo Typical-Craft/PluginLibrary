@@ -1,12 +1,14 @@
 package me.staartvin.plugins.pluginlibrary.hooks;
 
 
-import me.fatpigsarefat.quests.Quests;
-import me.fatpigsarefat.quests.utils.QuestData;
+import com.leonardobishop.quests.Quests;
+import com.leonardobishop.quests.player.QPlayer;
+import com.leonardobishop.quests.player.questprogressfile.QuestProgress;
+import com.leonardobishop.quests.quests.Quest;
 import me.staartvin.plugins.pluginlibrary.Library;
 import org.bukkit.plugin.Plugin;
 
-import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -16,7 +18,7 @@ import java.util.UUID;
  *
  * @author Staartvin
  */
-public class QuestsFatPigsAreFatHook extends LibraryHook {
+public class QuestsAlternative extends LibraryHook {
 
     private Quests quests;
 
@@ -28,9 +30,14 @@ public class QuestsFatPigsAreFatHook extends LibraryHook {
     @Override
     public boolean isAvailable() {
         // TODO Auto-generated method stub
-
-        return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.QUESTS_FATPIGSAREFAT
+        Plugin plugin = this.getPlugin().getServer().getPluginManager().getPlugin(Library.QUESTS_ALTERNATIVE
                 .getInternalPluginName());
+
+        if (plugin == null || !plugin.isEnabled()) return false;
+
+        // Since there are two plugins with the same name (Quests), hence I need another way to distinguish the two.
+        // That's why I check the path to the main file.
+        return plugin.getDescription().getMain().equalsIgnoreCase("com.leonardobishop.quests.Quests");
     }
 
     /*
@@ -46,14 +53,14 @@ public class QuestsFatPigsAreFatHook extends LibraryHook {
             return false;
 
         Plugin plugin = this.getPlugin().getServer().getPluginManager()
-                .getPlugin(Library.QUESTS_FATPIGSAREFAT.getInternalPluginName());
+                .getPlugin(Library.QUESTS_ALTERNATIVE.getInternalPluginName());
 
         if (!(plugin instanceof Quests))
             return false;
 
         quests = (Quests) plugin;
 
-        return quests != null && quests instanceof me.fatpigsarefat.quests.Quests;
+        return quests != null;
     }
 
     /**
@@ -66,9 +73,17 @@ public class QuestsFatPigsAreFatHook extends LibraryHook {
     public int getNumberOfCompletedQuests(UUID uuid) {
         if (!this.isAvailable()) return -1;
 
-        QuestData questData = Quests.getInstance().getQuestData();
+        Map<String, Quest> quests = Quests.get().getQuestManager().getQuests();
 
-        return questData.getAmountOfCompletedQuests(uuid);
+        int completedQuests = 0;
+
+        for (Map.Entry<String, Quest> questEntry : quests.entrySet()) {
+            if (this.isQuestCompleted(uuid, questEntry.getKey())) {
+                completedQuests++;
+            }
+        }
+
+        return completedQuests;
     }
 
     /**
@@ -81,15 +96,9 @@ public class QuestsFatPigsAreFatHook extends LibraryHook {
     public int getNumberOfActiveQuests(UUID uuid) {
         if (!this.isAvailable()) return -1;
 
-        QuestData questData = Quests.getInstance().getQuestData();
+        QPlayer playerData = Quests.get().getPlayerManager().getPlayer(uuid);
 
-        List<String> startedQuests = questData.getStartedQuests(uuid);
-
-        if (startedQuests == null) {
-            return 0;
-        }
-
-        return startedQuests.size();
+        return playerData.getQuestProgressFile().getStartedQuests().size();
     }
 
     /**
@@ -103,9 +112,17 @@ public class QuestsFatPigsAreFatHook extends LibraryHook {
     public boolean isQuestCompleted(UUID uuid, String questName) {
         if (!this.isAvailable()) return false;
 
-        QuestData questData = Quests.getInstance().getQuestData();
+        Quest questData = Quests.get().getQuestManager().getQuestById(questName);
+        QPlayer playerData = Quests.get().getPlayerManager().getPlayer(uuid);
 
-        return questData.hasCompletedQuestBefore(questName, uuid);
+        QuestProgress progress = playerData.getQuestProgressFile().getQuestProgress(questData);
+
+        // No progress tracked of this quest (for this player), so it cannot have completed the quest.
+        if (progress == null) {
+            return false;
+        }
+
+        return progress.isCompletedBefore();
     }
 
 

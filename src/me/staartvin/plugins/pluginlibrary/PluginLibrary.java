@@ -1,7 +1,6 @@
 package me.staartvin.plugins.pluginlibrary;
 
 import me.staartvin.plugins.pluginlibrary.hooks.LibraryHook;
-import me.staartvin.plugins.pluginlibrary.hooks.customstats.CustomStatsManager;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -18,7 +17,6 @@ public class PluginLibrary extends JavaPlugin {
 
     private final static List<Library> loadedLibraries = new ArrayList<Library>();
     public HashMap<UUID, Long> requestTimes = new HashMap<>();
-    private CustomStatsManager customStatsManager;
 
     /**
      * Gets the library for a specific plugin. <br> Will throw a {@link IllegalArgumentException} when there is no
@@ -70,13 +68,6 @@ public class PluginLibrary extends JavaPlugin {
         logMessage(ChatColor.GOLD + "***== Loaded " + ChatColor.WHITE + loadedLibraries + ChatColor.GOLD
                 + " libraries! ==***");
 
-        if (PluginLibrary.isLibraryLoaded(Library.STATS)) {
-            // Register custom stats so that Stats has special mobs and food
-            // eaten requirement.
-            setCustomStatsManager(new CustomStatsManager(this));
-            this.getCustomStatsManager().registerCustomStats();
-        }
-
         if (loadedLibraries > 0) {
             logMessage(ChatColor.GOLD + "Loaded libraries: " + getLoadedLibrariesAsString());
         }
@@ -107,7 +98,7 @@ public class PluginLibrary extends JavaPlugin {
         for (Library l : Library.values()) {
             LibraryHook libraryHook = l.getHook();
 
-            if (libraryHook.isAvailable()) {
+            if (LibraryHook.isAvailablePlugin(l) && libraryHook.isAvailable()) {
                 try {
                     if (libraryHook.hook()) {
                         loadedLibraries.add(l);
@@ -137,14 +128,6 @@ public class PluginLibrary extends JavaPlugin {
      */
     public List<Library> getLoadedLibraries() {
         return Collections.unmodifiableList(loadedLibraries);
-    }
-
-    public CustomStatsManager getCustomStatsManager() {
-        return customStatsManager;
-    }
-
-    public void setCustomStatsManager(CustomStatsManager customStatsManager) {
-        this.customStatsManager = customStatsManager;
     }
 
     private String getLoadedLibrariesAsString() {
