@@ -40,6 +40,8 @@ public class QuestsAlternative extends LibraryHook {
         return plugin.getDescription().getMain().equalsIgnoreCase("com.leonardobishop.quests.Quests");
     }
 
+    //
+
     /*
      * (non-Javadoc)
      *
