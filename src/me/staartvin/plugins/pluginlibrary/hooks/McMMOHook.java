@@ -60,7 +60,7 @@ public class McMMOHook extends LibraryHook {
 
     /**
      * Checks whether given string is a valid type of skill suitable for the
-     * other API calls in mcMMO. </br>
+     * other API calls in mcMMO. 
      *
      * @param skillType String to check.
      * @return true if this is a valid mcMMO skill.
@@ -80,7 +80,7 @@ public class McMMOHook extends LibraryHook {
     /**
      * Checks whether the given skill type string is both valid and not a child
      * skill. (Child skills have no XP of their own, and their level is derived
-     * from the parent(s).) </br>
+     * from the parent(s).) 
      *
      * @param skillType the skill to check
      * @return true if this is a valid, non-child mcMMO skill
@@ -96,7 +96,7 @@ public class McMMOHook extends LibraryHook {
     }
 
     /**
-     * Adds raw XP to the player. </br>
+     * Adds raw XP to the player. 
      *
      * @param player       The player to add XP to
      * @param skillType    The skill to add XP to
@@ -118,7 +118,7 @@ public class McMMOHook extends LibraryHook {
     }
 
     /**
-     * Adds raw XP to an offline player. </br>
+     * Adds raw XP to an offline player. 
      *
      * @param uuid      The UUID of player to add XP to
      * @param skillType The skill to add XP to
@@ -126,7 +126,6 @@ public class McMMOHook extends LibraryHook {
      * @throws InvalidSkillException  if the given skill is not valid
      * @throws InvalidPlayerException if the given player does not exist in the database
      */
-
     public void addRawXPOffline(UUID uuid, String skillType, float XP) {
         if (!this.isAvailable()) return;
 
@@ -138,7 +137,7 @@ public class McMMOHook extends LibraryHook {
     }
 
     /**
-     * Adds XP to the player, calculates for XP Rate and skill modifier. </br>
+     * Adds XP to the player, calculates for XP Rate and skill modifier. 
      *
      * @param player       The player to add XP to
      * @param skillType    The skill to add XP to
@@ -160,7 +159,7 @@ public class McMMOHook extends LibraryHook {
     }
 
     /**
-     * Adds XP to the player, calculates for XP Rate only. </br>
+     * Adds XP to the player, calculates for XP Rate only. 
      *
      * @param player       The player to add XP to
      * @param skillType    The skill to add XP to
@@ -181,7 +180,7 @@ public class McMMOHook extends LibraryHook {
     }
 
     /**
-     * Adds XP to an offline player, calculates for XP Rate only. </br>
+     * Adds XP to an offline player, calculates for XP Rate only. 
      *
      * @param playerName The player to add XP to
      * @param skillType  The skill to add XP to
@@ -203,7 +202,7 @@ public class McMMOHook extends LibraryHook {
 
     /**
      * Adds XP to an offline player, calculates for XP Rate and skill
-     * modifier. </br>
+     * modifier. 
      *
      * @param playerName The player to add XP to
      * @param skillType  The skill to add XP to
@@ -225,7 +224,7 @@ public class McMMOHook extends LibraryHook {
 
     /**
      * Adds XP to the player, calculates for XP Rate, skill modifiers, perks,
-     * child skills, and party sharing. </br>
+     * child skills, and party sharing. 
      *
      * @param player       The player to add XP to
      * @param skillType    The skill to add XP to
@@ -247,7 +246,7 @@ public class McMMOHook extends LibraryHook {
     }
 
     /**
-     * Get the amount of XP a player has in a specific skill. </br>
+     * Get the amount of XP a player has in a specific skill. 
      *
      * @param player    The player to get XP for
      * @param skillType The skill to get XP for
@@ -266,7 +265,7 @@ public class McMMOHook extends LibraryHook {
     }
 
     /**
-     * Get the amount of XP an offline player has in a specific skill. </br>
+     * Get the amount of XP an offline player has in a specific skill. 
      *
      * @param uuid      The player to get XP for
      * @param skillType The skill to get XP for
@@ -286,7 +285,7 @@ public class McMMOHook extends LibraryHook {
     }
 
     /**
-     * Get the raw amount of XP a player has in a specific skill. </br>
+     * Get the raw amount of XP a player has in a specific skill. 
      *
      * @param player    The player to get XP for
      * @param skillType The skill to get XP for
@@ -305,7 +304,7 @@ public class McMMOHook extends LibraryHook {
     }
 
     /**
-     * Get the raw amount of XP an offline player has in a specific skill. </br>
+     * Get the raw amount of XP an offline player has in a specific skill.
      *
      * @param uuid      The player to get XP for
      * @param skillType The skill to get XP for
@@ -325,7 +324,7 @@ public class McMMOHook extends LibraryHook {
     }
 
     /**
-     * Get the total amount of XP needed to reach the next level. </br>
+     * Get the total amount of XP needed to reach the next level. 
      *
      * @param player    The player to get the XP amount for
      * @param skillType The skill to get the XP amount for
@@ -345,7 +344,7 @@ public class McMMOHook extends LibraryHook {
 
     /**
      * Get the total amount of XP an offline player needs to reach the next
-     * level. </br>
+     * level. 
      *
      * @param uuid      The player to get XP for
      * @param skillType The skill to get XP for
@@ -365,7 +364,7 @@ public class McMMOHook extends LibraryHook {
     }
 
     /**
-     * Get the amount of XP remaining until the next level. </br>
+     * Get the amount of XP remaining until the next level. 
      *
      * @param player    The player to get the XP amount for
      * @param skillType The skill to get the XP amount for
@@ -384,7 +383,7 @@ public class McMMOHook extends LibraryHook {
     }
 
     /**
-     * Get the amount of XP an offline player has left before leveling up. </br>
+     * Get the amount of XP an offline player has left before leveling up. 
      *
      * @param uuid      The player to get XP for
      * @param skillType The skill to get XP for
@@ -404,7 +403,7 @@ public class McMMOHook extends LibraryHook {
     }
 
     /**
-     * Add levels to a skill. </br>
+     * Add levels to a skill. 
      *
      * @param player    The player to add levels to
      * @param skillType Type of skill to add levels to
@@ -422,7 +421,7 @@ public class McMMOHook extends LibraryHook {
     }
 
     /**
-     * Add levels to a skill for an offline player. </br>
+     * Add levels to a skill for an offline player. 
      * .
      *
      * @param uuid      The player to add levels to
@@ -442,7 +441,7 @@ public class McMMOHook extends LibraryHook {
     }
 
     /**
-     * Get the level a player has in a specific skill. </br>
+     * Get the level a player has in a specific skill. 
      *
      * @param player    The player to get the level for
      * @param skillType The skill to get the level for
@@ -460,7 +459,7 @@ public class McMMOHook extends LibraryHook {
     }
 
     /**
-     * Get the level an offline player has in a specific skill. </br>
+     * Get the level an offline player has in a specific skill. 
      *
      * @param uuid      The player to get the level for
      * @param skillType The skill to get the level for
@@ -479,7 +478,7 @@ public class McMMOHook extends LibraryHook {
     }
 
     /**
-     * Gets the power level of a player. </br>
+     * Gets the power level of a player. 
      *
      * @param player The player to get the power level for
      * @return the power level of the player
@@ -495,7 +494,7 @@ public class McMMOHook extends LibraryHook {
     }
 
     /**
-     * Gets the power level of an offline player. </br>
+     * Gets the power level of an offline player. 
      *
      * @param uuid The player to get the power level for
      * @return the power level of the player
@@ -512,7 +511,7 @@ public class McMMOHook extends LibraryHook {
     }
 
     /**
-     * Get the level cap of a specific skill. </br>
+     * Get the level cap of a specific skill. 
      *
      * @param skillType The skill to get the level cap for
      * @return the level cap of a given skill
@@ -529,7 +528,7 @@ public class McMMOHook extends LibraryHook {
     }
 
     /**
-     * Get the power level cap. </br>
+     * Get the power level cap. 
      *
      * @return the overall power level cap
      */
@@ -544,7 +543,7 @@ public class McMMOHook extends LibraryHook {
     }
 
     /**
-     * Get the position on the leaderboard of a player. </br>
+     * Get the position on the leaderboard of a player. 
      *
      * @param uuid      The name of the player to check
      * @param skillType The skill to check
@@ -564,7 +563,7 @@ public class McMMOHook extends LibraryHook {
     }
 
     /**
-     * Get the position on the power level leaderboard of a player. </br>
+     * Get the position on the power level leaderboard of a player. 
      *
      * @param uuid The name of the player to check
      * @return the position on the power level leaderboard
@@ -581,7 +580,7 @@ public class McMMOHook extends LibraryHook {
     }
 
     /**
-     * Sets the level of a player in a specific skill type. </br>
+     * Sets the level of a player in a specific skill type. 
      *
      * @param player     The player to set the level of
      * @param skillType  The skill to set the level for
@@ -599,7 +598,7 @@ public class McMMOHook extends LibraryHook {
     }
 
     /**
-     * Sets the level of an offline player in a specific skill type. </br>
+     * Sets the level of an offline player in a specific skill type. 
      *
      * @param uuid       The player to set the level of
      * @param skillType  The skill to set the level for
@@ -618,7 +617,7 @@ public class McMMOHook extends LibraryHook {
     }
 
     /**
-     * Sets the XP of a player in a specific skill type. </br>
+     * Sets the XP of a player in a specific skill type. 
      *
      * @param player    The player to set the XP of
      * @param skillType The skill to set the XP for
@@ -637,7 +636,7 @@ public class McMMOHook extends LibraryHook {
     }
 
     /**
-     * Sets the XP of an offline player in a specific skill type. </br>
+     * Sets the XP of an offline player in a specific skill type. 
      *
      * @param uuid      The player to set the XP of
      * @param skillType The skill to set the XP for
@@ -657,7 +656,7 @@ public class McMMOHook extends LibraryHook {
     }
 
     /**
-     * Removes XP from a player in a specific skill type. </br>
+     * Removes XP from a player in a specific skill type. 
      *
      * @param player    The player to change the XP of
      * @param skillType The skill to change the XP for
@@ -676,7 +675,7 @@ public class McMMOHook extends LibraryHook {
     }
 
     /**
-     * Removes XP from an offline player in a specific skill type. </br>
+     * Removes XP from an offline player in a specific skill type. 
      *
      * @param uuid      The player to change the XP of
      * @param skillType The skill to change the XP for
@@ -698,7 +697,7 @@ public class McMMOHook extends LibraryHook {
 
     /**
      * Check how much XP is needed for a specific level with the selected level
-     * curve. </br>
+     * curve. 
      *
      * @param level The level to get the amount of XP for
      * @throws InvalidFormulaTypeException if the given formulaType is not valid
@@ -715,7 +714,7 @@ public class McMMOHook extends LibraryHook {
 
     /**
      * Check how much XP is needed for a specific level with the provided level
-     * curve. </br>
+     * curve. 
      *
      * @param level       The level to get the amount of XP for
      * @param formulaType The formula type to get the amount of XP for
@@ -1008,7 +1007,7 @@ public class McMMOHook extends LibraryHook {
     /* ChatAPI below */
 
     /**
-     * Send a message to all members of a party </br>
+     * Send a message to all members of a party 
      *
      * @param plugin      The plugin sending the message
      * @param sender      The name of the sender
@@ -1027,7 +1026,7 @@ public class McMMOHook extends LibraryHook {
     }
 
     /**
-     * Send a message to all members of a party </br>
+     * Send a message to all members of a party 
      *
      * @param plugin  The plugin sending the message
      * @param sender  The name of the sender to display in the chat
@@ -1045,7 +1044,7 @@ public class McMMOHook extends LibraryHook {
     }
 
     /**
-     * Send a message to administrators </br>
+     * Send a message to administrators 
      *
      * @param plugin      The plugin sending the message
      * @param sender      The name of the sender
@@ -1063,7 +1062,7 @@ public class McMMOHook extends LibraryHook {
     }
 
     /**
-     * Send a message to administrators </br>
+     * Send a message to administrators 
      *
      * @param plugin  The plugin sending the message
      * @param sender  The name of the sender to display in the chat
@@ -1206,7 +1205,7 @@ public class McMMOHook extends LibraryHook {
     /* PartyAPI below */
 
     /**
-     * Get the name of the party a player is in. </br>
+     * Get the name of the party a player is in. 
      *
      * @param player The player to check the party name of
      * @return the name of the player's party, or null if not in a party
@@ -1222,7 +1221,7 @@ public class McMMOHook extends LibraryHook {
     }
 
     /**
-     * Checks if a player is in a party. </br>
+     * Checks if a player is in a party. 
      *
      * @param player The player to check
      * @return true if the player is in a party, false otherwise
@@ -1238,7 +1237,7 @@ public class McMMOHook extends LibraryHook {
     }
 
     /**
-     * Check if two players are in the same party. </br>
+     * Check if two players are in the same party. 
      *
      * @param playera The first player to check
      * @param playerb The second player to check
@@ -1255,7 +1254,7 @@ public class McMMOHook extends LibraryHook {
     }
 
     /**
-     * Get a list of all current parties. </br>
+     * Get a list of all current parties. 
      *
      * @return the list of parties.
      */
@@ -1270,7 +1269,7 @@ public class McMMOHook extends LibraryHook {
     }
 
     /**
-     * Add a player to a party. </br>
+     * Add a player to a party. 
      *
      * @param player    The player to add to the party
      * @param partyName The party to add the player to
@@ -1286,7 +1285,7 @@ public class McMMOHook extends LibraryHook {
     }
 
     /**
-     * Remove a player from a party. </br>
+     * Remove a player from a party. 
      *
      * @param player The player to remove
      */
@@ -1301,7 +1300,7 @@ public class McMMOHook extends LibraryHook {
     }
 
     /**
-     * Get the leader of a party. </br>
+     * Get the leader of a party. 
      *
      * @param partyName The party name
      * @return the leader of the party
@@ -1317,7 +1316,7 @@ public class McMMOHook extends LibraryHook {
     }
 
     /**
-     * Set the leader of a party. </br>
+     * Set the leader of a party. 
      *
      * @param partyName  The name of the party to set the leader of
      * @param playerName The playerName to set as leader
@@ -1335,7 +1334,7 @@ public class McMMOHook extends LibraryHook {
     }
 
     /**
-     * Get a list of all players in this player's party. </br>
+     * Get a list of all players in this player's party. 
      *
      * @param player The player to check
      * @return all the players in the player's party
@@ -1353,7 +1352,7 @@ public class McMMOHook extends LibraryHook {
     }
 
     /**
-     * Get a list of all player names in this player's party. </br>
+     * Get a list of all player names in this player's party. 
      *
      * @param player The player to check
      * @return all the player names in the player's party
@@ -1371,7 +1370,7 @@ public class McMMOHook extends LibraryHook {
     }
 
     /**
-     * Get a list of all player names and uuids in this player's party. </br>
+     * Get a list of all player names and uuids in this player's party. 
      *
      * @param player The player to check
      * @return all the player names and uuids in the player's party
@@ -1387,7 +1386,7 @@ public class McMMOHook extends LibraryHook {
     }
 
     /**
-     * Get a list of all online players in this party. </br>
+     * Get a list of all online players in this party. 
      *
      * @param partyName The party to check
      * @return all online players in this party
@@ -1403,7 +1402,7 @@ public class McMMOHook extends LibraryHook {
     }
 
     /**
-     * Get a list of all online players in this player's party. </br>
+     * Get a list of all online players in this player's party. 
      *
      * @param player The player to check
      * @return all online players in the player's party
@@ -1454,7 +1453,7 @@ public class McMMOHook extends LibraryHook {
 
     /**
      * Returns a list of strings with mcMMO's skills This includes parent and
-     * child skills </br>
+     * child skills 
      *
      * @return a list of strings with valid skill names
      */
@@ -1470,7 +1469,7 @@ public class McMMOHook extends LibraryHook {
 
     /**
      * Returns a list of strings with mcMMO's skills This only includes parent
-     * skills </br>
+     * skills 
      *
      * @return a list of strings with valid skill names
      */
@@ -1486,7 +1485,7 @@ public class McMMOHook extends LibraryHook {
 
     /**
      * Returns a list of strings with mcMMO's skills This only includes child
-     * skills </br>
+     * skills 
      *
      * @return a list of strings with valid skill names
      */
@@ -1502,7 +1501,7 @@ public class McMMOHook extends LibraryHook {
 
     /**
      * Returns a list of strings with mcMMO's skills This only includes combat
-     * skills </br>
+     * skills 
      *
      * @return a list of strings with valid skill names
      */
@@ -1518,7 +1517,7 @@ public class McMMOHook extends LibraryHook {
 
     /**
      * Returns a list of strings with mcMMO's skills This only includes
-     * gathering skills </br>
+     * gathering skills 
      *
      * @return a list of strings with valid skill names
      */
@@ -1534,7 +1533,7 @@ public class McMMOHook extends LibraryHook {
 
     /**
      * Returns a list of strings with mcMMO's skills This only includes misc
-     * skills </br>
+     * skills 
      *
      * @return a list of strings with valid skill names
      */
