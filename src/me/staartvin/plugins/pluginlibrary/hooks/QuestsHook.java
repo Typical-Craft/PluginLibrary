@@ -29,11 +29,7 @@ public class QuestsHook extends LibraryHook {
         Plugin plugin = this.getPlugin().getServer().getPluginManager().getPlugin(Library.QUESTS
                 .getInternalPluginName());
 
-        if (plugin == null || !plugin.isEnabled()) return false;
-
-        // Since there are two plugins with the same name (Quests), hence I need another way to distinguish the two.
-        // That's why I check the path to the main file.
-        return plugin.getDescription().getMain().equalsIgnoreCase("me.blackvein.quests.Quests");
+        return plugin != null && plugin.isEnabled();
     }
 
 	/*

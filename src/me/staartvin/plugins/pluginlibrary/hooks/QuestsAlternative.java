@@ -33,11 +33,7 @@ public class QuestsAlternative extends LibraryHook {
         Plugin plugin = this.getPlugin().getServer().getPluginManager().getPlugin(Library.QUESTS_ALTERNATIVE
                 .getInternalPluginName());
 
-        if (plugin == null || !plugin.isEnabled()) return false;
-
-        // Since there are two plugins with the same name (Quests), hence I need another way to distinguish the two.
-        // That's why I check the path to the main file.
-        return plugin.getDescription().getMain().equalsIgnoreCase("com.leonardobishop.quests.Quests");
+        return plugin != null && plugin.isEnabled();
     }
 
     //

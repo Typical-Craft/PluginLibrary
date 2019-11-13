@@ -98,7 +98,7 @@ public class PluginLibrary extends JavaPlugin {
         for (Library l : Library.values()) {
             LibraryHook libraryHook = l.getHook();
 
-            if (LibraryHook.isAvailablePlugin(l) && libraryHook.isAvailable()) {
+            if (LibraryHook.isPluginAvailable(l) && libraryHook.isAvailable()) {
                 try {
                     if (libraryHook.hook()) {
                         loadedLibraries.add(l);

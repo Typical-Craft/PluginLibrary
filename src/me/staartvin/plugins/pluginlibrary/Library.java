@@ -30,13 +30,14 @@ public enum Library {
     VAULT("Vault", new VaultHook(), "Kainzo"),
     WORLDGUARD("WorldGuard", new WorldGuardHook(), "sk89q"),
     ESSENTIALSX("Essentials", "EssentialsX", new EssentialsXHook(), "drtshock"),
-    QUESTS("Quests", new QuestsHook(), "PikaMug"),
+    QUESTS("Quests", new QuestsHook(), "PikaMug", "me.blackvein.quests.Quests"),
     STATS("Stats", new StatsHook(), "Lolmewn"),
-    QUESTS_ALTERNATIVE("Quests", new QuestsAlternative(), "LMBishop"),
+    QUESTS_ALTERNATIVE("Quests", new QuestsAlternative(), "LMBishop", "com.leonardobishop.quests.Quests"),
     SAVAGE_FACTIONS("Factions", "SavageFactions", new SavageFactionsHook(), "ProSavage"),
-    PLAYERPOINTS("PlayerPoints", new PlayerPointsHook(), "Blackixx");
+    PLAYERPOINTS("PlayerPoints", new PlayerPointsHook(), "Blackixx"),
+    NUVOTIFIER("Votifier", "NuVotifier", new NuVotifierHook(), "Ichbinjoe", "com.vexsoftware.votifier.NuVotifierBukkit");
 
-    private String internalPluginName, humanPluginName, authorName;
+    private String internalPluginName, humanPluginName, authorName, mainClass;
     private LibraryHook hook;
 
     Library(String pluginName, String humanPluginName, LibraryHook hook, String authorName) {
@@ -52,12 +53,27 @@ public enum Library {
         this.authorName = authorName;
     }
 
+    Library(String pluginName, LibraryHook hook, String authorName, String mainClass) {
+        this.internalPluginName = pluginName;
+        this.hook = hook;
+        this.authorName = authorName;
+        this.mainClass = mainClass;
+    }
+
+    Library(String pluginName, String humanPluginName, LibraryHook hook, String authorName, String mainClass) {
+        this.internalPluginName = pluginName;
+        this.humanPluginName = humanPluginName;
+        this.hook = hook;
+        this.authorName = authorName;
+        this.mainClass = mainClass;
+    }
+
     /**
-     * Get a library programmaticaly. This method is the same as valueOf(), but is case-insensitive.
+     * Get a library programmatically. This method is the same as valueOf(), but is case-insensitive.
      *
      * @param value name of the library
      *
-     * @return the Library objec.
+     * @return the Library object.
      *
      * @throws IllegalArgumentException When no library with the given name was found.
      */
@@ -88,5 +104,23 @@ public enum Library {
         }
 
         return humanPluginName;
+    }
+
+    /**
+     * The main class field as described by the description file in the JAR.
+     * It is used to distinguish plugins that have the same name, but are of the different authors.
+     * @return string containing path to main class.
+     */
+    public String getMainClass() {
+        return mainClass;
+    }
+
+    public boolean hasMainClass() {
+        return mainClass != null;
+    }
+
+
+    public void setMainClass(String mainClass) {
+        this.mainClass = mainClass;
     }
 }
