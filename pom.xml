@@ -6,7 +6,7 @@
 
     <groupId>me.staartvin</groupId>
     <artifactId>PluginLibrary</artifactId>
-    <version>1.2.2<!---SNAPSHOT-${BUILD_NUMBER}--></version>
+    <version>1.2.2-SNAPSHOT-${BUILD_NUMBER}</version>
 
     <build>
 
