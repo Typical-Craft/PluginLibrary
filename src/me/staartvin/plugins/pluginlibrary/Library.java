@@ -13,7 +13,7 @@ public enum Library {
 
     AUTORANK("Autorank", new AutorankHook(), "Staartvin"),
     MCMMO("mcMMO", new McMMOHook(), "t00thpick1"),
-    FACTIONS("Factions", new FactionsHook(), "Cayorion"),
+    FACTIONS("Factions", new FactionsHook(), "Cayorion", "com.massivecraft.factions.Factions"),
     ONTIME("OnTime", new OnTimeHook(), "Edge209"),
     AFKTERMINATOR("afkTerminator", new AFKTerminatorHook(), "Edge209"),
     ROYALCOMMANDS("RoyalCommands", new RoyalCommandsHook(), "WizardCM"),
@@ -33,7 +33,7 @@ public enum Library {
     QUESTS("Quests", new QuestsHook(), "PikaMug", "me.blackvein.quests.Quests"),
     STATS("Stats", new StatsHook(), "Lolmewn"),
     QUESTS_ALTERNATIVE("Quests", new QuestsAlternative(), "LMBishop", "com.leonardobishop.quests.Quests"),
-    SAVAGE_FACTIONS("Factions", "SavageFactions", new SavageFactionsHook(), "ProSavage"),
+    SAVAGE_FACTIONS("Factions", "SavageFactions", new SavageFactionsHook(), "ProSavage", "com.massivecraft.factions.SavageFactions"),
     PLAYERPOINTS("PlayerPoints", new PlayerPointsHook(), "Blackixx"),
     NUVOTIFIER("Votifier", "NuVotifier", new NuVotifierHook(), "Ichbinjoe", "com.vexsoftware.votifier.NuVotifierBukkit");
 

@@ -62,9 +62,7 @@ public class SavageFactionsHook extends LibraryHook {
 
         savageFactions = (SavageFactions) plugin;
 
-        // Unfortunately, the SavageFactions plugin is nearly identical to the 'regular' Factions.
-        // However, we know that ProSavage has put its name in the authors array.
-        return savageFactions.getDescription().getAuthors().contains("ProSavage");
+        return true;
     }
 
     /* Faction vars */
@@ -85,9 +83,6 @@ public class SavageFactionsHook extends LibraryHook {
 
         com.massivecraft.factions.Faction fac = Factions.getInstance().getByTag
                 (factionName);
-
-        if (fac == null)
-            return null;
 
         return fac;
     }
@@ -113,9 +108,6 @@ public class SavageFactionsHook extends LibraryHook {
 
         com.massivecraft.factions.Faction fac = fPlayer.getFaction();
 
-        if (fac == null)
-            return null;
-
         return fac;
     }
 
@@ -135,9 +127,6 @@ public class SavageFactionsHook extends LibraryHook {
         com.massivecraft.factions.Faction faction = Factions.getInstance()
                 .getFactionById
                 (factionId);
-
-        if (faction == null)
-            return null;
 
         return faction;
     }
@@ -169,9 +158,6 @@ public class SavageFactionsHook extends LibraryHook {
 
         Faction fac = Factions.getInstance().getWilderness();
 
-        if (fac == null)
-            return null;
-
         return fac;
     }
 
@@ -186,9 +172,6 @@ public class SavageFactionsHook extends LibraryHook {
 
         Faction fac = Factions.getInstance().getSafeZone();
 
-        if (fac == null)
-            return null;
-
         return fac;
     }
 
@@ -202,9 +185,6 @@ public class SavageFactionsHook extends LibraryHook {
         if (!this.isAvailable()) return null;
 
         Faction fac = Factions.getInstance().getWarZone();
-
-        if (fac == null)
-            return null;
 
         return fac;
     }
@@ -227,9 +207,6 @@ public class SavageFactionsHook extends LibraryHook {
 
         Faction fac = Board.getInstance().getFactionAt(fLocation);
 
-        if (fac == null)
-            return null;
-
         return fac;
     }
 
@@ -249,9 +226,6 @@ public class SavageFactionsHook extends LibraryHook {
         OfflinePlayer offlinePlayer = getPlugin().getServer().getOfflinePlayer(uuid);
 
         FPlayer fPlayer = FPlayers.getInstance().getByOfflinePlayer(offlinePlayer);
-
-        if (fPlayer == null)
-            return null;
 
         return fPlayer;
     }

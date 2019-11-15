@@ -15,7 +15,7 @@ import java.util.*;
  */
 public class PluginLibrary extends JavaPlugin {
 
-    private final static List<Library> loadedLibraries = new ArrayList<Library>();
+    private final static List<Library> loadedLibraries = new ArrayList<>();
     public HashMap<UUID, Long> requestTimes = new HashMap<>();
 
     /**
@@ -39,7 +39,7 @@ public class PluginLibrary extends JavaPlugin {
      *
      * @return {@link me.staartvin.plugins.pluginlibrary.Library} class or an error.
      *
-     * @see {@linkplain#getLibrary(String)}
+     * @see #getLibrary(String)
      */
     public static LibraryHook getLibrary(Library lib) {
         return lib.getHook();
@@ -93,8 +93,6 @@ public class PluginLibrary extends JavaPlugin {
     public int loadLibraries() {
         int count = 0;
 
-        // test
-
         for (Library l : Library.values()) {
             LibraryHook libraryHook = l.getHook();
 
@@ -131,7 +129,7 @@ public class PluginLibrary extends JavaPlugin {
     }
 
     private String getLoadedLibrariesAsString() {
-        StringBuilder builder = new StringBuilder("");
+        StringBuilder builder = new StringBuilder();
 
         for (int i = 0, l = loadedLibraries.size(); i < l; i++) {
             Library library = loadedLibraries.get(i);
@@ -143,9 +141,9 @@ public class PluginLibrary extends JavaPlugin {
             if (i == 0) {
                 builder.append(addedString);
             } else if (i == (l - 1)) {
-                builder.append(ChatColor.GRAY + " and " + addedString);
+                builder.append(ChatColor.GRAY).append(" and ").append(addedString);
             } else {
-                builder.append(ChatColor.GRAY + ", " + addedString);
+                builder.append(ChatColor.GRAY).append(", ").append(addedString);
             }
         }
 
