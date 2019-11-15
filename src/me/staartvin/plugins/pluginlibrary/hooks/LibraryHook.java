@@ -20,7 +20,9 @@ public abstract class LibraryHook {
 	}
 
 	/**
-	 * Whether or not the plugin is available.
+	 * Whether or not the plugin is available. Checking whether a plugin is available may require some additional
+	 * checks. This method can be used in conjunction with the {@link #isPluginAvailable(Library)} method to check for
+	 * availability of a plugin.
 	 * 
 	 * @return true when plugin is available to use; false otherwise.
 	 */
