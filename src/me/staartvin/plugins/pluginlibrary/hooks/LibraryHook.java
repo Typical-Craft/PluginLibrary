@@ -36,7 +36,22 @@ public abstract class LibraryHook {
 	public static boolean isPluginAvailable(Library library) {
 		Plugin plugin =  Bukkit.getServer().getPluginManager().getPlugin(library.getInternalPluginName());
 
-		if (plugin == null || !plugin.isEnabled()) return false;
+//        System.out.println("Library " + library.getHumanPluginName() + " plugin: " + plugin);
+//
+//        if (plugin != null) {
+//            System.out.println("Plugin enabled: " + plugin.isEnabled());
+//        } else {
+//            System.out.println("Plugin enabled: false");
+//        }
+
+		if (plugin == null) return false;
+
+//        System.out.println("Library has main class: " + library.hasMainClass());
+//
+//        if (library.hasMainClass()) {
+//            System.out.println("(Should be) Library main class: " + library.getMainClass());
+//            System.out.println("(Is) Library main class: " + plugin.getDescription().getMain());
+//        }
 
 		// Check if plugin has a main class defined.
 		// If so, check if the main class is equal to that of the enabled plugin to make sure we have the correct one.

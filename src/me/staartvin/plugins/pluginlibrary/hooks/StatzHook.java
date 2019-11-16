@@ -28,7 +28,7 @@ public class StatzHook extends LibraryHook {
     public boolean isAvailable() {
         // TODO Auto-generated method stub
 
-        return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.STATZ.getInternalPluginName());
+        return true;
     }
 
     /*

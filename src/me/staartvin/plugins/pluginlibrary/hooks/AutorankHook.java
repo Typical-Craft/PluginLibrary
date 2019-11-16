@@ -34,7 +34,7 @@ public class AutorankHook extends LibraryHook {
 	public boolean isAvailable() {
 		// TODO Auto-generated method stub
 
-        return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.AUTORANK.getInternalPluginName());
+        return true;
 	}
 
 	/*
