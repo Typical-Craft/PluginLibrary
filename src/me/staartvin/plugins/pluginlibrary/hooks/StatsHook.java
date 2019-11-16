@@ -31,7 +31,6 @@ public class StatsHook extends LibraryHook {
      */
     @Override
     public boolean isAvailable() {
-        // TODO Auto-generated method stub
         return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.STATS.getInternalPluginName());
     }
 

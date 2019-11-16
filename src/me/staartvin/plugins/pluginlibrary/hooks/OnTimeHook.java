@@ -27,8 +27,6 @@ public class OnTimeHook extends LibraryHook {
 	 */
 	@Override
 	public boolean isAvailable() {
-		// TODO Auto-generated method stub
-
         return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.ONTIME.getInternalPluginName());
 	}
 

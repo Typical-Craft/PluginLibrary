@@ -39,8 +39,6 @@ public class QuestsHook extends LibraryHook {
 	 */
 	@Override
 	public boolean hook() {
-		// TODO Auto-generated method stub
-
 		if (!isAvailable())
 			return false;
 

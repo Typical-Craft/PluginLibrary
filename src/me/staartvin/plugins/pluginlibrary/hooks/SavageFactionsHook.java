@@ -36,8 +36,6 @@ public class SavageFactionsHook extends LibraryHook {
      */
     @Override
     public boolean isAvailable() {
-        // TODO Auto-generated method stub
-
         return this.getPlugin().getServer().getPluginManager().isPluginEnabled(Library.SAVAGE_FACTIONS
                 .getInternalPluginName());
     }
@@ -49,8 +47,6 @@ public class SavageFactionsHook extends LibraryHook {
      */
     @Override
     public boolean hook() {
-        // TODO Auto-generated method stub
-
         if (!isAvailable())
             return false;
 

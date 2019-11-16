@@ -26,9 +26,7 @@ public class StatzHook extends LibraryHook {
      */
     @Override
     public boolean isAvailable() {
-        // TODO Auto-generated method stub
-
-        return true;
+                return true;
     }
 
     /*
@@ -38,8 +36,6 @@ public class StatzHook extends LibraryHook {
      */
     @Override
     public boolean hook() {
-        // TODO Auto-generated method stub
-
         if (!isAvailable())
             return false;
 
