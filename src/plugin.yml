@@ -2,6 +2,7 @@ name: PluginLibrary
 author: Staartvin
 main: me.staartvin.plugins.pluginlibrary.PluginLibrary
 version: ${project.version}
+api-version: 1.14
 description: Allows developers to get a lot of data from other plugins without importing the APIs themselves.
 softdepend: [Autorank, Stats, mcMMO, Factions, afkTerminator, OnTime, RoyalCommands, UltimateCore, Statz,
 AdvancedAchievements, BattleLevels, Jobs, RPGme, Statz, uSkyBlock, Vault, WorldEdit, WorldGuard, AcidIsland,
