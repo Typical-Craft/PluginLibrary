@@ -1,6 +1,7 @@
 package me.staartvin.plugins.pluginlibrary.hooks;
 
 import me.staartvin.plugins.pluginlibrary.Library;
+import me.staartvin.plugins.pluginlibrary.hooks.afkmanager.AFKManager;
 
 import java.util.UUID;
 
@@ -13,7 +14,7 @@ import java.util.UUID;
  * @author Staartvin
  *
  */
-public class UltimateCoreHook extends LibraryHook {
+public class UltimateCoreHook extends LibraryHook implements AFKManager {
 
 //	private UltimateCore api;
 
@@ -51,6 +52,7 @@ public class UltimateCoreHook extends LibraryHook {
 	public boolean isAFK(UUID uuid) {
 
 		return false;
+
 //	    if (!isAvailable()) {
 //	        return false;
 //        }
@@ -63,4 +65,9 @@ public class UltimateCoreHook extends LibraryHook {
 //
 //        return player.isAfk();
     }
+
+	@Override
+	public boolean hasAFKData() {
+		return true;
+	}
 }

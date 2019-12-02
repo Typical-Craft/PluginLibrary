@@ -3,6 +3,7 @@ package me.staartvin.plugins.pluginlibrary.hooks;
 import me.edge209.afkTerminator.AfkDetect;
 import me.edge209.afkTerminator.AfkDetect.AFKMACHINES;
 import me.staartvin.plugins.pluginlibrary.Library;
+import me.staartvin.plugins.pluginlibrary.hooks.afkmanager.AFKManager;
 
 import java.util.UUID;
 
@@ -15,7 +16,7 @@ import java.util.UUID;
  * @author Staartvin
  * 
  */
-public class AFKTerminatorHook extends LibraryHook {
+public class AFKTerminatorHook extends LibraryHook implements AFKManager {
 
 	/*
 	 * (non-Javadoc)
@@ -108,5 +109,15 @@ public class AFKTerminatorHook extends LibraryHook {
 			return null;
 
 		return type.toString();
+	}
+
+	@Override
+	public boolean isAFK(UUID uuid) {
+		return this.isAFKMachineDetected(uuid);
+	}
+
+	@Override
+	public boolean hasAFKData() {
+		return true;
 	}
 }

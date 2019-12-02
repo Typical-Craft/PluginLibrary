@@ -1,11 +1,15 @@
 package me.staartvin.plugins.pluginlibrary.hooks;
 
 import me.staartvin.plugins.pluginlibrary.Library;
+import me.staartvin.plugins.pluginlibrary.hooks.afkmanager.AFKManager;
+import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.royaldev.royalcommands.RoyalCommands;
 import org.royaldev.royalcommands.WorldManager;
+
+import java.util.UUID;
 
 /**
  * RoyalCommands library,
@@ -16,7 +20,7 @@ import org.royaldev.royalcommands.WorldManager;
  * @author Staartvin
  * 
  */
-public class RoyalCommandsHook extends LibraryHook {
+public class RoyalCommandsHook extends LibraryHook implements AFKManager {
 
 	private RoyalCommands api;
 
@@ -106,4 +110,13 @@ public class RoyalCommandsHook extends LibraryHook {
 		return WorldManager.il.getOfflinePlayerEnderInventory(player, worldName);
 	}
 
+	@Override
+	public boolean isAFK(UUID uuid) {
+		return isAFK(Bukkit.getPlayer(uuid));
+	}
+
+	@Override
+	public boolean hasAFKData() {
+		return true;
+	}
 }

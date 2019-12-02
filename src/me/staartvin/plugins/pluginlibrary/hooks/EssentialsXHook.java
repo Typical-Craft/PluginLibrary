@@ -3,6 +3,7 @@ package me.staartvin.plugins.pluginlibrary.hooks;
 import com.earth2me.essentials.Essentials;
 import com.earth2me.essentials.User;
 import me.staartvin.plugins.pluginlibrary.Library;
+import me.staartvin.plugins.pluginlibrary.hooks.afkmanager.AFKManager;
 
 import java.util.UUID;
 
@@ -14,7 +15,7 @@ import java.util.UUID;
  * @author Staartvin
  *
  */
-public class EssentialsXHook extends LibraryHook {
+public class EssentialsXHook extends LibraryHook implements AFKManager {
 
 	private Essentials essentials;
 
@@ -93,6 +94,11 @@ public class EssentialsXHook extends LibraryHook {
         if (user == null) return false;
 
         return user.isAfk();
+    }
+
+    @Override
+    public boolean hasAFKData() {
+        return true;
     }
 
 }

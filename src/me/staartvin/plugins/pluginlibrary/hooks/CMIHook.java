@@ -3,6 +3,7 @@ package me.staartvin.plugins.pluginlibrary.hooks;
 import com.Zrips.CMI.CMI;
 import com.Zrips.CMI.Containers.CMIUser;
 import me.staartvin.plugins.pluginlibrary.Library;
+import me.staartvin.plugins.pluginlibrary.hooks.afkmanager.AFKManager;
 
 import java.util.UUID;
 
@@ -14,7 +15,7 @@ import java.util.UUID;
  * @author Staartvin
  * 
  */
-public class CMIHook extends LibraryHook {
+public class CMIHook extends LibraryHook implements AFKManager {
 
 	/*
 	 * (non-Javadoc)
@@ -54,6 +55,11 @@ public class CMIHook extends LibraryHook {
         if (user == null) return false;
 
 	    return user.isAfk();
+	}
+
+	@Override
+	public boolean hasAFKData() {
+		return true;
 	}
 
 }
