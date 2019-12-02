@@ -35,7 +35,9 @@ public enum Library {
     QUESTS_ALTERNATIVE("Quests", new QuestsAlternative(), "LMBishop", "com.leonardobishop.quests.Quests"),
     SAVAGE_FACTIONS("Factions", "SavageFactions", new SavageFactionsHook(), "ProSavage", "com.massivecraft.factions.SavageFactions"),
     PLAYERPOINTS("PlayerPoints", new PlayerPointsHook(), "Blackixx"),
-    NUVOTIFIER("Votifier", "NuVotifier", new NuVotifierHook(), "Ichbinjoe", "com.vexsoftware.votifier.NuVotifierBukkit");
+    NUVOTIFIER("Votifier", "NuVotifier", new NuVotifierHook(), "Ichbinjoe", "com.vexsoftware.votifier" +
+            ".NuVotifierBukkit"),
+    CMI("CMI", new CMIHook(), "Zrips");
 
     private String internalPluginName, humanPluginName, authorName, mainClass;
     private LibraryHook hook;
