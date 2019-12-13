@@ -2,7 +2,6 @@ package me.staartvin.plugins.pluginlibrary.listeners;
 
 import com.vexsoftware.votifier.model.VotifierEvent;
 import me.staartvin.plugins.pluginlibrary.events.PlayerVotedEvent;
-import me.staartvin.statz.datamanager.player.PlayerStat;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -16,8 +15,6 @@ public class VoteListener implements Listener {
 
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onVote(final VotifierEvent event) {
-
-        final PlayerStat stat = PlayerStat.VOTES;
 
         String userName = event.getVote().getUsername();
 
