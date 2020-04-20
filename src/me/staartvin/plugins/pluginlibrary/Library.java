@@ -37,7 +37,8 @@ public enum Library {
     PLAYERPOINTS("PlayerPoints", new PlayerPointsHook(), "Blackixx"),
     NUVOTIFIER("Votifier", "NuVotifier", new NuVotifierHook(), "Ichbinjoe", "com.vexsoftware.votifier" +
             ".NuVotifierBukkit"),
-    CMI("CMI", new CMIHook(), "Zrips");
+    CMI("CMI", new CMIHook(), "Zrips"),
+    UHCSTATS("UhcStats", new UHCStatsHook(), "Mezy");
 
     private String internalPluginName, humanPluginName, authorName, mainClass;
     private LibraryHook hook;
