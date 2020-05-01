@@ -3,6 +3,7 @@ package me.staartvin.utils.pluginlibrary;
 import me.staartvin.utils.pluginlibrary.hooks.LibraryHook;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.plugin.ServicePriority;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.*;
@@ -18,10 +19,6 @@ public class PluginLibrary {
 
     private final static List<me.staartvin.utils.pluginlibrary.Library> loadedLibraries = new ArrayList<>();
     public HashMap<UUID, Long> requestTimes = new HashMap<>();
-
-    // Store reference to parent plugin so we can access Bukkit stuff.
-    private static JavaPlugin parentPlugin = null;
-
 
     /**
      * Gets the library for a specific plugin. <br> Will throw a {@link IllegalArgumentException} when there is no
@@ -50,16 +47,48 @@ public class PluginLibrary {
      * Checks to see whether the library is loaded and thus ready for use.
      *
      * @param lib Library to check.
-     *
      * @return true if the library is loaded; false otherwise.
      */
     public static boolean isLibraryLoaded(me.staartvin.utils.pluginlibrary.Library lib) {
         return loadedLibraries.contains(lib);
     }
 
-    public int enablePluginLibrary(JavaPlugin plugin) {
+    public static PluginLibrary getPluginLibrary(JavaPlugin plugin) {
 
-        parentPlugin = plugin;
+        boolean loadNewInstance = false;
+
+        PluginLibrary library = null;
+
+        // Check whether the library has already been loaded before.
+        if (Bukkit.getServer().getServicesManager().isProvidedFor(PluginLibrary.class)) {
+            library = Bukkit.getServer().getServicesManager().load(PluginLibrary.class);
+
+            // Check if the library actually exists
+            if (library == null) {
+                loadNewInstance = true;
+            } else {
+                System.out.println("Found PluginLibrary instance and using that");
+            }
+        } else {
+            // It hasn't loaded, so we should definitely create a new one.
+            loadNewInstance = true;
+        }
+
+        // If we should load a new instance, do that.
+        if (loadNewInstance) {
+            library = new PluginLibrary();
+
+            System.out.println("Generating new PluginLibrary instance");
+
+            // Also register this so we don't have to create one again.
+            Bukkit.getServer().getServicesManager().register(PluginLibrary.class, library, plugin,
+                    ServicePriority.Normal);
+        }
+
+        return library;
+    }
+
+    public int enablePluginLibrary() {
 
         loadedLibraries.clear();
 
