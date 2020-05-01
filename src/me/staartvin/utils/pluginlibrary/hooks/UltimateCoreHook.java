@@ -19,10 +19,10 @@ public class UltimateCoreHook extends LibraryHook implements AFKManager {
 //	private UltimateCore api;
 
 	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see me.staartvin.plugins.pluginlibrary.hooks.LibraryHook#isAvailable()
-	 */
+     * (non-Javadoc)
+     *
+     * @see me.staartvin.utils.pluginlibrary.hooks.LibraryHook#isAvailable()
+     */
 	@Override
 	public boolean isAvailable() {
 		return this.getServer().getPluginManager().isPluginEnabled(Library.ULTIMATECORE.getInternalPluginName());

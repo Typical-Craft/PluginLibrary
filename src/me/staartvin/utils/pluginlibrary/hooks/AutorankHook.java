@@ -1,7 +1,6 @@
 package me.staartvin.utils.pluginlibrary.hooks;
 
 import me.armar.plugins.autorank.Autorank;
-import me.armar.plugins.autorank.pathbuilder.holders.CompositeRequirement;
 import me.armar.plugins.autorank.pathbuilder.requirement.AbstractRequirement;
 import me.armar.plugins.autorank.pathbuilder.result.AbstractResult;
 import me.staartvin.utils.pluginlibrary.Library;
@@ -9,8 +8,8 @@ import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Autorank library,
@@ -27,7 +26,7 @@ public class AutorankHook extends LibraryHook {
     /*
      * (non-Javadoc)
      *
-     * @see me.staartvin.plugins.pluginlibrary.LibraryHook#isAvailable()
+     * @see me.staartvin.utils.pluginlibrary.LibraryHook#isAvailable()
      */
     @Override
     public boolean isAvailable() {
@@ -37,7 +36,7 @@ public class AutorankHook extends LibraryHook {
     /*
      * (non-Javadoc)
      *
-     * @see me.staartvin.plugins.pluginlibrary.LibraryHook#hook()
+     * @see me.staartvin.utils.pluginlibrary.LibraryHook#hook()
      */
     @Override
     public boolean hook() {
@@ -56,9 +55,9 @@ public class AutorankHook extends LibraryHook {
      * @param uuid UUID of the player
      * @return amount of minutes a player has played.
      */
-    public int getLocalPlayTime(UUID uuid) {
+    public int getLocalPlayTime(UUID uuid) throws ExecutionException, InterruptedException {
         if (!this.isAvailable()) return -1;
-        return autorank.getAPI().getLocalPlayTime(uuid);
+        return autorank.getAPI().getLocalPlayTime(uuid).get();
     }
 
     /**
@@ -72,43 +71,9 @@ public class AutorankHook extends LibraryHook {
      * @return amount of minutes a player has played across all servers in the
      * network.
      */
-    public int getGlobalPlayTime(UUID uuid) {
+    public int getGlobalPlayTime(UUID uuid) throws ExecutionException, InterruptedException {
         if (!this.isAvailable()) return -1;
-        return autorank.getAPI().getGlobalPlayTime(uuid);
-    }
-
-    /**
-     * When a player is in a permission group that has requirements before the
-     * player can rank up, <br>
-     * this method will show all the requirements that the player should
-     * complete before he ranks up. <br>
-     * This method does not take into account which requirements are already
-     * completed by the player. <br>
-     * If you only want the requirements that have yet to be completed by the
-     * player, <br>
-     * use {@link #getFailedRequirements(Player)}. <br>
-     * This method merely copies the config of Autorank and is used for getting
-     * all the requirements of a player's permission group.
-     *
-     * @param player Player to get the requirements for.
-     * @return A list of all requirements
-     */
-    public List<CompositeRequirement> getAllRequirements(Player player) {
-        if (!this.isAvailable()) return new ArrayList<>();
-        return autorank.getAPI().getAllRequirements(player);
-    }
-
-    /**
-     * See {@link #getAllRequirements(Player)} for more info. <br>
-     * This method only returns the requirements that have yet to be completed
-     * by the player.
-     *
-     * @param player Player to get the requirements for.
-     * @return A list of all requirements that should still be completed.
-     */
-    public List<CompositeRequirement> getFailedRequirements(Player player) {
-        if (!this.isAvailable()) return new ArrayList<>();
-        return autorank.getAPI().getFailedRequirements(player);
+        return autorank.getAPI().getGlobalPlayTime(uuid).get();
     }
 
     /**
@@ -140,7 +105,7 @@ public class AutorankHook extends LibraryHook {
      */
     public void registerRequirement(String requirementName, Class<? extends AbstractRequirement> req) {
         if (!this.isAvailable()) return;
-        autorank.getAPI().registerRequirement(requirementName, req);
+        autorank.registerRequirement(requirementName, req);
     }
 
     /**
@@ -151,7 +116,7 @@ public class AutorankHook extends LibraryHook {
     public void registerResult(String resultName,
                                Class<? extends AbstractResult> res) {
         if (!this.isAvailable()) return;
-        autorank.getAPI().registerResult(resultName, res);
+        autorank.registerResult(resultName, res);
     }
 
 }

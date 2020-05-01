@@ -23,7 +23,7 @@ public class WorldGuardHook extends LibraryHook {
     /*
      * (non-Javadoc)
      *
-     * @see me.staartvin.plugins.pluginlibrary.LibraryHook#isAvailable()
+     * @see me.staartvin.utils.pluginlibrary.LibraryHook#isAvailable()
      */
     @Override
     public boolean isAvailable() {
@@ -34,7 +34,7 @@ public class WorldGuardHook extends LibraryHook {
     /*
      * (non-Javadoc)
      *
-     * @see me.staartvin.plugins.pluginlibrary.LibraryHook#hook()
+     * @see me.staartvin.utils.pluginlibrary.LibraryHook#hook()
      */
     @Override
     public boolean hook() {

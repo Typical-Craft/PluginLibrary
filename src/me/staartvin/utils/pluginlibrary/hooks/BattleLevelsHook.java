@@ -16,20 +16,20 @@ import java.util.UUID;
 public class BattleLevelsHook extends LibraryHook {
 
 	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see me.staartvin.plugins.pluginlibrary.hooks.LibraryHook#isAvailable()
-	 */
+     * (non-Javadoc)
+     *
+     * @see me.staartvin.utils.pluginlibrary.hooks.LibraryHook#isAvailable()
+     */
 	@Override
 	public boolean isAvailable() {
         return this.getServer().getPluginManager().isPluginEnabled(Library.BATTLELEVELS.getInternalPluginName());
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see me.staartvin.plugins.pluginlibrary.hooks.LibraryHook#hook()
-	 */
+    /*
+     * (non-Javadoc)
+     *
+     * @see me.staartvin.utils.pluginlibrary.hooks.LibraryHook#hook()
+     */
 	@Override
 	public boolean hook() {
         return isAvailable();

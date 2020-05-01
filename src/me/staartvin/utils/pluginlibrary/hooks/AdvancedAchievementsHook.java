@@ -18,21 +18,21 @@ public class AdvancedAchievementsHook extends LibraryHook {
     private AdvancedAchievements advancedAchievements;
 
 	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see me.staartvin.plugins.pluginlibrary.hooks.LibraryHook#isAvailable()
-	 */
+     * (non-Javadoc)
+     *
+     * @see me.staartvin.utils.pluginlibrary.hooks.LibraryHook#isAvailable()
+     */
 	@Override
 	public boolean isAvailable() {
         return this.getServer().getPluginManager().isPluginEnabled(Library.ADVANCEDACHIEVEMENTS
                 .getInternalPluginName());
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see me.staartvin.plugins.pluginlibrary.hooks.LibraryHook#hook()
-	 */
+    /*
+     * (non-Javadoc)
+     *
+     * @see me.staartvin.utils.pluginlibrary.hooks.LibraryHook#hook()
+     */
 	@Override
 	public boolean hook() {
 

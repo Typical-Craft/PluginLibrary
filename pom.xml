@@ -6,12 +6,12 @@
 
     <groupId>me.staartvin</groupId>
     <artifactId>PluginLibrary</artifactId>
-    <version>1.2.4-SNAPSHOT-${BUILD_NUMBER}</version>
+    <version>1.2.4</version>
+
 
     <build>
 
         <sourceDirectory>src</sourceDirectory>
-        <!--<testSourceDirectory>test</testSourceDirectory>-->
 
         <resources>
 
@@ -70,7 +70,6 @@
                     <failOnError>false</failOnError>
                 </configuration>
             </plugin>
-
         </plugins>
 
     </build>
@@ -99,18 +98,6 @@
     </repositories>
 
     <dependencies>
-        <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api</artifactId>
-            <version>1.14.4-R0.1-SNAPSHOT</version>
-            <type>jar</type>
-        </dependency>
-
-        <dependency>
-            <groupId>org.bukkit</groupId>
-            <artifactId>bukkit</artifactId>
-            <version>1.14.4-R0.1-SNAPSHOT</version>
-        </dependency>
 
         <dependency>
             <groupId>me.staartvin.Statz</groupId>

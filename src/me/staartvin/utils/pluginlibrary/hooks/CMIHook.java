@@ -11,15 +11,14 @@ import java.util.UUID;
  * CMI library,
  * <a href="https://www.spigotmc.org/resources/cmi-270-commands-insane-kits-portals-essentials-economy-mysql-sqlite-much-more.3742/">link</a>.
  * <p>
- * 
+ *
  * @author Staartvin
- * 
  */
-public class CMIHook extends LibraryHook implements AFKManager {
+public class CMIHook extends me.staartvin.utils.pluginlibrary.hooks.LibraryHook implements AFKManager {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see me.staartvin.plugins.pluginlibrary.hooks.LibraryHook#isAvailable()
 	 */
 	@Override

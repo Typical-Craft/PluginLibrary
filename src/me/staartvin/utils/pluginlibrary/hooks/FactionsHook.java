@@ -28,20 +28,20 @@ public class FactionsHook extends LibraryHook {
 	private Factions factions;
 
 	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see me.staartvin.plugins.pluginlibrary.LibraryHook#isAvailable()
-	 */
+     * (non-Javadoc)
+     *
+     * @see me.staartvin.utils.pluginlibrary.LibraryHook#isAvailable()
+     */
 	@Override
 	public boolean isAvailable() {
         return this.getServer().getPluginManager().isPluginEnabled(Library.FACTIONS.getInternalPluginName());
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see me.staartvin.plugins.pluginlibrary.LibraryHook#hook()
-	 */
+    /*
+     * (non-Javadoc)
+     *
+     * @see me.staartvin.utils.pluginlibrary.LibraryHook#hook()
+     */
 	@Override
 	public boolean hook() {
 		if (!isAvailable())

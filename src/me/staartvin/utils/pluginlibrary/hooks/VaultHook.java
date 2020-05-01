@@ -48,7 +48,7 @@ public class VaultHook extends LibraryHook {
     /*
      * (non-Javadoc)
      *
-     * @see me.staartvin.plugins.pluginlibrary.hooks.LibraryHook#isAvailable()
+     * @see me.staartvin.utils.pluginlibrary.hooks.LibraryHook#isAvailable()
      */
     @Override
     public boolean isAvailable() {
@@ -58,7 +58,7 @@ public class VaultHook extends LibraryHook {
     /*
      * (non-Javadoc)
      *
-     * @see me.staartvin.plugins.pluginlibrary.hooks.LibraryHook#hook()
+     * @see me.staartvin.utils.pluginlibrary.hooks.LibraryHook#hook()
      */
     @Override
     public boolean hook() {

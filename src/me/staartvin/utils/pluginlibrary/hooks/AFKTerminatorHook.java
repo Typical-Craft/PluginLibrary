@@ -19,20 +19,20 @@ import java.util.UUID;
 public class AFKTerminatorHook extends LibraryHook implements AFKManager {
 
 	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see me.staartvin.plugins.pluginlibrary.hooks.LibraryHook#isAvailable()
-	 */
+     * (non-Javadoc)
+     *
+     * @see me.staartvin.utils.pluginlibrary.hooks.LibraryHook#isAvailable()
+     */
 	@Override
 	public boolean isAvailable() {
 		return this.getServer().getPluginManager().isPluginEnabled(Library.AFKTERMINATOR.getInternalPluginName());
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see me.staartvin.plugins.pluginlibrary.hooks.LibraryHook#hook()
-	 */
+    /*
+     * (non-Javadoc)
+     *
+     * @see me.staartvin.utils.pluginlibrary.hooks.LibraryHook#hook()
+     */
 	@Override
 	public boolean hook() {
 		// All api calls are done static, so there is no need to get the plugin

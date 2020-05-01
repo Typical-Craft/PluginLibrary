@@ -16,7 +16,7 @@ import java.util.*;
  */
 public class PluginLibrary {
 
-    private final static List<Library> loadedLibraries = new ArrayList<>();
+    private final static List<me.staartvin.utils.pluginlibrary.Library> loadedLibraries = new ArrayList<>();
     public HashMap<UUID, Long> requestTimes = new HashMap<>();
 
     // Store reference to parent plugin so we can access Bukkit stuff.
@@ -32,19 +32,17 @@ public class PluginLibrary {
      * @throws IllegalArgumentException When no plugin with the given name was found.
      */
     public static LibraryHook getLibrary(String pluginName) throws IllegalArgumentException {
-        return Library.getEnum(pluginName).getHook();
+        return me.staartvin.utils.pluginlibrary.Library.getEnum(pluginName).getHook();
     }
 
     /**
      * <br>Returns the same as {@link #getLibrary(String)}.
      *
      * @param lib Library enum to get the library hook for.
-     *
      * @return {@link Library} class or an error.
-     *
      * @see #getLibrary(String)
      */
-    public static LibraryHook getLibrary(Library lib) {
+    public static LibraryHook getLibrary(me.staartvin.utils.pluginlibrary.Library lib) {
         return lib.getHook();
     }
 
@@ -55,7 +53,7 @@ public class PluginLibrary {
      *
      * @return true if the library is loaded; false otherwise.
      */
-    public static boolean isLibraryLoaded(Library lib) {
+    public static boolean isLibraryLoaded(me.staartvin.utils.pluginlibrary.Library lib) {
         return loadedLibraries.contains(lib);
     }
 
@@ -94,7 +92,7 @@ public class PluginLibrary {
     public int loadLibraries() {
         int count = 0;
 
-        for (Library l : Library.values()) {
+        for (me.staartvin.utils.pluginlibrary.Library l : me.staartvin.utils.pluginlibrary.Library.values()) {
             LibraryHook libraryHook = l.getHook();
 
             if (LibraryHook.isPluginAvailable(l) && libraryHook.isAvailable()) {
@@ -126,7 +124,7 @@ public class PluginLibrary {
      *
      * @return a list of loaded libraries.
      */
-    public List<Library> getLoadedLibraries() {
+    public List<me.staartvin.utils.pluginlibrary.Library> getLoadedLibraries() {
         return Collections.unmodifiableList(loadedLibraries);
     }
 
@@ -134,7 +132,7 @@ public class PluginLibrary {
         StringBuilder builder = new StringBuilder();
 
         for (int i = 0, l = loadedLibraries.size(); i < l; i++) {
-            Library library = loadedLibraries.get(i);
+            me.staartvin.utils.pluginlibrary.Library library = loadedLibraries.get(i);
 
             String addedString = ChatColor.DARK_AQUA + library.getHumanPluginName() + ChatColor.DARK_GREEN + " (by " +
                     library

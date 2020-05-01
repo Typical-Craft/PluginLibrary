@@ -19,10 +19,10 @@ public class UHCStatsHook extends LibraryHook {
 	private UhcStats uhcStats;
 
 	/*
-	 * (non-Javadoc)
-	 *
-	 * @see me.staartvin.plugins.pluginlibrary.LibraryHook#isAvailable()
-	 */
+     * (non-Javadoc)
+     *
+     * @see me.staartvin.utils.pluginlibrary.LibraryHook#isAvailable()
+     */
 	@Override
 	public boolean isAvailable() {
         Plugin plugin = this.getServer().getPluginManager().getPlugin(Library.UHCSTATS
@@ -31,11 +31,11 @@ public class UHCStatsHook extends LibraryHook {
         return plugin != null && plugin.isEnabled();
     }
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see me.staartvin.plugins.pluginlibrary.LibraryHook#hook()
-	 */
+    /*
+     * (non-Javadoc)
+     *
+     * @see me.staartvin.utils.pluginlibrary.LibraryHook#hook()
+     */
 	@Override
 	public boolean hook() {
 		if (!isAvailable())
@@ -52,16 +52,17 @@ public class UHCStatsHook extends LibraryHook {
         return uhcStats.isEnabled();
     }
 
-	private StatsPlayer getStatsPlayer(UUID uuid) {
-	    return StatsManager.getStatsManager().getStatsPlayer(uuid.toString(), true, true);
+    private com.gmail.mezymc.stats.StatsPlayer getStatsPlayer(UUID uuid) {
+        return StatsManager.getStatsManager().getStatsPlayer(uuid.toString(), true, true);
     }
 
     /**
      * Get the number of kills of a player according to UHCStats
+     *
      * @param uuid UUID of the player
      * @return number of kills of the player or -1 if it could not be found.
      */
-	public int getNumberOfKills(UUID uuid) {
+    public int getNumberOfKills(UUID uuid) {
         if (!this.isAvailable()) return -1;
 
         StatsPlayer statsPlayer = this.getStatsPlayer(uuid);
