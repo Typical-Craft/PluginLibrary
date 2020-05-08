@@ -27,25 +27,30 @@ public class FactionsHook extends LibraryHook {
 
 	private Factions factions;
 
-	/*
+    /*
      * (non-Javadoc)
      *
      * @see me.staartvin.utils.pluginlibrary.LibraryHook#isAvailable()
      */
-	@Override
-	public boolean isAvailable() {
+    @Override
+    public boolean isAvailable() {
         return this.getServer().getPluginManager().isPluginEnabled(Library.FACTIONS.getInternalPluginName());
-	}
+    }
+
+    @Override
+    public boolean isHooked() {
+        return factions != null;
+    }
 
     /*
      * (non-Javadoc)
      *
      * @see me.staartvin.utils.pluginlibrary.LibraryHook#hook()
      */
-	@Override
-	public boolean hook() {
-		if (!isAvailable())
-			return false;
+    @Override
+    public boolean hook() {
+        if (!isAvailable())
+            return false;
 
         Plugin plugin = this.getServer().getPluginManager()
                 .getPlugin(Library.FACTIONS.getInternalPluginName());
@@ -61,7 +66,7 @@ public class FactionsHook extends LibraryHook {
 	/* Util methods */
 
 	private MPlayer getMPlayer(UUID uuid) {
-        if (!this.isAvailable()) return null;
+        if (!this.isHooked()) return null;
 
 	    return MPlayer.get(uuid);
 	}
@@ -79,7 +84,7 @@ public class FactionsHook extends LibraryHook {
 	 */
 	public Faction getFactionByName(String factionName) {
 
-        if (!this.isAvailable()) return null;
+        if (!this.isHooked()) return null;
 
 		if (factionName == null)
 			return null;
@@ -99,7 +104,7 @@ public class FactionsHook extends LibraryHook {
 	 */
 	public Faction getFactionByUUID(UUID uuid) {
 
-        if (!this.isAvailable()) return null;
+        if (!this.isHooked()) return null;
 
 		if (uuid == null)
 			return null;
@@ -123,7 +128,7 @@ public class FactionsHook extends LibraryHook {
 	 */
 	public Faction getFactionById(String factionId) {
 
-        if (!this.isAvailable()) return null;
+        if (!this.isHooked()) return null;
 
 		if (factionId == null)
 			return null;
@@ -146,7 +151,7 @@ public class FactionsHook extends LibraryHook {
 
 		List<Faction> factions = new ArrayList<Faction>();
 
-        if (!this.isAvailable()) return factions;
+        if (!this.isHooked()) return factions;
 
 		for (com.massivecraft.factions.entity.Faction fac : FactionColl.get().getAll()) {
 			factions.add(fac);
@@ -162,7 +167,7 @@ public class FactionsHook extends LibraryHook {
 	 */
 	public Faction getWilderness() {
 
-        if (!this.isAvailable()) return null;
+        if (!this.isHooked()) return null;
 
 		com.massivecraft.factions.entity.Faction fac = FactionColl.get().getNone();
 
@@ -176,7 +181,7 @@ public class FactionsHook extends LibraryHook {
 	 */
 	public Faction getSafezone() {
 
-        if (!this.isAvailable()) return null;
+        if (!this.isHooked()) return null;
 
 		com.massivecraft.factions.entity.Faction fac = FactionColl.get().getSafezone();
 
@@ -190,7 +195,7 @@ public class FactionsHook extends LibraryHook {
 	 */
 	public Faction getWarzone() {
 
-        if (!this.isAvailable()) return null;
+        if (!this.isHooked()) return null;
 
 		com.massivecraft.factions.entity.Faction fac = FactionColl.get().getWarzone();
 
@@ -207,7 +212,7 @@ public class FactionsHook extends LibraryHook {
 	 */
 	public Faction getFactionAt(Location location) {
 
-        if (!this.isAvailable()) return null;
+        if (!this.isHooked()) return null;
 
 		if (location == null)
 			return null;
@@ -229,12 +234,12 @@ public class FactionsHook extends LibraryHook {
 	 */
 	public MPlayer getFactionsPlayer(UUID uuid) {
 
-	    if (!this.isAvailable()) return null;
+        if (!this.isHooked()) return null;
 
-		MPlayer mPlayer = MPlayer.get(uuid);
+        MPlayer mPlayer = MPlayer.get(uuid);
 
-		return mPlayer;
-	}
+        return mPlayer;
+    }
 
     /**
      * Get the power of the faction of a player. Will return -1 if player has no faction.
@@ -243,7 +248,7 @@ public class FactionsHook extends LibraryHook {
      */
 	public double getFactionPower(UUID uuid) {
 
-        if (!this.isAvailable()) return -1;
+        if (!this.isHooked()) return -1;
 
 	    if (uuid == null) return -1;
 

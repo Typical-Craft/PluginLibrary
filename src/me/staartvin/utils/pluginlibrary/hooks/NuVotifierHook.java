@@ -28,6 +28,11 @@ public class NuVotifierHook extends LibraryHook {
         return this.getServer().getPluginManager().isPluginEnabled(Library.NUVOTIFIER.getInternalPluginName());
     }
 
+    @Override
+    public boolean isHooked() {
+        return api != null;
+    }
+
     /*
      * (non-Javadoc)
      *

@@ -16,25 +16,30 @@ import java.util.UUID;
  */
 public class CMIHook extends me.staartvin.utils.pluginlibrary.hooks.LibraryHook implements AFKManager {
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see me.staartvin.plugins.pluginlibrary.hooks.LibraryHook#isAvailable()
-	 */
-	@Override
-	public boolean isAvailable() {
-		return this.getServer().getPluginManager().isPluginEnabled(Library.CMI.getInternalPluginName());
-	}
+    /*
+     * (non-Javadoc)
+     *
+     * @see me.staartvin.plugins.pluginlibrary.hooks.LibraryHook#isAvailable()
+     */
+    @Override
+    public boolean isAvailable() {
+        return this.getServer().getPluginManager().isPluginEnabled(Library.CMI.getInternalPluginName());
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see me.staartvin.plugins.pluginlibrary.hooks.LibraryHook#hook()
-	 */
-	@Override
-	public boolean hook() {
-		// All api calls are done static, so there is no need to get the plugin
-		// class.
+    @Override
+    public boolean isHooked() {
+        return isAvailable();
+    }
+
+    /*
+     * (non-Javadoc)
+     *
+     * @see me.staartvin.plugins.pluginlibrary.hooks.LibraryHook#hook()
+     */
+    @Override
+    public boolean hook() {
+        // All api calls are done static, so there is no need to get the plugin
+        // class.
 		// We only check if the plugin is available.
 		return isAvailable();
 	}
@@ -47,7 +52,7 @@ public class CMIHook extends me.staartvin.utils.pluginlibrary.hooks.LibraryHook 
 	 * @return true if the user is AFK, false otherwise.
 	 */
 	public boolean isAFK(UUID uuid) {
-        if (!this.isAvailable()) return false;
+        if (!this.isHooked()) return false;
 
         CMIUser user = CMI.getInstance().getPlayerManager().getUser(uuid);
 

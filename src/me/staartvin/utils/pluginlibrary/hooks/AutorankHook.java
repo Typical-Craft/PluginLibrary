@@ -33,6 +33,11 @@ public class AutorankHook extends LibraryHook {
         return true;
     }
 
+    @Override
+    public boolean isHooked() {
+        return autorank != null;
+    }
+
     /*
      * (non-Javadoc)
      *
@@ -56,7 +61,7 @@ public class AutorankHook extends LibraryHook {
      * @return amount of minutes a player has played.
      */
     public int getLocalPlayTime(UUID uuid) throws ExecutionException, InterruptedException {
-        if (!this.isAvailable()) return -1;
+        if (!this.isHooked()) return -1;
         return autorank.getAPI().getLocalPlayTime(uuid).get();
     }
 
@@ -72,7 +77,7 @@ public class AutorankHook extends LibraryHook {
      * network.
      */
     public int getGlobalPlayTime(UUID uuid) throws ExecutionException, InterruptedException {
-        if (!this.isAvailable()) return -1;
+        if (!this.isHooked()) return -1;
         return autorank.getAPI().getGlobalPlayTime(uuid).get();
     }
 
@@ -85,7 +90,7 @@ public class AutorankHook extends LibraryHook {
      * @return a list of groups a player is part of.
      */
     public Collection<String> getPermissionGroups(Player player) {
-        if (!this.isAvailable()) return new ArrayList<>();
+        if (!this.isHooked()) return new ArrayList<>();
         return autorank.getPermPlugHandler().getPermissionPlugin().getPlayerGroups(player);
     }
 
@@ -104,7 +109,7 @@ public class AutorankHook extends LibraryHook {
      * @param req             The custom requirement class for Autorank to use.
      */
     public void registerRequirement(String requirementName, Class<? extends AbstractRequirement> req) {
-        if (!this.isAvailable()) return;
+        if (!this.isHooked()) return;
         autorank.registerRequirement(requirementName, req);
     }
 
@@ -115,7 +120,7 @@ public class AutorankHook extends LibraryHook {
      */
     public void registerResult(String resultName,
                                Class<? extends AbstractResult> res) {
-        if (!this.isAvailable()) return;
+        if (!this.isHooked()) return;
         autorank.registerResult(resultName, res);
     }
 

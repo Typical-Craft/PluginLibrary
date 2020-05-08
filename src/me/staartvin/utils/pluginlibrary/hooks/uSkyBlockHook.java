@@ -16,23 +16,28 @@ public class uSkyBlockHook extends LibraryHook {
 
     private uSkyBlockAPI uSkyBlock;
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see me.staartvin.plugins.pluginlibrary.hooks.LibraryHook#isAvailable()
-	 */
-	@Override
-	public boolean isAvailable() {
+    /*
+     * (non-Javadoc)
+     *
+     * @see me.staartvin.plugins.pluginlibrary.hooks.LibraryHook#isAvailable()
+     */
+    @Override
+    public boolean isAvailable() {
         return this.getServer().getPluginManager().isPluginEnabled(Library.USKYBLOCK.getInternalPluginName());
-	}
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see me.staartvin.plugins.pluginlibrary.hooks.LibraryHook#hook()
-	 */
-	@Override
-	public boolean hook() {
+    @Override
+    public boolean isHooked() {
+        return uSkyBlock != null;
+    }
+
+    /*
+     * (non-Javadoc)
+     *
+     * @see me.staartvin.plugins.pluginlibrary.hooks.LibraryHook#hook()
+     */
+    @Override
+    public boolean hook() {
 
         if (!isAvailable())
             return false;
@@ -50,7 +55,7 @@ public class uSkyBlockHook extends LibraryHook {
      * @return level of the island.
      */
     public double getIslandLevel(Player player) {
-        if (!isAvailable())
+        if (!isHooked())
             return -1;
 
         return uSkyBlock.getIslandLevel(player);
@@ -62,7 +67,7 @@ public class uSkyBlockHook extends LibraryHook {
      * @return island rank of a player
      */
     public int getIslandRank(Player player) {
-        if (!isAvailable())
+        if (!isHooked())
             return -1;
 
         return uSkyBlock.getIslandRank(player).getRank();

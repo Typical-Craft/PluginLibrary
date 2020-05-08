@@ -33,6 +33,11 @@ public class SavageFactionsHook extends LibraryHook {
                 .getInternalPluginName());
     }
 
+    @Override
+    public boolean isHooked() {
+        return savageFactions != null;
+    }
+
     /*
      * (non-Javadoc)
      *
@@ -65,7 +70,7 @@ public class SavageFactionsHook extends LibraryHook {
      */
     public com.massivecraft.factions.Faction getFactionByName(String factionName) {
 
-        if (!this.isAvailable()) return null;
+        if (!this.isHooked()) return null;
 
         if (factionName == null)
             return null;
@@ -85,7 +90,7 @@ public class SavageFactionsHook extends LibraryHook {
      */
     public com.massivecraft.factions.Faction getFactionByUUID(UUID uuid) {
 
-        if (!this.isAvailable()) return null;
+        if (!this.isHooked()) return null;
 
         if (uuid == null)
             return null;
@@ -108,7 +113,7 @@ public class SavageFactionsHook extends LibraryHook {
      */
     public com.massivecraft.factions.Faction getFactionById(String factionId) {
 
-        if (!this.isAvailable()) return null;
+        if (!this.isHooked()) return null;
 
         if (factionId == null)
             return null;
@@ -129,7 +134,7 @@ public class SavageFactionsHook extends LibraryHook {
 
         List<com.massivecraft.factions.Faction> factions = new ArrayList<>();
 
-        if (!this.isAvailable()) return factions;
+        if (!this.isHooked()) return factions;
 
         factions.addAll(com.massivecraft.factions.Factions.getInstance().getAllFactions());
 
@@ -143,7 +148,7 @@ public class SavageFactionsHook extends LibraryHook {
      */
     public Faction getWilderness() {
 
-        if (!this.isAvailable()) return null;
+        if (!this.isHooked()) return null;
 
         Faction fac = Factions.getInstance().getWilderness();
 
@@ -157,7 +162,7 @@ public class SavageFactionsHook extends LibraryHook {
      */
     public Faction getSafezone() {
 
-        if (!this.isAvailable()) return null;
+        if (!this.isHooked()) return null;
 
         Faction fac = Factions.getInstance().getSafeZone();
 
@@ -171,7 +176,7 @@ public class SavageFactionsHook extends LibraryHook {
      */
     public Faction getWarzone() {
 
-        if (!this.isAvailable()) return null;
+        if (!this.isHooked()) return null;
 
         Faction fac = Factions.getInstance().getWarZone();
 
@@ -187,7 +192,7 @@ public class SavageFactionsHook extends LibraryHook {
      */
     public Faction getFactionAt(Location location) {
 
-        if (!this.isAvailable()) return null;
+        if (!this.isHooked()) return null;
 
         if (location == null)
             return null;
@@ -210,7 +215,7 @@ public class SavageFactionsHook extends LibraryHook {
      */
     public FPlayer getFactionsPlayer(UUID uuid) {
 
-        if (!this.isAvailable()) return null;
+        if (!this.isHooked()) return null;
 
         OfflinePlayer offlinePlayer = this.getServer().getOfflinePlayer(uuid);
 
@@ -227,7 +232,7 @@ public class SavageFactionsHook extends LibraryHook {
      */
     public double getFactionPower(UUID uuid) {
 
-        if (!this.isAvailable()) return -1;
+        if (!this.isHooked()) return -1;
 
         if (uuid == null) return -1;
 

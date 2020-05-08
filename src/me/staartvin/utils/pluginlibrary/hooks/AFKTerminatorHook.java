@@ -18,25 +18,30 @@ import java.util.UUID;
  */
 public class AFKTerminatorHook extends LibraryHook implements AFKManager {
 
-	/*
+    /*
      * (non-Javadoc)
      *
      * @see me.staartvin.utils.pluginlibrary.hooks.LibraryHook#isAvailable()
      */
-	@Override
-	public boolean isAvailable() {
-		return this.getServer().getPluginManager().isPluginEnabled(Library.AFKTERMINATOR.getInternalPluginName());
-	}
+    @Override
+    public boolean isAvailable() {
+        return this.getServer().getPluginManager().isPluginEnabled(Library.AFKTERMINATOR.getInternalPluginName());
+    }
+
+    @Override
+    public boolean isHooked() {
+        return isAvailable();
+    }
 
     /*
      * (non-Javadoc)
      *
      * @see me.staartvin.utils.pluginlibrary.hooks.LibraryHook#hook()
      */
-	@Override
-	public boolean hook() {
-		// All api calls are done static, so there is no need to get the plugin
-		// class.
+    @Override
+    public boolean hook() {
+        // All api calls are done static, so there is no need to get the plugin
+        // class.
 		// We only check if the plugin is available.
 		return isAvailable();
 	}
@@ -52,7 +57,7 @@ public class AFKTerminatorHook extends LibraryHook implements AFKManager {
 	 *         machine; false otherwise.
 	 */
 	public boolean isAFKMachineSuspected(UUID uuid) {
-        if (!this.isAvailable()) return false;
+        if (!this.isHooked()) return false;
 	    return AfkDetect.isAFKMachineSuspected(uuid);
 	}
 
@@ -69,7 +74,7 @@ public class AFKTerminatorHook extends LibraryHook implements AFKManager {
 	 *         machine; false otherwise.
 	 */
 	public boolean isAFKMachineDetected(UUID uuid) {
-        if (!this.isAvailable()) return false;
+        if (!this.isHooked()) return false;
 	    return AfkDetect.isAFKMachineDetected(uuid);
 	}
 
@@ -85,7 +90,7 @@ public class AFKTerminatorHook extends LibraryHook implements AFKManager {
 	 *         UNIX time; otherwise 0.
 	 */
 	public long getAFKMachineStartTime(UUID uuid) {
-        if (!this.isAvailable()) return -1;
+        if (!this.isHooked()) return -1;
 		return AfkDetect.getAFKMachineStartTime(uuid);
 	}
 
@@ -101,7 +106,7 @@ public class AFKTerminatorHook extends LibraryHook implements AFKManager {
 	 * @return Type of the AFK machine or null if the player is not using any.
 	 */
 	public String getAFKMachineType(UUID uuid) {
-        if (!this.isAvailable()) return null;
+        if (!this.isHooked()) return null;
 
 		AFKMACHINES type = AfkDetect.getAFKMachineType(uuid);
 

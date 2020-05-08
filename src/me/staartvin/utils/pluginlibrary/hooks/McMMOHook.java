@@ -37,6 +37,11 @@ public class McMMOHook extends LibraryHook {
         return this.getServer().getPluginManager().isPluginEnabled(Library.MCMMO.getInternalPluginName());
     }
 
+    @Override
+    public boolean isHooked() {
+        return api != null;
+    }
+
     /*
      * (non-Javadoc)
      *
@@ -63,7 +68,7 @@ public class McMMOHook extends LibraryHook {
      */
     public boolean isValidSkillType(String skillType) {
 
-        if (!this.isAvailable()) return false;
+        if (!this.isHooked()) return false;
 
         try {
             return ExperienceAPI.isValidSkillType(skillType);
@@ -82,7 +87,7 @@ public class McMMOHook extends LibraryHook {
      * @return true if this is a valid, non-child mcMMO skill
      */
     public boolean isNonChildSkill(String skillType) {
-        if (!this.isAvailable()) return false;
+        if (!this.isHooked()) return false;
 
         try {
             return ExperienceAPI.isNonChildSkill(skillType);
@@ -104,7 +109,7 @@ public class McMMOHook extends LibraryHook {
      * @throws InvalidXPGainReasonException if the given xpGainReason is not valid
      */
     public void addRawXP(Player player, String skillType, float XP, String xpGainReason, boolean isUnshared) {
-        if (!this.isAvailable()) return;
+        if (!this.isHooked()) return;
 
         try {
             ExperienceAPI.addRawXP(player, skillType, XP, xpGainReason, isUnshared);
@@ -123,7 +128,7 @@ public class McMMOHook extends LibraryHook {
      * @throws InvalidPlayerException if the given player does not exist in the database
      */
     public void addRawXPOffline(UUID uuid, String skillType, float XP) {
-        if (!this.isAvailable()) return;
+        if (!this.isHooked()) return;
 
         try {
             ExperienceAPI.addRawXPOffline(uuid, skillType, XP);
@@ -145,7 +150,7 @@ public class McMMOHook extends LibraryHook {
      * @throws InvalidXPGainReasonException if the given xpGainReason is not valid
      */
     public void addModifiedXP(Player player, String skillType, int XP, String xpGainReason, boolean isUnshared) {
-        if (!this.isAvailable()) return;
+        if (!this.isHooked()) return;
 
         try {
             ExperienceAPI.addModifiedXP(player, skillType, XP, xpGainReason, isUnshared);
@@ -166,7 +171,7 @@ public class McMMOHook extends LibraryHook {
      * @throws InvalidXPGainReasonException if the given xpGainReason is not valid
      */
     public void addMultipliedXP(Player player, String skillType, int XP, String xpGainReason) {
-        if (!this.isAvailable()) return;
+        if (!this.isHooked()) return;
 
         try {
             ExperienceAPI.addMultipliedXP(player, skillType, XP, xpGainReason);
@@ -187,7 +192,7 @@ public class McMMOHook extends LibraryHook {
      */
     @Deprecated
     public void addMultipliedXPOffline(String playerName, String skillType, int XP) {
-        if (!this.isAvailable()) return;
+        if (!this.isHooked()) return;
 
         try {
             ExperienceAPI.addMultipliedXPOffline(playerName, skillType, XP);
@@ -209,7 +214,7 @@ public class McMMOHook extends LibraryHook {
      */
     @Deprecated
     public void addModifiedXPOffline(String playerName, String skillType, int XP) {
-        if (!this.isAvailable()) return;
+        if (!this.isHooked()) return;
 
         try {
             ExperienceAPI.addModifiedXPOffline(playerName, skillType, XP);
@@ -232,7 +237,7 @@ public class McMMOHook extends LibraryHook {
      * @throws InvalidXPGainReasonException if the given xpGainReason is not valid
      */
     public void addXP(Player player, String skillType, int XP, String xpGainReason, boolean isUnshared) {
-        if (!this.isAvailable()) return;
+        if (!this.isHooked()) return;
 
         try {
             ExperienceAPI.addXP(player, skillType, XP, xpGainReason, isUnshared);
@@ -251,7 +256,7 @@ public class McMMOHook extends LibraryHook {
      * @throws UnsupportedOperationException if the given skill is a child skill
      */
     public int getXP(Player player, String skillType) {
-        if (!this.isAvailable()) return -1;
+        if (!this.isHooked()) return -1;
 
         try {
             return ExperienceAPI.getXP(player, skillType);
@@ -271,7 +276,7 @@ public class McMMOHook extends LibraryHook {
      * @throws UnsupportedOperationException if the given skill is a child skill
      */
     public int getOfflineXP(UUID uuid, String skillType) {
-        if (!this.isAvailable()) return -1;
+        if (!this.isHooked()) return -1;
 
         try {
             return ExperienceAPI.getOfflineXP(uuid, skillType);
@@ -290,7 +295,7 @@ public class McMMOHook extends LibraryHook {
      * @throws UnsupportedOperationException if the given skill is a child skill
      */
     public float getXPRaw(Player player, String skillType) {
-        if (!this.isAvailable()) return -1;
+        if (!this.isHooked()) return -1;
 
         try {
             return ExperienceAPI.getXPRaw(player, skillType);
@@ -310,7 +315,7 @@ public class McMMOHook extends LibraryHook {
      * @throws UnsupportedOperationException if the given skill is a child skill
      */
     public float getOfflineXPRaw(UUID uuid, String skillType) {
-        if (!this.isAvailable()) return -1;
+        if (!this.isHooked()) return -1;
 
         try {
             return ExperienceAPI.getOfflineXPRaw(uuid, skillType);
@@ -329,7 +334,7 @@ public class McMMOHook extends LibraryHook {
      * @throws UnsupportedOperationException if the given skill is a child skill
      */
     public int getXPToNextLevel(Player player, String skillType) {
-        if (!this.isAvailable()) return -1;
+        if (!this.isHooked()) return -1;
 
         try {
             return ExperienceAPI.getXPToNextLevel(player, skillType);
@@ -350,7 +355,7 @@ public class McMMOHook extends LibraryHook {
      * @throws UnsupportedOperationException if the given skill is a child skill
      */
     public int getOfflineXPToNextLevel(UUID uuid, String skillType) {
-        if (!this.isAvailable()) return -1;
+        if (!this.isHooked()) return -1;
 
         try {
             return ExperienceAPI.getOfflineXPToNextLevel(uuid, skillType);
@@ -369,7 +374,7 @@ public class McMMOHook extends LibraryHook {
      * @throws UnsupportedOperationException if the given skill is a child skill
      */
     public int getXPRemaining(Player player, String skillType) {
-        if (!this.isAvailable()) return -1;
+        if (!this.isHooked()) return -1;
 
         try {
             return ExperienceAPI.getXPRemaining(player, skillType);
@@ -389,7 +394,7 @@ public class McMMOHook extends LibraryHook {
      * @throws UnsupportedOperationException if the given skill is a child skill
      */
     public float getOfflineXPRemaining(UUID uuid, String skillType) {
-        if (!this.isAvailable()) return -1;
+        if (!this.isHooked()) return -1;
 
         try {
             return ExperienceAPI.getOfflineXPRemaining(uuid, skillType);
@@ -407,7 +412,7 @@ public class McMMOHook extends LibraryHook {
      * @throws InvalidSkillException if the given skill is not valid
      */
     public void addLevel(Player player, String skillType, int levels) {
-        if (!this.isAvailable()) return;
+        if (!this.isHooked()) return;
 
         try {
             ExperienceAPI.addLevel(player, skillType, levels);
@@ -427,7 +432,7 @@ public class McMMOHook extends LibraryHook {
      * @throws InvalidPlayerException if the given player does not exist in the database
      */
     public void addLevelOffline(UUID uuid, String skillType, int levels) {
-        if (!this.isAvailable()) return;
+        if (!this.isHooked()) return;
 
         try {
             ExperienceAPI.addLevelOffline(uuid, skillType, levels);
@@ -445,7 +450,7 @@ public class McMMOHook extends LibraryHook {
      * @throws InvalidSkillException if the given skill is not valid
      */
     public int getLevel(Player player, String skillType) {
-        if (!this.isAvailable()) return -1;
+        if (!this.isHooked()) return -1;
 
         try {
             return ExperienceAPI.getLevel(player, skillType);
@@ -464,7 +469,7 @@ public class McMMOHook extends LibraryHook {
      * @throws InvalidPlayerException if the given player does not exist in the database
      */
     public int getLevelOffline(UUID uuid, String skillType) {
-        if (!this.isAvailable()) return -1;
+        if (!this.isHooked()) return -1;
 
         try {
             return ExperienceAPI.getLevelOffline(uuid, skillType);
@@ -480,7 +485,7 @@ public class McMMOHook extends LibraryHook {
      * @return the power level of the player
      */
     public int getPowerLevel(Player player) {
-        if (!this.isAvailable()) return -1;
+        if (!this.isHooked()) return -1;
 
         try {
             return ExperienceAPI.getPowerLevel(player);
@@ -497,7 +502,7 @@ public class McMMOHook extends LibraryHook {
      * @throws InvalidPlayerException if the given player does not exist in the database
      */
     public int getPowerLevelOffline(UUID uuid) {
-        if (!this.isAvailable()) return -1;
+        if (!this.isHooked()) return -1;
 
         try {
             return ExperienceAPI.getPowerLevelOffline(uuid);
@@ -514,7 +519,7 @@ public class McMMOHook extends LibraryHook {
      * @throws InvalidSkillException if the given skill is not valid
      */
     public int getLevelCap(String skillType) {
-        if (!this.isAvailable()) return -1;
+        if (!this.isHooked()) return -1;
 
         try {
             return ExperienceAPI.getLevelCap(skillType);
@@ -529,7 +534,7 @@ public class McMMOHook extends LibraryHook {
      * @return the overall power level cap
      */
     public int getPowerLevelCap() {
-        if (!this.isAvailable()) return -1;
+        if (!this.isHooked()) return -1;
 
         try {
             return ExperienceAPI.getPowerLevelCap();
@@ -549,7 +554,7 @@ public class McMMOHook extends LibraryHook {
      * @throws UnsupportedOperationException if the given skill is a child skill
      */
     public int getPlayerRankSkill(UUID uuid, String skillType) {
-        if (!this.isAvailable()) return -1;
+        if (!this.isHooked()) return -1;
 
         try {
             return ExperienceAPI.getPlayerRankSkill(uuid, skillType);
@@ -566,7 +571,7 @@ public class McMMOHook extends LibraryHook {
      * @throws InvalidPlayerException if the given player does not exist in the database
      */
     public int getPlayerRankOverall(UUID uuid) {
-        if (!this.isAvailable()) return -1;
+        if (!this.isHooked()) return -1;
 
         try {
             return ExperienceAPI.getPlayerRankOverall(uuid);
@@ -584,7 +589,7 @@ public class McMMOHook extends LibraryHook {
      * @throws InvalidSkillException if the given skill is not valid
      */
     public void setLevel(Player player, String skillType, int skillLevel) {
-        if (!this.isAvailable()) return;
+        if (!this.isHooked()) return;
 
         try {
             ExperienceAPI.setLevel(player, skillType, skillLevel);
@@ -603,7 +608,7 @@ public class McMMOHook extends LibraryHook {
      * @throws InvalidPlayerException if the given player does not exist in the database
      */
     public void setLevelOffline(UUID uuid, String skillType, int skillLevel) {
-        if (!this.isAvailable()) return;
+        if (!this.isHooked()) return;
 
         try {
             ExperienceAPI.setLevelOffline(uuid, skillType, skillLevel);
@@ -622,7 +627,7 @@ public class McMMOHook extends LibraryHook {
      * @throws UnsupportedOperationException if the given skill is a child skill
      */
     public void setXP(Player player, String skillType, int newValue) {
-        if (!this.isAvailable()) return;
+        if (!this.isHooked()) return;
 
         try {
             ExperienceAPI.setXP(player, skillType, newValue);
@@ -642,7 +647,7 @@ public class McMMOHook extends LibraryHook {
      * @throws UnsupportedOperationException if the given skill is a child skill
      */
     public void setXPOffline(UUID uuid, String skillType, int newValue) {
-        if (!this.isAvailable()) return;
+        if (!this.isHooked()) return;
 
         try {
             ExperienceAPI.setXPOffline(uuid, skillType, newValue);
@@ -661,7 +666,7 @@ public class McMMOHook extends LibraryHook {
      * @throws UnsupportedOperationException if the given skill is a child skill
      */
     public void removeXP(Player player, String skillType, int xp) {
-        if (!this.isAvailable()) return;
+        if (!this.isHooked()) return;
 
         try {
             ExperienceAPI.removeXP(player, skillType, xp);
@@ -681,7 +686,7 @@ public class McMMOHook extends LibraryHook {
      * @throws UnsupportedOperationException if the given skill is a child skill
      */
     public void removeXPOffline(UUID uuid, String skillType, int xp) {
-        if (!this.isAvailable()) return;
+        if (!this.isHooked()) return;
 
         try {
             ExperienceAPI.removeXPOffline(uuid, skillType, xp);
@@ -699,7 +704,7 @@ public class McMMOHook extends LibraryHook {
      * @throws InvalidFormulaTypeException if the given formulaType is not valid
      */
     public int getXpNeededToLevel(int level) {
-        if (!this.isAvailable()) return -1;
+        if (!this.isHooked()) return -1;
 
         try {
             return ExperienceAPI.getXpNeededToLevel(level);
@@ -717,7 +722,7 @@ public class McMMOHook extends LibraryHook {
      * @throws InvalidFormulaTypeException if the given formulaType is not valid
      */
     public int getXpNeededToLevel(int level, String formulaType) {
-        if (!this.isAvailable()) return -1;
+        if (!this.isHooked()) return -1;
 
         try {
             return ExperienceAPI.getXpNeededToLevel(level, formulaType);
@@ -735,7 +740,7 @@ public class McMMOHook extends LibraryHook {
      * @return true if enabled; false otherwise.
      */
     public boolean berserkEnabled(Player player) {
-        if (!this.isAvailable()) return false;
+        if (!this.isHooked()) return false;
 
         try {
             return AbilityAPI.berserkEnabled(player);
@@ -751,7 +756,7 @@ public class McMMOHook extends LibraryHook {
      * @return true if enabled; false otherwise.
      */
     public boolean gigaDrillBreakerEnabled(Player player) {
-        if (!this.isAvailable()) return false;
+        if (!this.isHooked()) return false;
 
         try {
             return AbilityAPI.gigaDrillBreakerEnabled(player);
@@ -767,7 +772,7 @@ public class McMMOHook extends LibraryHook {
      * @return true if enabled; false otherwise.
      */
     public boolean greenTerraEnabled(Player player) {
-        if (!this.isAvailable()) return false;
+        if (!this.isHooked()) return false;
 
         try {
             return AbilityAPI.greenTerraEnabled(player);
@@ -783,7 +788,7 @@ public class McMMOHook extends LibraryHook {
      * @return true if enabled; false otherwise.
      */
     public boolean serratedStrikesEnabled(Player player) {
-        if (!this.isAvailable()) return false;
+        if (!this.isHooked()) return false;
 
         try {
             return AbilityAPI.serratedStrikesEnabled(player);
@@ -799,7 +804,7 @@ public class McMMOHook extends LibraryHook {
      * @return true if enabled; false otherwise.
      */
     public boolean skullSplitterEnabled(Player player) {
-        if (!this.isAvailable()) return false;
+        if (!this.isHooked()) return false;
 
         try {
             return AbilityAPI.skullSplitterEnabled(player);
@@ -815,7 +820,7 @@ public class McMMOHook extends LibraryHook {
      * @return true if enabled; false otherwise.
      */
     public boolean superBreakerEnabled(Player player) {
-        if (!this.isAvailable()) return false;
+        if (!this.isHooked()) return false;
 
         try {
             return AbilityAPI.superBreakerEnabled(player);
@@ -831,7 +836,7 @@ public class McMMOHook extends LibraryHook {
      * @return true if enabled; false otherwise.
      */
     public boolean treeFellerEnabled(Player player) {
-        if (!this.isAvailable()) return false;
+        if (!this.isHooked()) return false;
 
         try {
             return AbilityAPI.treeFellerEnabled(player);
@@ -847,7 +852,7 @@ public class McMMOHook extends LibraryHook {
      * @return true if enabled; false otherwise.
      */
     public boolean isAnyAbilityEnabled(Player player) {
-        if (!this.isAvailable()) return false;
+        if (!this.isHooked()) return false;
 
         try {
             return AbilityAPI.isAnyAbilityEnabled(player);
@@ -863,7 +868,7 @@ public class McMMOHook extends LibraryHook {
      * @param player Player to reset cooldowns for.
      */
     public void resetCooldowns(Player player) {
-        if (!this.isAvailable()) return;
+        if (!this.isHooked()) return;
 
         try {
             AbilityAPI.resetCooldowns(player);
@@ -879,7 +884,7 @@ public class McMMOHook extends LibraryHook {
      * @param cooldown Cooldown (in seconds) for the ability.
      */
     public void setBerserkCooldown(Player player, long cooldown) {
-        if (!this.isAvailable()) return;
+        if (!this.isHooked()) return;
 
         try {
             AbilityAPI.setBerserkCooldown(player, cooldown);
@@ -895,7 +900,7 @@ public class McMMOHook extends LibraryHook {
      * @param cooldown Cooldown (in seconds) for the ability.
      */
     public void setGigaDrillBreakerCooldown(Player player, long cooldown) {
-        if (!this.isAvailable()) return;
+        if (!this.isHooked()) return;
 
         try {
             AbilityAPI.setGigaDrillBreakerCooldown(player, cooldown);
@@ -911,7 +916,7 @@ public class McMMOHook extends LibraryHook {
      * @param cooldown Cooldown (in seconds) for the ability.
      */
     public void setGreenTerraCooldown(Player player, long cooldown) {
-        if (!this.isAvailable()) return;
+        if (!this.isHooked()) return;
 
         try {
             AbilityAPI.setGreenTerraCooldown(player, cooldown);
@@ -927,7 +932,7 @@ public class McMMOHook extends LibraryHook {
      * @param cooldown Cooldown (in seconds) for the ability.
      */
     public void setSerratedStrikesCooldown(Player player, long cooldown) {
-        if (!this.isAvailable()) return;
+        if (!this.isHooked()) return;
 
         try {
             AbilityAPI.setSerratedStrikesCooldown(player, cooldown);
@@ -943,7 +948,7 @@ public class McMMOHook extends LibraryHook {
      * @param cooldown Cooldown (in seconds) for the ability.
      */
     public void setSkullSplitterCooldown(Player player, long cooldown) {
-        if (!this.isAvailable()) return;
+        if (!this.isHooked()) return;
 
         try {
             AbilityAPI.setSkullSplitterCooldown(player, cooldown);
@@ -959,7 +964,7 @@ public class McMMOHook extends LibraryHook {
      * @param cooldown Cooldown (in seconds) for the ability.
      */
     public void setSuperBreakerCooldown(Player player, long cooldown) {
-        if (!this.isAvailable()) return;
+        if (!this.isHooked()) return;
 
         try {
             AbilityAPI.setSuperBreakerCooldown(player, cooldown);
@@ -975,7 +980,7 @@ public class McMMOHook extends LibraryHook {
      * @param cooldown Cooldown (in seconds) for the ability.
      */
     public void setTreeFellerCooldown(Player player, long cooldown) {
-        if (!this.isAvailable()) return;
+        if (!this.isHooked()) return;
 
         try {
             AbilityAPI.setTreeFellerCooldown(player, cooldown);
@@ -991,7 +996,7 @@ public class McMMOHook extends LibraryHook {
      * @return true if bleeding; false otherwise.
      */
     public boolean isBleeding(LivingEntity entity) {
-        if (!this.isAvailable()) return false;
+        if (!this.isHooked()) return false;
 
         try {
             return AbilityAPI.isBleeding(entity);
@@ -1012,7 +1017,7 @@ public class McMMOHook extends LibraryHook {
      * @param message     The message to send
      */
     public void sendPartyChat(Plugin plugin, String sender, String displayName, String party, String message) {
-        if (!this.isAvailable()) return;
+        if (!this.isHooked()) return;
 
         try {
             ChatAPI.sendPartyChat(plugin, sender, displayName, party, message);
@@ -1030,7 +1035,7 @@ public class McMMOHook extends LibraryHook {
      * @param message The message to send
      */
     public void sendPartyChat(Plugin plugin, String sender, String party, String message) {
-        if (!this.isAvailable()) return;
+        if (!this.isHooked()) return;
 
         try {
             ChatAPI.sendPartyChat(plugin, sender, party, message);
@@ -1048,7 +1053,7 @@ public class McMMOHook extends LibraryHook {
      * @param message     The message to send
      */
     public void sendAdminChat(Plugin plugin, String sender, String displayName, String message) {
-        if (!this.isAvailable()) return;
+        if (!this.isHooked()) return;
 
         try {
             ChatAPI.sendAdminChat(plugin, sender, displayName, message);
@@ -1065,7 +1070,7 @@ public class McMMOHook extends LibraryHook {
      * @param message The message to send
      */
     public void sendAdminChat(Plugin plugin, String sender, String message) {
-        if (!this.isAvailable()) return;
+        if (!this.isHooked()) return;
 
         try {
             ChatAPI.sendAdminChat(plugin, sender, message);
@@ -1081,7 +1086,7 @@ public class McMMOHook extends LibraryHook {
      * @return true if the player is using party chat, false otherwise
      */
     public boolean isUsingPartyChat(Player player) {
-        if (!this.isAvailable()) return false;
+        if (!this.isHooked()) return false;
 
         try {
             return ChatAPI.isUsingPartyChat(player);
@@ -1097,7 +1102,7 @@ public class McMMOHook extends LibraryHook {
      * @return true if the player is using party chat, false otherwise
      */
     public boolean isUsingPartyChat(String playerName) {
-        if (!this.isAvailable()) return false;
+        if (!this.isHooked()) return false;
 
         try {
             return ChatAPI.isUsingPartyChat(playerName);
@@ -1113,7 +1118,7 @@ public class McMMOHook extends LibraryHook {
      * @return true if the player is using admin chat, false otherwise
      */
     public boolean isUsingAdminChat(Player player) {
-        if (!this.isAvailable()) return false;
+        if (!this.isHooked()) return false;
 
         try {
             return ChatAPI.isUsingAdminChat(player);
@@ -1129,7 +1134,7 @@ public class McMMOHook extends LibraryHook {
      * @return true if the player is using admin chat, false otherwise
      */
     public boolean isUsingAdminChat(String playerName) {
-        if (!this.isAvailable()) return false;
+        if (!this.isHooked()) return false;
 
         try {
             return ChatAPI.isUsingAdminChat(playerName);
@@ -1144,7 +1149,7 @@ public class McMMOHook extends LibraryHook {
      * @param player The player to toggle party chat on.
      */
     public void togglePartyChat(Player player) {
-        if (!this.isAvailable()) return;
+        if (!this.isHooked()) return;
 
         try {
             ChatAPI.togglePartyChat(player);
@@ -1159,7 +1164,7 @@ public class McMMOHook extends LibraryHook {
      * @param playerName The name of the player to toggle party chat on.
      */
     public void togglePartyChat(String playerName) {
-        if (!this.isAvailable()) return;
+        if (!this.isHooked()) return;
 
         try {
             ChatAPI.togglePartyChat(playerName);
@@ -1174,7 +1179,7 @@ public class McMMOHook extends LibraryHook {
      * @param player The player to toggle admin chat on.
      */
     public void toggleAdminChat(Player player) {
-        if (!this.isAvailable()) return;
+        if (!this.isHooked()) return;
 
         try {
             ChatAPI.toggleAdminChat(player);
@@ -1189,7 +1194,7 @@ public class McMMOHook extends LibraryHook {
      * @param playerName The name of the player to toggle party chat on.
      */
     public void toggleAdminChat(String playerName) {
-        if (!this.isAvailable()) return;
+        if (!this.isHooked()) return;
 
         try {
             ChatAPI.toggleAdminChat(playerName);
@@ -1207,7 +1212,7 @@ public class McMMOHook extends LibraryHook {
      * @return the name of the player's party, or null if not in a party
      */
     public String getPartyName(Player player) {
-        if (!this.isAvailable()) return null;
+        if (!this.isHooked()) return null;
 
         try {
             return PartyAPI.getPartyName(player);
@@ -1223,7 +1228,7 @@ public class McMMOHook extends LibraryHook {
      * @return true if the player is in a party, false otherwise
      */
     public boolean inParty(Player player) {
-        if (!this.isAvailable()) return false;
+        if (!this.isHooked()) return false;
 
         try {
             return PartyAPI.inParty(player);
@@ -1240,7 +1245,7 @@ public class McMMOHook extends LibraryHook {
      * @return true if the two players are in the same party, false otherwise
      */
     public boolean inSameParty(Player playera, Player playerb) {
-        if (!this.isAvailable()) return false;
+        if (!this.isHooked()) return false;
 
         try {
             return PartyAPI.inSameParty(playera, playerb);
@@ -1255,7 +1260,7 @@ public class McMMOHook extends LibraryHook {
      * @return the list of parties.
      */
     public List<Party> getParties() {
-        if (!this.isAvailable()) return new ArrayList<>();
+        if (!this.isHooked()) return new ArrayList<>();
 
         try {
             return PartyAPI.getParties();
@@ -1271,7 +1276,7 @@ public class McMMOHook extends LibraryHook {
      * @param partyName The party to add the player to
      */
     public void addToParty(Player player, String partyName) {
-        if (!this.isAvailable()) return;
+        if (!this.isHooked()) return;
 
         try {
             PartyAPI.addToParty(player, partyName);
@@ -1286,7 +1291,7 @@ public class McMMOHook extends LibraryHook {
      * @param player The player to remove
      */
     public void removeFromParty(Player player) {
-        if (!this.isAvailable()) return;
+        if (!this.isHooked()) return;
 
         try {
             PartyAPI.removeFromParty(player);
@@ -1302,7 +1307,7 @@ public class McMMOHook extends LibraryHook {
      * @return the leader of the party
      */
     public String getPartyLeader(String partyName) {
-        if (!this.isAvailable()) return null;
+        if (!this.isHooked()) return null;
 
         try {
             return PartyAPI.getPartyLeader(partyName);
@@ -1320,7 +1325,7 @@ public class McMMOHook extends LibraryHook {
      */
     @Deprecated
     public void setPartyLeader(String partyName, String playerName) {
-        if (!this.isAvailable()) return;
+        if (!this.isHooked()) return;
 
         try {
             PartyAPI.setPartyLeader(partyName, playerName);
@@ -1338,7 +1343,7 @@ public class McMMOHook extends LibraryHook {
      */
     @Deprecated
     public List<OfflinePlayer> getOnlineAndOfflineMembers(Player player) {
-        if (!this.isAvailable()) return new ArrayList<>();
+        if (!this.isHooked()) return new ArrayList<>();
 
         try {
             return PartyAPI.getOnlineAndOfflineMembers(player);
@@ -1356,7 +1361,7 @@ public class McMMOHook extends LibraryHook {
      */
     @Deprecated
     public LinkedHashSet<String> getMembers(Player player) {
-        if (!this.isAvailable()) return null;
+        if (!this.isHooked()) return null;
 
         try {
             return PartyAPI.getMembers(player);
@@ -1372,7 +1377,7 @@ public class McMMOHook extends LibraryHook {
      * @return all the player names and uuids in the player's party
      */
     public LinkedHashMap<UUID, String> getMembersMap(Player player) {
-        if (!this.isAvailable()) return null;
+        if (!this.isHooked()) return null;
 
         try {
             return PartyAPI.getMembersMap(player);
@@ -1388,7 +1393,7 @@ public class McMMOHook extends LibraryHook {
      * @return all online players in this party
      */
     public List<Player> getOnlineMembers(String partyName) {
-        if (!this.isAvailable()) return new ArrayList<>();
+        if (!this.isHooked()) return new ArrayList<>();
 
         try {
             return PartyAPI.getOnlineMembers(partyName);
@@ -1404,7 +1409,7 @@ public class McMMOHook extends LibraryHook {
      * @return all online players in the player's party
      */
     public List<Player> getOnlineMembers(Player player) {
-        if (!this.isAvailable()) return new ArrayList<>();
+        if (!this.isHooked()) return new ArrayList<>();
 
         try {
             return PartyAPI.getOnlineMembers(player);
@@ -1420,7 +1425,7 @@ public class McMMOHook extends LibraryHook {
      * @return true if the party has an ally; false otherwise.
      */
     public boolean hasAlly(String partyName) {
-        if (!this.isAvailable()) return false;
+        if (!this.isHooked()) return false;
 
         try {
             return PartyAPI.hasAlly(partyName);
@@ -1436,7 +1441,7 @@ public class McMMOHook extends LibraryHook {
      * @return Name of the ally or null if not found.
      */
     public String getAllyName(String partyName) {
-        if (!this.isAvailable()) return null;
+        if (!this.isHooked()) return null;
 
         try {
             return PartyAPI.getAllyName(partyName);
@@ -1454,7 +1459,7 @@ public class McMMOHook extends LibraryHook {
      * @return a list of strings with valid skill names
      */
     public List<String> getSkills() {
-        if (!this.isAvailable()) return new ArrayList<>();
+        if (!this.isHooked()) return new ArrayList<>();
 
         try {
             return SkillAPI.getSkills();
@@ -1470,7 +1475,7 @@ public class McMMOHook extends LibraryHook {
      * @return a list of strings with valid skill names
      */
     public List<String> getNonChildSkills() {
-        if (!this.isAvailable()) return new ArrayList<>();
+        if (!this.isHooked()) return new ArrayList<>();
 
         try {
             return SkillAPI.getNonChildSkills();
@@ -1486,7 +1491,7 @@ public class McMMOHook extends LibraryHook {
      * @return a list of strings with valid skill names
      */
     public List<String> getChildSkills() {
-        if (!this.isAvailable()) return new ArrayList<>();
+        if (!this.isHooked()) return new ArrayList<>();
 
         try {
             return SkillAPI.getChildSkills();
@@ -1502,7 +1507,7 @@ public class McMMOHook extends LibraryHook {
      * @return a list of strings with valid skill names
      */
     public List<String> getCombatSkills() {
-        if (!this.isAvailable()) return new ArrayList<>();
+        if (!this.isHooked()) return new ArrayList<>();
 
         try {
             return SkillAPI.getCombatSkills();
@@ -1518,7 +1523,7 @@ public class McMMOHook extends LibraryHook {
      * @return a list of strings with valid skill names
      */
     public List<String> getGatheringSkills() {
-        if (!this.isAvailable()) return new ArrayList<>();
+        if (!this.isHooked()) return new ArrayList<>();
 
         try {
             return SkillAPI.getGatheringSkills();
@@ -1534,7 +1539,7 @@ public class McMMOHook extends LibraryHook {
      * @return a list of strings with valid skill names
      */
     public List<String> getMiscSkills() {
-        if (!this.isAvailable()) return new ArrayList<>();
+        if (!this.isHooked()) return new ArrayList<>();
 
         try {
             return SkillAPI.getMiscSkills();

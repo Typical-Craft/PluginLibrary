@@ -55,6 +55,11 @@ public class VaultHook extends LibraryHook {
         return this.getServer().getPluginManager().isPluginEnabled(Library.VAULT.getInternalPluginName());
     }
 
+    @Override
+    public boolean isHooked() {
+        return perms != null;
+    }
+
     /*
      * (non-Javadoc)
      *

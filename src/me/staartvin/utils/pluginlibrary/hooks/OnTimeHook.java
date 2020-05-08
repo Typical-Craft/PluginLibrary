@@ -20,25 +20,30 @@ import java.util.Map;
  */
 public class OnTimeHook extends LibraryHook {
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see me.staartvin.plugins.pluginlibrary.hooks.LibraryHook#isAvailable()
-	 */
-	@Override
-	public boolean isAvailable() {
-		return this.getServer().getPluginManager().isPluginEnabled(Library.ONTIME.getInternalPluginName());
-	}
+    /*
+     * (non-Javadoc)
+     *
+     * @see me.staartvin.plugins.pluginlibrary.hooks.LibraryHook#isAvailable()
+     */
+    @Override
+    public boolean isAvailable() {
+        return this.getServer().getPluginManager().isPluginEnabled(Library.ONTIME.getInternalPluginName());
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see me.staartvin.plugins.pluginlibrary.hooks.LibraryHook#hook()
-	 */
-	@Override
-	public boolean hook() {
-		// All api calls are done static, so there is no need to get the plugin
-		// class.
+    @Override
+    public boolean isHooked() {
+        return isAvailable();
+    }
+
+    /*
+     * (non-Javadoc)
+     *
+     * @see me.staartvin.plugins.pluginlibrary.hooks.LibraryHook#hook()
+     */
+    @Override
+    public boolean hook() {
+        // All api calls are done static, so there is no need to get the plugin
+        // class.
 		// We only check if the plugin is available.
 		return isAvailable();
 	}
@@ -51,7 +56,7 @@ public class OnTimeHook extends LibraryHook {
 	 * @return true if the player is stored; false otherwise.
 	 */
 	public boolean isPlayerStored(String playerName) {
-        if (!this.isAvailable()) return false;
+        if (!this.isHooked()) return false;
 
 	    return PlayingTime.playerHasOnTimeRecord(playerName);
 	}
@@ -113,7 +118,7 @@ public class OnTimeHook extends LibraryHook {
 	 *         found or the player was invalid.
 	 */
 	public long getPlayerData(String playerName, String dataType) {
-        if (!this.isAvailable()) return -1;
+        if (!this.isHooked()) return -1;
 
 		if (playerName == null || dataType == null)
 			return -1;
@@ -140,7 +145,7 @@ public class OnTimeHook extends LibraryHook {
 	 *         when data type was invalid.
 	 */
 	public Map<String, Long> getTopData(String dataType) {
-        if (!this.isAvailable()) return new HashMap<String, Long>();
+        if (!this.isHooked()) return new HashMap<String, Long>();
 
 		HashMap<String, Long> leaderboard = new HashMap<String, Long>();
 

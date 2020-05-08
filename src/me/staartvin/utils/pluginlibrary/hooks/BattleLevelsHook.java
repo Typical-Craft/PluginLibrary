@@ -15,25 +15,30 @@ import java.util.UUID;
  */
 public class BattleLevelsHook extends LibraryHook {
 
-	/*
+    /*
      * (non-Javadoc)
      *
      * @see me.staartvin.utils.pluginlibrary.hooks.LibraryHook#isAvailable()
      */
-	@Override
-	public boolean isAvailable() {
+    @Override
+    public boolean isAvailable() {
         return this.getServer().getPluginManager().isPluginEnabled(Library.BATTLELEVELS.getInternalPluginName());
-	}
+    }
+
+    @Override
+    public boolean isHooked() {
+        return isAvailable();
+    }
 
     /*
      * (non-Javadoc)
      *
      * @see me.staartvin.utils.pluginlibrary.hooks.LibraryHook#hook()
      */
-	@Override
-	public boolean hook() {
+    @Override
+    public boolean hook() {
         return isAvailable();
-	}
+    }
 
     /**
      * Get the kill death ratio of a player
@@ -42,7 +47,7 @@ public class BattleLevelsHook extends LibraryHook {
      */
     public double getKillDeathRatio(UUID uuid) {
 
-        if (!this.isAvailable()) {
+        if (!this.isHooked()) {
             return -1;
         }
 
@@ -56,7 +61,7 @@ public class BattleLevelsHook extends LibraryHook {
      */
     public int getKills(UUID uuid) {
 
-        if (!this.isAvailable()) {
+        if (!this.isHooked()) {
             return -1;
         }
 
@@ -70,7 +75,7 @@ public class BattleLevelsHook extends LibraryHook {
      */
     public int getDeaths(UUID uuid) {
 
-        if (!this.isAvailable()) {
+        if (!this.isHooked()) {
             return -1;
         }
 
@@ -84,7 +89,7 @@ public class BattleLevelsHook extends LibraryHook {
      */
     public int getLevel(UUID uuid) {
 
-        if (!this.isAvailable()) {
+        if (!this.isHooked()) {
             return -1;
         }
 
@@ -98,7 +103,7 @@ public class BattleLevelsHook extends LibraryHook {
      */
     public double getScore(UUID uuid) {
 
-        if (!this.isAvailable()) {
+        if (!this.isHooked()) {
             return -1;
         }
 
@@ -112,7 +117,7 @@ public class BattleLevelsHook extends LibraryHook {
      */
     public int getKillStreak(UUID uuid) {
 
-        if (!this.isAvailable()) {
+        if (!this.isHooked()) {
             return -1;
         }
 
@@ -126,7 +131,7 @@ public class BattleLevelsHook extends LibraryHook {
      */
     public int getTopKillStreak(UUID uuid) {
 
-        if (!this.isAvailable()) {
+        if (!this.isHooked()) {
             return -1;
         }
 

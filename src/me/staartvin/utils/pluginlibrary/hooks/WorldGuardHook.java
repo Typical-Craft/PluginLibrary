@@ -31,6 +31,11 @@ public class WorldGuardHook extends LibraryHook {
                 .getInternalPluginName());
     }
 
+    @Override
+    public boolean isHooked() {
+        return worldGuard != null;
+    }
+
     /*
      * (non-Javadoc)
      *
@@ -57,7 +62,7 @@ public class WorldGuardHook extends LibraryHook {
      * @return true if the player is in that region; false otherwise.
      */
     public boolean isInRegion(final Player player, final String regionName) {
-        if (!isAvailable())
+        if (!isHooked())
             return false;
 
         if (player == null || regionName == null)
@@ -74,7 +79,7 @@ public class WorldGuardHook extends LibraryHook {
      */
     public boolean isInRegion(Location location, String regionName) {
 
-        if (!this.isAvailable()) {
+        if (!this.isHooked()) {
             return false;
         }
 

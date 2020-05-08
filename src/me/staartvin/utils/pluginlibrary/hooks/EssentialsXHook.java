@@ -19,23 +19,28 @@ public class EssentialsXHook extends LibraryHook implements AFKManager {
 
 	private Essentials essentials;
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see me.staartvin.plugins.pluginlibrary.LibraryHook#isAvailable()
-	 */
-	@Override
-	public boolean isAvailable() {
+    /*
+     * (non-Javadoc)
+     *
+     * @see me.staartvin.plugins.pluginlibrary.LibraryHook#isAvailable()
+     */
+    @Override
+    public boolean isAvailable() {
         return this.getServer().getPluginManager().isPluginEnabled(Library.ESSENTIALSX.getInternalPluginName());
-	}
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see me.staartvin.plugins.pluginlibrary.LibraryHook#hook()
-	 */
-	@Override
-	public boolean hook() {
+    @Override
+    public boolean isHooked() {
+        return essentials != null;
+    }
+
+    /*
+     * (non-Javadoc)
+     *
+     * @see me.staartvin.plugins.pluginlibrary.LibraryHook#hook()
+     */
+    @Override
+    public boolean hook() {
         if (!isAvailable())
             return false;
 
@@ -51,7 +56,7 @@ public class EssentialsXHook extends LibraryHook implements AFKManager {
      * @return true if the given player is jailed, false otherwise.
      */
     public boolean isJailed(final UUID uuid) {
-        if (!isAvailable())
+        if (!isHooked())
             return false;
 
         final User user = essentials.getUser(uuid);
@@ -69,7 +74,7 @@ public class EssentialsXHook extends LibraryHook implements AFKManager {
      * @return the estimated country of the IP of the given player.
      */
     public String getGeoIPLocation(final UUID uuid) {
-        if (!isAvailable())
+        if (!isHooked())
             return null;
 
         final User user = essentials.getUser(uuid);
@@ -87,7 +92,7 @@ public class EssentialsXHook extends LibraryHook implements AFKManager {
      * @return true if player if AFK, false otherwise.
      */
     public boolean isAFK(UUID uuid) {
-        if (!isAvailable()) return false;
+        if (!isHooked()) return false;
 
         final User user = essentials.getUser(uuid);
 

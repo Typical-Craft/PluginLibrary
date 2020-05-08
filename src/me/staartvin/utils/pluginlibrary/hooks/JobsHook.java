@@ -5,8 +5,8 @@ import com.gamingmesh.jobs.container.Job;
 import com.gamingmesh.jobs.container.JobProgression;
 import com.gamingmesh.jobs.container.JobsPlayer;
 import com.gamingmesh.jobs.container.PlayerPoints;
-import me.staartvin.statz.util.StatzUtil;
 import me.staartvin.utils.pluginlibrary.Library;
+import me.staartvin.utils.pluginlibrary.util.Util;
 import org.bukkit.entity.Player;
 
 import java.util.List;
@@ -31,6 +31,11 @@ public class JobsHook extends LibraryHook {
         return this.getServer().getPluginManager().isPluginEnabled(Library.JOBS.getInternalPluginName());
     }
 
+    @Override
+    public boolean isHooked() {
+        return isAvailable();
+    }
+
     /*
      * (non-Javadoc)
      *
@@ -49,7 +54,7 @@ public class JobsHook extends LibraryHook {
      * @return the number of points a player has or -1 if no data is available
      */
     public double getCurrentPoints(UUID uuid) {
-        if (!this.isAvailable() || uuid == null)
+        if (!this.isHooked() || uuid == null)
             return -1;
 
         PlayerPoints pointInfo = Jobs.getPlayerManager().getPointsData().getPlayerPointsInfo(uuid);
@@ -57,7 +62,7 @@ public class JobsHook extends LibraryHook {
         if (pointInfo == null)
             return -1;
 
-        return StatzUtil.roundDouble(pointInfo.getCurrentPoints(), 2);
+        return Util.roundDouble(pointInfo.getCurrentPoints(), 2);
     }
 
     /**
@@ -67,7 +72,7 @@ public class JobsHook extends LibraryHook {
      * @return the total number of points a player has or -1 if no data is available
      */
     public double getTotalPoints(UUID uuid) {
-        if (!this.isAvailable() || uuid == null)
+        if (!this.isHooked() || uuid == null)
             return -1;
 
         PlayerPoints pointInfo = Jobs.getPlayerManager().getPointsData().getPlayerPointsInfo(uuid);
@@ -75,7 +80,7 @@ public class JobsHook extends LibraryHook {
         if (pointInfo == null)
             return -1;
 
-        return StatzUtil.roundDouble(pointInfo.getTotalPoints(), 2);
+        return Util.roundDouble(pointInfo.getTotalPoints(), 2);
     }
 
     /**
@@ -86,7 +91,7 @@ public class JobsHook extends LibraryHook {
      * @return the number of xp points a player has or -1 if no data is available
      */
     public double getCurrentXP(Player player, String jobName) {
-        if (!this.isAvailable())
+        if (!this.isHooked())
             return -1;
 
         Job job = this.getJob(jobName);
@@ -104,7 +109,7 @@ public class JobsHook extends LibraryHook {
         if (progress == null)
             return -1;
 
-        return StatzUtil.roundDouble(progress.getExperience(), 2);
+        return Util.roundDouble(progress.getExperience(), 2);
     }
 
     /**
@@ -115,7 +120,7 @@ public class JobsHook extends LibraryHook {
      * @return the level a player has or -1 if no data is available
      */
     public double getCurrentLevel(Player player, String jobName) {
-        if (!this.isAvailable())
+        if (!this.isHooked())
             return -1;
 
         Job job = this.getJob(jobName);
@@ -133,7 +138,7 @@ public class JobsHook extends LibraryHook {
         if (progress == null)
             return -1;
 
-        return StatzUtil.roundDouble(progress.getLevel(), 2);
+        return Util.roundDouble(progress.getLevel(), 2);
     }
 
     /**
@@ -142,7 +147,7 @@ public class JobsHook extends LibraryHook {
      * @return Job associated by the given name or null if Jobs was not available or the given job doesn't exist
      */
     public Job getJob(String jobName) {
-        if (!this.isAvailable())
+        if (!this.isHooked())
             return null;
 
         return Jobs.getJob(jobName);
@@ -154,7 +159,7 @@ public class JobsHook extends LibraryHook {
      * @return a list of jobs of the given player or null if no jobs were found or Jobs was not available.
      */
     public List<JobProgression> getJobs(Player player) {
-        if (!this.isAvailable())
+        if (!this.isHooked())
             return null;
 
         JobsPlayer jobsPlayer = Jobs.getPlayerManager().getJobsPlayer(player);

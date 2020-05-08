@@ -24,27 +24,32 @@ public class RoyalCommandsHook extends LibraryHook implements AFKManager {
 
 	private RoyalCommands api;
 
-	/*
+    /*
      * (non-Javadoc)
      *
      * @see me.staartvin.utils.pluginlibrary.hooks.LibraryHook#isAvailable()
      */
-	@Override
-	public boolean isAvailable() {
-		return this.getServer().getPluginManager().isPluginEnabled(Library.ROYALCOMMANDS.getInternalPluginName());
-	}
+    @Override
+    public boolean isAvailable() {
+        return this.getServer().getPluginManager().isPluginEnabled(Library.ROYALCOMMANDS.getInternalPluginName());
+    }
+
+    @Override
+    public boolean isHooked() {
+        return api != null;
+    }
 
     /*
      * (non-Javadoc)
      *
      * @see me.staartvin.utils.pluginlibrary.hooks.LibraryHook#hook()
      */
-	@Override
-	public boolean hook() {
-		if (!isAvailable())
-			return false;
+    @Override
+    public boolean hook() {
+        if (!isAvailable())
+            return false;
 
-		api = (RoyalCommands) this.getServer().getPluginManager()
+        api = (RoyalCommands) this.getServer().getPluginManager()
 				.getPlugin(Library.ROYALCOMMANDS.getInternalPluginName());
 
 		return api != null;
@@ -62,7 +67,7 @@ public class RoyalCommandsHook extends LibraryHook implements AFKManager {
 	 * @return true if the player is afk; false otherwise.
 	 */
 	public boolean isAFK(Player player) {
-        if (!this.isAvailable()) return false;
+        if (!this.isHooked()) return false;
 
 	    return api.getAPI().getPlayerAPI().isAfk(player);
 	}
@@ -76,7 +81,7 @@ public class RoyalCommandsHook extends LibraryHook implements AFKManager {
 	 *         the default name of the player.
 	 */
 	public String getDisplayName(Player player) {
-        if (!this.isAvailable()) return null;
+        if (!this.isHooked()) return null;
 		return api.getAPI().getPlayerAPI().getDisplayName(player);
 	}
 
@@ -91,7 +96,7 @@ public class RoyalCommandsHook extends LibraryHook implements AFKManager {
 	 *         player on that world; null if any errors occured.
 	 */
 	public Inventory getOfflineInventory(OfflinePlayer player, String worldName) {
-        if (!this.isAvailable()) return null;
+        if (!this.isHooked()) return null;
 		return WorldManager.il.getOfflinePlayerInventory(player, worldName);
 	}
 
@@ -106,7 +111,7 @@ public class RoyalCommandsHook extends LibraryHook implements AFKManager {
 	 *         offline player on that world; null if any errors occured.
 	 */
 	public Inventory getOfflineEnderInventory(OfflinePlayer player, String worldName) {
-        if (!this.isAvailable()) return null;
+        if (!this.isHooked()) return null;
 		return WorldManager.il.getOfflinePlayerEnderInventory(player, worldName);
 	}
 

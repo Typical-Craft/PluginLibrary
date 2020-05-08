@@ -34,6 +34,11 @@ public class StatsHook extends LibraryHook {
         return this.getServer().getPluginManager().isPluginEnabled(Library.STATS.getInternalPluginName());
     }
 
+    @Override
+    public boolean isHooked() {
+        return stats != null;
+    }
+
     /*
      * (non-Javadoc)
      *
@@ -68,7 +73,7 @@ public class StatsHook extends LibraryHook {
 
     @SuppressWarnings("deprecation")
     public int getBlocksBroken(final UUID uuid, final int id, final int damageValue, final String worldName) {
-        if (!isAvailable())
+        if (!isHooked())
             return 0;
 
         PlayerManager.getInstance().getPlayer(uuid).subscribe(player -> {
@@ -121,7 +126,7 @@ public class StatsHook extends LibraryHook {
 
     @SuppressWarnings("deprecation")
     public int getBlocksPlaced(final UUID uuid, final int id, final int damageValue, final String worldName) {
-        if (!isAvailable())
+        if (!isHooked())
             return 0;
 
 //		final Collection<StatEntry> stat = getStatType("Blocks placed", uuid);
@@ -190,7 +195,7 @@ public class StatsHook extends LibraryHook {
      * @return
      */
     public int getNormalStat(final UUID uuid, final String statName, final String worldName) {
-        if (!isAvailable())
+        if (!isHooked())
             return 0;
 //
 //		final Collection<StatEntry> stat = getStatType(statName, uuid);
@@ -257,7 +262,7 @@ public class StatsHook extends LibraryHook {
      * @return The amount of total blocks broken.
      */
     public int getTotalBlocksBroken(final UUID uuid, final String worldName) {
-        if (!isAvailable())
+        if (!isHooked())
             return 0;
 
         return this.getNormalStat(uuid, "Blocks broken", worldName);
@@ -282,7 +287,7 @@ public class StatsHook extends LibraryHook {
      * @return The amount of blocks moved by a player
      */
     public int getTotalBlocksMoved(final UUID uuid, final int type, final String worldName) {
-        if (!isAvailable())
+        if (!isHooked())
             return 0;
 //
 //		final String statName = "Move";
@@ -324,7 +329,7 @@ public class StatsHook extends LibraryHook {
      * @return The amount of total blocks placed.
      */
     public int getTotalBlocksPlaced(final UUID uuid, final String worldName) {
-        if (!isAvailable())
+        if (!isHooked())
             return 0;
 
         return this.getNormalStat(uuid, "Blocks placed", worldName);
@@ -343,7 +348,7 @@ public class StatsHook extends LibraryHook {
      * @return The amount of mobs killed a player has killed.
      */
     public int getMobsKilled(final UUID uuid, final String mobName, final String worldName) {
-        if (!isAvailable())
+        if (!isHooked())
             return 0;
 //
 //		final String statName = "Kill";
@@ -400,7 +405,7 @@ public class StatsHook extends LibraryHook {
     }
 
     private int getSpecialMobsKilled(UUID uuid, String mobName, String worldName) {
-        if (!isAvailable())
+        if (!isHooked())
             return 0;
 
 //		final String statName = MobKilledStat.statName;
@@ -462,7 +467,7 @@ public class StatsHook extends LibraryHook {
      * @return The amount of specific food eaten by a player.
      */
     public int getFoodEaten(final UUID uuid, final String worldName, String foodType) {
-        if (!isAvailable())
+        if (!isHooked())
             return 0;
 //
 //		String statName = FoodEatenStat.statName;

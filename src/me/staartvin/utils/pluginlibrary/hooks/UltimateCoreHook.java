@@ -18,25 +18,30 @@ public class UltimateCoreHook extends LibraryHook implements AFKManager {
 
 //	private UltimateCore api;
 
-	/*
+    /*
      * (non-Javadoc)
      *
      * @see me.staartvin.utils.pluginlibrary.hooks.LibraryHook#isAvailable()
      */
-	@Override
-	public boolean isAvailable() {
-		return this.getServer().getPluginManager().isPluginEnabled(Library.ULTIMATECORE.getInternalPluginName());
-	}
+    @Override
+    public boolean isAvailable() {
+        return this.getServer().getPluginManager().isPluginEnabled(Library.ULTIMATECORE.getInternalPluginName());
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see me.staartvin.plugins.pluginlibrary.hooks.LibraryHook#hook()
-	 */
-	@Override
-	public boolean hook() {
-		if (!isAvailable())
-			return false;
+    @Override
+    public boolean isHooked() {
+        return isAvailable();
+    }
+
+    /*
+     * (non-Javadoc)
+     *
+     * @see me.staartvin.plugins.pluginlibrary.hooks.LibraryHook#hook()
+     */
+    @Override
+    public boolean hook() {
+        if (!isAvailable())
+            return false;
 
 //		api = (UltimateCore) this.getServer().getPluginManager()
 //                .getPlugin(Library.ULTIMATECORE.getInternalPluginName());
@@ -52,18 +57,6 @@ public class UltimateCoreHook extends LibraryHook implements AFKManager {
 	public boolean isAFK(UUID uuid) {
 
 		return false;
-
-//	    if (!isAvailable()) {
-//	        return false;
-//        }
-//
-//        UPlayer player = UC.getPlayer(uuid);
-//
-//        if (player == null) {
-//            return false;
-//        }
-//
-//        return player.isAfk();
     }
 
 	@Override

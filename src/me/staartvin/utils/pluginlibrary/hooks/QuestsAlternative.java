@@ -35,6 +35,11 @@ public class QuestsAlternative extends LibraryHook {
         return plugin != null && plugin.isEnabled();
     }
 
+    @Override
+    public boolean isHooked() {
+        return quests != null;
+    }
+
     //
 
     /*
@@ -66,7 +71,7 @@ public class QuestsAlternative extends LibraryHook {
      * @return the number of completed quests or -1 if no data was available
      */
     public int getNumberOfCompletedQuests(UUID uuid) {
-        if (!this.isAvailable()) return -1;
+        if (!this.isHooked()) return -1;
 
         Map<String, Quest> quests = Quests.get().getQuestManager().getQuests();
 
@@ -89,7 +94,7 @@ public class QuestsAlternative extends LibraryHook {
      * @return the number of active quests or -1 if no data was available
      */
     public int getNumberOfActiveQuests(UUID uuid) {
-        if (!this.isAvailable()) return -1;
+        if (!this.isHooked()) return -1;
 
         QPlayer playerData = Quests.get().getPlayerManager().getPlayer(uuid);
 
@@ -105,7 +110,7 @@ public class QuestsAlternative extends LibraryHook {
      * @return true if the player has completed the quest, false otherwise.
      */
     public boolean isQuestCompleted(UUID uuid, String questName) {
-        if (!this.isAvailable()) return false;
+        if (!this.isHooked()) return false;
 
         Quest questData = Quests.get().getQuestManager().getQuestById(questName);
         QPlayer playerData = Quests.get().getPlayerManager().getPlayer(uuid);

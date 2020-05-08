@@ -24,12 +24,17 @@ public class QuestsHook extends LibraryHook {
      *
      * @see me.staartvin.utils.pluginlibrary.LibraryHook#isAvailable()
      */
-	@Override
-	public boolean isAvailable() {
+    @Override
+    public boolean isAvailable() {
         Plugin plugin = this.getServer().getPluginManager().getPlugin(Library.QUESTS
                 .getInternalPluginName());
 
         return plugin != null && plugin.isEnabled();
+    }
+
+    @Override
+    public boolean isHooked() {
+        return quests != null;
     }
 
     /*
@@ -37,10 +42,10 @@ public class QuestsHook extends LibraryHook {
      *
      * @see me.staartvin.utils.pluginlibrary.LibraryHook#hook()
      */
-	@Override
-	public boolean hook() {
-		if (!isAvailable())
-			return false;
+    @Override
+    public boolean hook() {
+        if (!isAvailable())
+            return false;
 
         Plugin plugin = this.getServer().getPluginManager()
                 .getPlugin(Library.QUESTS.getInternalPluginName());
@@ -63,7 +68,7 @@ public class QuestsHook extends LibraryHook {
      * @return the number of completed quests or -1 if no data was available
      */
 	public int getNumberOfCompletedQuests(UUID uuid) {
-        if (!this.isAvailable()) return -1;
+        if (!this.isHooked()) return -1;
 
         Quester quester = getQuester(uuid);
 
@@ -80,7 +85,7 @@ public class QuestsHook extends LibraryHook {
      * @return the number of active quests or -1 if no data was available
      */
     public int getNumberOfActiveQuests(UUID uuid) {
-        if (!this.isAvailable()) return -1;
+        if (!this.isHooked()) return -1;
 
         Quester quester = getQuester(uuid);
 
@@ -97,7 +102,7 @@ public class QuestsHook extends LibraryHook {
      * @return the number of questspoints the player has or -1 if no data was available
      */
     public int getQuestsPoints(UUID uuid) {
-        if (!this.isAvailable()) return -1;
+        if (!this.isHooked()) return -1;
 
         Quester quester = getQuester(uuid);
 
@@ -115,7 +120,7 @@ public class QuestsHook extends LibraryHook {
      * @return true if the player has completed the quest, false otherwise.
      */
     public boolean isQuestCompleted(UUID uuid, String questName) {
-        if (!this.isAvailable()) return false;
+        if (!this.isHooked()) return false;
 
         Quester quester = getQuester(uuid);
 

@@ -25,19 +25,24 @@ public class GriefPreventionHook extends LibraryHook {
      *
      * @see me.staartvin.utils.pluginlibrary.hooks.LibraryHook#isAvailable()
      */
-	@Override
-	public boolean isAvailable() {
+    @Override
+    public boolean isAvailable() {
         return this.getServer().getPluginManager().isPluginEnabled(Library.GRIEFPREVENTION
                 .getInternalPluginName());
-	}
+    }
+
+    @Override
+    public boolean isHooked() {
+        return griefPrevention != null;
+    }
 
     /*
      * (non-Javadoc)
      *
      * @see me.staartvin.utils.pluginlibrary.hooks.LibraryHook#hook()
      */
-	@Override
-	public boolean hook() {
+    @Override
+    public boolean hook() {
 
         if (!isAvailable())
             return false;
@@ -58,7 +63,7 @@ public class GriefPreventionHook extends LibraryHook {
      * @return number of claims a player made, or -1 if no data is available
      */
     public int getNumberOfClaims(UUID uuid) {
-        if (!this.isAvailable()) {
+        if (!this.isHooked()) {
             return -1;
         }
 
@@ -73,7 +78,7 @@ public class GriefPreventionHook extends LibraryHook {
      * @return number of claimed blocks a player made, or -1 if no data is available
      */
     public int getNumberOfClaimedBlocks(UUID uuid) {
-        if (!this.isAvailable())
+        if (!this.isHooked())
             return -1;
 
         PlayerData data = this.getPlayerData(uuid);
@@ -87,7 +92,7 @@ public class GriefPreventionHook extends LibraryHook {
      * @return the number of remaining blocks that can be claimed by a player, or -1 if no data is available
      */
     public int getNumberOfRemainingBlocks(UUID uuid) {
-        if (!this.isAvailable())
+        if (!this.isHooked())
             return -1;
 
         PlayerData data = this.getPlayerData(uuid);
@@ -101,7 +106,7 @@ public class GriefPreventionHook extends LibraryHook {
      * @return number of bonus blocks a player can claim, or -1 if no data is available
      */
     public int getNumberOfBonusBlocks(UUID uuid) {
-        if (!this.isAvailable())
+        if (!this.isHooked())
             return -1;
 
         PlayerData data = this.getPlayerData(uuid);
@@ -121,7 +126,7 @@ public class GriefPreventionHook extends LibraryHook {
      */
     public boolean isInRegion(Location loc, UUID uuid) {
 
-        if (!this.isAvailable()) return false;
+        if (!this.isHooked()) return false;
 
         PlayerData data = this.getPlayerData(uuid);
 

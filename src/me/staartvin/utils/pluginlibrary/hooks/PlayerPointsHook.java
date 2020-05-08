@@ -17,25 +17,30 @@ public class PlayerPointsHook extends LibraryHook {
 
 	private PlayerPoints api;
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see me.staartvin.plugins.pluginlibrary.hooks.LibraryHook#isAvailable()
-	 */
-	@Override
-	public boolean isAvailable() {
-		return this.getServer().getPluginManager().isPluginEnabled(Library.PLAYERPOINTS.getInternalPluginName());
-	}
+    /*
+     * (non-Javadoc)
+     *
+     * @see me.staartvin.plugins.pluginlibrary.hooks.LibraryHook#isAvailable()
+     */
+    @Override
+    public boolean isAvailable() {
+        return this.getServer().getPluginManager().isPluginEnabled(Library.PLAYERPOINTS.getInternalPluginName());
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see me.staartvin.plugins.pluginlibrary.hooks.LibraryHook#hook()
-	 */
-	@Override
-	public boolean hook() {
-		if (!isAvailable())
-			return false;
+    @Override
+    public boolean isHooked() {
+        return api != null;
+    }
+
+    /*
+     * (non-Javadoc)
+     *
+     * @see me.staartvin.plugins.pluginlibrary.hooks.LibraryHook#hook()
+     */
+    @Override
+    public boolean hook() {
+        if (!isAvailable())
+            return false;
 
 		api = (PlayerPoints) this.getServer().getPluginManager()
 				.getPlugin(Library.PLAYERPOINTS.getInternalPluginName());
@@ -49,10 +54,10 @@ public class PlayerPointsHook extends LibraryHook {
 	 * @return number of player points a player has. -1 if PlayerPoints is not available, 0 if player is not found.
 	 */
     public int getPlayerPoints(UUID uuid) {
-		if (!this.isAvailable()) return -1;
+        if (!this.isHooked()) return -1;
 
-		return api.getAPI().look(uuid);
-	}
+        return api.getAPI().look(uuid);
+    }
 
 	/**
 	 * Set the number of PlayerPoints a player has.
@@ -61,10 +66,10 @@ public class PlayerPointsHook extends LibraryHook {
 	 * @return whether the points were successfully set or not.
 	 */
 	public boolean setPlayerPoints(UUID uuid, int value) {
-		if (!this.isAvailable()) return false;
+        if (!this.isHooked()) return false;
 
-		return api.getAPI().set(uuid, value);
-	}
+        return api.getAPI().set(uuid, value);
+    }
 
 	/**
 	 * Give a player some player points.

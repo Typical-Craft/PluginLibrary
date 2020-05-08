@@ -22,19 +22,24 @@ public class AdvancedAchievementsHook extends LibraryHook {
      *
      * @see me.staartvin.utils.pluginlibrary.hooks.LibraryHook#isAvailable()
      */
-	@Override
-	public boolean isAvailable() {
+    @Override
+    public boolean isAvailable() {
         return this.getServer().getPluginManager().isPluginEnabled(Library.ADVANCEDACHIEVEMENTS
                 .getInternalPluginName());
-	}
+    }
+
+    @Override
+    public boolean isHooked() {
+        return advancedAchievements != null;
+    }
 
     /*
      * (non-Javadoc)
      *
      * @see me.staartvin.utils.pluginlibrary.hooks.LibraryHook#hook()
      */
-	@Override
-	public boolean hook() {
+    @Override
+    public boolean hook() {
 
         if (!isAvailable())
             return false;
@@ -53,7 +58,7 @@ public class AdvancedAchievementsHook extends LibraryHook {
      * @return true if the player has obtained the given achievement, false otherwise.
      */
     public boolean hasAchievement(UUID uuid, String achievementName) {
-        if (!this.isAvailable()) {
+        if (!this.isHooked()) {
             return false;
         }
 
@@ -67,7 +72,7 @@ public class AdvancedAchievementsHook extends LibraryHook {
      * @return number of achievements of a player or -1 if no data is available.
      */
     public int getNumberOfAchievements(UUID uuid) {
-        if (!this.isAvailable()) {
+        if (!this.isHooked()) {
             return -1;
         }
 

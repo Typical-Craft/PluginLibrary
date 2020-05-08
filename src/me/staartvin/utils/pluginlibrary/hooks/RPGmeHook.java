@@ -29,6 +29,11 @@ public class RPGmeHook extends LibraryHook {
         return this.getServer().getPluginManager().isPluginEnabled(Library.RPGME.getInternalPluginName());
     }
 
+    @Override
+    public boolean isHooked() {
+        return isAvailable();
+    }
+
     /*
      * (non-Javadoc)
      *
@@ -46,7 +51,7 @@ public class RPGmeHook extends LibraryHook {
      */
     public SkillType getSkill(String skillName) {
 
-        if (!this.isAvailable()) {
+        if (!this.isHooked()) {
             return null;
         }
 
@@ -61,7 +66,7 @@ public class RPGmeHook extends LibraryHook {
      */
     public int getSkillLevel(Player player, String skillName) {
 
-        if (!this.isAvailable())
+        if (!this.isHooked())
             return -1;
 
         SkillType type = this.getSkill(skillName);
@@ -79,7 +84,7 @@ public class RPGmeHook extends LibraryHook {
      * @return the experience of the skill or -1 if invalid skill or no data is available
      */
     public float getSkillExp(Player player, String skillName) {
-        if (!this.isAvailable())
+        if (!this.isHooked())
             return -1;
 
         SkillType type = this.getSkill(skillName);
@@ -96,7 +101,7 @@ public class RPGmeHook extends LibraryHook {
      * @return the total level or -1 if no data is available
      */
     public int getTotalLevel(Player player) {
-        if (!this.isAvailable())
+        if (!this.isHooked())
             return -1;
 
         RPGPlayer RPGPlayer = RPGme.getAPI().get(player);
@@ -113,7 +118,7 @@ public class RPGmeHook extends LibraryHook {
      * @return the combat level or -1 if no data is available
      */
     public int getCombatLevel(Player player) {
-        if (!this.isAvailable())
+        if (!this.isHooked())
             return -1;
 
         RPGPlayer RPGPlayer = RPGme.getAPI().get(player);
@@ -130,7 +135,7 @@ public class RPGmeHook extends LibraryHook {
      * @return the average level or -1 if no data is available
      */
     public int getAverageLevel(Player player) {
-        if (!this.isAvailable())
+        if (!this.isHooked())
             return -1;
 
         RPGPlayer RPGPlayer = RPGme.getAPI().get(player);
@@ -149,7 +154,7 @@ public class RPGmeHook extends LibraryHook {
     public List<UUID> getPlayersInParty(Player player) {
         List<UUID> uuids = new ArrayList<>();
 
-        if (!this.isAvailable())
+        if (!this.isHooked())
             return uuids;
 
         RPGPlayer RPGPlayer = RPGme.getAPI().get(player);

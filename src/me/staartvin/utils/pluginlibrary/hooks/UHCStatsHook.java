@@ -23,12 +23,17 @@ public class UHCStatsHook extends LibraryHook {
      *
      * @see me.staartvin.utils.pluginlibrary.LibraryHook#isAvailable()
      */
-	@Override
-	public boolean isAvailable() {
+    @Override
+    public boolean isAvailable() {
         Plugin plugin = this.getServer().getPluginManager().getPlugin(Library.UHCSTATS
                 .getInternalPluginName());
 
         return plugin != null && plugin.isEnabled();
+    }
+
+    @Override
+    public boolean isHooked() {
+        return uhcStats != null;
     }
 
     /*
@@ -36,10 +41,10 @@ public class UHCStatsHook extends LibraryHook {
      *
      * @see me.staartvin.utils.pluginlibrary.LibraryHook#hook()
      */
-	@Override
-	public boolean hook() {
-		if (!isAvailable())
-			return false;
+    @Override
+    public boolean hook() {
+        if (!isAvailable())
+            return false;
 
         Plugin plugin = this.getServer().getPluginManager()
                 .getPlugin(Library.UHCSTATS.getInternalPluginName());
@@ -63,7 +68,7 @@ public class UHCStatsHook extends LibraryHook {
      * @return number of kills of the player or -1 if it could not be found.
      */
     public int getNumberOfKills(UUID uuid) {
-        if (!this.isAvailable()) return -1;
+        if (!this.isHooked()) return -1;
 
         StatsPlayer statsPlayer = this.getStatsPlayer(uuid);
 
@@ -80,7 +85,7 @@ public class UHCStatsHook extends LibraryHook {
      * @return number of deaths of the player or -1 if it could not be found.
      */
     public int getNumberOfDeaths(UUID uuid) {
-        if (!this.isAvailable()) return -1;
+        if (!this.isHooked()) return -1;
 
         StatsPlayer statsPlayer = this.getStatsPlayer(uuid);
 
@@ -97,7 +102,7 @@ public class UHCStatsHook extends LibraryHook {
      * @return number of wins of the player or -1 if it could not be found.
      */
     public int getNumberOfWins(UUID uuid) {
-        if (!this.isAvailable()) return -1;
+        if (!this.isHooked()) return -1;
 
         StatsPlayer statsPlayer = this.getStatsPlayer(uuid);
 

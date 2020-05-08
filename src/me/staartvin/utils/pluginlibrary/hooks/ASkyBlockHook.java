@@ -18,23 +18,28 @@ public class ASkyBlockHook extends LibraryHook {
 
     private ASkyBlock aSkyBlock;
 
-	/*
+    /*
      * (non-Javadoc)
      *
      * @see me.staartvin.utils.pluginlibrary.hooks.LibraryHook#isAvailable()
      */
-	@Override
-	public boolean isAvailable() {
+    @Override
+    public boolean isAvailable() {
         return this.getServer().getPluginManager().isPluginEnabled(Library.ASKYBLOCK.getInternalPluginName());
-	}
+    }
+
+    @Override
+    public boolean isHooked() {
+        return aSkyBlock != null;
+    }
 
     /*
      * (non-Javadoc)
      *
      * @see me.staartvin.utils.pluginlibrary.hooks.LibraryHook#hook()
      */
-	@Override
-	public boolean hook() {
+    @Override
+    public boolean hook() {
 
         if (!isAvailable())
             return false;
@@ -52,7 +57,7 @@ public class ASkyBlockHook extends LibraryHook {
      * @return level of the island.
      */
     public int getIslandLevel(final UUID uuid) {
-        if (!isAvailable())
+        if (!isHooked())
             return -1;
 
         return ASkyBlockAPI.getInstance().getIslandLevel(uuid);
@@ -64,7 +69,7 @@ public class ASkyBlockHook extends LibraryHook {
      * @return true if the player has an island, false otherwise.
      */
     public boolean hasIsland(final UUID uuid) {
-        if (!isAvailable())
+        if (!isHooked())
             return false;
 
         return ASkyBlockAPI.getInstance().hasIsland(uuid);

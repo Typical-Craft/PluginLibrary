@@ -30,16 +30,29 @@ public abstract class LibraryHook {
      * availability of a plugin.
      *
      * @return true when plugin is available to use; false otherwise.
+     * @deprecated Use {@link #isPluginAvailable instead}.
      */
+    @Deprecated
     public abstract boolean isAvailable();
 
-	/**
-	 * Check if the given library is available. This means that it exists in the plugins folder and is enabled.
-	 * @param library Library to check
-	 * @return true if it exists and is started, false otherwise.
-	 */
-	public static boolean isPluginAvailable(Library library) {
-		Plugin plugin =  Bukkit.getServer().getPluginManager().getPlugin(library.getInternalPluginName());
+    /**
+     * Check whether PluginLibrary is hooked into this plugin. Note that {@link #isAvailable()} only checks whether
+     * the plugin is available, but not whether it is hooked.
+     * <p>
+     * If the plugin is not hooked, it cannot be used properly and should first be hooked by calling {@link #hook()}.
+     *
+     * @return true if the hook was successfully made. False otherwise.
+     */
+    public abstract boolean isHooked();
+
+    /**
+     * Check if the given library is available. This means that it exists in the plugins folder and is enabled.
+     *
+     * @param library Library to check
+     * @return true if it exists and is started, false otherwise.
+     */
+    public static boolean isPluginAvailable(Library library) {
+        Plugin plugin = Bukkit.getServer().getPluginManager().getPlugin(library.getInternalPluginName());
 
 //        System.out.println("Library " + library.getHumanPluginName() + " plugin: " + plugin);
 //
