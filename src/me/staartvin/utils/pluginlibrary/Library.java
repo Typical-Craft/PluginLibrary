@@ -40,7 +40,8 @@ public enum Library {
             ".NuVotifierBukkit"),
     CMI("CMI", new CMIHook(), "Zrips"),
     UHCSTATS("UhcStats", new UHCStatsHook(), "Mezy"),
-    TOWNY_ADVANCED("Towny", new TownyAdvancedHook(), "Shade");
+    TOWNY_ADVANCED("Towny", new TownyAdvancedHook(), "Shade"),
+    MCRPG("McRPG", new McRPGHook(), "Eunoians");
 
     private final String internalPluginName;
     private final String authorName;
