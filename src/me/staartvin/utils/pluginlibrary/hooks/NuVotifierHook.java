@@ -6,8 +6,6 @@ import me.staartvin.utils.pluginlibrary.listeners.VoteListener;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 
-import java.util.Objects;
-
 /**
  * NuVotifier library, <a href="https://www.spigotmc.org/resources/nuvotifier.13449/">link</a>.
  * <p>
@@ -67,9 +65,7 @@ public class NuVotifierHook extends LibraryHook {
     }
 
     private boolean setupVoteListener() {
-        Bukkit.getPluginManager().registerEvents(new VoteListener(),
-                Objects.requireNonNull(Bukkit.getPluginManager().getPlugin(
-                "PluginLibrary")));
+        Bukkit.getPluginManager().registerEvents(new VoteListener(), this.getProvidedJavaPlugin());
 
         return true;
     }

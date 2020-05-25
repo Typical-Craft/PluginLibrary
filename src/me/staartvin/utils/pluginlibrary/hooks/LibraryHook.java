@@ -17,7 +17,11 @@ import org.bukkit.plugin.Plugin;
 public abstract class LibraryHook {
 
     protected PluginLibrary getPlugin() {
-        return (PluginLibrary) Bukkit.getServer().getPluginManager().getPlugin("PluginLibrary");
+        return Bukkit.getServer().getServicesManager().load(PluginLibrary.class);
+    }
+
+    protected Plugin getProvidedJavaPlugin() {
+        return Bukkit.getServer().getServicesManager().getRegistration(PluginLibrary.class).getPlugin();
     }
 
     protected Server getServer() {
