@@ -16,15 +16,6 @@ public class uSkyBlockHook extends LibraryHook {
 
     private uSkyBlockAPI uSkyBlock;
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see me.staartvin.plugins.pluginlibrary.hooks.LibraryHook#isAvailable()
-     */
-    @Override
-    public boolean isAvailable() {
-        return this.getServer().getPluginManager().isPluginEnabled(Library.USKYBLOCK.getInternalPluginName());
-    }
 
     @Override
     public boolean isHooked() {
@@ -39,7 +30,7 @@ public class uSkyBlockHook extends LibraryHook {
     @Override
     public boolean hook() {
 
-        if (!isAvailable())
+        if (!isPluginAvailable(Library.USKYBLOCK))
             return false;
 
         uSkyBlock = (uSkyBlockAPI) this.getServer().getPluginManager()

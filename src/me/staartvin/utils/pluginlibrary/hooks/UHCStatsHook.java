@@ -18,19 +18,6 @@ public class UHCStatsHook extends LibraryHook {
 
 	private UhcStats uhcStats;
 
-	/*
-     * (non-Javadoc)
-     *
-     * @see me.staartvin.utils.pluginlibrary.LibraryHook#isAvailable()
-     */
-    @Override
-    public boolean isAvailable() {
-        Plugin plugin = this.getServer().getPluginManager().getPlugin(Library.UHCSTATS
-                .getInternalPluginName());
-
-        return plugin != null && plugin.isEnabled();
-    }
-
     @Override
     public boolean isHooked() {
         return uhcStats != null;
@@ -43,7 +30,7 @@ public class UHCStatsHook extends LibraryHook {
      */
     @Override
     public boolean hook() {
-        if (!isAvailable())
+        if (!isPluginAvailable(Library.UHCSTATS))
             return false;
 
         Plugin plugin = this.getServer().getPluginManager()

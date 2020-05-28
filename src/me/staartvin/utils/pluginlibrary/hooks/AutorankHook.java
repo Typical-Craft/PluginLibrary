@@ -23,15 +23,6 @@ public class AutorankHook extends LibraryHook {
 
     private Autorank autorank;
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see me.staartvin.utils.pluginlibrary.LibraryHook#isAvailable()
-     */
-    @Override
-    public boolean isAvailable() {
-        return true;
-    }
 
     @Override
     public boolean isHooked() {
@@ -45,7 +36,7 @@ public class AutorankHook extends LibraryHook {
      */
     @Override
     public boolean hook() {
-        if (!isAvailable())
+        if (!isPluginAvailable(Library.AUTORANK))
             return false;
 
         autorank = (Autorank) this.getServer().getPluginManager()

@@ -19,15 +19,6 @@ public class EssentialsXHook extends LibraryHook implements AFKManager {
 
 	private Essentials essentials;
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see me.staartvin.plugins.pluginlibrary.LibraryHook#isAvailable()
-     */
-    @Override
-    public boolean isAvailable() {
-        return this.getServer().getPluginManager().isPluginEnabled(Library.ESSENTIALSX.getInternalPluginName());
-    }
 
     @Override
     public boolean isHooked() {
@@ -41,7 +32,7 @@ public class EssentialsXHook extends LibraryHook implements AFKManager {
      */
     @Override
     public boolean hook() {
-        if (!isAvailable())
+        if (!isPluginAvailable(Library.ESSENTIALSX))
             return false;
 
         essentials = (Essentials) this.getServer().getPluginManager()

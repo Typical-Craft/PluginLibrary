@@ -18,15 +18,6 @@ public class ASkyBlockHook extends LibraryHook {
 
     private ASkyBlock aSkyBlock;
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see me.staartvin.utils.pluginlibrary.hooks.LibraryHook#isAvailable()
-     */
-    @Override
-    public boolean isAvailable() {
-        return this.getServer().getPluginManager().isPluginEnabled(Library.ASKYBLOCK.getInternalPluginName());
-    }
 
     @Override
     public boolean isHooked() {
@@ -41,7 +32,7 @@ public class ASkyBlockHook extends LibraryHook {
     @Override
     public boolean hook() {
 
-        if (!isAvailable())
+        if (!isPluginAvailable(Library.ASKYBLOCK))
             return false;
 
         aSkyBlock = (ASkyBlock) this.getServer().getPluginManager()

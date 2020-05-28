@@ -16,15 +16,6 @@ public class NuVotifierHook extends LibraryHook {
 
     private NuVotifierBukkit api;
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see me.staartvin.plugins.pluginlibrary.hooks.LibraryHook#isAvailable()
-     */
-    @Override
-    public boolean isAvailable() {
-        return this.getServer().getPluginManager().isPluginEnabled(Library.NUVOTIFIER.getInternalPluginName());
-    }
 
     @Override
     public boolean isHooked() {
@@ -39,7 +30,7 @@ public class NuVotifierHook extends LibraryHook {
     @Override
     public boolean hook() {
 
-        if (!isAvailable()) {
+        if (!isPluginAvailable(Library.NUVOTIFIER)) {
             return false;
         }
 

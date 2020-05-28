@@ -12,9 +12,26 @@ import org.bukkit.plugin.Plugin;
  * Date created: 14:13:45 12 aug. 2015
  *
  * @author Staartvin
- *
  */
 public abstract class LibraryHook {
+
+    /**
+     * Check if the given library is available. This means that it exists in the plugins folder and is enabled.
+     *
+     * @param library Library to check
+     * @return true if it exists and is started, false otherwise.
+     */
+    public static boolean isPluginAvailable(Library library) {
+        Plugin plugin = Bukkit.getServer().getPluginManager().getPlugin(library.getInternalPluginName());
+
+        if (plugin == null) return false;
+
+        // Check if plugin has a main class defined.
+        // If so, check if the main class is equal to that of the enabled plugin to make sure we have the correct one.
+        // Some plugins have the same name, but are of different authors. Checking the main class path makes sure we
+        // have the correct one.
+        return !library.hasMainClass() || plugin.getDescription().getMain().equalsIgnoreCase(library.getMainClass());
+    }
 
     protected PluginLibrary getPlugin() {
         return Bukkit.getServer().getServicesManager().load(PluginLibrary.class);
@@ -29,19 +46,8 @@ public abstract class LibraryHook {
     }
 
     /**
-     * Whether or not the plugin is available. Checking whether a plugin is available may require some additional
-     * checks. This method can be used in conjunction with the {@link #isPluginAvailable(Library)} method to check for
-     * availability of a plugin.
-     *
-     * @return true when plugin is available to use; false otherwise.
-     * @deprecated Use {@link #isPluginAvailable instead}.
-     */
-    @Deprecated
-    public abstract boolean isAvailable();
-
-    /**
-     * Check whether PluginLibrary is hooked into this plugin. Note that {@link #isAvailable()} only checks whether
-     * the plugin is available, but not whether it is hooked.
+     * Check whether PluginLibrary is hooked into this plugin. Note that {@link #isPluginAvailable(Library)} only checks
+     * whether the plugin is available, but not whether it is hooked.
      * <p>
      * If the plugin is not hooked, it cannot be used properly and should first be hooked by calling {@link #hook()}.
      *
@@ -50,42 +56,9 @@ public abstract class LibraryHook {
     public abstract boolean isHooked();
 
     /**
-     * Check if the given library is available. This means that it exists in the plugins folder and is enabled.
+     * Hook the plugin to make sure data can be retrieved.
      *
-     * @param library Library to check
-     * @return true if it exists and is started, false otherwise.
+     * @return true if PluginLibrary could successfully hook; false otherwise.
      */
-    public static boolean isPluginAvailable(Library library) {
-        Plugin plugin = Bukkit.getServer().getPluginManager().getPlugin(library.getInternalPluginName());
-
-//        System.out.println("Library " + library.getHumanPluginName() + " plugin: " + plugin);
-//
-//        if (plugin != null) {
-//            System.out.println("Plugin enabled: " + plugin.isEnabled());
-//        } else {
-//            System.out.println("Plugin enabled: false");
-//        }
-
-		if (plugin == null) return false;
-
-//        System.out.println("Library has main class: " + library.hasMainClass());
-//
-//        if (library.hasMainClass()) {
-//            System.out.println("(Should be) Library main class: " + library.getMainClass());
-//            System.out.println("(Is) Library main class: " + plugin.getDescription().getMain());
-//        }
-
-		// Check if plugin has a main class defined.
-		// If so, check if the main class is equal to that of the enabled plugin to make sure we have the correct one.
-		// Some plugins have the same name, but are of different authors. Checking the main class path makes sure we
-		// have the correct one.
-		return !library.hasMainClass() || plugin.getDescription().getMain().equalsIgnoreCase(library.getMainClass());
-	}
-
-	/**
-	 * Hook the plugin to make sure data can be retrieved.
-	 * 
-	 * @return true if PluginLibrary could successfully hook; false otherwise.
-	 */
-	public abstract boolean hook();
+    public abstract boolean hook();
 }

@@ -21,19 +21,9 @@ import java.util.UUID;
  */
 public class JobsHook extends LibraryHook {
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see me.staartvin.plugins.pluginlibrary.hooks.LibraryHook#isAvailable()
-     */
-    @Override
-    public boolean isAvailable() {
-        return this.getServer().getPluginManager().isPluginEnabled(Library.JOBS.getInternalPluginName());
-    }
-
     @Override
     public boolean isHooked() {
-        return isAvailable();
+        return isPluginAvailable(Library.JOBS);
     }
 
     /*
@@ -43,7 +33,7 @@ public class JobsHook extends LibraryHook {
      */
     @Override
     public boolean hook() {
-        return isAvailable();
+        return isPluginAvailable(Library.JOBS);
     }
 
 

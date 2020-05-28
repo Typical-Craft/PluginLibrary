@@ -122,10 +122,9 @@ public class PluginLibrary {
         int count = 0;
 
         for (me.staartvin.utils.pluginlibrary.Library l : me.staartvin.utils.pluginlibrary.Library.values()) {
-            LibraryHook libraryHook = l.getHook();
-
-            if (LibraryHook.isPluginAvailable(l) && libraryHook.isAvailable()) {
+            if (LibraryHook.isPluginAvailable(l)) {
                 try {
+                    LibraryHook libraryHook = l.getHook();
                     if (libraryHook.hook()) {
                         loadedLibraries.add(l);
                         count++;

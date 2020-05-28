@@ -17,15 +17,6 @@ public class PlayerPointsHook extends LibraryHook {
 
 	private PlayerPoints api;
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see me.staartvin.plugins.pluginlibrary.hooks.LibraryHook#isAvailable()
-     */
-    @Override
-    public boolean isAvailable() {
-        return this.getServer().getPluginManager().isPluginEnabled(Library.PLAYERPOINTS.getInternalPluginName());
-    }
 
     @Override
     public boolean isHooked() {
@@ -39,8 +30,8 @@ public class PlayerPointsHook extends LibraryHook {
      */
     @Override
     public boolean hook() {
-        if (!isAvailable())
-            return false;
+        if (!isPluginAvailable(Library.PLAYERPOINTS))
+			return false;
 
 		api = (PlayerPoints) this.getServer().getPluginManager()
 				.getPlugin(Library.PLAYERPOINTS.getInternalPluginName());

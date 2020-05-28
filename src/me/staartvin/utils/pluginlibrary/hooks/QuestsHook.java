@@ -19,19 +19,6 @@ public class QuestsHook extends LibraryHook {
 
 	private Quests quests;
 
-	/*
-     * (non-Javadoc)
-     *
-     * @see me.staartvin.utils.pluginlibrary.LibraryHook#isAvailable()
-     */
-    @Override
-    public boolean isAvailable() {
-        Plugin plugin = this.getServer().getPluginManager().getPlugin(Library.QUESTS
-                .getInternalPluginName());
-
-        return plugin != null && plugin.isEnabled();
-    }
-
     @Override
     public boolean isHooked() {
         return quests != null;
@@ -44,7 +31,7 @@ public class QuestsHook extends LibraryHook {
      */
     @Override
     public boolean hook() {
-        if (!isAvailable())
+        if (!isPluginAvailable(Library.QUESTS))
             return false;
 
         Plugin plugin = this.getServer().getPluginManager()

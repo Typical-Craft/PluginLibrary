@@ -15,19 +15,10 @@ import java.util.UUID;
  */
 public class BattleLevelsHook extends LibraryHook {
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see me.staartvin.utils.pluginlibrary.hooks.LibraryHook#isAvailable()
-     */
-    @Override
-    public boolean isAvailable() {
-        return this.getServer().getPluginManager().isPluginEnabled(Library.BATTLELEVELS.getInternalPluginName());
-    }
 
     @Override
     public boolean isHooked() {
-        return isAvailable();
+        return isPluginAvailable(Library.BATTLELEVELS);
     }
 
     /*
@@ -37,7 +28,7 @@ public class BattleLevelsHook extends LibraryHook {
      */
     @Override
     public boolean hook() {
-        return isAvailable();
+        return isPluginAvailable(Library.BATTLELEVELS);
     }
 
     /**

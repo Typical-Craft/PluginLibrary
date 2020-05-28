@@ -20,19 +20,9 @@ import java.util.Map;
  */
 public class OnTimeHook extends LibraryHook {
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see me.staartvin.plugins.pluginlibrary.hooks.LibraryHook#isAvailable()
-     */
-    @Override
-    public boolean isAvailable() {
-        return this.getServer().getPluginManager().isPluginEnabled(Library.ONTIME.getInternalPluginName());
-    }
-
     @Override
     public boolean isHooked() {
-        return isAvailable();
+        return isPluginAvailable(Library.ONTIME);
     }
 
     /*
@@ -42,10 +32,10 @@ public class OnTimeHook extends LibraryHook {
      */
     @Override
     public boolean hook() {
-        // All api calls are done static, so there is no need to get the plugin
-        // class.
+		// All api calls are done static, so there is no need to get the plugin
+		// class.
 		// We only check if the plugin is available.
-		return isAvailable();
+		return isPluginAvailable(Library.ONTIME);
 	}
 
 	/**

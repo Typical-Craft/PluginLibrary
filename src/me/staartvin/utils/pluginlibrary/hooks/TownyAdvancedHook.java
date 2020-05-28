@@ -16,19 +16,10 @@ import java.util.Optional;
  */
 public class TownyAdvancedHook extends LibraryHook {
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see me.staartvin.plugins.pluginlibrary.hooks.LibraryHook#isAvailable()
-     */
-    @Override
-    public boolean isAvailable() {
-        return this.getServer().getPluginManager().isPluginEnabled(Library.TOWNY_ADVANCED.getInternalPluginName());
-    }
 
     @Override
     public boolean isHooked() {
-        return isAvailable();
+        return isPluginAvailable(Library.TOWNY_ADVANCED);
     }
 
     /*
@@ -38,21 +29,21 @@ public class TownyAdvancedHook extends LibraryHook {
      */
     @Override
     public boolean hook() {
-        return isAvailable();
+        return isPluginAvailable(Library.TOWNY_ADVANCED);
     }
 
     public Optional<Resident> getResident(String playerName) {
         if (!this.isHooked()) return Optional.empty();
 
-        Resident resident = null;
-
-        try {
-            resident = TownyAPI.getInstance().getDataSource().getResident(playerName);
-        } catch (NotRegisteredException e) {
+        if (!TownyAPI.getInstance().getDataSource().hasResident(playerName)) {
             return Optional.empty();
         }
 
-        return Optional.ofNullable(resident);
+        try {
+            return Optional.ofNullable(TownyAPI.getInstance().getDataSource().getResident(playerName));
+        } catch (NotRegisteredException e) {
+            return Optional.empty();
+        }
     }
 
     /**

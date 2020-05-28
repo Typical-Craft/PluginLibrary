@@ -18,17 +18,6 @@ public class AcidIslandHook extends LibraryHook {
 
     private ASkyBlock acidIsland;
 
-	/*
-     * (non-Javadoc)
-     *
-     * @see me.staartvin.utils.pluginlibrary.hooks.LibraryHook#isAvailable()
-     */
-    @Override
-    public boolean isAvailable() {
-        return this.getServer().getPluginManager().isPluginEnabled(Library.ACIDISLAND
-                .getInternalPluginName());
-    }
-
     @Override
     public boolean isHooked() {
         return acidIsland != null;
@@ -42,7 +31,7 @@ public class AcidIslandHook extends LibraryHook {
     @Override
     public boolean hook() {
 
-        if (!isAvailable())
+        if (!isPluginAvailable(Library.ACIDISLAND))
             return false;
 
         acidIsland = (ASkyBlock) this.getServer().getPluginManager()

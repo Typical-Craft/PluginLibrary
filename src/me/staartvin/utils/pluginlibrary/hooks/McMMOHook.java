@@ -27,15 +27,6 @@ public class McMMOHook extends LibraryHook {
 
     private mcMMO api;
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see me.staartvin.plugins.pluginlibrary.hooks.LibraryHook#isAvailable()
-     */
-    @Override
-    public boolean isAvailable() {
-        return this.getServer().getPluginManager().isPluginEnabled(Library.MCMMO.getInternalPluginName());
-    }
 
     @Override
     public boolean isHooked() {
@@ -49,7 +40,7 @@ public class McMMOHook extends LibraryHook {
      */
     @Override
     public boolean hook() {
-        if (!isAvailable())
+        if (!isPluginAvailable(Library.MCMMO))
             return false;
 
         api = (mcMMO) this.getServer().getPluginManager().getPlugin(Library.MCMMO.getInternalPluginName());

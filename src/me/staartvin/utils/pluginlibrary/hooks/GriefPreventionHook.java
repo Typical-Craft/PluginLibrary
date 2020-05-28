@@ -20,17 +20,6 @@ public class GriefPreventionHook extends LibraryHook {
 
     private GriefPrevention griefPrevention;
 
-	/*
-     * (non-Javadoc)
-     *
-     * @see me.staartvin.utils.pluginlibrary.hooks.LibraryHook#isAvailable()
-     */
-    @Override
-    public boolean isAvailable() {
-        return this.getServer().getPluginManager().isPluginEnabled(Library.GRIEFPREVENTION
-                .getInternalPluginName());
-    }
-
     @Override
     public boolean isHooked() {
         return griefPrevention != null;
@@ -44,7 +33,7 @@ public class GriefPreventionHook extends LibraryHook {
     @Override
     public boolean hook() {
 
-        if (!isAvailable())
+        if (!isPluginAvailable(Library.GRIEFPREVENTION))
             return false;
 
         griefPrevention = (GriefPrevention) this.getServer().getPluginManager()

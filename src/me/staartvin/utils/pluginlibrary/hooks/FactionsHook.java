@@ -27,16 +27,6 @@ public class FactionsHook extends LibraryHook {
 
 	private Factions factions;
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see me.staartvin.utils.pluginlibrary.LibraryHook#isAvailable()
-     */
-    @Override
-    public boolean isAvailable() {
-        return this.getServer().getPluginManager().isPluginEnabled(Library.FACTIONS.getInternalPluginName());
-    }
-
     @Override
     public boolean isHooked() {
         return factions != null;
@@ -49,8 +39,8 @@ public class FactionsHook extends LibraryHook {
      */
     @Override
     public boolean hook() {
-        if (!isAvailable())
-            return false;
+        if (!isPluginAvailable(Library.FACTIONS))
+			return false;
 
         Plugin plugin = this.getServer().getPluginManager()
                 .getPlugin(Library.FACTIONS.getInternalPluginName());

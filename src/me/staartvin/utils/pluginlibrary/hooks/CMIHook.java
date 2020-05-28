@@ -16,19 +16,10 @@ import java.util.UUID;
  */
 public class CMIHook extends me.staartvin.utils.pluginlibrary.hooks.LibraryHook implements AFKManager {
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see me.staartvin.plugins.pluginlibrary.hooks.LibraryHook#isAvailable()
-     */
-    @Override
-    public boolean isAvailable() {
-        return this.getServer().getPluginManager().isPluginEnabled(Library.CMI.getInternalPluginName());
-    }
 
     @Override
     public boolean isHooked() {
-        return isAvailable();
+        return isPluginAvailable(Library.CMI);
     }
 
     /*
@@ -38,10 +29,10 @@ public class CMIHook extends me.staartvin.utils.pluginlibrary.hooks.LibraryHook 
      */
     @Override
     public boolean hook() {
-        // All api calls are done static, so there is no need to get the plugin
-        // class.
+		// All api calls are done static, so there is no need to get the plugin
+		// class.
 		// We only check if the plugin is available.
-		return isAvailable();
+		return isPluginAvailable(Library.CMI);
 	}
 
 	/**

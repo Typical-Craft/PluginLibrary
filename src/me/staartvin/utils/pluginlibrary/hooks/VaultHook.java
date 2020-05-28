@@ -45,16 +45,6 @@ public class VaultHook extends LibraryHook {
         return chat;
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see me.staartvin.utils.pluginlibrary.hooks.LibraryHook#isAvailable()
-     */
-    @Override
-    public boolean isAvailable() {
-        return this.getServer().getPluginManager().isPluginEnabled(Library.VAULT.getInternalPluginName());
-    }
-
     @Override
     public boolean isHooked() {
         return perms != null;
@@ -68,7 +58,7 @@ public class VaultHook extends LibraryHook {
     @Override
     public boolean hook() {
 
-        if (!isAvailable()) {
+        if (!isPluginAvailable(Library.VAULT)) {
             return false;
         }
 

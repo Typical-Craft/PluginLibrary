@@ -22,17 +22,6 @@ public class SavageFactionsHook extends LibraryHook {
 
     private SavageFactions savageFactions;
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see me.staartvin.plugins.pluginlibrary.LibraryHook#isAvailable()
-     */
-    @Override
-    public boolean isAvailable() {
-        return this.getServer().getPluginManager().isPluginEnabled(Library.SAVAGE_FACTIONS
-                .getInternalPluginName());
-    }
-
     @Override
     public boolean isHooked() {
         return savageFactions != null;
@@ -45,7 +34,7 @@ public class SavageFactionsHook extends LibraryHook {
      */
     @Override
     public boolean hook() {
-        if (!isAvailable())
+        if (!isPluginAvailable(Library.SAVAGE_FACTIONS))
             return false;
 
         Plugin plugin = this.getServer().getPluginManager()

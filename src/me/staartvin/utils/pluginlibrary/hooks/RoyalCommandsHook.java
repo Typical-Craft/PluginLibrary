@@ -24,16 +24,6 @@ public class RoyalCommandsHook extends LibraryHook implements AFKManager {
 
 	private RoyalCommands api;
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see me.staartvin.utils.pluginlibrary.hooks.LibraryHook#isAvailable()
-     */
-    @Override
-    public boolean isAvailable() {
-        return this.getServer().getPluginManager().isPluginEnabled(Library.ROYALCOMMANDS.getInternalPluginName());
-    }
-
     @Override
     public boolean isHooked() {
         return api != null;
@@ -46,8 +36,8 @@ public class RoyalCommandsHook extends LibraryHook implements AFKManager {
      */
     @Override
     public boolean hook() {
-        if (!isAvailable())
-            return false;
+        if (!isPluginAvailable(Library.ROYALCOMMANDS))
+			return false;
 
         api = (RoyalCommands) this.getServer().getPluginManager()
 				.getPlugin(Library.ROYALCOMMANDS.getInternalPluginName());

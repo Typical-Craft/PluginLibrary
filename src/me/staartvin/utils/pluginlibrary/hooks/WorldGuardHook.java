@@ -20,17 +20,6 @@ public class WorldGuardHook extends LibraryHook {
 
     private WorldGuardPlugin worldGuard;
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see me.staartvin.utils.pluginlibrary.LibraryHook#isAvailable()
-     */
-    @Override
-    public boolean isAvailable() {
-        return this.getServer().getPluginManager().isPluginEnabled(Library.WORLDGUARD
-                .getInternalPluginName());
-    }
-
     @Override
     public boolean isHooked() {
         return worldGuard != null;
@@ -43,7 +32,7 @@ public class WorldGuardHook extends LibraryHook {
      */
     @Override
     public boolean hook() {
-        if (!isAvailable())
+        if (!isPluginAvailable(Library.WORLDGUARD))
             return false;
 
         worldGuard = (WorldGuardPlugin) this.getServer().getPluginManager()

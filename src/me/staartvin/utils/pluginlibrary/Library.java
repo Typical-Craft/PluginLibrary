@@ -1,6 +1,7 @@
 package me.staartvin.utils.pluginlibrary;
 
 import me.staartvin.utils.pluginlibrary.hooks.*;
+import org.bukkit.Bukkit;
 
 /**
  * This class holds all libraries PluginLibrary has.
@@ -11,68 +12,70 @@ import me.staartvin.utils.pluginlibrary.hooks.*;
  */
 public enum Library {
 
-    AUTORANK("Autorank", new AutorankHook(), "Staartvin"),
-    MCMMO("mcMMO", new McMMOHook(), "t00thpick1"),
-    FACTIONS("Factions", new FactionsHook(), "Cayorion", "com.massivecraft.factions.Factions"),
-    ONTIME("OnTime", new OnTimeHook(), "Edge209"),
-    AFKTERMINATOR("afkTerminator", new AFKTerminatorHook(), "Edge209"),
-    ROYALCOMMANDS("RoyalCommands", new RoyalCommandsHook(), "WizardCM"),
-    ULTIMATECORE("UltimateCore", new UltimateCoreHook(), "Bammerbom"),
-    STATZ("Statz", new StatzHook(), "Staartvin"),
-    ACIDISLAND("AcidIsland", new AcidIslandHook(), "tastybento"),
-    ADVANCEDACHIEVEMENTS("AdvancedAchievements", new AdvancedAchievementsHook(), "DarkPyves"),
-    ASKYBLOCK("ASkyBlock", new ASkyBlockHook(), "tastybento"),
-    BATTLELEVELS("BattleLevels", new BattleLevelsHook(), "RobiRami"),
-    GRIEFPREVENTION("GriefPrevention", new GriefPreventionHook(), "RoboMWM"),
-    JOBS("Jobs", new JobsHook(), "Zrips"),
-    RPGME("RPGme", new RPGmeHook(), "Flamedek"),
-    USKYBLOCK("uSkyBlock", new uSkyBlockHook(), "R4zorax"),
-    VAULT("Vault", new VaultHook(), "Kainzo"),
-    WORLDGUARD("WorldGuard", new WorldGuardHook(), "sk89q"),
-    ESSENTIALSX("Essentials", "EssentialsX", new EssentialsXHook(), "drtshock"),
-    QUESTS("Quests", new QuestsHook(), "PikaMug", "me.blackvein.quests.Quests"),
-    STATS("Stats", new StatsHook(), "Lolmewn"),
-    QUESTS_ALTERNATIVE("Quests", new QuestsAlternative(), "LMBishop", "com.leonardobishop.quests.Quests"),
-    SAVAGE_FACTIONS("Factions", "SavageFactions", new SavageFactionsHook(), "ProSavage", "com.massivecraft.factions" +
+    AUTORANK("Autorank", AutorankHook.class, "Staartvin"),
+    MCMMO("mcMMO", McMMOHook.class, "t00thpick1"),
+    FACTIONS("Factions", FactionsHook.class, "Cayorion", "com.massivecraft.factions.Factions"),
+    ONTIME("OnTime", OnTimeHook.class, "Edge209"),
+    AFKTERMINATOR("afkTerminator", AFKTerminatorHook.class, "Edge209"),
+    ROYALCOMMANDS("RoyalCommands", RoyalCommandsHook.class, "WizardCM"),
+    ULTIMATECORE("UltimateCore", UltimateCoreHook.class, "Bammerbom"),
+    STATZ("Statz", StatzHook.class, "Staartvin"),
+    ACIDISLAND("AcidIsland", AcidIslandHook.class, "tastybento"),
+    ADVANCEDACHIEVEMENTS("AdvancedAchievements", AdvancedAchievementsHook.class, "DarkPyves"),
+    ASKYBLOCK("ASkyBlock", ASkyBlockHook.class, "tastybento"),
+    BATTLELEVELS("BattleLevels", BattleLevelsHook.class, "RobiRami"),
+    GRIEFPREVENTION("GriefPrevention", GriefPreventionHook.class, "RoboMWM"),
+    JOBS("Jobs", JobsHook.class, "Zrips"),
+    RPGME("RPGme", RPGmeHook.class, "Flamedek"),
+    USKYBLOCK("uSkyBlock", uSkyBlockHook.class, "R4zorax"),
+    VAULT("Vault", VaultHook.class, "Kainzo"),
+    WORLDGUARD("WorldGuard", WorldGuardHook.class, "sk89q"),
+    ESSENTIALSX("Essentials", "EssentialsX", EssentialsXHook.class, "drtshock"),
+    QUESTS("Quests", QuestsHook.class, "PikaMug", "me.blackvein.quests.Quests"),
+    STATS("Stats", StatsHook.class, "Lolmewn"),
+    QUESTS_ALTERNATIVE("Quests", QuestsAlternative.class, "LMBishop", "com.leonardobishop.quests.Quests"),
+    SAVAGE_FACTIONS("Factions", "SavageFactions", SavageFactionsHook.class, "ProSavage", "com.massivecraft.factions" +
             ".SavageFactions"),
-    PLAYERPOINTS("PlayerPoints", new PlayerPointsHook(), "Blackixx"),
-    NUVOTIFIER("Votifier", "NuVotifier", new NuVotifierHook(), "Ichbinjoe", "com.vexsoftware.votifier" +
+    PLAYERPOINTS("PlayerPoints", PlayerPointsHook.class, "Blackixx"),
+    NUVOTIFIER("Votifier", "NuVotifier", NuVotifierHook.class, "Ichbinjoe", "com.vexsoftware.votifier" +
             ".NuVotifierBukkit"),
-    CMI("CMI", new CMIHook(), "Zrips"),
-    UHCSTATS("UhcStats", new UHCStatsHook(), "Mezy"),
-    TOWNY_ADVANCED("Towny", new TownyAdvancedHook(), "Shade"),
-    MCRPG("McRPG", new McRPGHook(), "Eunoians");
+    CMI("CMI", CMIHook.class, "Zrips"),
+    UHCSTATS("UhcStats", UHCStatsHook.class, "Mezy"),
+    TOWNY_ADVANCED("Towny", TownyAdvancedHook.class, "Shade"),
+    MCRPG("McRPG", McRPGHook.class, "Eunoians");
 
     private final String internalPluginName;
     private final String authorName;
-    private final LibraryHook hook;
+    private final Class<? extends LibraryHook> libraryClass;
+    private LibraryHook hook;
     private String humanPluginName;
     private String mainClass;
 
-    Library(String pluginName, String humanPluginName, LibraryHook hook, String authorName) {
+    Library(String pluginName, String humanPluginName, Class<? extends LibraryHook> libraryClass, String authorName) {
         this.internalPluginName = pluginName;
         this.humanPluginName = humanPluginName;
-        this.hook = hook;
+        this.libraryClass = libraryClass;
         this.authorName = authorName;
     }
 
-    Library(String pluginName, LibraryHook hook, String authorName) {
+    Library(String pluginName, Class<? extends LibraryHook> libraryClass, String authorName) {
         this.internalPluginName = pluginName;
-        this.hook = hook;
+        this.libraryClass = libraryClass;
         this.authorName = authorName;
     }
 
-    Library(String pluginName, LibraryHook hook, String authorName, String mainClass) {
+    Library(String pluginName, Class<? extends LibraryHook> libraryClass, String authorName, String mainClass) {
         this.internalPluginName = pluginName;
-        this.hook = hook;
+        this.libraryClass = libraryClass;
         this.authorName = authorName;
         this.mainClass = mainClass;
     }
 
-    Library(String pluginName, String humanPluginName, LibraryHook hook, String authorName, String mainClass) {
+    Library(String pluginName, String humanPluginName, Class<? extends LibraryHook> libraryClass, String authorName,
+            String mainClass) {
         this.internalPluginName = pluginName;
         this.humanPluginName = humanPluginName;
-        this.hook = hook;
+        this.libraryClass = libraryClass;
         this.authorName = authorName;
         this.mainClass = mainClass;
     }
@@ -100,6 +103,16 @@ public enum Library {
     }
 
     public LibraryHook getHook() {
+
+        // Check if hook is not initialized yet.
+        if (hook == null) {
+            try {
+                hook = libraryClass.newInstance();
+            } catch (InstantiationException | IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+
         return hook;
     }
 
@@ -132,4 +145,14 @@ public enum Library {
     public void setMainClass(String mainClass) {
         this.mainClass = mainClass;
     }
+
+    /**
+     * Check if this plugin is installed on the server.
+     *
+     * @return true if the plugin is enabled, false otherwise.
+     */
+    public boolean isPluginInstalled() {
+        return Bukkit.getPluginManager().isPluginEnabled(Library.MCRPG.getInternalPluginName());
+    }
+
 }

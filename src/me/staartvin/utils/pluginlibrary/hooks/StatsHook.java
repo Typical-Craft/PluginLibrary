@@ -24,16 +24,6 @@ public class StatsHook extends LibraryHook {
 
     private BukkitMain stats;
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see me.staartvin.plugins.pluginlibrary.hooks.LibraryHook#isAvailable()
-     */
-    @Override
-    public boolean isAvailable() {
-        return this.getServer().getPluginManager().isPluginEnabled(Library.STATS.getInternalPluginName());
-    }
-
     @Override
     public boolean isHooked() {
         return stats != null;
@@ -46,7 +36,7 @@ public class StatsHook extends LibraryHook {
      */
     @Override
     public boolean hook() {
-        if (!isAvailable())
+        if (!isPluginAvailable(Library.STATS))
             return false;
 
         stats = (BukkitMain) this.getServer().getPluginManager().getPlugin(Library.STATS.getInternalPluginName());
@@ -448,7 +438,7 @@ public class StatsHook extends LibraryHook {
      * @return The amount of players a player has killed.
      */
     public int getPlayersKilled(UUID uuid, String worldName) {
-        if (!this.isAvailable()) return -1;
+        if (!this.isHooked()) return -1;
         return this.getMobsKilled(uuid, "player", worldName);
     }
 

@@ -19,16 +19,6 @@ public class StatzHook extends LibraryHook {
 
     private Statz statz;
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see me.staartvin.plugins.pluginlibrary.LibraryHook#isAvailable()
-     */
-    @Override
-    public boolean isAvailable() {
-        return true;
-    }
-
     @Override
     public boolean isHooked() {
         return statz != null;
@@ -41,7 +31,7 @@ public class StatzHook extends LibraryHook {
      */
     @Override
     public boolean hook() {
-        if (!isAvailable())
+        if (!isPluginAvailable(Library.STATZ))
             return false;
 
         statz = (Statz) this.getServer().getPluginManager()
