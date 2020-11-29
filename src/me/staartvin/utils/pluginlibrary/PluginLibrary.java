@@ -28,7 +28,7 @@ public class PluginLibrary {
      * @return {@link Library} class or an error.
      * @throws IllegalArgumentException When no plugin with the given name was found.
      */
-    public static LibraryHook getLibrary(String pluginName) throws IllegalArgumentException {
+    public static Optional<LibraryHook> getLibrary(String pluginName) throws IllegalArgumentException {
         return me.staartvin.utils.pluginlibrary.Library.getEnum(pluginName).getHook();
     }
 
@@ -39,7 +39,7 @@ public class PluginLibrary {
      * @return {@link Library} class or an error.
      * @see #getLibrary(String)
      */
-    public static LibraryHook getLibrary(me.staartvin.utils.pluginlibrary.Library lib) {
+    public static Optional<LibraryHook> getLibrary(me.staartvin.utils.pluginlibrary.Library lib) {
         return lib.getHook();
     }
 
@@ -124,15 +124,17 @@ public class PluginLibrary {
         for (me.staartvin.utils.pluginlibrary.Library l : me.staartvin.utils.pluginlibrary.Library.values()) {
             if (LibraryHook.isPluginAvailable(l)) {
                 try {
-                    LibraryHook libraryHook = l.getHook();
-                    if (libraryHook.hook()) {
+                    Optional<LibraryHook> libraryHook = l.getHook();
+                    if (libraryHook.isPresent() && libraryHook.get().hook()) {
                         loadedLibraries.add(l);
                         count++;
+                    } else {
+                        Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "Obtained error when " +
+                                "loading " + l.getHumanPluginName());
                     }
                 } catch (NoClassDefFoundError error) {
                     Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "Obtained error when " +
-                            "loading " +
-                            l.getHumanPluginName());
+                            "loading " + l.getHumanPluginName());
                     error.printStackTrace();
                 }
             }

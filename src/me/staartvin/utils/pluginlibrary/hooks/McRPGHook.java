@@ -1,7 +1,6 @@
 package me.staartvin.utils.pluginlibrary.hooks;
 
 import me.staartvin.utils.pluginlibrary.Library;
-import us.eunoians.mcrpg.api.exceptions.McRPGPlayerNotFoundException;
 import us.eunoians.mcrpg.players.McRPGPlayer;
 import us.eunoians.mcrpg.players.PlayerManager;
 import us.eunoians.mcrpg.types.Skills;
@@ -49,7 +48,7 @@ public class McRPGHook extends LibraryHook {
 
         try {
             return Optional.ofNullable(PlayerManager.getPlayer(uuid));
-        } catch (McRPGPlayerNotFoundException e) {
+        } catch (Exception e) {
             return Optional.of(new McRPGPlayer(uuid));
         }
     }

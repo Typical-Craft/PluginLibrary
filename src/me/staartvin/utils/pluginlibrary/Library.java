@@ -3,6 +3,8 @@ package me.staartvin.utils.pluginlibrary;
 import me.staartvin.utils.pluginlibrary.hooks.*;
 import org.bukkit.Bukkit;
 
+import java.util.Optional;
+
 /**
  * This class holds all libraries PluginLibrary has.
  * <p>
@@ -102,18 +104,20 @@ public enum Library {
         return internalPluginName;
     }
 
-    public LibraryHook getHook() {
+    public Optional<LibraryHook> getHook() {
 
         // Check if hook is not initialized yet.
         if (hook == null) {
             try {
-                hook = libraryClass.newInstance();
-            } catch (InstantiationException | IllegalAccessException e) {
-                e.printStackTrace();
+                hook = libraryClass.getDeclaredConstructor().newInstance();
+            } catch (Exception | NoClassDefFoundError exception) {
+                Bukkit.getConsoleSender().sendMessage("Could not grab hook of " + this.getHumanPluginName());
+                exception.printStackTrace();
+                return Optional.empty();
             }
         }
 
-        return hook;
+        return Optional.of(hook);
     }
 
     public String getAuthor() {

@@ -1,7 +1,6 @@
 package me.staartvin.utils.pluginlibrary.hooks;
 
 import com.palmergames.bukkit.towny.TownyAPI;
-import com.palmergames.bukkit.towny.exceptions.NotRegisteredException;
 import com.palmergames.bukkit.towny.object.Resident;
 import me.staartvin.utils.pluginlibrary.Library;
 
@@ -41,7 +40,7 @@ public class TownyAdvancedHook extends LibraryHook {
 
         try {
             return Optional.ofNullable(TownyAPI.getInstance().getDataSource().getResident(playerName));
-        } catch (NotRegisteredException e) {
+        } catch (Exception e) {
             return Optional.empty();
         }
     }
