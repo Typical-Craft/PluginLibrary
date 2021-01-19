@@ -44,7 +44,8 @@ public enum Library {
     CMI("CMI", CMIHook.class, "Zrips"),
     UHCSTATS("UhcStats", UHCStatsHook.class, "Mezy"),
     TOWNY_ADVANCED("Towny", TownyAdvancedHook.class, "Shade"),
-    MCRPG("McRPG", McRPGHook.class, "Eunoians");
+    MCRPG("McRPG", McRPGHook.class, "Eunoians"),
+    AURELIUM_SKILLS("AureliumSkills", AureliumSkillsHook.class, "Archyx");
 
     private final String internalPluginName;
     private final String authorName;

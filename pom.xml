@@ -95,6 +95,11 @@
             <url>https://maven.enginehub.org/repo/</url>
         </repository>
 
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+
     </repositories>
 
     <dependencies>
@@ -267,6 +272,13 @@
             <groupId>com.gmail.mezymc</groupId>
             <artifactId>UhcStats</artifactId>
             <version>1.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.Archy-x</groupId>
+            <artifactId>AureliumSkills</artifactId>
+            <version>Alpha1.6.0</version>
+            <scope>provided</scope>
         </dependency>
 
 
