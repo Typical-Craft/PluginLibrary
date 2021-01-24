@@ -5,6 +5,7 @@ import com.archyx.aureliumskills.skills.Skill;
 import com.archyx.aureliumskills.stats.Stat;
 import me.staartvin.utils.pluginlibrary.autorank.Library;
 
+import java.util.Locale;
 import java.util.UUID;
 
 /**
@@ -48,7 +49,7 @@ public class AureliumSkillsHook extends LibraryHook {
         Stat stat = null;
 
         try {
-            stat = Stat.valueOf(statType);
+            stat = Stat.valueOf(statType.toUpperCase(Locale.ROOT));
         } catch (Exception e) {
             return 0;
         }
@@ -68,10 +69,11 @@ public class AureliumSkillsHook extends LibraryHook {
         Skill skill = null;
 
         try {
-            skill = Skill.valueOf(skillName);
+            skill = Skill.valueOf(skillName.toUpperCase(Locale.ROOT));
         } catch (Exception e) {
             return 0;
         }
+
 
         return AureliumAPI.getSkillLevel(uuid, skill);
     }
@@ -87,7 +89,7 @@ public class AureliumSkillsHook extends LibraryHook {
         Skill skill = null;
 
         try {
-            skill = Skill.valueOf(skillName);
+            skill = Skill.valueOf(skillName.toUpperCase(Locale.ROOT));
         } catch (Exception e) {
             return 0;
         }
