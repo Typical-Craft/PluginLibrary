@@ -84,6 +84,8 @@ public class TownyAdvancedHook extends LibraryHook {
 
         if (resident == null) return false;
 
+        if (!resident.hasNation()) return false;
+
         return resident.isKing();
     }
 
@@ -97,6 +99,8 @@ public class TownyAdvancedHook extends LibraryHook {
         Resident resident = this.getResident(playerName).orElse(null);
 
         if (resident == null) return false;
+
+        if (!resident.hasTown()) return false;
 
         return resident.isMayor();
     }
@@ -125,6 +129,8 @@ public class TownyAdvancedHook extends LibraryHook {
         Resident resident = this.getResident(playerName).orElse(null);
 
         if (resident == null) return 0;
+
+        if (!resident.hasTown()) return 0;
 
         return resident.getTownBlocks().size();
     }
