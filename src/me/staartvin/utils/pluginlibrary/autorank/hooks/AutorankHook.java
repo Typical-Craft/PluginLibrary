@@ -53,7 +53,7 @@ public class AutorankHook extends LibraryHook {
      */
     public int getLocalPlayTime(UUID uuid) throws ExecutionException, InterruptedException {
         if (!this.isHooked()) return -1;
-        return autorank.getAPI().getLocalPlayTime(uuid).get();
+        return autorank.getAPI().getLocalPlayTime(uuid);
     }
 
     /**
@@ -69,7 +69,7 @@ public class AutorankHook extends LibraryHook {
      */
     public int getGlobalPlayTime(UUID uuid) throws ExecutionException, InterruptedException {
         if (!this.isHooked()) return -1;
-        return autorank.getAPI().getGlobalPlayTime(uuid).get();
+        return autorank.getAPI().getGlobalPlayTime(uuid);
     }
 
     /**

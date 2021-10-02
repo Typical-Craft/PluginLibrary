@@ -1,10 +1,11 @@
 package me.staartvin.utils.pluginlibrary.autorank.hooks;
 
 
-import com.leonardobishop.quests.Quests;
-import com.leonardobishop.quests.player.QPlayer;
-import com.leonardobishop.quests.player.questprogressfile.QuestProgress;
-import com.leonardobishop.quests.quests.Quest;
+import com.leonardobishop.quests.bukkit.BukkitQuestsPlugin;
+import com.leonardobishop.quests.common.player.QPlayer;
+import com.leonardobishop.quests.common.player.questprogressfile.QuestProgress;
+import com.leonardobishop.quests.common.quest.Quest;
+
 import me.staartvin.utils.pluginlibrary.autorank.Library;
 import org.bukkit.plugin.Plugin;
 
@@ -20,11 +21,11 @@ import java.util.UUID;
  */
 public class QuestsAlternative extends LibraryHook {
 
-    private Quests quests;
+    private BukkitQuestsPlugin questsPlugin;
 
     @Override
     public boolean isHooked() {
-        return quests != null;
+        return questsPlugin != null;
     }
 
     //
@@ -42,12 +43,12 @@ public class QuestsAlternative extends LibraryHook {
         Plugin plugin = this.getServer().getPluginManager()
                 .getPlugin(Library.QUESTS_ALTERNATIVE.getInternalPluginName());
 
-        if (!(plugin instanceof Quests))
+        if (!(plugin instanceof BukkitQuestsPlugin ))
             return false;
 
-        quests = (Quests) plugin;
+        questsPlugin = (BukkitQuestsPlugin) plugin;
 
-        return quests != null;
+        return questsPlugin != null;
     }
 
     /**
@@ -60,7 +61,7 @@ public class QuestsAlternative extends LibraryHook {
     public int getNumberOfCompletedQuests(UUID uuid) {
         if (!this.isHooked()) return -1;
 
-        Map<String, Quest> quests = Quests.get().getQuestManager().getQuests();
+        Map<String, Quest> quests = questsPlugin.getQuestManager().getQuests();
 
         int completedQuests = 0;
 
@@ -83,7 +84,7 @@ public class QuestsAlternative extends LibraryHook {
     public int getNumberOfActiveQuests(UUID uuid) {
         if (!this.isHooked()) return -1;
 
-        QPlayer playerData = Quests.get().getPlayerManager().getPlayer(uuid);
+        QPlayer playerData = questsPlugin.getPlayerManager().getPlayer(uuid);
 
         return playerData.getQuestProgressFile().getStartedQuests().size();
     }
@@ -99,8 +100,8 @@ public class QuestsAlternative extends LibraryHook {
     public boolean isQuestCompleted(UUID uuid, String questName) {
         if (!this.isHooked()) return false;
 
-        Quest questData = Quests.get().getQuestManager().getQuestById(questName);
-        QPlayer playerData = Quests.get().getPlayerManager().getPlayer(uuid);
+        Quest questData = questsPlugin.getQuestManager().getQuestById(questName);
+        QPlayer playerData = questsPlugin.getPlayerManager().getPlayer(uuid);
 
         QuestProgress progress = playerData.getQuestProgressFile().getQuestProgress(questData);
 
